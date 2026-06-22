@@ -50,10 +50,6 @@ export function LoginGate() {
   return (
     <main className="flex min-h-svh items-center justify-center bg-ua-bg px-6 pt-20 text-ua-ink">
       <div className="w-full max-w-sm rounded-2xl border-2 border-ua-ink bg-white p-8 text-center shadow-[8px_8px_0_var(--ua-ink)]">
-        <div className="mx-auto mb-6 flex h-14 w-14 items-center justify-center rounded-full border-2 border-ua-ink bg-ua-bg text-2xl">
-          🔒
-        </div>
-
         {phase === "idle" ? (
           <button
             type="button"
