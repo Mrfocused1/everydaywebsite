@@ -3,7 +3,7 @@
 import { useState } from "react";
 
 const field =
-  "w-full rounded-lg border border-white/20 bg-white/5 px-4 py-3 text-white placeholder-white/40 outline-none transition-colors focus:border-[#f5a623] focus:bg-white/10";
+  "w-full rounded-lg border border-white/20 bg-white/5 px-4 py-3 text-white placeholder-white/40 outline-none transition-colors focus:border-[#c2d600] focus:bg-white/10";
 
 export function QuoteForm() {
   const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");
@@ -29,11 +29,11 @@ export function QuoteForm() {
 
   if (status === "sent") {
     return (
-      <div className="rounded-2xl border border-[#f5a623]/40 bg-[#f5a623]/10 p-8 text-center">
+      <div className="rounded-2xl border border-[#c2d600]/40 bg-[#c2d600]/10 p-8 text-center">
         <p className="text-2xl font-bold text-white">Thanks — we&apos;ve got it.</p>
         <p className="mt-2 text-white/70">
           We&apos;ll be in touch shortly. Need us sooner? Call{" "}
-          <a href="tel:07796767441" className="font-semibold text-[#f5a623]">
+          <a href="tel:07796767441" className="font-semibold text-[#c2d600]">
             07796 767441
           </a>
           .
@@ -54,12 +54,12 @@ export function QuoteForm() {
       <button
         type="submit"
         disabled={status === "sending"}
-        className="w-full rounded-lg bg-[#f5a623] px-6 py-4 text-lg font-bold text-[#0f1d2e] transition-colors hover:bg-[#ffba3a] disabled:opacity-70"
+        className="w-full rounded-lg bg-[#c2d600] px-6 py-4 text-lg font-bold text-[#1d1452] transition-colors hover:bg-[#d3e62b] disabled:opacity-70"
       >
         {status === "sending" ? "Sending…" : "Request my free quote"}
       </button>
       {status === "error" && (
-        <p className="text-sm text-[#f5a623]">
+        <p className="text-sm text-[#c2d600]">
           Something went wrong. Please call us on{" "}
           <a href="tel:07796767441" className="font-semibold underline">
             07796 767441
