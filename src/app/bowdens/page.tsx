@@ -141,39 +141,41 @@ export default function BowdensPage() {
 
       {/* ── Services intro (custom spec design) ── */}
       <section id="services" className="bg-white">
-        <div
-          className="mx-auto my-[30px] grid w-[min(94%,1800px)] overflow-hidden rounded-[10px] lg:min-h-[620px] lg:grid-cols-[58%_42%]"
-          style={{ background: "#16002d", boxShadow: "0 18px 40px rgba(0,0,0,0.08)" }}
-        >
-          {/* content */}
-          <div className="relative overflow-hidden px-[35px] py-[70px] text-white lg:px-[90px] lg:py-[145px]">
-            <h1 style={{ fontFamily: "Arial, sans-serif", fontSize: "clamp(3rem, 5vw, 5rem)", lineHeight: 1, fontWeight: 800, letterSpacing: "-1px", margin: "0 0 35px" }}>
-              WHAT WE DO
-            </h1>
-            <p style={{ fontFamily: "Arial, sans-serif", fontSize: "clamp(1.35rem, 2vw, 2rem)", lineHeight: 1.35, maxWidth: 720, margin: "0 0 35px" }}>
-              All aspects of building work, under one roof.
-            </p>
-            <p style={{ fontFamily: "Arial, sans-serif", fontSize: "clamp(1.35rem, 2vw, 2rem)", lineHeight: 1.35, maxWidth: 720, margin: "0 0 35px" }}>
-              Whatever your project, our team has it covered — from groundwork and structural building to the finishing
-              touches that make a house a home.
-            </p>
-            <a
-              href="#quote"
-              style={{ display: "inline-flex", alignItems: "center", justifyContent: "center", marginTop: 35, padding: "24px 58px", borderRadius: 999, background: "#27c7a2", border: "4px solid #ffffff", color: "#16002d", fontFamily: "Arial, sans-serif", fontSize: "1.45rem", fontWeight: 800, textDecoration: "none" }}
-            >
-              Start your project
-            </a>
-            {/* dashed semicircle dot arcs */}
-            <div aria-hidden="true" className="hidden lg:block" style={{ position: "absolute", width: 360, height: 180, borderRadius: "360px 360px 0 0", borderTop: "18px dashed #9b93aa", borderLeft: "18px dashed transparent", borderRight: "18px dashed transparent", opacity: 0.9, right: 120, bottom: -55 }} />
-            <div aria-hidden="true" className="hidden lg:block" style={{ position: "absolute", width: 360, height: 180, borderRadius: "360px 360px 0 0", borderTop: "18px dashed #27c7a2", borderLeft: "18px dashed transparent", borderRight: "18px dashed transparent", opacity: 0.9, right: -5, bottom: 0, transform: "rotate(8deg)" }} />
-          </div>
-          {/* image */}
+        <div className="mx-auto max-w-6xl px-5 py-12 md:px-8 md:py-16">
           <div
-            className="min-h-[380px] lg:min-h-0 lg:rounded-bl-[120px]"
-            style={{ backgroundImage: `url('${IMG.qualifications}')`, backgroundSize: "cover", backgroundPosition: "center" }}
-            role="img"
-            aria-label="Building work"
-          />
+            className="grid overflow-hidden rounded-2xl lg:grid-cols-[56%_44%]"
+            style={{ background: "#16002d", boxShadow: "0 14px 30px rgba(0,0,0,0.10)" }}
+          >
+            {/* content */}
+            <div className="relative overflow-hidden px-8 py-10 text-white md:px-12 md:py-12">
+              <h2 style={{ fontFamily: "Arial, sans-serif", fontSize: "clamp(1.6rem, 2.6vw, 2.25rem)", lineHeight: 1.05, fontWeight: 800, letterSpacing: "-0.5px", margin: "0 0 16px" }}>
+                WHAT WE DO
+              </h2>
+              <p style={{ fontFamily: "Arial, sans-serif", fontSize: "1.15rem", lineHeight: 1.35, fontWeight: 600, maxWidth: 520, margin: "0 0 12px" }}>
+                All aspects of building work, under one roof.
+              </p>
+              <p style={{ fontFamily: "Arial, sans-serif", fontSize: "1rem", lineHeight: 1.45, maxWidth: 520, margin: "0 0 22px", opacity: 0.8 }}>
+                Whatever your project, our team has it covered — from groundwork and structural building to the finishing
+                touches that make a house a home.
+              </p>
+              <a
+                href="#quote"
+                style={{ display: "inline-flex", alignItems: "center", justifyContent: "center", padding: "13px 30px", borderRadius: 999, background: "#27c7a2", border: "3px solid #ffffff", color: "#16002d", fontFamily: "Arial, sans-serif", fontSize: "1rem", fontWeight: 800, textDecoration: "none" }}
+              >
+                Start your project
+              </a>
+              {/* dashed semicircle dot arcs */}
+              <div aria-hidden="true" className="hidden lg:block" style={{ position: "absolute", width: 200, height: 100, borderRadius: "200px 200px 0 0", borderTop: "12px dashed #9b93aa", borderLeft: "12px dashed transparent", borderRight: "12px dashed transparent", opacity: 0.9, right: 70, bottom: -32 }} />
+              <div aria-hidden="true" className="hidden lg:block" style={{ position: "absolute", width: 200, height: 100, borderRadius: "200px 200px 0 0", borderTop: "12px dashed #27c7a2", borderLeft: "12px dashed transparent", borderRight: "12px dashed transparent", opacity: 0.9, right: -3, bottom: 0, transform: "rotate(8deg)" }} />
+            </div>
+            {/* image */}
+            <div
+              className="min-h-[240px] lg:min-h-0 lg:rounded-bl-[80px]"
+              style={{ backgroundImage: `url('${IMG.qualifications}')`, backgroundSize: "cover", backgroundPosition: "center" }}
+              role="img"
+              aria-label="Building work"
+            />
+          </div>
         </div>
       </section>
 
