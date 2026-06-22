@@ -1,4 +1,6 @@
 import Stripe from "stripe";
+import { cookies } from "next/headers";
+import { isSessionValid, SESSION_COOKIE } from "@/lib/invoiceAuth";
 
 // Stripe SDK needs Node; never statically prerender.
 export const runtime = "nodejs";
@@ -8,6 +10,12 @@ export const dynamic = "force-dynamic";
 // session) for an invoice total, charging into the Bridgeway AI Bootcamp Stripe
 // account (STRIPE_SECRET_KEY). Returns { url }.
 export async function POST(req: Request) {
+  // Only the logged-in invoice tool may create payment links.
+  const store = await cookies();
+  if (!isSessionValid(store.get(SESSION_COOKIE)?.value)) {
+    return Response.json({ error: "Unauthorized." }, { status: 401 });
+  }
+
   const key = process.env.STRIPE_SECRET_KEY;
   if (!key) {
     return Response.json({ error: "Payments are not configured." }, { status: 500 });

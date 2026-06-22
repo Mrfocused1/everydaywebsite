@@ -47,8 +47,10 @@ export default function InvoiceViewPage() {
 
   useEffect(() => {
     const hash = window.location.hash.replace(/^#/, "");
-    setInvoice(hash ? decodeInvoice(hash) : null);
+    const decoded = hash ? decodeInvoice(hash) : null;
+    setInvoice(decoded);
     setReady(true);
+    document.title = decoded ? `Invoice — ${BUSINESS.name}` : "Invoice";
   }, []);
 
   if (!ready) {
