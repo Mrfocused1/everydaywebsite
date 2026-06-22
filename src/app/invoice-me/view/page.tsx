@@ -17,6 +17,33 @@ const heading = { fontFamily: "var(--font-epilogue)" } as const;
 export default function InvoiceViewPage() {
   const [invoice, setInvoice] = useState<Invoice | null>(null);
   const [ready, setReady] = useState(false);
+  const [downloading, setDownloading] = useState(false);
+
+  async function downloadPdf(inv: Invoice) {
+    setDownloading(true);
+    try {
+      const res = await fetch("/api/invoice-pdf", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(inv),
+      });
+      if (!res.ok) throw new Error("pdf failed");
+      const blob = await res.blob();
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = url;
+      const safe = inv.clientName.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "") || "invoice";
+      a.download = `invoice-${safe}.pdf`;
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+      URL.revokeObjectURL(url);
+    } catch {
+      window.print(); // fallback
+    } finally {
+      setDownloading(false);
+    }
+  }
 
   useEffect(() => {
     const hash = window.location.hash.replace(/^#/, "");
@@ -57,14 +84,12 @@ export default function InvoiceViewPage() {
           ← new invoice
         </Link>
         <div className="flex flex-wrap gap-2">
-          <button type="button" onClick={() => window.print()} className="rounded-full border-2 border-ua-ink bg-white px-5 py-2 text-sm font-bold transition-colors hover:bg-ua-ink hover:text-white" style={heading}>
-            Print / Save PDF
+          <button type="button" onClick={() => downloadPdf(invoice)} disabled={downloading} className="rounded-full border-2 border-ua-ink bg-ua-ink px-5 py-2 text-sm font-bold text-ua-bg transition-colors hover:bg-ua-blue disabled:cursor-wait disabled:opacity-70" style={heading}>
+            {downloading ? "Preparing…" : "Download PDF"}
           </button>
-          {invoice.paymentLink && (
-            <a href={invoice.paymentLink} target="_blank" rel="noopener noreferrer" className="rounded-full border-2 border-ua-ink bg-ua-blue px-5 py-2 text-sm font-bold text-white transition-transform hover:-translate-y-0.5" style={heading}>
-              Pay {formatCurrency(sums.total, cur)} →
-            </a>
-          )}
+          <button type="button" onClick={() => window.print()} className="rounded-full border-2 border-ua-ink bg-white px-5 py-2 text-sm font-bold transition-colors hover:bg-ua-ink hover:text-white" style={heading}>
+            Print
+          </button>
         </div>
       </div>
 
@@ -151,13 +176,12 @@ export default function InvoiceViewPage() {
             Payment
           </p>
           {invoice.paymentLink ? (
-            <p className="mt-1 text-sm text-ua-ink/70">
-              Pay securely online —{" "}
-              <a href={invoice.paymentLink} target="_blank" rel="noopener noreferrer" className="font-bold text-ua-blue underline underline-offset-2 print:text-ua-ink">
-                {invoice.paymentLink}
+            <div className="mt-2 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+              <p className="text-sm text-ua-ink/70">Pay securely online. Payable to {BUSINESS.name}.</p>
+              <a href={invoice.paymentLink} target="_blank" rel="noopener noreferrer" data-no-print className="inline-flex shrink-0 items-center justify-center rounded-full border-2 border-ua-ink bg-ua-blue px-6 py-2.5 text-sm font-bold text-white transition-transform hover:-translate-y-0.5" style={heading}>
+                Pay {formatCurrency(sums.total, cur)} →
               </a>
-              . Payable to {BUSINESS.name}.
-            </p>
+            </div>
           ) : (
             <p className="mt-1 text-sm text-ua-ink/70">
               To arrange payment to {BUSINESS.name}, contact{" "}

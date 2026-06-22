@@ -309,7 +309,6 @@ export default function InvoiceCreatePage() {
               {shareUrl && (
                 <div className="mt-4 rounded-xl border-2 border-ua-green/60 bg-ua-green/30 p-3">
                   <p className="text-sm font-bold">Invoice ready ✓</p>
-                  <p className="mt-1 break-all rounded-lg bg-white/70 p-2 font-mono text-[11px] text-ua-ink/80">{shareUrl}</p>
                   <div className="mt-3 flex flex-wrap gap-2">
                     <button type="button" onClick={copy} className="rounded-full border-2 border-ua-ink bg-white px-4 py-1.5 text-sm font-bold transition-colors hover:bg-ua-ink hover:text-white" style={heading}>
                       {copied ? "Copied!" : "Copy link"}
