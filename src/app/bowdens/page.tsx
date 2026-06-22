@@ -182,9 +182,17 @@ export default function BowdensPage() {
       {/* ── Services grid ── */}
       <section className="bg-white">
         <div className="mx-auto max-w-6xl px-5 py-16 md:px-8 md:py-24">
-          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="mb-10 flex flex-wrap items-end justify-between gap-3">
+            <div className="max-w-2xl">
+              <p className="text-sm font-medium uppercase tracking-[0.18em] text-[#1d1452]/50">Our services</p>
+              <h2 className="mt-3 text-3xl font-light tracking-tight md:text-4xl">The trades we cover.</h2>
+            </div>
+            <p className="text-sm font-medium text-[#1d1452]/40 lg:hidden">Swipe →</p>
+          </div>
+          {/* horizontal swipe carousel on mobile, grid on desktop */}
+          <div className="-mx-5 flex snap-x snap-mandatory gap-5 overflow-x-auto px-5 pb-4 [scrollbar-width:none] md:-mx-8 md:px-8 lg:mx-0 lg:grid lg:grid-cols-4 lg:gap-6 lg:overflow-visible lg:px-0 lg:pb-0 [&::-webkit-scrollbar]:hidden">
             {SERVICES.map((s) => (
-              <article key={s.title} className="group overflow-hidden rounded-2xl border border-[#1d1452]/10 bg-white shadow-sm transition-shadow hover:shadow-md">
+              <article key={s.title} className="group w-[78%] shrink-0 snap-start overflow-hidden rounded-2xl border border-[#1d1452]/10 bg-white shadow-sm transition-shadow hover:shadow-md sm:w-[46%] lg:w-auto lg:shrink">
                 <div className="aspect-[16/10] overflow-hidden">
                   <img src={s.img} alt={s.title} loading="lazy" className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" />
                 </div>
