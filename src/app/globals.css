@@ -194,3 +194,28 @@ body {
   .hw-bottom { position: static; margin-top: 2.5rem; }
   .hw-relative .letter { transform: none !important; }
 }
+
+/* ── Print: invoice-only output ──
+   Hide the global marketing chrome (TopBar <header> + Footer <footer>, both
+   direct children of body) and anything marked data-no-print, so the /invoice-me
+   document prints clean. The invoice's own nested <header>/<footer> are kept. */
+@media print {
+  body > header,
+  body > footer,
+  [data-no-print] {
+    display: none !important;
+  }
+  html,
+  body,
+  .ua-body {
+    background: #fff !important;
+  }
+  *,
+  *::before,
+  *::after {
+    cursor: auto !important;
+  }
+  @page {
+    margin: 1.4cm;
+  }
+}
