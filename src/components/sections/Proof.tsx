@@ -48,7 +48,7 @@ export function Proof() {
             name="hundred"
             size={96}
             rotate={-12}
-            className="absolute -top-10 left-0 z-10 hidden sm:block md:-left-6"
+            className="absolute -top-16 -left-10 z-10 hidden sm:block md:-top-20 md:-left-24"
           />
           <Sticker
             name="high-five"

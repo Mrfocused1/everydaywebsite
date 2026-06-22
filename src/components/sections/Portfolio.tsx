@@ -17,9 +17,9 @@ const UNDERLINE_PATH =
 
 // Three phones in the fan, each autoplaying a 9:16 scroll-through of a real site.
 const PHONES = [
-  { src: "/marketing/work-portrait/perfect-pair-portrait.mp4", label: "The Perfect Pair" },
-  { src: "/marketing/work-portrait/clearway-portrait.mp4", label: "Clearway Driving School" },
-  { src: "/marketing/work-portrait/chuks-portrait.mp4", label: "Chuks Fitness" },
+  { src: "/marketing/work-portrait/perfect-pair-portrait.mp4", poster: "/marketing/work-portrait/perfect-pair-poster.jpg", label: "The Perfect Pair" },
+  { src: "/marketing/work-portrait/clearway-portrait.mp4", poster: "/marketing/work-portrait/clearway-poster.jpg", label: "Clearway Driving School" },
+  { src: "/marketing/work-portrait/chuks-portrait.mp4", poster: "/marketing/work-portrait/chuks-poster.jpg", label: "Chuks Fitness" },
 ] as const;
 
 export function Portfolio() {
@@ -80,27 +80,6 @@ export function Portfolio() {
     }, section);
 
     return () => ctx.revert();
-  }, []);
-
-  // Autoplay the demo clip while in view on touch devices (no hover to trigger it).
-  useEffect(() => {
-    const section = sectionRef.current;
-    if (!section || typeof IntersectionObserver === "undefined") return;
-    if (window.matchMedia("(hover: hover)").matches) return;
-    const vids = Array.from(section.querySelectorAll("video"));
-    if (!vids.length) return;
-    const io = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((e) => {
-          const v = e.target as HTMLVideoElement;
-          if (e.isIntersecting) void v.play().catch(() => {});
-          else v.pause();
-        });
-      },
-      { threshold: 0.15 },
-    );
-    vids.forEach((v) => io.observe(v));
-    return () => io.disconnect();
   }, []);
 
   return (
@@ -220,13 +199,21 @@ export function Portfolio() {
                     <div className="overflow-hidden rounded-[1.5rem] bg-ua-bg sm:rounded-[1.9rem]">
                       <video
                         src={phone.src}
+                        poster={phone.poster}
                         aria-label={`${phone.label} — website preview`}
-                        autoPlay
                         muted
                         loop
                         playsInline
-                        preload="auto"
-                        className="block aspect-[9/16] w-full object-cover"
+                        preload="metadata"
+                        onMouseEnter={(e) => {
+                          void e.currentTarget.play();
+                        }}
+                        onMouseLeave={(e) => {
+                          const v = e.currentTarget;
+                          v.pause();
+                          v.currentTime = 0;
+                        }}
+                        className="block aspect-[9/16] w-full cursor-pointer object-cover"
                       />
                     </div>
                   </div>
