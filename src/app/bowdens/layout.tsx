@@ -8,6 +8,23 @@ export const metadata: Metadata = {
     title: "Bowdens of London — Builders in South East London",
     description:
       "Full-service building & construction in South East London. Qualified, accredited tradespeople. Free quotes.",
+    url: "https://everydayweb.site/bowdens",
+    siteName: "Bowdens of London",
+    type: "website",
+    images: [
+      {
+        url: "/marketing/bowdens-newbuild.jpg",
+        width: 1400,
+        height: 934,
+        alt: "Bowdens of London — building work in progress",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Bowdens of London — Builders in South East London",
+    description: "Full-service building & construction in South East London. Free quotes.",
+    images: ["/marketing/bowdens-newbuild.jpg"],
   },
 };
 
