@@ -3,7 +3,7 @@
 
 export const SITE = {
   name: "Everyday Web.Site",
-  email: "hello@everydayweb.site",
+  email: "hello@bridgewayaibootcamp.com",
   domain: "everydayweb.site",
 };
 
