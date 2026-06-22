@@ -46,7 +46,7 @@ export function TopBar() {
   return (
     <header className="fixed inset-x-0 top-0 z-50">
       <nav aria-label="Primary" className="flex items-center justify-between px-5 py-5 md:px-10">
-        <a href="#top" aria-label={`${"Everyday Web.Site"} — home`} className="ua-jiggle-hover shrink-0">
+        <a href="/" aria-label="Everyday Web.Site — home" className="ua-jiggle-hover shrink-0">
           <Wordmark color={fg} className="ua-jiggle-target h-9 w-auto md:h-11" />
         </a>
 
