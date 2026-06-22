@@ -40,7 +40,7 @@ export function FinalCta() {
               <span className="transition-transform duration-200 group-hover:translate-x-1">→</span>
             </a>
             <a
-              href="#work"
+              href="/work"
               className="group inline-flex items-center gap-2 rounded-full border-2 border-ua-ink bg-ua-sky px-9 py-4 text-xl font-bold text-ua-ink shadow-[5px_5px_0_var(--ua-ink)] transition-all duration-200 hover:-translate-y-0.5 hover:bg-ua-ink hover:text-white hover:shadow-[8px_8px_0_var(--ua-ink)] active:translate-y-0 active:shadow-[2px_2px_0_var(--ua-ink)]"
               style={{ fontFamily: "var(--font-epilogue)" }}
             >

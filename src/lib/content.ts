@@ -16,14 +16,9 @@ export const HERO = {
   ctaHref: "#start",
   subhead:
     "A studio crafting fast, beautiful, bespoke websites — launched in days, not months. No templates. No fuss. Just a site that's unmistakably yours.",
-  // Background slideshow: real website screenshots (cross-fade through dark).
-  images: [
-    "/marketing/work/clearway-poster.jpg",
-    "/marketing/work/perfect-pair-poster.jpg",
-    "/marketing/work/chuks-poster.jpg",
-    "/marketing/work/forever-family-poster.jpg",
-  ],
-  imageAlt: "A premium website designed by Everyday Web.Site",
+  // Single lifestyle hero image (warm studio scene).
+  images: ["/marketing/hero-people.jpg"],
+  imageAlt: "A team collaborating on a new website",
 };
 
 // Marquee band words.
@@ -69,7 +64,7 @@ export const STEPS: Step[] = [
   {
     step: "03 — Build",
     color: "bg-ua-orange",
-    sticker: "lightning",
+    sticker: "laptop-2",
     bullets: [
       "Fast, polished & responsive",
       "Smooth motion & detail",
@@ -91,7 +86,7 @@ export const STEPS: Step[] = [
   {
     step: "05 — Grow",
     color: "bg-ua-sky",
-    sticker: "megaphone",
+    sticker: "cool-smiley",
     bullets: [
       "Updates & tweaks anytime",
       "New pages as you grow",
@@ -131,7 +126,7 @@ export const SHOWCASE: ShowcasePhoto[] = [
     className: "left-[8%] top-[34rem] w-[22rem] aspect-[16/10]",
     rotate: 3,
     z: 4,
-    sticker: { name: "rock-on", size: 92, rotate: -10, className: "-right-5 -top-6" },
+    sticker: { name: "sparkles", size: 92, rotate: -10, className: "-right-5 -top-6" },
   },
   {
     src: "/marketing/work/forever-family-poster.jpg",
@@ -145,6 +140,6 @@ export const SHOWCASE: ShowcasePhoto[] = [
     className: "left-[10%] top-[70rem] w-[21rem] aspect-[16/10]",
     rotate: 2,
     z: 4,
-    sticker: { name: "join-the-club", size: 98, rotate: -6, className: "-left-7 -bottom-4" },
+    sticker: { name: "high-five", size: 98, rotate: -6, className: "-left-7 -bottom-4" },
   },
 ];

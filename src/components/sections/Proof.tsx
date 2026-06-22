@@ -51,7 +51,7 @@ export function Proof() {
             className="absolute -top-10 left-0 z-10 hidden sm:block md:-left-6"
           />
           <Sticker
-            name="smiley"
+            name="high-five"
             size={88}
             rotate={14}
             className="absolute -top-12 right-0 z-10 hidden sm:block md:-right-6"

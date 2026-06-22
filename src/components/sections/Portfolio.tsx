@@ -15,11 +15,11 @@ const EMPHASIS_WORDS = ["designed", "to", "convert."];
 const UNDERLINE_PATH =
   "M2 26C41.0237 23.1556 79.9927 19.9419 118.634 15.5521C169.106 9.98633 227.314 2.42393 275.206 2C280.46 2.57436 264.768 4.99488 262.462 5.55556C257.837 6.43078 252.529 7.47009 247.317 8.59146C239.594 10.3556 212.496 15.8393 226.932 19.8051C239.594 22.6359 263.663 21.9521 280.978 21.3504C314.817 19.9829 349.311 16.7419 383.204 14.7863C465.931 9.5077 549.191 10.547 632 14.1436";
 
-// Three browser-style cards in the fan. The middle one is a live demo clip.
-const CARDS = [
-  { type: "image", src: "/marketing/work/perfect-pair-poster.jpg" },
-  { type: "video", src: "/marketing/work/clearway-demo.mp4", poster: "/marketing/work/clearway-poster.jpg" },
-  { type: "image", src: "/marketing/work/chuks-poster.jpg" },
+// Three phones in the fan, each autoplaying a 9:16 scroll-through of a real site.
+const PHONES = [
+  { src: "/marketing/work-portrait/perfect-pair-portrait.mp4", label: "The Perfect Pair" },
+  { src: "/marketing/work-portrait/clearway-portrait.mp4", label: "Clearway Driving School" },
+  { src: "/marketing/work-portrait/chuks-portrait.mp4", label: "Chuks Fitness" },
 ] as const;
 
 export function Portfolio() {
@@ -134,7 +134,7 @@ export function Portfolio() {
                       {w}{" "}
                     </span>
                     <Sticker
-                      name="rock-on"
+                      name="thumbs-up"
                       size={110}
                       rotate={-8}
                       className="pointer-events-none absolute -right-12 -top-7 z-10 hidden sm:block md:-right-20 md:-top-8"
@@ -185,61 +185,50 @@ export function Portfolio() {
           </h2>
         </div>
 
-        {/* Card fan — overlapping browser-style screenshots. Hovering one
-            straightens + lifts it and nudges the cards after it right. */}
-        <Reveal className="mt-28 md:mt-36">
+        {/* Phone fan — each phone autoplays a 9:16 scroll-through of a real
+            site. Hovering one straightens + lifts it and nudges the rest. */}
+        <Reveal className="mt-24 md:mt-32">
           <div className="relative mx-auto flex w-fit max-w-full items-center justify-center">
             <div
               aria-hidden
-              className="pointer-events-none absolute left-1/2 top-1/2 h-[125%] w-[96%] -translate-x-1/2 -translate-y-1/2 -rotate-6 bg-ua-blue"
+              className="pointer-events-none absolute left-1/2 top-1/2 h-[108%] w-[112%] -translate-x-1/2 -translate-y-1/2 -rotate-6 bg-ua-blue"
               style={{ borderRadius: "62% 38% 56% 44% / 56% 48% 52% 44%" }}
             />
-            <div className="relative flex items-center justify-center -space-x-16 sm:-space-x-20 md:-space-x-24">
-              {CARDS.map((card, i) => {
+            <div className="relative flex items-end justify-center -space-x-10 sm:-space-x-8 md:-space-x-10">
+              {PHONES.map((phone, i) => {
                 const isMiddle = i === 1;
-                const sizeClass = isMiddle
-                  ? "block aspect-[16/10] w-56 object-cover sm:w-64 md:w-80 lg:w-96"
-                  : "block aspect-[16/10] w-48 object-cover sm:w-56 md:w-72 lg:w-80";
+                const widthClass = isMiddle
+                  ? "w-40 sm:w-44 md:w-52"
+                  : "w-32 sm:w-40 md:w-44";
                 return (
                   <div
                     key={i}
-                    className="ua-fan-card relative shrink-0 overflow-hidden rounded-2xl border-2 border-ua-ink shadow-[6px_6px_0_var(--ua-ink)] sm:rounded-3xl"
+                    className={`ua-fan-card relative shrink-0 rounded-[2rem] border-2 border-ua-ink bg-ua-ink p-1.5 shadow-[6px_6px_0_var(--ua-ink)] sm:rounded-[2.4rem] ${widthClass}`}
                     style={
                       {
-                        "--rot": `${[-5, 0, 5][i]}deg`,
+                        "--rot": `${[-7, 0, 7][i]}deg`,
+                        "--ty": isMiddle ? "-1.5rem" : "0px",
                         zIndex: isMiddle ? 20 : i + 1,
                       } as React.CSSProperties
                     }
                   >
-                    {card.type === "video" ? (
+                    {/* notch */}
+                    <div
+                      aria-hidden
+                      className="absolute left-1/2 top-[0.55rem] z-10 h-1.5 w-12 -translate-x-1/2 rounded-full bg-ua-bg/30"
+                    />
+                    <div className="overflow-hidden rounded-[1.5rem] bg-ua-bg sm:rounded-[1.9rem]">
                       <video
-                        src={card.src}
-                        poster={"poster" in card ? card.poster : undefined}
+                        src={phone.src}
+                        aria-label={`${phone.label} — website preview`}
+                        autoPlay
                         muted
                         loop
                         playsInline
-                        preload="metadata"
-                        aria-hidden="true"
-                        onMouseEnter={(e) => {
-                          void e.currentTarget.play();
-                        }}
-                        onMouseLeave={(e) => {
-                          e.currentTarget.pause();
-                        }}
-                        className={`${sizeClass} cursor-pointer`}
+                        preload="auto"
+                        className="block aspect-[9/16] w-full object-cover"
                       />
-                    ) : (
-                      // eslint-disable-next-line @next/next/no-img-element
-                      <img
-                        src={card.src}
-                        alt=""
-                        aria-hidden="true"
-                        draggable={false}
-                        loading="lazy"
-                        decoding="async"
-                        className={sizeClass}
-                      />
-                    )}
+                    </div>
                   </div>
                 );
               })}

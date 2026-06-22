@@ -2,9 +2,9 @@ import { Wordmark } from "./Wordmark";
 import { SITE } from "@/lib/content";
 
 const LINKS = [
-  { label: "The work", href: "#work" },
-  { label: "How it works", href: "#process" },
-  { label: "Start your site", href: "#start" },
+  { label: "The work", href: "/work" },
+  { label: "How it works", href: "/#process" },
+  { label: "Start your site", href: "/#start" },
 ];
 
 export function Footer() {
@@ -46,7 +46,7 @@ export function Footer() {
 
         <div className="mt-10 flex flex-col gap-6 border-t border-ua-bg/20 pt-8 sm:flex-row sm:items-end sm:justify-between">
           <a href="#top" aria-label={`${SITE.name} — home`} className="ua-wiggle-link">
-            <Wordmark color="var(--ua-bg)" className="text-2xl md:text-3xl" />
+            <Wordmark color="var(--ua-bg)" className="h-12 w-auto md:h-14" />
           </a>
           <p className="text-sm text-ua-bg/70">© 2026 {SITE.name}. All rights reserved.</p>
         </div>

@@ -111,15 +111,15 @@ export function Hero() {
           src={src}
           alt={i === 0 ? HERO.imageAlt : ""}
           aria-hidden={i === 0 ? undefined : true}
-          className="absolute inset-0 h-full w-full scale-110 object-cover blur-xl"
+          className="absolute inset-0 h-full w-full object-cover object-[58%_42%] md:object-center"
           style={{ opacity: i === 0 ? 1 : 0 }}
           fetchPriority={i === 0 ? "high" : undefined}
         />
       ))}
-      {/* Knock the portfolio screenshots back to ambient texture so the headline
-          reads cleanly: a flat dark wash plus a bottom-weighted gradient. */}
-      <div className="absolute inset-0 bg-ua-ink/70" />
-      <div className="absolute inset-0 bg-gradient-to-t from-ua-ink via-ua-ink/45 to-ua-ink/60" />
+      {/* Keep the headline readable over the bright photo: a light flat wash plus
+          a bottom-weighted gradient (the headline sits at the bottom). */}
+      <div className="absolute inset-0 bg-ua-ink/35" />
+      <div className="absolute inset-0 bg-gradient-to-t from-ua-ink via-ua-ink/45 to-ua-ink/25" />
 
       <div className="relative z-10 flex min-h-svh flex-col items-center justify-end px-6 pb-14 text-center md:px-10 md:pb-20">
         <h1
