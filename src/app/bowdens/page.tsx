@@ -139,62 +139,58 @@ export default function BowdensPage() {
         </div>
       </section>
 
-      {/* ── About band — navy card + curved image + dotted line ── */}
+      {/* ── About band (image left, text right) ── */}
       <section className="bg-[#f2f0f9]">
-        <div className="mx-auto max-w-6xl px-5 py-16 md:px-8 md:py-24">
-          <div className="relative overflow-hidden rounded-[2rem] bg-[#1d1452] text-white shadow-xl">
-            <div className="grid lg:grid-cols-2">
-              <div className="relative z-10 px-7 py-12 md:px-12 md:py-16">
-                <h2 className="text-3xl font-light leading-tight tracking-tight md:text-4xl">
-                  A small, approachable team you can actually rely on.
-                </h2>
-                <p className="mt-5 text-lg font-light text-white/75">
-                  From a single repair to a full renovation, you deal with the people doing the work. We work with NIC &amp;
-                  Part P engineers and Gas Safe engineers, and we&apos;re a member of Checkatrade — so you can be assured your
-                  project is in experienced, qualified hands.
-                </p>
-                <a href="#services" className={`${limeBtn} mt-8`}>See what we do</a>
-                {/* dotted line */}
-                <svg viewBox="0 0 340 56" className="mt-12 hidden h-10 w-72 sm:block" fill="none" aria-hidden="true">
-                  <path d="M4 42 Q 150 2 250 28" stroke="#6f6a99" strokeWidth="7" strokeLinecap="round" strokeDasharray="0.1 20" />
-                  <path d="M250 28 Q 298 36 336 16" stroke="#c2d600" strokeWidth="7" strokeLinecap="round" strokeDasharray="0.1 20" />
-                </svg>
-              </div>
-              <div className="relative min-h-[18rem] lg:min-h-full">
-                <img
-                  src={IMG.about}
-                  alt="The Bowdens team at work"
-                  className="absolute inset-0 h-full w-full object-cover lg:[clip-path:url(#bowdens-curve)]"
-                />
-              </div>
-            </div>
+        <div className="mx-auto grid max-w-6xl items-center gap-12 px-5 py-16 md:px-8 md:py-24 lg:grid-cols-2">
+          <img src={IMG.about} alt="The Bowdens team at work" className="aspect-[4/3] w-full rounded-2xl object-cover shadow-lg" />
+          <div>
+            <h2 className="text-3xl font-light leading-tight tracking-tight md:text-4xl">
+              A small, approachable team you can actually rely on.
+            </h2>
+            <p className="mt-5 text-lg font-light text-[#1d1452]/75">
+              From a single repair to a full renovation, you deal with the people doing the work. We work with NIC &amp;
+              Part P engineers and Gas Safe engineers, and we&apos;re a member of Checkatrade — so you can be assured your
+              project is in experienced, qualified hands.
+            </p>
+            <a href="#services" className={`${outlineDark} mt-8`}>See what we do</a>
           </div>
         </div>
-        {/* responsive concave clip for the image's inner edge */}
-        <svg width="0" height="0" className="absolute" aria-hidden="true">
-          <defs>
-            <clipPath id="bowdens-curve" clipPathUnits="objectBoundingBox">
-              <path d="M0.07 0 C 0.22 0.3, 0.22 0.7, 0.07 1 L 1 1 L 1 0 Z" />
-            </clipPath>
-          </defs>
-        </svg>
       </section>
 
-      {/* ── Dark services intro band ── */}
-      <section id="services" className="bg-[#1d1452] text-white">
-        <div className="mx-auto grid max-w-6xl items-center gap-12 px-5 py-16 md:px-8 md:py-24 lg:grid-cols-2">
-          <div>
-            <p className="text-sm font-medium uppercase tracking-[0.18em] text-[#c2d600]">What we do</p>
-            <h2 className="mt-4 text-3xl font-light leading-tight tracking-tight md:text-4xl">
-              All aspects of building work, under one roof.
-            </h2>
-            <p className="mt-5 text-lg font-light text-white/70">
-              Whatever your project, our team has it covered — from groundwork and structural building to the finishing
-              touches that make a house a home.
-            </p>
-            <a href="#quote" className={`${limeBtn} mt-8`}>Start your project</a>
+      {/* ── Services intro — navy card + curved-edge image + dotted line ── */}
+      <section id="services" className="bg-white">
+        <div className="mx-auto max-w-6xl px-5 py-16 md:px-8 md:py-24">
+          <div className="relative grid overflow-hidden rounded-[2rem] bg-[#1d1452] text-white shadow-xl lg:grid-cols-[1.05fr_1fr]">
+            {/* text */}
+            <div className="px-7 py-12 md:px-12 md:py-16">
+              <p className="text-sm font-medium uppercase tracking-[0.18em] text-[#c2d600]">What we do</p>
+              <h2 className="mt-4 text-3xl font-light leading-tight tracking-tight md:text-4xl">
+                All aspects of building work, under one roof.
+              </h2>
+              <p className="mt-5 max-w-md text-lg font-light text-white/70">
+                Whatever your project, our team has it covered — from groundwork and structural building to the finishing
+                touches that make a house a home.
+              </p>
+              <a href="#quote" className={`${limeBtn} mt-8`}>Start your project</a>
+              {/* dotted line */}
+              <svg viewBox="0 0 340 56" className="mt-12 hidden h-10 w-72 sm:block" fill="none" aria-hidden="true">
+                <path d="M4 42 Q 150 2 250 28" stroke="#6f6a99" strokeWidth="7" strokeLinecap="round" strokeDasharray="0.1 20" />
+                <path d="M250 28 Q 298 36 336 16" stroke="#c2d600" strokeWidth="7" strokeLinecap="round" strokeDasharray="0.1 20" />
+              </svg>
+            </div>
+            {/* image with a curved navy seam (SVG overlay — works everywhere) */}
+            <div className="relative min-h-[18rem] lg:min-h-full">
+              <img src={IMG.qualifications} alt="Building work" className="absolute inset-0 h-full w-full object-cover" />
+              <svg
+                className="absolute inset-y-0 left-[-1px] hidden h-full w-1/2 lg:block"
+                viewBox="0 0 100 100"
+                preserveAspectRatio="none"
+                aria-hidden="true"
+              >
+                <path d="M0 0 L30 0 C64 30 64 70 30 100 L0 100 Z" fill="#1d1452" />
+              </svg>
+            </div>
           </div>
-          <img src={IMG.qualifications} alt="Building work" className="aspect-[4/3] w-full rounded-2xl object-cover" />
         </div>
       </section>
 
