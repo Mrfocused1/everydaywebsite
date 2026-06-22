@@ -280,15 +280,12 @@ export default function BowdensPage() {
             </p>
             <div className="mt-8 space-y-3">
               <a href={PHONE_TEL} className="flex items-center gap-4 rounded-xl border border-white/10 bg-white/5 p-4 transition-colors hover:bg-white/10">
-                <span className="text-xl">📞</span>
                 <span><span className="block text-xs uppercase tracking-wider text-white/45">Call us</span><span className="font-medium">{PHONE_DISPLAY}</span></span>
               </a>
               <a href={`mailto:${EMAIL}`} className="flex items-center gap-4 rounded-xl border border-white/10 bg-white/5 p-4 transition-colors hover:bg-white/10">
-                <span className="text-xl">✉️</span>
                 <span><span className="block text-xs uppercase tracking-wider text-white/45">Email us</span><span className="font-medium">{EMAIL}</span></span>
               </a>
               <div className="flex items-center gap-4 rounded-xl border border-white/10 bg-white/5 p-4">
-                <span className="text-xl">📍</span>
                 <span><span className="block text-xs uppercase tracking-wider text-white/45">Area</span><span className="font-medium">South East London &amp; surrounding areas</span></span>
               </div>
             </div>
@@ -325,6 +322,16 @@ export default function BowdensPage() {
           </div>
         </div>
       </footer>
+
+      {/* ── Pinned "Call now" (always visible) ── */}
+      <a
+        href={PHONE_TEL}
+        aria-label={`Call now on ${PHONE_DISPLAY}`}
+        className="fixed bottom-4 left-4 right-4 z-[60] flex items-center justify-center gap-2 rounded-full bg-[#c2d600] px-6 py-4 text-base font-bold text-[#1d1452] shadow-2xl ring-1 ring-black/10 transition-transform hover:-translate-y-0.5 sm:left-auto sm:right-6"
+      >
+        <span className="inline-block h-2 w-2 animate-pulse rounded-full bg-[#1d1452]" aria-hidden />
+        Call now · {PHONE_DISPLAY}
+      </a>
     </div>
   );
 }
