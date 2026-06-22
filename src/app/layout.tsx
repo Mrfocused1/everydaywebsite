@@ -1,8 +1,7 @@
 import type { Metadata } from "next";
 import { Baloo_2, DM_Sans, Epilogue, Lora } from "next/font/google";
 import "./globals.css";
-import { TopBar } from "@/components/TopBar";
-import { Footer } from "@/components/Footer";
+import { SiteChrome } from "@/components/SiteChrome";
 
 const baloo = Baloo_2({
   variable: "--font-chewy",
@@ -68,9 +67,7 @@ export default function RootLayout({
         <noscript>
           <style>{`.ua-reveal{opacity:1 !important;transform:none !important}`}</style>
         </noscript>
-        <TopBar />
-        <main>{children}</main>
-        <Footer />
+        <SiteChrome>{children}</SiteChrome>
       </body>
     </html>
   );
