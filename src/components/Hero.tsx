@@ -111,7 +111,7 @@ export function Hero() {
           src={src}
           alt={i === 0 ? HERO.imageAlt : ""}
           aria-hidden={i === 0 ? undefined : true}
-          className="absolute inset-0 h-full w-full object-cover object-[58%_42%] md:object-center"
+          className="absolute inset-0 h-full w-full object-cover object-[74%_45%] md:object-center"
           style={{ opacity: i === 0 ? 1 : 0 }}
           fetchPriority={i === 0 ? "high" : undefined}
         />
