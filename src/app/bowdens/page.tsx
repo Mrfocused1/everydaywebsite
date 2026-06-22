@@ -139,58 +139,41 @@ export default function BowdensPage() {
         </div>
       </section>
 
-      {/* ── About band (image left, text right) ── */}
-      <section className="bg-[#f2f0f9]">
-        <div className="mx-auto grid max-w-6xl items-center gap-12 px-5 py-16 md:px-8 md:py-24 lg:grid-cols-2">
-          <img src={IMG.about} alt="The Bowdens team at work" className="aspect-[4/3] w-full rounded-2xl object-cover shadow-lg" />
-          <div>
-            <h2 className="text-3xl font-light leading-tight tracking-tight md:text-4xl">
-              A small, approachable team you can actually rely on.
-            </h2>
-            <p className="mt-5 text-lg font-light text-[#1d1452]/75">
-              From a single repair to a full renovation, you deal with the people doing the work. We work with NIC &amp;
-              Part P engineers and Gas Safe engineers, and we&apos;re a member of Checkatrade — so you can be assured your
-              project is in experienced, qualified hands.
-            </p>
-            <a href="#services" className={`${outlineDark} mt-8`}>See what we do</a>
-          </div>
-        </div>
-      </section>
-
-      {/* ── Services intro — navy card + curved-edge image + dotted line ── */}
+      {/* ── Services intro (custom spec design) ── */}
       <section id="services" className="bg-white">
-        <div className="mx-auto max-w-6xl px-5 py-16 md:px-8 md:py-24">
-          <div className="relative grid overflow-hidden rounded-[2rem] bg-[#1d1452] text-white shadow-xl lg:grid-cols-[1.05fr_1fr]">
-            {/* text */}
-            <div className="px-7 py-12 md:px-12 md:py-16">
-              <p className="text-sm font-medium uppercase tracking-[0.18em] text-[#c2d600]">What we do</p>
-              <h2 className="mt-4 text-3xl font-light leading-tight tracking-tight md:text-4xl">
-                All aspects of building work, under one roof.
-              </h2>
-              <p className="mt-5 max-w-md text-lg font-light text-white/70">
-                Whatever your project, our team has it covered — from groundwork and structural building to the finishing
-                touches that make a house a home.
-              </p>
-              <a href="#quote" className={`${limeBtn} mt-8`}>Start your project</a>
-              {/* dotted line */}
-              <svg viewBox="0 0 340 56" className="mt-12 hidden h-10 w-72 sm:block" fill="none" aria-hidden="true">
-                <path d="M4 42 Q 150 2 250 28" stroke="#6f6a99" strokeWidth="7" strokeLinecap="round" strokeDasharray="0.1 20" />
-                <path d="M250 28 Q 298 36 336 16" stroke="#c2d600" strokeWidth="7" strokeLinecap="round" strokeDasharray="0.1 20" />
-              </svg>
-            </div>
-            {/* image with a curved navy seam (SVG overlay — works everywhere) */}
-            <div className="relative min-h-[18rem] lg:min-h-full">
-              <img src={IMG.qualifications} alt="Building work" className="absolute inset-0 h-full w-full object-cover" />
-              <svg
-                className="absolute inset-y-0 left-[-1px] hidden h-full w-1/2 lg:block"
-                viewBox="0 0 100 100"
-                preserveAspectRatio="none"
-                aria-hidden="true"
-              >
-                <path d="M0 0 L30 0 C64 30 64 70 30 100 L0 100 Z" fill="#1d1452" />
-              </svg>
-            </div>
+        <div
+          className="mx-auto my-[30px] grid w-[min(94%,1800px)] overflow-hidden rounded-[10px] lg:min-h-[620px] lg:grid-cols-[58%_42%]"
+          style={{ background: "#16002d", boxShadow: "0 18px 40px rgba(0,0,0,0.08)" }}
+        >
+          {/* content */}
+          <div className="relative overflow-hidden px-[35px] py-[70px] text-white lg:px-[90px] lg:py-[145px]">
+            <h1 style={{ fontFamily: "Arial, sans-serif", fontSize: "clamp(3rem, 5vw, 5rem)", lineHeight: 1, fontWeight: 800, letterSpacing: "-1px", margin: "0 0 35px" }}>
+              WHAT WE DO
+            </h1>
+            <p style={{ fontFamily: "Arial, sans-serif", fontSize: "clamp(1.35rem, 2vw, 2rem)", lineHeight: 1.35, maxWidth: 720, margin: "0 0 35px" }}>
+              All aspects of building work, under one roof.
+            </p>
+            <p style={{ fontFamily: "Arial, sans-serif", fontSize: "clamp(1.35rem, 2vw, 2rem)", lineHeight: 1.35, maxWidth: 720, margin: "0 0 35px" }}>
+              Whatever your project, our team has it covered — from groundwork and structural building to the finishing
+              touches that make a house a home.
+            </p>
+            <a
+              href="#quote"
+              style={{ display: "inline-flex", alignItems: "center", justifyContent: "center", marginTop: 35, padding: "24px 58px", borderRadius: 999, background: "#27c7a2", border: "4px solid #ffffff", color: "#16002d", fontFamily: "Arial, sans-serif", fontSize: "1.45rem", fontWeight: 800, textDecoration: "none" }}
+            >
+              Start your project
+            </a>
+            {/* dashed semicircle dot arcs */}
+            <div aria-hidden="true" className="hidden lg:block" style={{ position: "absolute", width: 360, height: 180, borderRadius: "360px 360px 0 0", borderTop: "18px dashed #9b93aa", borderLeft: "18px dashed transparent", borderRight: "18px dashed transparent", opacity: 0.9, right: 120, bottom: -55 }} />
+            <div aria-hidden="true" className="hidden lg:block" style={{ position: "absolute", width: 360, height: 180, borderRadius: "360px 360px 0 0", borderTop: "18px dashed #27c7a2", borderLeft: "18px dashed transparent", borderRight: "18px dashed transparent", opacity: 0.9, right: -5, bottom: 0, transform: "rotate(8deg)" }} />
           </div>
+          {/* image */}
+          <div
+            className="min-h-[380px] lg:min-h-0 lg:rounded-bl-[120px]"
+            style={{ backgroundImage: `url('${IMG.qualifications}')`, backgroundSize: "cover", backgroundPosition: "center" }}
+            role="img"
+            aria-label="Building work"
+          />
         </div>
       </section>
 
@@ -267,7 +250,7 @@ export default function BowdensPage() {
             <a href="#quote" className={outlineDark}>Start your project</a>
           </div>
           <div className="mt-10 grid grid-cols-1 gap-4 sm:grid-cols-3">
-            {[IMG.gallery1, IMG.gallery3, IMG.kitchen].map((src, i) => (
+            {["/marketing/bowdens-newbuild.jpg", IMG.gallery3, IMG.kitchen].map((src, i) => (
               <img key={i} src={src} alt="Recent project" loading="lazy" className="aspect-[4/3] w-full rounded-2xl object-cover shadow-sm" />
             ))}
           </div>
