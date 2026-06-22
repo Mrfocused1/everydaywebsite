@@ -1,0 +1,196 @@
+@import "tailwindcss";
+
+/* ── Brand CSS variables ── */
+:root {
+  --ua-bg: #f0ebe6;
+  --ua-ink: #141414;
+  --ua-blue: #4b69f0;
+  --ua-sky: #82a0ff;
+  --ua-pink: #f0befa;
+  --ua-green: #e6fab9;
+  --ua-orange: #f5693c;
+
+  /* Tailwind compat aliases */
+  --background: var(--ua-bg);
+  --foreground: var(--ua-ink);
+}
+
+@theme inline {
+  --color-ua-bg: var(--ua-bg);
+  --color-ua-ink: var(--ua-ink);
+  --color-ua-blue: var(--ua-blue);
+  --color-ua-sky: var(--ua-sky);
+  --color-ua-pink: var(--ua-pink);
+  --color-ua-green: var(--ua-green);
+  --color-ua-orange: var(--ua-orange);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+}
+
+/* ── Base body styles ── */
+.ua-body {
+  background-color: var(--ua-bg);
+  color: var(--ua-ink);
+  min-height: 100vh;
+}
+
+/* Site-wide backstop against accidental horizontal scroll (off-canvas
+   decorations, oversized stickers, etc.). `clip` keeps sticky/position
+   contexts intact, unlike `hidden`. */
+html,
+body {
+  overflow-x: clip;
+}
+
+/* ── Oversized, colour-inverted cursor ──
+   ~3x the default arrow (48px vs ~16px) and colour-inverted: the default
+   pointer is black-on-white, so this is white-on-black. Applied site-wide.
+   The SVG is fully %-encoded so the data URI parses cleanly; hotspot (6 2)
+   sits at the arrow tip. */
+*,
+*::before,
+*::after {
+  cursor: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='48'%20height='48'%20viewBox='0%200%2024%2024'%3E%3Cpath%20d='M3%201L3%2021L8%2016.5L11%2022.5L14%2021L11%2015L17%2015Z'%20fill='%23ffffff'%20stroke='%23000000'%20stroke-width='1.5'%20stroke-linejoin='round'/%3E%3C/svg%3E") 6 2, auto;
+}
+
+/* ── Login page background animations ── */
+@keyframes ua-blob-move {
+  0%   { transform: translate(0, 0) scale(1)    rotate(0deg); }
+  33%  { transform: translate(28px, -34px) scale(1.12) rotate(40deg); }
+  66%  { transform: translate(-22px, 24px) scale(0.92) rotate(-30deg); }
+  100% { transform: translate(0, 0) scale(1)    rotate(0deg); }
+}
+@keyframes ua-drift {
+  0%   { transform: translateY(0) rotate(-6deg); }
+  50%  { transform: translateY(-22px) rotate(8deg); }
+  100% { transform: translateY(0) rotate(-6deg); }
+}
+@keyframes ua-gradient-pan {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+@keyframes ua-pop-in {
+  0%   { opacity: 0; transform: translateY(16px) scale(0.97); }
+  100% { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.ua-anim-gradient {
+  background: linear-gradient(120deg, #4b69f0, #82a0ff, #6b4bf0, #4b69f0);
+  background-size: 300% 300%;
+  animation: ua-blob 1ms; /* placeholder to keep specificity */
+  animation: ua-gradient-pan 14s ease infinite;
+}
+.ua-blob {
+  position: absolute;
+  border-radius: 42% 58% 63% 37% / 41% 44% 56% 59%;
+  filter: blur(14px);
+  opacity: 0.55;
+  animation: ua-blob-move 16s ease-in-out infinite;
+  will-change: transform;
+  pointer-events: none;
+}
+.ua-sticker {
+  position: absolute;
+  font-size: 2.2rem;
+  animation: ua-drift 7s ease-in-out infinite;
+  pointer-events: none;
+  user-select: none;
+  filter: drop-shadow(0 6px 14px rgba(0, 0, 0, 0.18));
+}
+.ua-pop { animation: ua-pop-in 0.7s cubic-bezier(0.16, 1, 0.3, 1) both; }
+
+@media (prefers-reduced-motion: reduce) {
+  .ua-anim-gradient, .ua-blob, .ua-sticker, .ua-pop { animation: none !important; }
+}
+
+/* Brand wordmark — free Epilogue replaces the commercial Genty face. */
+.font-genty { font-family: var(--font-epilogue), sans-serif; }
+
+/* ── Marquee band ── */
+@keyframes ua-marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+.ua-marquee { animation: ua-marquee 24s linear infinite; }
+@media (prefers-reduced-motion: reduce) { .ua-marquee { animation: none; } }
+@keyframes ua-marquee-rev { from { transform: translateX(-50%); } to { transform: translateX(0); } }
+.ua-marquee-rev { animation: ua-marquee-rev 24s linear infinite; }
+@media (prefers-reduced-motion: reduce) { .ua-marquee-rev { animation: none; } }
+
+/* ── Header logo jiggle on hover ── */
+@keyframes ua-jiggle {
+  0% { transform: rotate(0deg) scale(1); }
+  20% { transform: rotate(-8deg) scale(1.06); }
+  40% { transform: rotate(7deg) scale(1.06); }
+  60% { transform: rotate(-5deg) scale(1.03); }
+  80% { transform: rotate(3deg) scale(1.01); }
+  100% { transform: rotate(0deg) scale(1); }
+}
+.ua-jiggle-hover:hover .ua-jiggle-target { animation: ua-jiggle 500ms ease-in-out; }
+@media (prefers-reduced-motion: reduce) { .ua-jiggle-hover:hover .ua-jiggle-target { animation: none; } }
+
+/* ── Testimonial card + sticker hover wiggle (opposite directions). Uses the
+   standalone `rotate` property so it composes with the cards' inline
+   `transform` tilt and GSAP's entrance transforms instead of overriding them. ── */
+@keyframes ua-wiggle {
+  0%, 100% { rotate: 0deg; }
+  25% { rotate: 3deg; }
+  75% { rotate: -3deg; }
+}
+@keyframes ua-wiggle-rev {
+  0%, 100% { rotate: 0deg; }
+  25% { rotate: -5deg; }
+  75% { rotate: 5deg; }
+}
+/* Settle back smoothly when the cursor leaves mid-wiggle. */
+.ua-wiggle-card, .ua-wiggle-icon { transition: rotate 180ms ease-out; }
+.ua-wiggle-pair:hover .ua-wiggle-card { animation: ua-wiggle 600ms ease-in-out infinite; }
+.ua-wiggle-pair:hover .ua-wiggle-icon { animation: ua-wiggle-rev 600ms ease-in-out infinite; }
+/* Footer links wiggle on hover (no colour change). inline-block so the
+   rotation actually applies to the text box. */
+.ua-wiggle-link { display: inline-block; }
+.ua-wiggle-link:hover { animation: ua-wiggle 600ms ease-in-out infinite; }
+@media (prefers-reduced-motion: reduce) {
+  .ua-wiggle-pair:hover .ua-wiggle-card,
+  .ua-wiggle-pair:hover .ua-wiggle-icon,
+  .ua-wiggle-link:hover { animation: none; }
+}
+
+/* ── Work page tab-panel fade (opacity only — safe for sticky cards) ── */
+@keyframes ua-tab-fade { from { opacity: 0; } to { opacity: 1; } }
+.ua-tab-panel { animation: ua-tab-fade 0.35s ease both; }
+@media (prefers-reduced-motion: reduce) { .ua-tab-panel { animation: none; } }
+
+/* ── Horizontal-words pinned section (post-hero) ── */
+.hw-section { height: 300svh; overflow: clip; }
+.hw-content { position: sticky; top: 0; display: flex; align-items: center; height: 100svh; overflow: hidden; }
+.hw-relative { position: relative; width: max-content; margin: 0 25vw; }
+.hw-h2 { white-space: nowrap; width: max-content; }
+.hw-bottom { position: absolute; left: 0; bottom: 12svh; width: 100%; text-align: center; }
+/* ── Hover-fan deck (curriculum cards + future photo collage) ── */
+/* Each card carries its own resting rotation (--rot) and vertical stagger (--ty)
+   via inline style. Hovering a card straightens it, lifts it, and brings it to
+   front; every card after it is nudged right to open a gap and reveal it.
+   Cards must be position:relative for the hover z-index to take effect. */
+.ua-fan-card {
+  transform: rotate(var(--rot, 0deg)) translateY(var(--ty, 0px));
+  transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.ua-fan-card:hover {
+  transform: rotate(0deg) translateY(calc(var(--ty, 0px) - 2.5rem));
+  z-index: 60;
+}
+.ua-fan-card:hover ~ .ua-fan-card {
+  transform: rotate(var(--rot, 0deg)) translateY(var(--ty, 0px)) translateX(6rem);
+}
+@media (prefers-reduced-motion: reduce) {
+  .ua-fan-card { transition: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hw-section { height: auto; overflow: visible; }
+  .hw-content { position: static; height: auto; min-height: 60svh; padding: 5rem 0; flex-direction: column; gap: 1.5rem; justify-content: center; }
+  .hw-relative { width: auto; max-width: 64rem; margin: 0 auto; padding: 0 1.5rem; }
+  .hw-h2 { white-space: normal; width: auto; text-align: center; }
+  .hw-sticker { display: none; }
+  .hw-bottom { position: static; margin-top: 2.5rem; }
+  .hw-relative .letter { transform: none !important; }
+}
