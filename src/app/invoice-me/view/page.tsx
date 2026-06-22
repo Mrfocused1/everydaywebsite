@@ -46,7 +46,7 @@ export default function InvoiceViewPage() {
     );
   }
 
-  const sums = totals(invoice.items, invoice.taxRate);
+  const sums = totals(invoice.items);
   const cur = invoice.currency;
 
   return (
@@ -75,7 +75,6 @@ export default function InvoiceViewPage() {
             <h1 className="text-4xl font-black tracking-tight" style={heading}>
               INVOICE
             </h1>
-            <p className="mt-1 font-mono text-sm text-ua-ink/60">{invoice.invoiceNumber}</p>
           </div>
           <div className="sm:text-right">
             <p className="text-xl font-black" style={heading}>
@@ -138,17 +137,7 @@ export default function InvoiceViewPage() {
 
         {/* Totals */}
         <div className="mt-6 flex justify-end">
-          <dl className="w-full max-w-xs space-y-2 text-sm">
-            <div className="flex justify-between">
-              <dt className="text-ua-ink/60">Subtotal</dt>
-              <dd>{formatCurrency(sums.subtotal, cur)}</dd>
-            </div>
-            {invoice.taxRate > 0 && (
-              <div className="flex justify-between">
-                <dt className="text-ua-ink/60">Tax ({invoice.taxRate}%)</dt>
-                <dd>{formatCurrency(sums.taxAmount, cur)}</dd>
-              </div>
-            )}
+          <dl className="w-full max-w-xs text-sm">
             <div className="flex justify-between border-t-2 border-ua-ink pt-2 text-lg font-black" style={heading}>
               <dt>Total</dt>
               <dd>{formatCurrency(sums.total, cur)}</dd>

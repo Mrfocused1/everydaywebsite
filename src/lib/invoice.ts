@@ -9,7 +9,6 @@ export type InvoiceItem = {
 };
 
 export type Invoice = {
-  invoiceNumber: string;
   clientName: string;
   clientEmail?: string;
   clientAddress?: string;
@@ -18,7 +17,6 @@ export type Invoice = {
   dueDate: string; // YYYY-MM-DD
   paymentTerms?: string;
   items: InvoiceItem[];
-  taxRate: number; // percent
   notes?: string;
   paymentLink?: string;
   currency: "GBP" | "USD" | "EUR";
@@ -65,22 +63,10 @@ export function lineTotal(item: InvoiceItem): number {
   return Math.round(item.quantity * item.unitPrice * 100) / 100;
 }
 
-export function totals(items: InvoiceItem[], taxRate: number) {
+export function totals(items: InvoiceItem[]) {
   const subtotal = items.reduce((sum, i) => sum + lineTotal(i), 0);
-  const taxAmount = Math.round(subtotal * (taxRate / 100) * 100) / 100;
-  const total = Math.round((subtotal + taxAmount) * 100) / 100;
-  return {
-    subtotal: Math.round(subtotal * 100) / 100,
-    taxAmount,
-    total,
-  };
-}
-
-// Auto invoice number: BW-YYYYMM-NNN
-export function generateInvoiceNumber(date = new Date()): string {
-  const ym = `${date.getFullYear()}${String(date.getMonth() + 1).padStart(2, "0")}`;
-  const seq = String(Math.floor(Math.random() * 900) + 100);
-  return `BW-${ym}-${seq}`;
+  const rounded = Math.round(subtotal * 100) / 100;
+  return { subtotal: rounded, total: rounded };
 }
 
 export function todayISO(date = new Date()): string {

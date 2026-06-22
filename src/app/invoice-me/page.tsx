@@ -9,7 +9,6 @@ import {
   type InvoiceItem,
   encodeInvoice,
   formatCurrency,
-  generateInvoiceNumber,
   lineTotal,
   todayISO,
   addDaysISO,
@@ -30,13 +29,11 @@ export default function InvoiceCreatePage() {
   const [clientEmail, setClientEmail] = useState("");
   const [clientAddress, setClientAddress] = useState("");
   const [clientPhone, setClientPhone] = useState("");
-  const [invoiceNumber, setInvoiceNumber] = useState(generateInvoiceNumber());
   const [issueDate, setIssueDate] = useState(todayISO());
   const [dueDate, setDueDate] = useState(addDaysISO(30));
   const [paymentTerms, setPaymentTerms] = useState(PAYMENT_TERMS[0]);
   const [currency, setCurrency] = useState<Invoice["currency"]>("GBP");
   const [items, setItems] = useState<InvoiceItem[]>([{ ...emptyItem }]);
-  const [taxRate, setTaxRate] = useState(0);
   const [notes, setNotes] = useState("");
   const [paymentLink, setPaymentLink] = useState("");
 
@@ -47,7 +44,7 @@ export default function InvoiceCreatePage() {
   const [generating, setGenerating] = useState(false);
   const [genError, setGenError] = useState("");
 
-  const sums = useMemo(() => totals(items, taxRate), [items, taxRate]);
+  const sums = useMemo(() => totals(items), [items]);
 
   const setItem = (i: number, patch: Partial<InvoiceItem>) =>
     setItems((prev) => prev.map((it, idx) => (idx === i ? { ...it, ...patch } : it)));
@@ -86,7 +83,7 @@ export default function InvoiceCreatePage() {
         const description =
           items.length === 1 && items[0].description.trim()
             ? items[0].description.trim()
-            : `Invoice ${invoiceNumber.trim()} — ${clientName.trim()}`;
+            : `Invoice for ${clientName.trim()}`;
         const res = await fetch("/api/create-payment-link", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
@@ -106,7 +103,6 @@ export default function InvoiceCreatePage() {
     }
 
     const invoice: Invoice = {
-      invoiceNumber: invoiceNumber.trim() || generateInvoiceNumber(),
       clientName: clientName.trim(),
       clientEmail: clientEmail.trim() || undefined,
       clientAddress: clientAddress.trim() || undefined,
@@ -119,7 +115,6 @@ export default function InvoiceCreatePage() {
         quantity: Number(it.quantity) || 0,
         unitPrice: Number(it.unitPrice) || 0,
       })),
-      taxRate: Number(taxRate) || 0,
       notes: notes.trim() || undefined,
       paymentLink: resolvedPaymentLink,
       currency,
@@ -162,7 +157,7 @@ export default function InvoiceCreatePage() {
                   <input className={field} value={clientName} placeholder="Acme Ltd / Jane Doe" onChange={(e) => setClientName(e.target.value)} />
                 </div>
                 <div>
-                  <label className={labelCls}>Email</label>
+                  <label className={labelCls}>Email (optional)</label>
                   <input className={field} type="email" value={clientEmail} placeholder="client@email.com" onChange={(e) => setClientEmail(e.target.value)} />
                 </div>
                 <div>
@@ -182,10 +177,6 @@ export default function InvoiceCreatePage() {
                 Invoice details
               </h2>
               <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-                <div>
-                  <label className={labelCls}>Invoice number</label>
-                  <input className={field} value={invoiceNumber} onChange={(e) => setInvoiceNumber(e.target.value)} />
-                </div>
                 <div>
                   <label className={labelCls}>Currency</label>
                   <select className={field} value={currency} onChange={(e) => setCurrency(e.target.value as Invoice["currency"])}>
@@ -251,10 +242,6 @@ export default function InvoiceCreatePage() {
                   </div>
                 ))}
               </div>
-              <div className="mt-4 max-w-[12rem]">
-                <label className={labelCls}>Tax / VAT rate (%)</label>
-                <input className={field} type="number" min={0} step="0.1" value={taxRate} onChange={(e) => setTaxRate(parseFloat(e.target.value) || 0)} />
-              </div>
             </section>
 
             {/* Notes + payment */}
@@ -293,16 +280,8 @@ export default function InvoiceCreatePage() {
               <h2 className="mb-4 text-lg font-bold" style={heading}>
                 Summary
               </h2>
-              <dl className="space-y-2 text-sm">
-                <div className="flex justify-between">
-                  <dt className="text-ua-ink/60">Subtotal</dt>
-                  <dd>{formatCurrency(sums.subtotal, currency)}</dd>
-                </div>
-                <div className="flex justify-between">
-                  <dt className="text-ua-ink/60">Tax ({taxRate || 0}%)</dt>
-                  <dd>{formatCurrency(sums.taxAmount, currency)}</dd>
-                </div>
-                <div className="flex justify-between border-t-2 border-ua-ink/10 pt-2 text-base font-bold">
+              <dl className="text-sm">
+                <div className="flex justify-between text-base font-bold">
                   <dt>Total</dt>
                   <dd>{formatCurrency(sums.total, currency)}</dd>
                 </div>
