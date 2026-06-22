@@ -43,6 +43,9 @@ export default function InvoiceCreatePage() {
   const [errors, setErrors] = useState<string[]>([]);
   const [shareUrl, setShareUrl] = useState("");
   const [copied, setCopied] = useState(false);
+  const [autoStripe, setAutoStripe] = useState(true);
+  const [generating, setGenerating] = useState(false);
+  const [genError, setGenError] = useState("");
 
   const sums = useMemo(() => totals(items, taxRate), [items, taxRate]);
 
@@ -64,14 +67,44 @@ export default function InvoiceCreatePage() {
     return e;
   };
 
-  const generate = () => {
+  const generate = async () => {
     const e = validate();
     setErrors(e);
     setCopied(false);
+    setGenError("");
     if (e.length) {
       setShareUrl("");
       return;
     }
+
+    // Resolve the payment link: auto-create a Stripe Payment Link (into the
+    // Bridgeway account), or fall back to the manually pasted link.
+    let resolvedPaymentLink = paymentLink.trim() || undefined;
+    if (autoStripe && sums.total > 0) {
+      setGenerating(true);
+      try {
+        const description =
+          items.length === 1 && items[0].description.trim()
+            ? items[0].description.trim()
+            : `Invoice ${invoiceNumber.trim()} — ${clientName.trim()}`;
+        const res = await fetch("/api/create-payment-link", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ amount: sums.total, currency, description }),
+        });
+        const data = await res.json();
+        if (res.ok && data.url) {
+          resolvedPaymentLink = data.url;
+        } else {
+          setGenError(data.error || "Couldn't create the Stripe link — invoice generated without a Pay button.");
+        }
+      } catch {
+        setGenError("Couldn't reach the payment service — invoice generated without a Pay button.");
+      } finally {
+        setGenerating(false);
+      }
+    }
+
     const invoice: Invoice = {
       invoiceNumber: invoiceNumber.trim() || generateInvoiceNumber(),
       clientName: clientName.trim(),
@@ -88,7 +121,7 @@ export default function InvoiceCreatePage() {
       })),
       taxRate: Number(taxRate) || 0,
       notes: notes.trim() || undefined,
-      paymentLink: paymentLink.trim() || undefined,
+      paymentLink: resolvedPaymentLink,
       currency,
     };
     const url = `${window.location.origin}/invoice-me/view#${encodeInvoice(invoice)}`;
@@ -230,14 +263,27 @@ export default function InvoiceCreatePage() {
                 Notes & payment
               </h2>
               <label className={labelCls}>Notes</label>
-              <textarea className={field} rows={3} value={notes} placeholder="Thanks for your business / bank details / any terms…" onChange={(e) => setNotes(e.target.value)} />
-              <div className="mt-4">
-                <label className={labelCls}>Payment link (optional)</label>
-                <input className={field} value={paymentLink} placeholder="https://buy.stripe.com/… or a PayPal / bank link" onChange={(e) => setPaymentLink(e.target.value)} />
-                <p className="mt-1.5 text-xs text-ua-ink/50">
-                  The client&apos;s &quot;Pay&quot; button opens this link. Use a {BUSINESS.name} Stripe/PayPal link so payment reaches that account.
-                </p>
-              </div>
+              <textarea className={field} rows={3} value={notes} placeholder="Thanks for your business / any terms…" onChange={(e) => setNotes(e.target.value)} />
+
+              <label className="mt-4 flex cursor-pointer items-start gap-3 rounded-xl border-2 border-ua-ink/15 bg-ua-bg/50 p-3">
+                <input type="checkbox" checked={autoStripe} onChange={(e) => setAutoStripe(e.target.checked)} className="mt-0.5 h-5 w-5 accent-ua-blue" />
+                <span className="text-sm">
+                  <span className="font-bold">Auto-create a Stripe payment link</span>
+                  <span className="block text-ua-ink/60">
+                    Adds a secure &quot;Pay&quot; button that charges into the {BUSINESS.name} Stripe account. Created when you generate.
+                  </span>
+                </span>
+              </label>
+
+              {!autoStripe && (
+                <div className="mt-4">
+                  <label className={labelCls}>Payment link (optional)</label>
+                  <input className={field} value={paymentLink} placeholder="https://buy.stripe.com/… or a PayPal / bank link" onChange={(e) => setPaymentLink(e.target.value)} />
+                  <p className="mt-1.5 text-xs text-ua-ink/50">
+                    The client&apos;s &quot;Pay&quot; button opens this link. Use a {BUSINESS.name} link so payment reaches that account.
+                  </p>
+                </div>
+              )}
             </section>
           </div>
 
@@ -273,9 +319,13 @@ export default function InvoiceCreatePage() {
                 </div>
               )}
 
-              <button type="button" onClick={generate} className="mt-5 w-full rounded-full border-2 border-ua-ink bg-ua-ink px-6 py-3 text-base font-bold text-ua-bg shadow-[4px_4px_0_var(--ua-blue)] transition-all hover:-translate-y-0.5 hover:bg-ua-blue active:translate-y-0" style={heading}>
-                Generate invoice
+              <button type="button" onClick={generate} disabled={generating} className="mt-5 w-full rounded-full border-2 border-ua-ink bg-ua-ink px-6 py-3 text-base font-bold text-ua-bg shadow-[4px_4px_0_var(--ua-blue)] transition-all hover:-translate-y-0.5 hover:bg-ua-blue active:translate-y-0 disabled:cursor-wait disabled:opacity-70" style={heading}>
+                {generating ? "Creating payment link…" : "Generate invoice"}
               </button>
+
+              {genError && (
+                <p className="mt-3 rounded-xl border-2 border-ua-orange/40 bg-ua-orange/10 p-3 text-xs text-ua-ink">{genError}</p>
+              )}
 
               {shareUrl && (
                 <div className="mt-4 rounded-xl border-2 border-ua-green/60 bg-ua-green/30 p-3">
