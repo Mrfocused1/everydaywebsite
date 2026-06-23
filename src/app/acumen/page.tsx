@@ -161,8 +161,8 @@ export default function AcumenPage() {
 
       {/* ── Hero ── */}
       <section id="top" className="bg-gradient-to-b from-[#f6f8fb] to-white">
-        <div className="mx-auto grid max-w-6xl items-center gap-12 px-5 py-16 md:px-8 md:py-24 lg:grid-cols-[1.05fr_0.95fr]">
-          <div>
+        <div className="mx-auto grid max-w-6xl items-center gap-8 px-5 py-10 md:px-8 md:py-24 lg:gap-12 lg:py-24 lg:grid-cols-[1.05fr_0.95fr]">
+          <div className="order-2 lg:order-1">
             <p className="flex items-center gap-3 text-sm font-bold uppercase tracking-[0.2em] text-[#0c4e7d]">
               <span className="h-px w-8 bg-[#d9a90f]" /> Broadstairs &amp; East Kent electricians
             </p>
@@ -185,11 +185,11 @@ export default function AcumenPage() {
               ))}
             </div>
           </div>
-          <div className="relative" data-reveal>
+          <div className="relative order-1 lg:order-2" data-reveal>
             <img
               src={IMG.hero}
               alt="Acumen electrician at work"
-              className="h-[26rem] w-full object-cover md:h-[32rem]"
+              className="h-64 w-full object-cover sm:h-80 md:h-[28rem] lg:h-[32rem]"
               style={{
                 clipPath: "polygon(0 0, 100% 0, 100% calc(100% - 3rem), calc(100% - 3rem) 100%, 0 100%)",
                 filter: "drop-shadow(0 18px 30px rgba(12,46,61,0.22))",
