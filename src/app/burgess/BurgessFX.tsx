@@ -15,6 +15,11 @@ export function BurgessFX() {
         document.querySelectorAll<HTMLElement>("[data-count]").forEach((el) => {
           el.textContent = (el.dataset.count || "") + (el.dataset.suffix || "");
         });
+        // hscroll fallback: plain swipe carousel (no scroll-driven motion)
+        const pin = document.querySelector<HTMLElement>("[data-hscroll-pin]");
+        const track = document.querySelector<HTMLElement>("[data-hscroll-track]");
+        if (pin) { pin.style.position = "static"; pin.style.height = "auto"; }
+        if (track) track.style.overflowX = "auto";
         return;
       }
 
@@ -59,14 +64,14 @@ export function BurgessFX() {
       });
     });
 
-    // Horizontal scroll (desktop only) — uses CSS position:sticky for the
-    // "pin" (see [data-hscroll-pin]) and only SCRUBS a transform here. We avoid
-    // ScrollTrigger's pin:true because it moves the section into a pin-spacer
-    // div outside React's tree, which crashes soft-navigation with a removeChild
-    // error. No DOM mutation here → the page unmounts cleanly.
+    // Horizontal scroll (all widths) — uses CSS position:sticky for the "pin"
+    // (see [data-hscroll-pin]) and only SCRUBS a transform here, so vertical
+    // scroll drives the cards horizontally on mobile too. We avoid ScrollTrigger
+    // pin:true because it moves the section into a pin-spacer outside React's
+    // tree, crashing soft-nav with a removeChild error. No DOM mutation here.
     const mm = gsap.matchMedia();
     if (!reduce) {
-      mm.add("(min-width: 768px)", () => {
+      mm.add("(min-width: 1px)", () => {
         const track = document.querySelector<HTMLElement>("[data-hscroll-track]");
         const wrap = document.querySelector<HTMLElement>("[data-hscroll]");
         if (!track || !wrap) return;

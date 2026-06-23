@@ -141,11 +141,10 @@ export default function BurgessAbout() {
           <div className="max-w-2xl" data-reveal>
             <Label>What clients say</Label>
             <h2 className="mt-5 text-3xl font-bold uppercase leading-[0.98] tracking-tight md:text-5xl">Old-fashioned good service.</h2>
-            <p className="mt-4 text-sm font-semibold text-slate-400 sm:hidden">Swipe →</p>
           </div>
-          <div className="-mx-5 mt-10 flex snap-x snap-mandatory gap-5 overflow-x-auto px-5 pb-2 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden sm:mx-0 sm:mt-14 sm:grid sm:grid-cols-3 sm:gap-6 sm:overflow-visible sm:px-0" data-stagger>
+          <div className="mt-10 grid grid-cols-1 gap-5 sm:mt-14 sm:grid-cols-3 sm:gap-6" data-stagger>
             {REVIEWS.map((r) => (
-              <figure key={r.n} className="flex w-[82%] shrink-0 snap-start flex-col border border-[#16225e]/15 bg-[#f7f8fc] p-7 sm:w-auto">
+              <figure key={r.n} className="flex flex-col border border-[#16225e]/15 bg-[#f7f8fc] p-7">
                 <span className="text-4xl leading-none text-[#ffd400]" aria-hidden>&ldquo;</span>
                 <blockquote className="mt-2 flex-1 font-light text-slate-700">{r.q}</blockquote>
                 <figcaption className="mt-5 border-t border-[#16225e]/10 pt-4 text-sm font-bold uppercase tracking-wide text-[#16225e]">{r.n}</figcaption>
