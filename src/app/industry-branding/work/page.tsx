@@ -12,6 +12,7 @@ export const metadata: Metadata = {
 };
 
 const WORK: { src: string; alt: string }[] = [
+  { src: "/marketing/ib/ib-tee-dj.jpg", alt: "White t-shirt with DJ mascot print" },
   { src: "/marketing/ib/ib-tee-whitelogo.jpg", alt: "White t-shirt with custom logo print" },
   { src: "/marketing/ib/ib-tee-blacklogo.jpg", alt: "Black t-shirt with custom logo print" },
   { src: "/marketing/ib/ib-tee-cream.jpg", alt: "Custom graphic-print t-shirt" },
@@ -40,7 +41,7 @@ export default function IBWork() {
             <Label>The lookbook</Label>
             <h2 className={`mt-5 ${fd} text-4xl uppercase leading-[0.95] tracking-tight md:text-5xl`}>Recent work.</h2>
           </div>
-          <div data-reveal className="mt-10 grid grid-cols-2 gap-3 sm:mt-14 sm:grid-cols-3 sm:gap-5 lg:grid-cols-4">
+          <div data-reveal className="mt-10 grid grid-cols-2 gap-3 sm:mt-14 sm:grid-cols-3 sm:gap-5">
             {WORK.map((w, i) => (
               <figure key={w.alt + w.src} className="group relative aspect-square overflow-hidden bg-[#f5f5f4] ring-1 ring-[#0e0e10]/10">
                 <span className="absolute left-0 top-0 z-10 h-1.5 w-full" style={{ background: COLORS[i % COLORS.length] }} aria-hidden />
