@@ -1,7 +1,7 @@
 import Link from "next/link";
 import {
   IMG, SERVICES, TESTIMONIALS, CREDENTIALS, RAINBOW, MARQUEE, CUT_TR, CUT_BL,
-  fd, Label, Arrow, RainbowDots, RainbowLine, AccentBar, StorylineConnector, btnPrimary, btnGhost,
+  fd, Label, Arrow, RainbowDots, RainbowLine, AccentBar, btnPrimary, btnGhost,
   PHONE_TEL, PHONE_DISPLAY,
 } from "./brand";
 import { CCCFX } from "./CCCFX";
@@ -99,29 +99,41 @@ export default function CCCHome() {
         </div>
       </section>
 
-      <StorylineConnector color="#e0559a" bg="bg-gradient-to-b from-white to-[#faf7f2]" />
-
-      {/* ── Approach (horizontal scroll on mobile) ── */}
+      {/* ── Approach (vertical timeline with scroll-drawn connecting line) ── */}
       <section className="bg-[#faf7f2]">
         <div className="mx-auto max-w-6xl px-5 py-16 md:px-8 md:py-24">
           <div className="max-w-2xl" data-reveal>
             <Label>Our approach</Label>
             <h2 className={`mt-5 ${fd} text-3xl font-light leading-[1.08] tracking-tight text-[#2b2d33] md:text-[3rem]`}>Empower. Support. Advise. Mentor.</h2>
-            <p className="mt-4 text-sm font-semibold text-[#9a9ea5] sm:hidden">Swipe →</p>
           </div>
-          <div className="-mx-5 mt-10 flex snap-x snap-mandatory gap-5 overflow-x-auto px-5 pb-2 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden sm:mx-0 sm:mt-12 sm:grid sm:grid-cols-2 sm:gap-6 sm:overflow-visible sm:px-0 lg:grid-cols-4" data-stagger>
-            {APPROACH.map((a, i) => (
-              <div key={a.t} className="group w-[74%] shrink-0 snap-start rounded-3xl bg-white p-7 shadow-sm ring-1 ring-[#2b2d33]/5 transition-all duration-300 hover:-translate-y-1.5 hover:shadow-[0_24px_50px_-25px_rgba(43,45,51,0.3)] sm:w-auto">
-                <span className="grid h-10 w-10 place-items-center rounded-full text-sm font-bold text-white shadow-sm transition-transform duration-300 group-hover:scale-110" style={{ background: RAINBOW[i % RAINBOW.length] }}>{i + 1}</span>
-                <h3 className={`mt-4 ${fd} text-xl font-medium text-[#2b2d33]`}>{a.t}</h3>
-                <p className="mt-2 text-sm font-light leading-relaxed text-[#6b6f76]">{a.b}</p>
-              </div>
-            ))}
+          <div className="relative mx-auto mt-12 max-w-2xl">
+            {/* GSAP scroll-drawn squiggly line connecting the cards vertically */}
+            <svg className="pointer-events-none absolute bottom-8 left-[1.4rem] top-8 w-14 -translate-x-1/2" preserveAspectRatio="none" viewBox="0 0 40 1000" fill="none" aria-hidden>
+              <defs>
+                <linearGradient id="ccc-vline" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stopColor="#e0559a" />
+                  <stop offset="33%" stopColor="#ef9a3d" />
+                  <stop offset="60%" stopColor="#7a55a6" />
+                  <stop offset="82%" stopColor="#5fb85a" />
+                  <stop offset="100%" stopColor="#2f8fce" />
+                </linearGradient>
+              </defs>
+              <path className="draw-line" d="M20 0 C 4 95 36 190 20 285 C 4 380 36 475 20 570 C 4 665 36 760 20 855 C 8 925 30 970 20 1000" stroke="url(#ccc-vline)" strokeWidth="2.5" strokeLinecap="round" />
+            </svg>
+            <div className="space-y-6 md:space-y-8" data-stagger>
+              {APPROACH.map((a, i) => (
+                <div key={a.t} className="group relative flex items-start gap-5 md:gap-7">
+                  <span className="relative z-10 grid h-11 w-11 shrink-0 place-items-center rounded-full text-base font-bold text-white shadow-md ring-4 ring-[#faf7f2] transition-transform duration-300 group-hover:scale-110" style={{ background: RAINBOW[i % RAINBOW.length] }}>{i + 1}</span>
+                  <div className="flex-1 rounded-3xl bg-white p-6 shadow-sm ring-1 ring-[#2b2d33]/5 transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_24px_50px_-25px_rgba(43,45,51,0.3)] md:p-7">
+                    <h3 className={`${fd} text-xl font-medium text-[#2b2d33]`}>{a.t}</h3>
+                    <p className="mt-2 text-sm font-light leading-relaxed text-[#6b6f76]">{a.b}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </section>
-
-      <StorylineConnector flip color="#2a7fc4" bg="bg-gradient-to-b from-[#faf7f2] to-white" />
 
       {/* ── Founder ── */}
       <section className="bg-white">
