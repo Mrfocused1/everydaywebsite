@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import type { CSSProperties } from "react";
+import type { CSSProperties, ReactNode } from "react";
 import "./spe.css";
 
 /* eslint-disable @next/next/no-img-element */
@@ -14,6 +14,24 @@ const FRIENDS = `${I}/sp-friends.jpg`;
 const KEEP = `${I}/sp-keep.jpg`;
 const SNAP = `${I}/sp-snap.jpg`;
 const PRINT = `${I}/sp-print.jpg`;
+
+// Consistent monoline icons (replacing the mismatched emojis).
+const ICONS: Record<string, ReactNode> = {
+  camera: (<><path d="M14.5 4h-5L7.5 6.5H4A1.5 1.5 0 0 0 2.5 8v10A1.5 1.5 0 0 0 4 19.5h16A1.5 1.5 0 0 0 21.5 18V8A1.5 1.5 0 0 0 20 6.5h-3.5L14.5 4Z" /><circle cx="12" cy="12.5" r="3.4" /></>),
+  zap: (<path d="M13 2.5 4 13.5h6.5l-1.5 8 9-11H11.5l1.5-8Z" />),
+  calendar: (<><rect x="3.5" y="5" width="17" height="16" rx="2" /><path d="M3.5 9.5h17M8 3v4M16 3v4" /></>),
+  heart: (<path d="M12 20.5 4.2 13a4.7 4.7 0 0 1 6.6-6.6l1.2 1.2 1.2-1.2A4.7 4.7 0 1 1 19.8 13L12 20.5Z" />),
+  award: (<><circle cx="12" cy="9" r="5.5" /><path d="M8.5 13.8 7 21.5l5-2.8 5 2.8-1.5-7.7" /></>),
+  star: (<path d="M12 3.5l2.6 5.3 5.8.8-4.2 4.1 1 5.8L12 16.8 6.8 19.5l1-5.8L3.6 9.6l5.8-.8L12 3.5Z" />),
+};
+
+function Icon({ name }: { name: string }) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.7} strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+      {ICONS[name]}
+    </svg>
+  );
+}
 
 export default function SnapAndPrint() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -77,7 +95,7 @@ export default function SnapAndPrint() {
         <div className="feature-strip">
           <div className="spe-container feature-grid">
             <div className="feature-item">
-              <div className="icon">📷</div>
+              <div className="icon"><Icon name="camera" /></div>
               <div>
                 <h3>Professional Photos</h3>
                 <p>High quality shots by experienced event photographers.</p>
@@ -85,7 +103,7 @@ export default function SnapAndPrint() {
             </div>
 
             <div className="feature-item">
-              <div className="icon">⚡</div>
+              <div className="icon"><Icon name="zap" /></div>
               <div>
                 <h3>Instant Printing</h3>
                 <p>Your photos printed on the spot. No waiting, just memories.</p>
@@ -93,7 +111,7 @@ export default function SnapAndPrint() {
             </div>
 
             <div className="feature-item">
-              <div className="icon">♡</div>
+              <div className="icon"><Icon name="calendar" /></div>
               <div>
                 <h3>Every Occasion</h3>
                 <p>Festivals, parties, birthdays, weddings and corporate events.</p>
@@ -101,7 +119,7 @@ export default function SnapAndPrint() {
             </div>
 
             <div className="feature-item">
-              <div className="icon">👥</div>
+              <div className="icon"><Icon name="heart" /></div>
               <div>
                 <h3>Memories You Can Hold</h3>
                 <p>Because some moments deserve more than a phone screen.</p>
@@ -169,7 +187,7 @@ export default function SnapAndPrint() {
 
           <div className="benefit-strip">
             <div className="benefit">
-              <div className="icon">🏅</div>
+              <div className="icon"><Icon name="award" /></div>
               <div>
                 <h4>Professional &amp; Reliable</h4>
                 <p>Experienced photographers you can count on.</p>
@@ -177,7 +195,7 @@ export default function SnapAndPrint() {
             </div>
 
             <div className="benefit">
-              <div className="icon">⏱</div>
+              <div className="icon"><Icon name="zap" /></div>
               <div>
                 <h4>Instant Printing</h4>
                 <p>High-quality prints, delivered in seconds.</p>
@@ -185,7 +203,7 @@ export default function SnapAndPrint() {
             </div>
 
             <div className="benefit">
-              <div className="icon">☆</div>
+              <div className="icon"><Icon name="star" /></div>
               <div>
                 <h4>Premium Quality</h4>
                 <p>Crisp, vibrant prints that last.</p>
@@ -193,7 +211,7 @@ export default function SnapAndPrint() {
             </div>
 
             <div className="benefit">
-              <div className="icon">👥</div>
+              <div className="icon"><Icon name="calendar" /></div>
               <div>
                 <h4>Perfect For Any Occasion</h4>
                 <p>From festivals to birthdays, weddings to corporate events.</p>
@@ -201,7 +219,7 @@ export default function SnapAndPrint() {
             </div>
 
             <div className="benefit">
-              <div className="icon">♡</div>
+              <div className="icon"><Icon name="heart" /></div>
               <div>
                 <h4>Memories That Last</h4>
                 <p>Real moments. Real prints. Real memories.</p>

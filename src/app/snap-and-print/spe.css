@@ -287,8 +287,9 @@
   padding: 30px 28px;
   border-right: 1px solid var(--border);
   display: grid;
-  grid-template-columns: 52px 1fr;
+  grid-template-columns: 56px 1fr;
   gap: 18px;
+  align-items: center;
   color: white;
 }
 
@@ -297,8 +298,28 @@
 }
 
 .spe-root .icon {
-  font-size: 38px;
+  width: 52px;
+  height: 52px;
+  flex-shrink: 0;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: rgba(245, 181, 27, 0.14);
   color: var(--gold);
+  transition: background 0.25s ease, color 0.25s ease, transform 0.25s ease;
+}
+
+.spe-root .icon svg {
+  width: 26px;
+  height: 26px;
+  display: block;
+}
+
+.spe-root .feature-item:hover .icon,
+.spe-root .benefit:hover .icon {
+  background: var(--gold);
+  color: var(--black);
+  transform: translateY(-2px);
 }
 
 .spe-root .feature-item h3 {
@@ -395,9 +416,10 @@
   padding: 30px 24px;
   border-right: 1px solid rgba(0, 0, 0, 0.12);
   display: grid;
-  grid-template-columns: 48px 1fr;
+  grid-template-columns: 56px 1fr;
   gap: 16px;
-  align-items: start;
+  align-items: center;
+  transition: background 0.2s ease;
 }
 
 .spe-root .benefit:last-child {
