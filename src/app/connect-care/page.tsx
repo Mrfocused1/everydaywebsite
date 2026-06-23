@@ -108,7 +108,7 @@ export default function CCCHome() {
           </div>
           <div className="relative mx-auto mt-12 max-w-2xl">
             {/* GSAP scroll-drawn squiggly line connecting the cards vertically */}
-            <svg className="pointer-events-none absolute bottom-8 left-[1.4rem] top-8 w-14 -translate-x-1/2" preserveAspectRatio="none" viewBox="0 0 40 1000" fill="none" aria-hidden>
+            <svg className="pointer-events-none absolute left-[1.4rem] top-0 h-full w-14 -translate-x-1/2" preserveAspectRatio="none" viewBox="0 0 40 1000" fill="none" aria-hidden>
               <defs>
                 <linearGradient id="ccc-vline" x1="0" y1="0" x2="0" y2="1">
                   <stop offset="0%" stopColor="#e0559a" />
@@ -118,7 +118,7 @@ export default function CCCHome() {
                   <stop offset="100%" stopColor="#2f8fce" />
                 </linearGradient>
               </defs>
-              <path className="draw-line" d="M20 0 C 4 95 36 190 20 285 C 4 380 36 475 20 570 C 4 665 36 760 20 855 C 8 925 30 970 20 1000" stroke="url(#ccc-vline)" strokeWidth="2.5" strokeLinecap="round" />
+              <path className="draw-line" d="M20 35 C 4 130 36 205 20 300 C 4 390 36 465 20 555 C 4 650 36 725 20 805" stroke="url(#ccc-vline)" strokeWidth="2.5" strokeLinecap="round" />
             </svg>
             <div className="space-y-6 md:space-y-8" data-stagger>
               {APPROACH.map((a, i) => (
