@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { IMG, CUT_TR, fd, Label, Arrow, PageHero, btnRed } from "../brand";
+import { IMG, CMYK, fd, Label, Arrow, PageHero, btnRed } from "../brand";
 import { BajanFX } from "../BajanFX";
 
 /* eslint-disable @next/next/no-img-element */
@@ -43,12 +43,14 @@ export default function BajanProducts() {
             <Label>Our products</Label>
             <h2 className={`mt-5 ${fd} text-3xl font-extrabold leading-[1.02] tracking-tight md:text-5xl`}>Everything, under one roof.</h2>
             <p className="mt-5 text-lg font-light text-slate-600">From a single business card to a full exhibition stand — proofed, printed and finished in-house.</p>
+            <p className="mt-4 text-sm font-semibold text-slate-400 sm:hidden">Swipe →</p>
           </div>
-          <div className="mt-10 grid grid-cols-1 gap-6 sm:mt-14 sm:grid-cols-2 lg:grid-cols-3" data-stagger>
+          <div className="-mx-5 mt-10 flex snap-x snap-mandatory gap-5 overflow-x-auto px-5 pb-2 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden sm:mx-0 sm:mt-14 sm:grid sm:grid-cols-2 sm:gap-6 sm:overflow-visible sm:px-0 lg:grid-cols-3" data-stagger>
             {PRODUCTS.map((p, i) => (
-              <article key={p.t} className="group flex flex-col overflow-hidden rounded-2xl bg-white ring-1 ring-[#16223a]/10">
-                <div className="relative overflow-hidden" style={i % 3 === 1 ? { clipPath: CUT_TR } : undefined}>
+              <article key={p.t} className="group flex w-[80%] shrink-0 snap-start flex-col overflow-hidden rounded-2xl bg-white ring-1 ring-[#16223a]/10 transition-all duration-300 hover:-translate-y-1.5 hover:shadow-[0_22px_45px_-22px_rgba(16,34,58,0.4)] sm:w-auto">
+                <div className="relative overflow-hidden">
                   <img src={p.img} alt={p.t} loading="lazy" className="aspect-[16/10] w-full object-cover transition-transform duration-500 group-hover:scale-105" />
+                  <span className="absolute left-0 top-0 h-1.5 w-full" style={{ background: CMYK[i % 4] }} aria-hidden />
                 </div>
                 <div className="flex flex-1 flex-col p-6">
                   <h3 className={`${fd} text-xl font-bold tracking-tight text-[#16223a]`}>{p.t}</h3>

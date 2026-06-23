@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { IMG, TRUST, CUT_TR, fd, Label, Arrow, PageHero, btnRed, LOCATIONS } from "../brand";
+import { IMG, TRUST, CUT_TR, CMYK, fd, Label, Arrow, PageHero, btnRed, LOCATIONS } from "../brand";
 import { BajanFX } from "../BajanFX";
 
 /* eslint-disable @next/next/no-img-element */
@@ -86,12 +86,16 @@ export default function BajanAbout() {
           <div className="max-w-2xl" data-reveal>
             <Label>What we stand for</Label>
             <h2 className={`mt-5 ${fd} text-3xl font-extrabold leading-[1.02] tracking-tight md:text-5xl`}>How we work.</h2>
+            <p className="mt-4 text-sm font-semibold text-slate-400 sm:hidden">Swipe →</p>
           </div>
-          <div className="mt-10 grid grid-cols-1 gap-6 sm:mt-14 sm:grid-cols-2 lg:grid-cols-4" data-stagger>
-            {VALUES.map((v) => (
-              <div key={v.t} className="rounded-2xl border border-[#16223a]/10 p-7">
-                <h3 className={`${fd} text-xl font-bold tracking-tight text-[#306fc7]`}>{v.t}</h3>
-                <p className="mt-2 font-light text-slate-600">{v.b}</p>
+          <div className="-mx-5 mt-10 flex snap-x snap-mandatory gap-5 overflow-x-auto px-5 pb-2 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden sm:mx-0 sm:mt-14 sm:grid sm:grid-cols-2 sm:gap-6 sm:overflow-visible sm:px-0 lg:grid-cols-4" data-stagger>
+            {VALUES.map((v, i) => (
+              <div key={v.t} className="w-[72%] shrink-0 snap-start overflow-hidden rounded-2xl border border-[#16223a]/10 sm:w-auto">
+                <span className="block h-1.5 w-full" style={{ background: CMYK[i % 4] }} aria-hidden />
+                <div className="p-7">
+                  <h3 className={`${fd} text-xl font-bold tracking-tight text-[#16223a]`}>{v.t}</h3>
+                  <p className="mt-2 font-light text-slate-600">{v.b}</p>
+                </div>
               </div>
             ))}
           </div>

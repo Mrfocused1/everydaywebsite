@@ -28,23 +28,35 @@ export const NAV = [
   { label: "Contact", href: "/bajan-apple/contact" },
 ];
 
-// ── Imagery (Pexels) ──
-const px = (id: string, w: number, h: number) =>
-  `https://images.pexels.com/photos/${id}/pexels-photo-${id}.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=${w}&h=${h}`;
+// ── Imagery (real shots, downloaded + optimised locally so nothing hotlink-breaks) ──
+const b = (n: string) => `/marketing/bajan/bajan-${n}.jpg`;
 
 export const IMG = {
-  hero: px("1440504", 1600, 1080),
-  press: px("19316517", 1200, 850),
-  flyers: px("29452731", 1100, 850),
-  cards: px("5706020", 1100, 850),
-  posters: px("13462296", 1100, 850),
-  brochure: px("7648305", 1100, 850),
-  banners: px("36297487", 1100, 850),
-  stickers: px("14122051", 1100, 850),
-  design: px("16313709", 1100, 850),
-  magazines: px("4271615", 1100, 850),
-  about: px("6620983", 1200, 900),
+  hero: b("hero"),
+  press: b("press"),
+  flyers: b("flyers"),
+  cards: b("cards"),
+  posters: b("posters"),
+  brochure: b("brochure"),
+  banners: b("banners"),
+  stickers: b("stickers"),
+  design: b("design"),
+  magazines: b("magazines"),
+  about: b("about"),
+  proofing: b("proofing"),
+  pantone: b("pantone"),
+  colorstack: b("colorstack"),
 };
+
+// CMYK — the printer's colour space, used as a brand motif (registration strip).
+export const CMYK = ["#1bb7d6", "#e5197f", "#f6d40a", "#16223a"];
+export function CmykBar({ className = "" }: { className?: string }) {
+  return (
+    <span className={`flex h-1.5 w-full overflow-hidden ${className}`} aria-hidden>
+      {CMYK.map((c) => (<span key={c} className="h-full flex-1" style={{ background: c }} />))}
+    </span>
+  );
+}
 
 // ── What we print (products) ──
 export const PRODUCTS = [

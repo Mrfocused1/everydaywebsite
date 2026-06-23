@@ -8,10 +8,12 @@ export function BajanFX() {
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
     const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const finePointer = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
+    const cleanups: Array<() => void> = [];
 
     const ctx = gsap.context(() => {
       if (reduce) {
-        gsap.set("[data-reveal], .hero-line-inner, .hero-fade", { opacity: 1, y: 0, clearProps: "transform" });
+        gsap.set("[data-reveal], .hero-line-inner, .hero-fade, [data-clip]", { opacity: 1, y: 0, clearProps: "transform,clipPath" });
         document.querySelectorAll<HTMLElement>("[data-count]").forEach((el) => {
           el.textContent = (el.dataset.count || "") + (el.dataset.suffix || "");
         });
@@ -28,6 +30,13 @@ export function BajanFX() {
       });
       gsap.utils.toArray<HTMLElement>("[data-stagger] > *").forEach((node, i) => {
         gsap.from(node, { opacity: 0, y: 34, duration: 0.6, delay: (i % 3) * 0.08, ease: "power3.out", scrollTrigger: { trigger: node, start: "top 90%", once: true } });
+      });
+
+      // clip-path image wipe-reveal
+      gsap.utils.toArray<HTMLElement>("[data-clip]").forEach((node) => {
+        gsap.fromTo(node,
+          { clipPath: "inset(0% 100% 0% 0%)" },
+          { clipPath: "inset(0% 0% 0% 0%)", duration: 1.1, ease: "power3.out", scrollTrigger: { trigger: node, start: "top 85%", once: true } });
       });
 
       // parallax
@@ -49,12 +58,30 @@ export function BajanFX() {
 
       // infinite marquee (track holds the items twice → loop at -50%)
       const track = document.querySelector<HTMLElement>("[data-marquee-track]");
-      if (track) {
-        gsap.to(track, { xPercent: -50, duration: 24, ease: "none", repeat: -1 });
+      if (track) gsap.to(track, { xPercent: -50, duration: 24, ease: "none", repeat: -1 });
+
+      // magnetic buttons (desktop only)
+      if (finePointer) {
+        gsap.utils.toArray<HTMLElement>("[data-magnetic]").forEach((el) => {
+          const xTo = gsap.quickTo(el, "x", { duration: 0.4, ease: "power3" });
+          const yTo = gsap.quickTo(el, "y", { duration: 0.4, ease: "power3" });
+          const move = (e: MouseEvent) => {
+            const r = el.getBoundingClientRect();
+            xTo((e.clientX - (r.left + r.width / 2)) * 0.35);
+            yTo((e.clientY - (r.top + r.height / 2)) * 0.4);
+          };
+          const leave = () => { xTo(0); yTo(0); };
+          el.addEventListener("mousemove", move);
+          el.addEventListener("mouseleave", leave);
+          cleanups.push(() => { el.removeEventListener("mousemove", move); el.removeEventListener("mouseleave", leave); });
+        });
       }
     });
 
-    return () => ctx.revert();
+    return () => {
+      cleanups.forEach((fn) => fn());
+      ctx.revert();
+    };
   }, []);
 
   return null;
