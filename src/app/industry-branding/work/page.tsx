@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { IMG, fd, Label, Arrow, PageHero, btnRed, btnGhostLight, PHONE_TEL, PHONE_DISPLAY } from "../brand";
+import { IMG, COLORS, fd, Label, Arrow, PageHero, btnRed, btnGhostLight, PHONE_TEL, PHONE_DISPLAY } from "../brand";
 import { IBFX } from "../IBFX";
 
 /* eslint-disable @next/next/no-img-element */
@@ -12,18 +12,14 @@ export const metadata: Metadata = {
 };
 
 const WORK: { src: string; alt: string }[] = [
-  { src: IMG.work1, alt: "Branded garment project" },
-  { src: IMG.tees, alt: "Custom printed t-shirts" },
-  { src: IMG.hoodies, alt: "Branded hoodies" },
-  { src: IMG.embroidery, alt: "Embroidered workwear" },
-  { src: IMG.caps, alt: "Embroidered caps" },
-  { src: IMG.work2, alt: "Branded garment project" },
-  { src: IMG.polos, alt: "Branded polos and workwear" },
-  { src: IMG.merch, alt: "Promotional merchandise" },
-  { src: IMG.hivis, alt: "Branded hi-vis workwear" },
-  { src: IMG.bags, alt: "Printed tote bags" },
-  { src: IMG.statement, alt: "Industry Branding lookbook" },
-  { src: IMG.about, alt: "In the workshop" },
+  { src: "/marketing/ib/ib-tee-whitelogo.jpg", alt: "White t-shirt with custom logo print" },
+  { src: "/marketing/ib/ib-tee-blacklogo.jpg", alt: "Black t-shirt with custom logo print" },
+  { src: "/marketing/ib/ib-tee-cream.jpg", alt: "Custom graphic-print t-shirt" },
+  { src: "/marketing/ib/ib-tee-mario.jpg", alt: "Full-colour Super Mario print t-shirt" },
+  { src: "/marketing/ib/ib-tee-rainbow.jpg", alt: "Rainbow print t-shirt" },
+  { src: "/marketing/ib/ib-tee-fortnite.jpg", alt: "Fortnite logo print t-shirt" },
+  { src: "/marketing/ib/ib-tee-streetwear.jpg", alt: "Streetwear print t-shirt" },
+  { src: "/marketing/ib/ib-tee-flatlay.jpg", alt: "Printed apparel flat-lay" },
 ];
 
 export default function IBWork() {
@@ -44,11 +40,11 @@ export default function IBWork() {
             <Label>The lookbook</Label>
             <h2 className={`mt-5 ${fd} text-4xl uppercase leading-[0.95] tracking-tight md:text-5xl`}>Recent work.</h2>
           </div>
-          <div data-reveal className="mt-10 grid grid-cols-2 gap-3 sm:mt-14 sm:grid-cols-3 sm:gap-4 lg:grid-cols-4">
-            {WORK.map((w) => (
-              <figure key={w.alt + w.src} className="group relative aspect-square overflow-hidden bg-[#0e0e10]">
+          <div data-reveal className="mt-10 grid grid-cols-2 gap-3 sm:mt-14 sm:grid-cols-3 sm:gap-5 lg:grid-cols-4">
+            {WORK.map((w, i) => (
+              <figure key={w.alt + w.src} className="group relative aspect-square overflow-hidden bg-[#f5f5f4] ring-1 ring-[#0e0e10]/10">
+                <span className="absolute left-0 top-0 z-10 h-1.5 w-full" style={{ background: COLORS[i % COLORS.length] }} aria-hidden />
                 <img src={w.src} alt={w.alt} loading="lazy" className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" />
-                <div className="pointer-events-none absolute inset-0 bg-black/0 transition-colors duration-300 group-hover:bg-black/25" />
               </figure>
             ))}
           </div>

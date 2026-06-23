@@ -91,7 +91,7 @@ export default function IBHome() {
             <Link href="/industry-branding/about" className={`${btnGhostLight} mt-8`}>About us <Arrow /></Link>
           </div>
           <div className="relative overflow-hidden">
-            <img src={IMG.about} alt="In the workshop" data-clip className="aspect-[4/3] w-full object-cover" />
+            <img src="/marketing/ib/ib-tee-whitelogo.jpg" alt="Custom printed white t-shirt with logo" data-clip className="aspect-square w-full bg-[#f5f5f4] object-cover" />
             <AccentBar className="absolute inset-x-0 bottom-0" />
           </div>
         </div>
@@ -181,7 +181,7 @@ export default function IBHome() {
       <section className="bg-[#f5f5f4]">
         <div className="mx-auto grid max-w-6xl items-center gap-12 px-5 py-16 md:grid-cols-2 md:px-8 md:py-24 lg:gap-16">
           <div className="relative overflow-hidden">
-            <img src={IMG.work1} alt="Branded garment work" data-clip className="aspect-[4/3] w-full object-cover" />
+            <img src="/marketing/ib/ib-tee-blacklogo.jpg" alt="Custom printed black t-shirt with logo" data-clip className="aspect-square w-full bg-[#f5f5f4] object-cover" />
             <AccentBar className="absolute inset-x-0 bottom-0" />
           </div>
           <div data-reveal>
