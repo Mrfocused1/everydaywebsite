@@ -1,7 +1,7 @@
 import Link from "next/link";
 import {
   IMG, SERVICES, TESTIMONIALS, CREDENTIALS, RAINBOW, MARQUEE, CUT_TR, CUT_BL,
-  fd, Label, Arrow, RainbowDots, RainbowLine, AccentBar, btnPrimary, btnGhost,
+  fd, Label, Arrow, RainbowDots, RainbowLine, AccentBar, StorylineConnector, btnPrimary, btnGhost,
   PHONE_TEL, PHONE_DISPLAY,
 } from "./brand";
 import { CCCFX } from "./CCCFX";
@@ -99,6 +99,8 @@ export default function CCCHome() {
         </div>
       </section>
 
+      <StorylineConnector color="#e0559a" bg="bg-gradient-to-b from-white to-[#faf7f2]" />
+
       {/* ── Approach (horizontal scroll on mobile) ── */}
       <section className="bg-[#faf7f2]">
         <div className="mx-auto max-w-6xl px-5 py-16 md:px-8 md:py-24">
@@ -107,37 +109,24 @@ export default function CCCHome() {
             <h2 className={`mt-5 ${fd} text-3xl font-light leading-[1.08] tracking-tight text-[#2b2d33] md:text-[3rem]`}>Empower. Support. Advise. Mentor.</h2>
             <p className="mt-4 text-sm font-semibold text-[#9a9ea5] sm:hidden">Swipe →</p>
           </div>
-          <div className="relative mt-10 md:mt-14">
-            {/* storyline: GSAP scroll-drawn squiggly line connecting the cards (desktop) */}
-            <svg className="pointer-events-none absolute inset-x-[12%] top-[3.4rem] z-0 hidden h-24 w-[76%] md:block" viewBox="0 0 1000 120" fill="none" preserveAspectRatio="none" aria-hidden>
-              <defs>
-                <linearGradient id="ccc-thread" x1="0" y1="0" x2="1" y2="0">
-                  <stop offset="0%" stopColor="#e0559a" />
-                  <stop offset="28%" stopColor="#ef9a3d" />
-                  <stop offset="52%" stopColor="#7a55a6" />
-                  <stop offset="76%" stopColor="#5fb85a" />
-                  <stop offset="100%" stopColor="#2f8fce" />
-                </linearGradient>
-              </defs>
-              <path className="draw-line" d="M0 60 C 90 60 120 18 210 18 C 300 18 300 102 390 102 C 480 102 480 18 570 18 C 660 18 660 102 750 102 C 840 102 900 60 1000 60" stroke="url(#ccc-thread)" strokeWidth="3.5" strokeLinecap="round" />
-            </svg>
-            <div className="-mx-5 flex snap-x snap-mandatory gap-5 overflow-x-auto px-5 pb-2 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden md:mx-0 md:grid md:grid-cols-4 md:gap-6 md:overflow-visible md:px-0" data-stagger>
-              {APPROACH.map((a, i) => (
-                <div key={a.t} className="group relative z-10 w-[74%] shrink-0 snap-start rounded-3xl bg-white p-7 shadow-sm ring-1 ring-[#2b2d33]/5 transition-all duration-300 hover:-translate-y-1.5 hover:shadow-[0_24px_50px_-25px_rgba(43,45,51,0.3)] md:w-auto">
-                  <span className="grid h-10 w-10 place-items-center rounded-full text-sm font-bold text-white shadow-sm transition-transform duration-300 group-hover:scale-110" style={{ background: RAINBOW[i % RAINBOW.length] }}>{i + 1}</span>
-                  <h3 className={`mt-4 ${fd} text-xl font-medium text-[#2b2d33]`}>{a.t}</h3>
-                  <p className="mt-2 text-sm font-light leading-relaxed text-[#6b6f76]">{a.b}</p>
-                </div>
-              ))}
-            </div>
+          <div className="-mx-5 mt-10 flex snap-x snap-mandatory gap-5 overflow-x-auto px-5 pb-2 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden sm:mx-0 sm:mt-12 sm:grid sm:grid-cols-2 sm:gap-6 sm:overflow-visible sm:px-0 lg:grid-cols-4" data-stagger>
+            {APPROACH.map((a, i) => (
+              <div key={a.t} className="group w-[74%] shrink-0 snap-start rounded-3xl bg-white p-7 shadow-sm ring-1 ring-[#2b2d33]/5 transition-all duration-300 hover:-translate-y-1.5 hover:shadow-[0_24px_50px_-25px_rgba(43,45,51,0.3)] sm:w-auto">
+                <span className="grid h-10 w-10 place-items-center rounded-full text-sm font-bold text-white shadow-sm transition-transform duration-300 group-hover:scale-110" style={{ background: RAINBOW[i % RAINBOW.length] }}>{i + 1}</span>
+                <h3 className={`mt-4 ${fd} text-xl font-medium text-[#2b2d33]`}>{a.t}</h3>
+                <p className="mt-2 text-sm font-light leading-relaxed text-[#6b6f76]">{a.b}</p>
+              </div>
+            ))}
           </div>
         </div>
       </section>
 
+      <StorylineConnector flip color="#2a7fc4" bg="bg-gradient-to-b from-[#faf7f2] to-white" />
+
       {/* ── Founder ── */}
       <section className="bg-white">
         <div className="mx-auto grid max-w-6xl items-center gap-12 px-5 py-16 md:grid-cols-2 md:px-8 md:py-24 lg:gap-16">
-          <div className="relative" data-reveal>
+          <div className="relative mx-auto max-w-[17rem] sm:max-w-[22rem] md:max-w-none" data-reveal>
             <div className="pointer-events-none absolute -left-6 -top-6 h-44 w-44 rounded-full bg-[#7a55a6]/15 blur-2xl" aria-hidden />
             <div className="pointer-events-none absolute -bottom-6 right-6 h-40 w-40 rounded-full bg-[#5fb85a]/15 blur-2xl" aria-hidden />
             <img src={IMG.nyaPortrait} alt="Nya K. Mabu" className="relative aspect-[4/5] w-full object-cover" style={{ clipPath: CUT_BL, filter: "drop-shadow(0 28px 40px rgba(43,45,51,0.28))" }} />

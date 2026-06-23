@@ -32,7 +32,7 @@ export function CCCFX() {
         const len = p.getTotalLength();
         if (!len) return;
         gsap.set(p, { strokeDasharray: len, strokeDashoffset: len });
-        gsap.to(p, { strokeDashoffset: 0, ease: "none", scrollTrigger: { trigger: p.closest("section") || p, start: "top 72%", end: "bottom 78%", scrub: true } });
+        gsap.to(p, { strokeDashoffset: 0, ease: "none", scrollTrigger: { trigger: p.closest("section") || p, start: "top 90%", end: "bottom 40%", scrub: true } });
       });
 
       // scroll reveals

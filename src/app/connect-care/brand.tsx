@@ -73,6 +73,25 @@ export function AccentBar({ className = "" }: { className?: string }) {
   return <span className={`block h-1.5 w-full bg-[linear-gradient(to_right,#e0559a,#ef9a3d,#7a55a6,#5fb85a,#2f8fce)] ${className}`} aria-hidden />;
 }
 
+// Storyline connector: a winding line that draws on scroll, threading sections
+// together (nala-style). Alternate `flip` so consecutive connectors continue.
+export function StorylineConnector({ flip = false, color = "#7a55a6", bg = "" }: { flip?: boolean; color?: string; bg?: string }) {
+  return (
+    <section className={`connector relative h-[15vh] w-full md:h-[22vh] ${bg}`}>
+      <svg className="absolute inset-0 h-full w-full" viewBox="0 0 100 100" fill="none" preserveAspectRatio="none" aria-hidden>
+        <path
+          className="draw-line"
+          d={flip ? "M 32 -2 C 32 42, 72 44, 68 102" : "M 68 -2 C 68 42, 28 44, 32 102"}
+          stroke={color}
+          strokeWidth="0.55"
+          strokeLinecap="round"
+          opacity="0.9"
+        />
+      </svg>
+    </section>
+  );
+}
+
 // Mixed image edges (chamfered cut-corners). For clipped images use
 // filter:drop-shadow (NOT box-shadow) and no parallax wrapper.
 export const CUT_TR = "polygon(0 0, calc(100% - 2.75rem) 0, 100% 2.75rem, 100% 100%, 0 100%)";

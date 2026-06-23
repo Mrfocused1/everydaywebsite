@@ -25,7 +25,7 @@ export default function CCCAbout() {
       {/* Story */}
       <section className="bg-white">
         <div className="mx-auto grid max-w-6xl items-center gap-12 px-5 py-16 md:grid-cols-2 md:px-8 md:py-24 lg:gap-16">
-          <div className="relative" data-reveal>
+          <div className="relative mx-auto max-w-[17rem] sm:max-w-[22rem] md:max-w-none" data-reveal>
             <div className="pointer-events-none absolute -right-5 -top-5 h-44 w-44 rounded-full bg-[#2f8fce]/15 blur-2xl" aria-hidden />
             <div className="pointer-events-none absolute -bottom-5 left-6 h-40 w-40 rounded-full bg-[#ef9a3d]/15 blur-2xl" aria-hidden />
             <img src={IMG.nya} alt="Nya K. Mabu, founder of Connect Care Consultancy" className="relative aspect-[5/6] w-full object-cover" style={{ clipPath: CUT_TR, filter: "drop-shadow(0 28px 40px rgba(43,45,51,0.28))" }} />
