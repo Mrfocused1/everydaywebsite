@@ -26,6 +26,15 @@ export function CCCFX() {
       const track = document.querySelector<HTMLElement>("[data-marquee-track]");
       if (track) gsap.to(track, { xPercent: -50, duration: 26, ease: "none", repeat: -1 });
 
+      // storyline: squiggly connecting line draws as you scroll
+      document.querySelectorAll<SVGPathElement>(".draw-line").forEach((p) => {
+        if (typeof p.getTotalLength !== "function") return;
+        const len = p.getTotalLength();
+        if (!len) return;
+        gsap.set(p, { strokeDasharray: len, strokeDashoffset: len });
+        gsap.to(p, { strokeDashoffset: 0, ease: "none", scrollTrigger: { trigger: p.closest("section") || p, start: "top 72%", end: "bottom 78%", scrub: true } });
+      });
+
       // scroll reveals
       gsap.utils.toArray<HTMLElement>("[data-reveal]").forEach((node) => {
         gsap.from(node, { opacity: 0, y: 30, duration: 0.9, ease: "power3.out", scrollTrigger: { trigger: node, start: "top 88%", once: true } });

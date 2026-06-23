@@ -18,8 +18,8 @@ export default function CCCAbout() {
         eyebrow="About Connect Care"
         title="Compliance, made human."
         intro="We take the fear out of CQC — combining deep regulatory knowledge with genuine, reassuring support that helps care providers thrive."
-        img={IMG.care}
-        imgAlt="A carer supporting an elderly person"
+        img={IMG.meeting}
+        imgAlt="Care professionals in a bright meeting"
       />
 
       {/* Story */}

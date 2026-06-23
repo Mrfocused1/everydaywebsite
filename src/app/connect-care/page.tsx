@@ -22,7 +22,7 @@ export default function CCCHome() {
     <>
       {/* ── Hero (image-led) ── */}
       <section className="relative isolate flex min-h-[92vh] items-end overflow-hidden">
-        <img src={IMG.nya} alt="Nya K. Mabu — Connect Care Consultancy" data-parallax className="absolute inset-0 -z-10 h-[112%] w-full object-cover object-[70%_25%]" />
+        <img src={IMG.care} alt="A carer supporting an elderly person" data-parallax className="absolute inset-0 -z-10 h-[112%] w-full object-cover object-center" />
         <div className="absolute inset-0 -z-10 bg-gradient-to-t from-[#241b2b]/92 via-[#241b2b]/45 to-[#241b2b]/15" />
         <div className="absolute inset-0 -z-10 bg-gradient-to-r from-[#241b2b]/70 via-[#241b2b]/20 to-transparent" />
         <AccentBar className="absolute inset-x-0 top-0 z-10" />
@@ -107,14 +107,29 @@ export default function CCCHome() {
             <h2 className={`mt-5 ${fd} text-3xl font-light leading-[1.08] tracking-tight text-[#2b2d33] md:text-[3rem]`}>Empower. Support. Advise. Mentor.</h2>
             <p className="mt-4 text-sm font-semibold text-[#9a9ea5] sm:hidden">Swipe →</p>
           </div>
-          <div className="-mx-5 mt-10 flex snap-x snap-mandatory gap-5 overflow-x-auto px-5 pb-2 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden sm:mx-0 sm:mt-12 sm:grid sm:grid-cols-2 sm:gap-6 sm:overflow-visible sm:px-0 lg:grid-cols-4" data-stagger>
-            {APPROACH.map((a, i) => (
-              <div key={a.t} className="group w-[74%] shrink-0 snap-start rounded-3xl bg-white p-7 shadow-sm ring-1 ring-[#2b2d33]/5 transition-all duration-300 hover:-translate-y-1.5 hover:shadow-[0_24px_50px_-25px_rgba(43,45,51,0.3)] sm:w-auto">
-                <span className="grid h-10 w-10 place-items-center rounded-full text-sm font-bold text-white transition-transform duration-300 group-hover:scale-110" style={{ background: RAINBOW[i % RAINBOW.length] }}>{i + 1}</span>
-                <h3 className={`mt-4 ${fd} text-xl font-medium text-[#2b2d33]`}>{a.t}</h3>
-                <p className="mt-2 text-sm font-light leading-relaxed text-[#6b6f76]">{a.b}</p>
-              </div>
-            ))}
+          <div className="relative mt-10 md:mt-14">
+            {/* storyline: GSAP scroll-drawn squiggly line connecting the cards (desktop) */}
+            <svg className="pointer-events-none absolute inset-x-[12%] top-[3.4rem] z-0 hidden h-24 w-[76%] md:block" viewBox="0 0 1000 120" fill="none" preserveAspectRatio="none" aria-hidden>
+              <defs>
+                <linearGradient id="ccc-thread" x1="0" y1="0" x2="1" y2="0">
+                  <stop offset="0%" stopColor="#e0559a" />
+                  <stop offset="28%" stopColor="#ef9a3d" />
+                  <stop offset="52%" stopColor="#7a55a6" />
+                  <stop offset="76%" stopColor="#5fb85a" />
+                  <stop offset="100%" stopColor="#2f8fce" />
+                </linearGradient>
+              </defs>
+              <path className="draw-line" d="M0 60 C 90 60 120 18 210 18 C 300 18 300 102 390 102 C 480 102 480 18 570 18 C 660 18 660 102 750 102 C 840 102 900 60 1000 60" stroke="url(#ccc-thread)" strokeWidth="3.5" strokeLinecap="round" />
+            </svg>
+            <div className="-mx-5 flex snap-x snap-mandatory gap-5 overflow-x-auto px-5 pb-2 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden md:mx-0 md:grid md:grid-cols-4 md:gap-6 md:overflow-visible md:px-0" data-stagger>
+              {APPROACH.map((a, i) => (
+                <div key={a.t} className="group relative z-10 w-[74%] shrink-0 snap-start rounded-3xl bg-white p-7 shadow-sm ring-1 ring-[#2b2d33]/5 transition-all duration-300 hover:-translate-y-1.5 hover:shadow-[0_24px_50px_-25px_rgba(43,45,51,0.3)] md:w-auto">
+                  <span className="grid h-10 w-10 place-items-center rounded-full text-sm font-bold text-white shadow-sm transition-transform duration-300 group-hover:scale-110" style={{ background: RAINBOW[i % RAINBOW.length] }}>{i + 1}</span>
+                  <h3 className={`mt-4 ${fd} text-xl font-medium text-[#2b2d33]`}>{a.t}</h3>
+                  <p className="mt-2 text-sm font-light leading-relaxed text-[#6b6f76]">{a.b}</p>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </section>
