@@ -56,24 +56,21 @@ export function Label({ children, onDark = false }: { children: React.ReactNode;
   );
 }
 
-// Slim inner-page hero (navy band, image side-panel, breadcrumb).
+// Inner-page hero: full-bleed image with a soft scrim, text overlaid (no colour slab).
 export function PageHero({ eyebrow, title, intro, img, imgAlt }: { eyebrow: string; title: string; intro: string; img: string; imgAlt: string }) {
   return (
-    <section className="relative overflow-hidden bg-[#2d5a83] text-white">
-      <div className="mx-auto grid max-w-6xl items-stretch gap-8 px-5 pb-12 pt-10 md:px-8 lg:grid-cols-[1.1fr_0.9fr] lg:gap-12 lg:pb-0 lg:pt-0">
-        <div className="order-2 lg:order-1 lg:py-20">
-          <p className="hero-fade flex items-center gap-2 text-xs font-medium uppercase tracking-[0.18em] text-white/50 opacity-0" style={{ transform: "translateY(8px)" }}>
-            <span>Optimum</span> <span className="text-[#1dc6ba]">/</span> <span className="text-white/80">{eyebrow}</span>
-          </p>
-          <h1 className="hero-h mt-6 text-[2.8rem] font-light leading-[1.0] tracking-tight md:text-[4rem]">
-            <span className="block overflow-hidden"><span className="hero-line-inner block" style={{ transform: "translateY(110%)" }}>{title}</span></span>
-          </h1>
-          <p className="hero-fade mt-6 max-w-lg text-lg font-light text-white/75 opacity-0" style={{ transform: "translateY(8px)" }}>{intro}</p>
-        </div>
-        <div className="relative order-1 h-56 sm:h-72 lg:order-2 lg:h-full lg:min-h-[24rem]">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src={img} alt={imgAlt} className="h-full w-full object-cover" style={{ clipPath: "polygon(0 0, 100% 0, 100% 100%, 3rem 100%, 0 calc(100% - 3rem))" }} />
-        </div>
+    <section className="relative isolate flex min-h-[19rem] items-end overflow-hidden md:min-h-[25rem]">
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img src={img} alt={imgAlt} className="absolute inset-0 -z-10 h-full w-full object-cover" />
+      <div className="absolute inset-0 -z-10 bg-gradient-to-t from-[#0b1722]/90 via-[#0b1722]/50 to-[#0b1722]/20" />
+      <div className="mx-auto w-full max-w-6xl px-5 pb-10 pt-28 text-white md:px-8 md:pb-14">
+        <p className="hero-fade flex items-center gap-2 text-xs font-medium uppercase tracking-[0.18em] text-white/60 opacity-0" style={{ transform: "translateY(8px)" }}>
+          <span>Optimum</span> <span className="text-[#3fe0d4]">/</span> <span className="text-white/90">{eyebrow}</span>
+        </p>
+        <h1 className="hero-h mt-5 text-[2.6rem] font-light leading-[1.0] tracking-tight md:text-[3.7rem]">
+          <span className="block overflow-hidden"><span className="hero-line-inner block" style={{ transform: "translateY(110%)" }}>{title}</span></span>
+        </h1>
+        <p className="hero-fade mt-5 max-w-xl text-base font-light text-white/85 opacity-0 md:text-lg" style={{ transform: "translateY(8px)" }}>{intro}</p>
       </div>
     </section>
   );

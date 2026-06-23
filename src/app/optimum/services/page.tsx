@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { IMG, CUT_BR, CUT_TL, Label, PageHero, pillTeal, pillGhostLight } from "../brand";
+import { IMG, CUT_BR, CUT_TL, Label, PageHero, pillNavy, pillGhostLight } from "../brand";
 import { OptimumFX } from "../OptimumFX";
 
 /* eslint-disable @next/next/no-img-element */
@@ -91,12 +91,12 @@ export default function OptimumServices() {
       </section>
 
       {/* Process */}
-      <section className="bg-[#16364f] text-white">
+      <section className="border-t border-slate-100 bg-[#eef4f6]">
         <div className="mx-auto max-w-6xl px-5 py-16 md:px-8 md:py-24">
           <div className="max-w-2xl" data-reveal>
-            <Label onDark>How we work</Label>
-            <h2 className="mt-5 text-3xl font-light leading-[1.05] tracking-tight md:text-5xl">A clear path from enquiry to handover.</h2>
-            <p className="mt-4 text-sm font-semibold text-white/45 sm:hidden">Swipe →</p>
+            <Label>How we work</Label>
+            <h2 className="mt-5 text-3xl font-light leading-[1.05] tracking-tight text-[#16364f] md:text-5xl">A clear path from enquiry to handover.</h2>
+            <p className="mt-4 text-sm font-semibold text-slate-400 sm:hidden">Swipe →</p>
           </div>
           <div className="-mx-5 mt-10 flex snap-x snap-mandatory gap-4 overflow-x-auto px-5 pb-2 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden sm:mx-0 sm:mt-12 sm:grid sm:grid-cols-2 sm:gap-6 sm:overflow-visible sm:px-0 lg:grid-cols-4" data-stagger>
             {[
@@ -106,14 +106,14 @@ export default function OptimumServices() {
               { n: "04", t: "Maintain", b: "Handover, snagging and ongoing maintenance when you need it." },
             ].map((p) => (
               <div key={p.n} className="w-[72%] shrink-0 snap-start border-t-2 border-[#1dc6ba] pt-5 sm:w-auto">
-                <p className="text-4xl font-light text-[#1dc6ba]">{p.n}</p>
-                <h3 className="mt-3 text-lg font-medium">{p.t}</h3>
-                <p className="mt-2 text-sm font-light text-white/65">{p.b}</p>
+                <p className="text-4xl font-light text-[#159a90]">{p.n}</p>
+                <h3 className="mt-3 text-lg font-medium text-[#16364f]">{p.t}</h3>
+                <p className="mt-2 text-sm font-light text-slate-600">{p.b}</p>
               </div>
             ))}
           </div>
           <div className="mt-12" data-reveal>
-            <Link href="/optimum/contact" className={pillTeal}>Start your project</Link>
+            <Link href="/optimum/contact" className={pillNavy}>Start your project</Link>
           </div>
         </div>
       </section>

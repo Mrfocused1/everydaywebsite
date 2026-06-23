@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { IMG, CUT_BR, Label, pillTeal, pillGhostDark, pillGhostLight, PHONE_TEL, PHONE_DISPLAY } from "./brand";
+import { IMG, CUT_BR, Label, pillTeal, pillNavy, pillGhostDark, pillGhostLight, PHONE_TEL, PHONE_DISPLAY } from "./brand";
 import { OptimumFX } from "./OptimumFX";
 
 /* eslint-disable @next/next/no-img-element */
@@ -13,17 +13,20 @@ const OVERVIEW = [
 export default function OptimumHome() {
   return (
     <>
-      {/* ── Hero ── */}
-      <section className="bg-[#2d5a83] text-white">
-        <div className="mx-auto grid max-w-6xl gap-8 px-5 py-10 md:px-8 lg:min-h-[36rem] lg:grid-cols-[1.05fr_0.92fr] lg:items-center lg:gap-12 lg:py-0">
-          <div className="order-2 lg:order-1 lg:py-20">
+      {/* ── Hero (full-bleed image, text overlaid) ── */}
+      <section className="relative isolate flex min-h-[86vh] items-end overflow-hidden">
+        <img src={IMG.hero} alt="Optimum Management Group project" className="absolute inset-0 -z-10 h-full w-full object-cover" />
+        <div className="absolute inset-0 -z-10 bg-gradient-to-t from-[#0b1722]/90 via-[#0b1722]/45 to-[#0b1722]/10" />
+        <div className="absolute inset-0 -z-10 bg-gradient-to-r from-[#0b1722]/55 via-transparent to-transparent" />
+        <div className="mx-auto w-full max-w-6xl px-5 pb-16 pt-32 text-white md:px-8 md:pb-24">
+          <div className="max-w-2xl">
             <Label onDark>London design, build &amp; management</Label>
-            <h1 className="hero-h mt-6 text-[2.9rem] font-light leading-[0.98] tracking-tight md:text-[4.4rem]">
+            <h1 className="hero-h mt-6 text-[3rem] font-light leading-[1.0] tracking-tight md:text-[4.6rem]">
               <span className="block overflow-hidden"><span className="hero-line-inner block" style={{ transform: "translateY(110%)" }}>Designed, built</span></span>
               <span className="block overflow-hidden"><span className="hero-line-inner block" style={{ transform: "translateY(110%)" }}>and managed</span></span>
-              <span className="block overflow-hidden"><span className="hero-line-inner block font-normal text-[#1dc6ba]" style={{ transform: "translateY(110%)" }}>end to end.</span></span>
+              <span className="block overflow-hidden"><span className="hero-line-inner block font-normal text-[#3fe0d4]" style={{ transform: "translateY(110%)" }}>end to end.</span></span>
             </h1>
-            <p className="hero-fade mt-7 max-w-lg text-lg font-light text-white/75 opacity-0" style={{ transform: "translateY(8px)" }}>
+            <p className="hero-fade mt-7 max-w-lg text-lg font-light text-white/85 opacity-0" style={{ transform: "translateY(8px)" }}>
               Optimum Management Group is a London-based design &amp; build, maintenance and management contractor for
               commercial and residential clients. One team. One point of contact.
             </p>
@@ -31,16 +34,13 @@ export default function OptimumHome() {
               <Link href="/optimum/contact" className={pillTeal}>Request a quote</Link>
               <Link href="/optimum/services" className={pillGhostDark}>Our services</Link>
             </div>
-            <div className="hero-fade mt-10 flex flex-wrap gap-x-7 gap-y-2 border-t border-white/15 pt-6 text-sm font-medium opacity-0">
+            <div className="hero-fade mt-10 flex flex-wrap gap-x-7 gap-y-2 border-t border-white/20 pt-6 text-sm font-medium opacity-0">
               {["Design & Build", "Maintenance", "Management"].map((t) => (
-                <span key={t} className="flex items-center gap-2 text-white/75">
+                <span key={t} className="flex items-center gap-2 text-white/85">
                   <span className="h-1.5 w-1.5 bg-[#1dc6ba]" aria-hidden /> {t}
                 </span>
               ))}
             </div>
-          </div>
-          <div className="relative order-1 h-64 sm:h-80 lg:order-2 lg:h-full lg:min-h-[36rem]">
-            <img src={IMG.hero} alt="Optimum Management Group project" className="h-full w-full object-cover" style={{ clipPath: "polygon(0 0, 100% 0, 100% 100%, 3rem 100%, 0 calc(100% - 3rem))" }} />
           </div>
         </div>
       </section>
@@ -113,15 +113,15 @@ export default function OptimumHome() {
       </section>
 
       {/* ── CTA ── */}
-      <section className="bg-[#1dc6ba]">
-        <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-6 px-5 py-14 text-center md:flex-row md:px-8 md:text-left" data-reveal>
+      <section className="border-t border-slate-100 bg-[#eef4f6]">
+        <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-6 px-5 py-16 text-center md:flex-row md:px-8 md:text-left" data-reveal>
           <div>
-            <h2 className="text-3xl font-light tracking-tight text-[#0e3a44] md:text-4xl">Got a project in mind?</h2>
-            <p className="mt-2 font-light text-[#0e3a44]/80">Tell us what you need — we&apos;ll scope it and come back with a clear plan.</p>
+            <h2 className="text-3xl font-light tracking-tight text-[#16364f] md:text-4xl">Got a project in mind?</h2>
+            <p className="mt-2 font-light text-slate-600">Tell us what you need — we&apos;ll scope it and come back with a clear plan.</p>
           </div>
           <div className="flex flex-wrap gap-3">
-            <Link href="/optimum/contact" className="rounded-full bg-[#2d5a83] px-8 py-4 text-sm font-semibold uppercase tracking-wider text-white transition-transform hover:-translate-y-0.5">Request a quote</Link>
-            <a href={PHONE_TEL} className="rounded-full border border-[#0e3a44]/30 px-8 py-4 text-sm font-semibold uppercase tracking-wider text-[#0e3a44] transition-colors hover:bg-[#0e3a44] hover:text-white">{PHONE_DISPLAY}</a>
+            <Link href="/optimum/contact" className={pillNavy}>Request a quote</Link>
+            <a href={PHONE_TEL} className={pillGhostLight}>{PHONE_DISPLAY}</a>
           </div>
         </div>
       </section>

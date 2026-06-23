@@ -94,24 +94,23 @@ export default function OptimumAbout() {
       </section>
 
       {/* Sectors */}
-      <section className="bg-[#16364f] text-white">
+      <section className="bg-white">
         <div className="mx-auto max-w-6xl px-5 py-16 md:px-8 md:py-24">
           <div className="max-w-2xl" data-reveal>
-            <Label onDark>Who we work with</Label>
-            <h2 className="mt-5 text-3xl font-light leading-[1.05] tracking-tight md:text-5xl">Commercial &amp; residential clients.</h2>
+            <Label>Who we work with</Label>
+            <h2 className="mt-5 text-3xl font-light leading-[1.05] tracking-tight text-[#16364f] md:text-5xl">Commercial &amp; residential clients.</h2>
           </div>
           <div className="mt-12 grid gap-6 md:grid-cols-2" data-stagger>
             {[
               { t: "Commercial", img: IMG.commercial, cut: CUT_BR, b: "Offices, retail and workspaces — fit-outs, refurbishments, electrical, AV and ongoing maintenance contracts." },
               { t: "Residential", img: IMG.residential, cut: CUT_TL, b: "Homes and developments — design-and-build projects, renovations and reliable upkeep you can depend on." },
             ].map((s) => (
-              <article key={s.t} className="overflow-hidden bg-white/5">
-                <div className="overflow-hidden" style={{ clipPath: s.cut }}>
-                  <img src={s.img} alt={s.t} loading="lazy" className="aspect-[16/9] w-full object-cover" />
-                </div>
-                <div className="p-6 md:p-7">
+              <article key={s.t} className="group relative overflow-hidden" style={{ clipPath: s.cut }}>
+                <img src={s.img} alt={s.t} loading="lazy" className="aspect-[16/10] w-full object-cover transition-transform duration-700 group-hover:scale-105" />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#0b1722]/88 via-[#0b1722]/25 to-transparent" />
+                <div className="absolute bottom-0 left-0 p-6 text-white md:p-8">
                   <h3 className="text-2xl font-medium">{s.t}</h3>
-                  <p className="mt-2 font-light text-white/65">{s.b}</p>
+                  <p className="mt-2 max-w-md font-light text-white/80">{s.b}</p>
                 </div>
               </article>
             ))}

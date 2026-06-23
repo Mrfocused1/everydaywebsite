@@ -3,7 +3,7 @@ import { NAV, PHONE_TEL, PHONE_DISPLAY, EMAIL, ADDRESS } from "./brand";
 
 export function OptimumFooter() {
   return (
-    <footer className="bg-[#16364f] py-14 text-white/70">
+    <footer className="bg-[#0f1c29] py-14 text-white/70">
       <div className="mx-auto max-w-6xl px-5 md:px-8">
         <div className="grid gap-10 md:grid-cols-[1.5fr_1fr_1.2fr]">
           <div>
