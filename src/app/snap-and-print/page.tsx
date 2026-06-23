@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import type { CSSProperties } from "react";
 import { Icon } from "./icons";
 import { SPFX } from "./SPFX";
 import "./spe.css";
@@ -54,9 +53,6 @@ const NAV = [
 export default function SnapAndPrint() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [sent, setSent] = useState(false);
-  const navOpen: CSSProperties | undefined = menuOpen
-    ? { display: "flex", position: "absolute", top: "100px", left: "4%", right: "4%", flexDirection: "column", background: "rgba(0,0,0,0.95)", padding: "30px", borderRadius: "16px", zIndex: 100 }
-    : undefined;
   const close = () => setMenuOpen(false);
 
   function onSubmit(e: React.FormEvent<HTMLFormElement>) {
@@ -83,13 +79,15 @@ export default function SnapAndPrint() {
             <a href="#home" className="logo" onClick={close}>
               <img src={`${I}/sp-logo.png`} alt="Snap and Print Events" />
             </a>
-            <div className="nav-links" style={navOpen}>
-              <a href="#home" onClick={close}>Home</a>
-              {NAV.map((n) => <a key={n.href} href={n.href} onClick={close}>{n.label}</a>)}
-              <a href="#contact" className="nav-cta" onClick={close}>Book Us</a>
+            <div className="nav-links">
+              <a href="#home">Home</a>
+              {NAV.map((n) => <a key={n.href} href={n.href}>{n.label}</a>)}
+              <a href="/snap-and-print/contact" className="nav-cta">Book Us</a>
             </div>
-            <button className="mobile-menu-btn" aria-label="Open menu" onClick={() => setMenuOpen((v) => !v)}><Icon name="menu" /></button>
+            <button className="mobile-menu-btn" aria-label="Open menu" onClick={() => setMenuOpen(true)}><Icon name="menu" /></button>
           </nav>
+
+          <img className="hero-mobile-img" src={`${I}/sp-hero-mobile.jpg`} alt="Festival-goer holding a freshly printed photo" />
 
           <div className="hero-content">
             <h1>Capture<br />The Moments.</h1>
@@ -104,25 +102,6 @@ export default function SnapAndPrint() {
 
         <div className="hero-badge">
           Printed<br />Instantly.<br /><span style={{ color: "var(--gold)" }}>Memories<br />Forever.</span>
-        </div>
-
-        <div className="feature-strip">
-          <div className="spe-container feature-grid" data-stagger>
-            {[
-              { icon: "camera", t: "Professional Photos", b: "Shot by experienced event photographers." },
-              { icon: "zap", t: "Instant Printing", b: "Printed on the spot — no waiting." },
-              { icon: "calendar", t: "Every Occasion", b: "Festivals, parties, weddings, corporate." },
-              { icon: "heart", t: "Memories You Can Hold", b: "More than a moment on a phone screen." },
-            ].map((f) => (
-              <div key={f.t} className="feature-item">
-                <div className="icon"><Icon name={f.icon} /></div>
-                <div>
-                  <h3>{f.t}</h3>
-                  <p>{f.b}</p>
-                </div>
-              </div>
-            ))}
-          </div>
         </div>
       </header>
 
@@ -181,27 +160,30 @@ export default function SnapAndPrint() {
           </div>
         </div>
 
-        <div className="testimonial-section">
-          <div className="spe-container testimonial-layout">
-            <div className="print-stack" data-reveal>
-              <img src={PRINT} alt="Printed photos on a table" />
-            </div>
-            <div className="testimonials" data-stagger>
-              {[
-                { q: "The photos are always amazing and having them printed on the spot is such a vibe. Highly recommend!", n: "Jasmine R.", r: "Festival Goer", a: "avatar-1" },
-                { q: "They captured our daughter's first birthday perfectly. Beautiful photos and instant prints.", n: "Michelle T.", r: "Birthday Host", a: "avatar-2" },
-                { q: "Professional, friendly and efficient. They gave our whole team memories to take home.", n: "David K.", r: "Corporate Client", a: "avatar-3" },
-              ].map((t) => (
-                <div key={t.n} className="quote">
-                  <div className="quote-mark">&ldquo;</div>
-                  <p>{t.q}</p>
-                  <div className="person">
-                    <img src={`${I}/${t.a}.jpg`} alt={t.n} />
-                    <div><strong>{t.n}</strong><span>{t.r}</span></div>
-                  </div>
-                </div>
-              ))}
-            </div>
+      </section>
+
+      {/* REVIEWS */}
+      <section className="reviews">
+        <div className="spe-container">
+          <div className="reviews-head" data-reveal>
+            <div className="eyebrow">Kind words</div>
+            <h2 className="section-title">Loved by <span className="script">our clients.</span></h2>
+          </div>
+          <div className="reviews-grid" data-stagger>
+            {[
+              { q: "The photos are always amazing and having them printed on the spot is such a vibe. Highly recommend!", n: "Jasmine R.", r: "Festival Goer", a: "avatar-1" },
+              { q: "They captured our daughter's first birthday perfectly. Beautiful photos and instant prints.", n: "Michelle T.", r: "Birthday Host", a: "avatar-2" },
+              { q: "Professional, friendly and efficient. They gave our whole team memories to take home.", n: "David K.", r: "Corporate Client", a: "avatar-3" },
+            ].map((t) => (
+              <figure key={t.n} className="review-card">
+                <span className="review-quote" aria-hidden>&ldquo;</span>
+                <blockquote>{t.q}</blockquote>
+                <figcaption className="review-person">
+                  <img src={`${I}/${t.a}.jpg`} alt={t.n} />
+                  <span><strong>{t.n}</strong><span>{t.r}</span></span>
+                </figcaption>
+              </figure>
+            ))}
           </div>
         </div>
       </section>
@@ -276,7 +258,7 @@ export default function SnapAndPrint() {
       <footer className="site-footer">
         <div className="spe-container footer-grid">
           <div className="footer-brand">
-            <img src={`${I}/sp-logo.png`} alt="Snap and Print Events" className="footer-logo" />
+            <p className="footer-wordmark">Snap <span>&amp;</span> Print <em>Events</em></p>
             <p>Instant event photography — we snap the moment, print it on the spot, and your guests keep it.</p>
           </div>
           <div className="footer-col">
@@ -297,6 +279,14 @@ export default function SnapAndPrint() {
           <span>Designed by <a href="https://bridgewayaibootcamp.com" target="_blank" rel="noopener noreferrer">bridgewayaibootcamp.com</a></span>
         </div>
       </footer>
+
+      {/* Full-screen mobile menu */}
+      <div className={`mobile-nav${menuOpen ? " open" : ""}`}>
+        <button className="mobile-nav-close" aria-label="Close menu" onClick={close}><Icon name="close" /></button>
+        <a href="#home" onClick={close}>Home</a>
+        {NAV.map((n) => <a key={n.href} href={n.href} onClick={close}>{n.label}</a>)}
+        <a href="/snap-and-print/contact" onClick={close}>Book Us</a>
+      </div>
 
       <SPFX />
     </div>

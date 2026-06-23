@@ -17,6 +17,7 @@ const ICONS: Record<string, ReactNode> = {
   phone: (<path d="M6.5 3h-3A1.5 1.5 0 0 0 2 4.6C2 13 11 22 19.4 22a1.5 1.5 0 0 0 1.6-1.5v-3a1.5 1.5 0 0 0-1.5-1.5c-1 0-2-.2-2.9-.5a1.5 1.5 0 0 0-1.5.4l-1.3 1.3a14 14 0 0 1-6-6l1.3-1.3a1.5 1.5 0 0 0 .4-1.5c-.3-.9-.5-1.9-.5-2.9A1.5 1.5 0 0 0 6.5 3Z" />),
   mail: (<><rect x="2.5" y="5" width="19" height="14" rx="2" /><path d="M3 6.5 12 13l9-6.5" /></>),
   menu: (<path d="M3 6h18M3 12h18M3 18h18" />),
+  close: (<path d="M6 6l12 12M18 6 6 18" />),
 };
 
 export function Icon({ name }: { name: string }) {
