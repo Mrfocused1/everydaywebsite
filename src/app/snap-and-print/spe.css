@@ -1,0 +1,792 @@
+/* Snap and Print Events — the client's own design, scoped under .spe-root so it
+   doesn't collide with the app's Tailwind. Only .container/.underline are
+   renamed (Tailwind owns those); everything else is verbatim. Image url()s point
+   at the optimized files in /public/marketing/sp/. */
+
+.spe-root {
+  --black: #050505;
+  --dark: #111111;
+  --cream: #fff7ea;
+  --white: #ffffff;
+  --gold: #f5b51b;
+  --gold-dark: #d99600;
+  --muted: #666666;
+  --border: rgba(255, 255, 255, 0.18);
+  --shadow: 0 20px 60px rgba(0, 0, 0, 0.25);
+  --radius: 20px;
+  --max-width: 1240px;
+
+  font-family: Arial, Helvetica, sans-serif;
+  background: var(--cream);
+  color: var(--black);
+  overflow-x: hidden;
+  min-height: 100vh;
+  scroll-behavior: smooth;
+}
+
+.spe-root * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.spe-root img {
+  width: 100%;
+  display: block;
+}
+
+.spe-root a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.spe-root .spe-container {
+  width: min(92%, var(--max-width));
+  margin: 0 auto;
+}
+
+.spe-root .btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 16px 28px;
+  border-radius: 4px;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  font-size: 14px;
+  cursor: pointer;
+  transition: 0.25s ease;
+}
+
+.spe-root .btn-primary {
+  background: var(--gold);
+  color: var(--black);
+  border: 2px solid var(--gold);
+}
+
+.spe-root .btn-primary:hover {
+  background: var(--gold-dark);
+  border-color: var(--gold-dark);
+}
+
+.spe-root .btn-outline {
+  background: transparent;
+  color: var(--white);
+  border: 2px solid var(--gold);
+}
+
+.spe-root .btn-outline:hover {
+  background: var(--gold);
+  color: var(--black);
+}
+
+.spe-root .script {
+  font-family: "Brush Script MT", cursive;
+  color: var(--gold);
+  font-size: clamp(28px, 4vw, 54px);
+  font-weight: 400;
+  line-height: 0.95;
+}
+
+.spe-root .eyebrow {
+  font-family: "Brush Script MT", cursive;
+  color: var(--gold);
+  font-size: 28px;
+  margin-bottom: 10px;
+}
+
+.spe-root .section-title {
+  font-size: clamp(38px, 5vw, 70px);
+  line-height: 0.92;
+  font-weight: 1000;
+  text-transform: uppercase;
+  letter-spacing: -0.04em;
+}
+
+.spe-root .spe-underline {
+  width: 160px;
+  height: 10px;
+  margin: 14px auto 0;
+  border-bottom: 4px solid var(--black);
+  border-radius: 50%;
+  opacity: 0.9;
+}
+
+/* HERO */
+.spe-root .hero {
+  position: relative;
+  min-height: 100vh;
+  background:
+    linear-gradient(90deg, rgba(0, 0, 0, 0.95) 0%, rgba(0, 0, 0, 0.72) 34%, rgba(0, 0, 0, 0.18) 70%),
+    url("/marketing/sp/sp-hero.jpg") center/cover no-repeat;
+  color: var(--white);
+  overflow: hidden;
+}
+
+.spe-root .hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(0deg, rgba(0, 0, 0, 0.75), transparent 45%);
+  pointer-events: none;
+}
+
+.spe-root .navbar {
+  position: relative;
+  z-index: 5;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 28px 0;
+}
+
+.spe-root .logo {
+  line-height: 0.9;
+  text-transform: uppercase;
+  font-weight: 1000;
+  letter-spacing: -0.04em;
+  font-size: clamp(34px, 4vw, 62px);
+}
+
+.spe-root .logo img {
+  width: auto;
+  height: 84px;
+}
+
+.spe-root .logo span {
+  display: block;
+}
+
+.spe-root .logo .and {
+  font-family: "Brush Script MT", cursive;
+  color: var(--gold);
+  font-size: 32px;
+  font-weight: 400;
+  text-transform: lowercase;
+  letter-spacing: 0;
+  margin: 2px 0;
+}
+
+.spe-root .logo .events {
+  color: var(--gold);
+  font-size: 18px;
+  letter-spacing: 0.45em;
+  margin-top: 12px;
+}
+
+.spe-root .nav-links {
+  display: flex;
+  align-items: center;
+  gap: 42px;
+  font-weight: 900;
+  text-transform: uppercase;
+  font-size: 14px;
+  letter-spacing: 0.05em;
+}
+
+.spe-root .nav-links a {
+  opacity: 0.9;
+  position: relative;
+}
+
+.spe-root .nav-links a:hover {
+  color: var(--gold);
+}
+
+.spe-root .nav-cta {
+  background: var(--gold);
+  color: var(--black);
+  padding: 14px 24px;
+  border-radius: 4px;
+  font-weight: 1000;
+}
+
+.spe-root .mobile-menu-btn {
+  display: none;
+  background: none;
+  border: 0;
+  color: white;
+  font-size: 38px;
+  cursor: pointer;
+}
+
+.spe-root .hero-content {
+  position: relative;
+  z-index: 4;
+  padding: 70px 0 170px;
+  max-width: 660px;
+}
+
+.spe-root .hero h1 {
+  font-size: clamp(56px, 7vw, 110px);
+  line-height: 0.88;
+  font-weight: 1000;
+  text-transform: uppercase;
+  letter-spacing: -0.06em;
+  margin-bottom: 14px;
+}
+
+.spe-root .hero .script {
+  display: block;
+  margin-bottom: 34px;
+}
+
+.spe-root .hero p {
+  font-size: clamp(18px, 2vw, 25px);
+  line-height: 1.35;
+  margin-bottom: 34px;
+  max-width: 560px;
+}
+
+.spe-root .hero-buttons {
+  display: flex;
+  gap: 18px;
+  flex-wrap: wrap;
+}
+
+.spe-root .hero-badge {
+  position: absolute;
+  right: 8%;
+  bottom: 120px;
+  z-index: 5;
+  width: 170px;
+  height: 170px;
+  border: 4px solid var(--gold);
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  text-align: center;
+  color: white;
+  font-family: "Brush Script MT", cursive;
+  font-size: 28px;
+  line-height: 0.95;
+  transform: rotate(-8deg);
+  background: rgba(0, 0, 0, 0.28);
+}
+
+.spe-root .feature-strip {
+  position: absolute;
+  z-index: 6;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.72);
+  backdrop-filter: blur(10px);
+  border-top: 1px solid var(--border);
+}
+
+.spe-root .feature-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0;
+}
+
+.spe-root .feature-item {
+  padding: 30px 28px;
+  border-right: 1px solid var(--border);
+  display: grid;
+  grid-template-columns: 52px 1fr;
+  gap: 18px;
+  color: white;
+}
+
+.spe-root .feature-item:last-child {
+  border-right: 0;
+}
+
+.spe-root .icon {
+  font-size: 38px;
+  color: var(--gold);
+}
+
+.spe-root .feature-item h3 {
+  font-size: 18px;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+
+.spe-root .feature-item p {
+  font-size: 14px;
+  line-height: 1.45;
+  color: rgba(255, 255, 255, 0.82);
+}
+
+/* HOW IT WORKS */
+.spe-root .how-section {
+  padding: 90px 0 70px;
+  background: var(--cream);
+}
+
+.spe-root .how-layout {
+  display: grid;
+  grid-template-columns: 290px 1fr;
+  gap: 56px;
+  align-items: start;
+}
+
+.spe-root .how-intro p {
+  margin-top: 28px;
+  font-size: 20px;
+  line-height: 1.42;
+}
+
+.spe-root .black-btn {
+  margin-top: 28px;
+  background: var(--black);
+  color: white;
+  border: 2px solid var(--black);
+}
+
+.spe-root .steps-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+}
+
+.spe-root .step-card {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.spe-root .step-number {
+  width: 42px;
+  height: 42px;
+  background: var(--gold);
+  color: var(--black);
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  font-weight: 1000;
+  font-size: 20px;
+}
+
+.spe-root .step-card h3 {
+  font-size: 22px;
+  text-transform: uppercase;
+  font-weight: 1000;
+}
+
+.spe-root .step-card p {
+  font-size: 16px;
+  line-height: 1.45;
+}
+
+.spe-root .step-card img {
+  height: 250px;
+  object-fit: cover;
+  border-radius: 14px;
+  box-shadow: var(--shadow);
+}
+
+.spe-root .benefit-strip {
+  margin-top: 60px;
+  background: white;
+  border-radius: var(--radius);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.08);
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  overflow: hidden;
+}
+
+.spe-root .benefit {
+  padding: 30px 24px;
+  border-right: 1px solid rgba(0, 0, 0, 0.12);
+  display: grid;
+  grid-template-columns: 48px 1fr;
+  gap: 16px;
+  align-items: start;
+}
+
+.spe-root .benefit:last-child {
+  border-right: 0;
+}
+
+.spe-root .benefit h4 {
+  text-transform: uppercase;
+  font-size: 16px;
+  margin-bottom: 6px;
+}
+
+.spe-root .benefit p {
+  font-size: 14px;
+  line-height: 1.4;
+  color: #333;
+}
+
+/* EVENTS */
+.spe-root .events-section {
+  padding: 90px 0 0;
+  background: linear-gradient(180deg, #fff8eb 0%, #fff3de 100%);
+  text-align: center;
+}
+
+.spe-root .section-copy {
+  max-width: 760px;
+  margin: 24px auto 48px;
+  font-size: 20px;
+  line-height: 1.5;
+}
+
+.spe-root .event-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 18px;
+  text-align: center;
+}
+
+.spe-root .event-card img {
+  height: 210px;
+  object-fit: cover;
+  border-radius: 12px;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.14);
+}
+
+.spe-root .event-icon {
+  width: 54px;
+  height: 54px;
+  background: var(--gold);
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  margin: -27px auto 14px;
+  position: relative;
+  z-index: 2;
+  font-size: 24px;
+}
+
+.spe-root .event-card h3 {
+  font-size: 20px;
+  text-transform: uppercase;
+  font-weight: 1000;
+  margin-bottom: 8px;
+}
+
+.spe-root .event-card p {
+  font-size: 15px;
+  line-height: 1.4;
+}
+
+/* TESTIMONIAL / CTA */
+.spe-root .testimonial-section {
+  margin-top: 70px;
+  background:
+    linear-gradient(90deg, rgba(0, 0, 0, 0.92), rgba(0, 0, 0, 0.78)),
+    url("/marketing/sp/sp-print.jpg") center/cover no-repeat;
+  color: white;
+  padding: 56px 0;
+  text-align: left;
+}
+
+.spe-root .testimonial-layout {
+  display: grid;
+  grid-template-columns: 1.2fr 2fr 0.9fr;
+  gap: 44px;
+  align-items: center;
+}
+
+.spe-root .print-stack img {
+  border-radius: 12px;
+  transform: rotate(-3deg);
+  box-shadow: var(--shadow);
+}
+
+.spe-root .testimonials {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+}
+
+.spe-root .quote {
+  border-left: 1px solid rgba(255, 255, 255, 0.24);
+  padding-left: 22px;
+}
+
+.spe-root .quote-mark {
+  color: var(--gold);
+  font-size: 46px;
+  line-height: 0.8;
+}
+
+.spe-root .quote p {
+  font-size: 16px;
+  line-height: 1.45;
+  margin-bottom: 18px;
+}
+
+.spe-root .person {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.spe-root .person img {
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid white;
+}
+
+.spe-root .person strong {
+  display: block;
+  font-size: 15px;
+}
+
+.spe-root .person span {
+  color: var(--gold);
+  font-size: 13px;
+}
+
+.spe-root .cta-box {
+  border-left: 1px solid rgba(255, 255, 255, 0.24);
+  padding-left: 34px;
+}
+
+.spe-root .cta-box h3 {
+  font-size: 30px;
+  line-height: 1.05;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+
+.spe-root .cta-box .script {
+  display: block;
+  font-size: 42px;
+}
+
+.spe-root .cta-box p {
+  margin-bottom: 24px;
+  line-height: 1.45;
+  color: rgba(255, 255, 255, 0.82);
+}
+
+/* GALLERY */
+.spe-root .gallery-section {
+  padding: 90px 0;
+  background: var(--cream);
+  text-align: center;
+}
+
+.spe-root .gallery-grid {
+  margin-top: 44px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 18px;
+}
+
+.spe-root .gallery-grid img {
+  height: 280px;
+  object-fit: cover;
+  border-radius: 16px;
+  box-shadow: 0 14px 36px rgba(0, 0, 0, 0.14);
+}
+
+/* FINAL CTA / FOOTER */
+.spe-root .final-cta {
+  background: var(--black);
+  color: white;
+  padding: 90px 0;
+  text-align: center;
+}
+
+.spe-root .final-cta h2 {
+  font-size: clamp(42px, 6vw, 86px);
+  line-height: 0.95;
+  text-transform: uppercase;
+  margin-bottom: 18px;
+}
+
+.spe-root .final-cta p {
+  max-width: 620px;
+  margin: 0 auto 32px;
+  font-size: 20px;
+  color: rgba(255, 255, 255, 0.82);
+  line-height: 1.5;
+}
+
+.spe-root footer {
+  background: #000;
+  color: rgba(255, 255, 255, 0.7);
+  padding: 30px 0;
+  text-align: center;
+  font-size: 14px;
+}
+
+/* MOBILE */
+@media (max-width: 980px) {
+  .spe-root .hero {
+    min-height: auto;
+    background:
+      linear-gradient(90deg, rgba(0, 0, 0, 0.95), rgba(0, 0, 0, 0.38)),
+      url("/marketing/sp/sp-hero-mobile.jpg") center/cover no-repeat;
+  }
+
+  .spe-root .nav-links {
+    display: none;
+  }
+
+  .spe-root .mobile-menu-btn {
+    display: block;
+  }
+
+  .spe-root .navbar {
+    padding: 24px 0;
+  }
+
+  .spe-root .hero-content {
+    padding: 40px 0 60px;
+    max-width: 100%;
+  }
+
+  .spe-root .hero h1 {
+    font-size: 58px;
+  }
+
+  .spe-root .hero .script {
+    font-size: 52px;
+  }
+
+  .spe-root .hero p {
+    font-size: 20px;
+    max-width: 340px;
+  }
+
+  .spe-root .hero-buttons {
+    flex-direction: column;
+    width: 100%;
+    max-width: 320px;
+  }
+
+  .spe-root .btn {
+    width: 100%;
+  }
+
+  .spe-root .hero-badge {
+    display: none;
+  }
+
+  .spe-root .feature-strip {
+    position: relative;
+    background: rgba(0, 0, 0, 0.92);
+  }
+
+  .spe-root .feature-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .spe-root .feature-item {
+    border-right: 0;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .spe-root .how-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .spe-root .steps-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .spe-root .step-card {
+    display: grid;
+    grid-template-columns: 1fr 1.4fr;
+    gap: 20px;
+    align-items: center;
+  }
+
+  .spe-root .step-card img {
+    height: 150px;
+  }
+
+  .spe-root .benefit-strip {
+    grid-template-columns: 1fr;
+  }
+
+  .spe-root .benefit {
+    border-right: 0;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+  }
+
+  .spe-root .event-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 28px 18px;
+  }
+
+  .spe-root .testimonial-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .spe-root .testimonials {
+    grid-template-columns: 1fr;
+  }
+
+  .spe-root .cta-box {
+    border-left: 0;
+    padding-left: 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.24);
+    padding-top: 30px;
+  }
+
+  .spe-root .gallery-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 560px) {
+  .spe-root .logo {
+    font-size: 38px;
+  }
+
+  .spe-root .logo img {
+    height: 62px;
+  }
+
+  .spe-root .logo .and {
+    font-size: 26px;
+  }
+
+  .spe-root .logo .events {
+    font-size: 13px;
+  }
+
+  .spe-root .hero h1 {
+    font-size: 48px;
+  }
+
+  .spe-root .hero .script {
+    font-size: 46px;
+  }
+
+  .spe-root .section-title {
+    font-size: 42px;
+  }
+
+  .spe-root .how-section,
+  .spe-root .events-section,
+  .spe-root .gallery-section {
+    padding: 64px 0;
+  }
+
+  .spe-root .step-card {
+    grid-template-columns: 1fr;
+  }
+
+  .spe-root .step-card img {
+    height: 220px;
+  }
+
+  .spe-root .event-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .spe-root .gallery-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .spe-root .gallery-grid img {
+    height: 340px;
+  }
+}
