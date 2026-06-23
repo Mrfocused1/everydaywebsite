@@ -33,7 +33,7 @@ export function BurgessHeader() {
 
         <div className="flex items-center gap-3">
           <a href={PHONE_1_TEL} className="hidden text-sm font-bold text-[#16225e] sm:inline">{PHONE_1_DISPLAY}</a>
-          <Link href="/burgess/contact" className="hidden bg-[#ffd400] px-5 py-2.5 text-sm font-semibold uppercase tracking-wide text-[#16225e] transition-colors hover:bg-[#f2c200] sm:inline-flex">
+          <Link href="/burgess/contact#quote" className="hidden bg-[#ffd400] px-5 py-2.5 text-sm font-semibold uppercase tracking-wide text-[#16225e] transition-colors hover:bg-[#f2c200] sm:inline-flex">
             Get a quote
           </Link>
           <button
@@ -63,7 +63,7 @@ export function BurgessHeader() {
                 {n.label}
               </Link>
             ))}
-            <Link href="/burgess/contact" onClick={() => setOpen(false)} className="mt-3 mb-2 bg-[#ffd400] px-5 py-3 text-center text-sm font-semibold uppercase tracking-wide text-[#16225e]">
+            <Link href="/burgess/contact#quote" onClick={() => setOpen(false)} className="mt-3 mb-2 bg-[#ffd400] px-5 py-3 text-center text-sm font-semibold uppercase tracking-wide text-[#16225e]">
               Get a quote
             </Link>
           </nav>

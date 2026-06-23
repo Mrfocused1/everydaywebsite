@@ -38,7 +38,7 @@ export default function BurgessLayout({ children }: { children: React.ReactNode 
         <a href={PHONE_1_TEL} className="flex-1 bg-[#16225e] px-5 py-3.5 text-center text-sm font-bold uppercase tracking-wide text-white shadow-lg transition-transform hover:-translate-y-0.5 sm:flex-none sm:px-7">
           Call now
         </a>
-        <Link href="/burgess/contact" className="flex-1 bg-[#ffd400] px-5 py-3.5 text-center text-sm font-bold uppercase tracking-wide text-[#16225e] shadow-lg transition-transform hover:-translate-y-0.5 sm:flex-none sm:px-7">
+        <Link href="/burgess/contact#quote" className="flex-1 bg-[#ffd400] px-5 py-3.5 text-center text-sm font-bold uppercase tracking-wide text-[#16225e] shadow-lg transition-transform hover:-translate-y-0.5 sm:flex-none sm:px-7">
           Get a quote
         </Link>
       </div>

@@ -57,30 +57,47 @@ export function BurgessFX() {
         gsap.set(p, { strokeDasharray: len, strokeDashoffset: len });
         gsap.to(p, { strokeDashoffset: 0, ease: "none", scrollTrigger: { trigger: p.closest("section") || p, start: "top 75%", end: "bottom 85%", scrub: true } });
       });
+    });
 
-      // pinned horizontal scroll (desktop only) — signature interaction
-      const mm = gsap.matchMedia();
+    // Horizontal scroll (desktop only) — uses CSS position:sticky for the
+    // "pin" (see [data-hscroll-pin]) and only SCRUBS a transform here. We avoid
+    // ScrollTrigger's pin:true because it moves the section into a pin-spacer
+    // div outside React's tree, which crashes soft-navigation with a removeChild
+    // error. No DOM mutation here → the page unmounts cleanly.
+    const mm = gsap.matchMedia();
+    if (!reduce) {
       mm.add("(min-width: 768px)", () => {
         const track = document.querySelector<HTMLElement>("[data-hscroll-track]");
         const wrap = document.querySelector<HTMLElement>("[data-hscroll]");
         if (!track || !wrap) return;
-        const distance = () => track.scrollWidth - window.innerWidth + 80;
-        gsap.to(track, {
+        const distance = () => Math.max(0, track.scrollWidth - window.innerWidth + 80);
+        const setHeight = () => { wrap.style.height = window.innerHeight + distance() + "px"; };
+        setHeight();
+        const tween = gsap.to(track, {
           x: () => -distance(),
           ease: "none",
           scrollTrigger: {
             trigger: wrap,
-            pin: true,
-            scrub: 1,
             start: "top top",
             end: () => "+=" + distance(),
+            scrub: 1,
             invalidateOnRefresh: true,
+            onRefresh: setHeight,
           },
         });
+        return () => {
+          tween.scrollTrigger?.kill();
+          tween.kill();
+          gsap.set(track, { clearProps: "transform" });
+          wrap.style.height = "";
+        };
       });
-    });
+    }
 
-    return () => ctx.revert();
+    return () => {
+      mm.revert();
+      ctx.revert();
+    };
   }, []);
 
   return null;

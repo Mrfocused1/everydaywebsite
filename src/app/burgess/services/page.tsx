@@ -121,7 +121,7 @@ export default function BurgessServices() {
           </div>
 
           <div className="mt-12 flex flex-wrap gap-3" data-reveal>
-            <Link href="/burgess/contact" className={btnYellow}>Get a free quote <Arrow /></Link>
+            <Link href="/burgess/contact#quote" className={btnYellow}>Get a free quote <Arrow /></Link>
             <Link href="/burgess/about" className={btnGhostLight}>About us</Link>
           </div>
         </div>

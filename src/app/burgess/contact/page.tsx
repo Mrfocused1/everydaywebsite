@@ -79,7 +79,7 @@ export default function BurgessContact() {
 
           {/* Form */}
           <div data-reveal>
-            <div className="border border-[#16225e]/15 bg-[#f7f8fc] p-6 md:p-8">
+            <div id="quote" className="scroll-mt-28 border border-[#16225e]/15 bg-[#f7f8fc] p-6 md:p-8">
               <h3 className="text-2xl font-bold uppercase tracking-tight text-[#16225e]">Request a quote</h3>
               <p className="mt-2 text-sm text-slate-500">Tell us about the job and we&apos;ll get straight back to you.</p>
               <div className="mt-6">

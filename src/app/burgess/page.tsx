@@ -54,7 +54,7 @@ export default function BurgessHome() {
               Safe, certified, and backed by a 10-year guarantee.
             </p>
             <div className="hero-fade mt-9 flex flex-wrap gap-4 opacity-0" style={{ transform: "translateY(8px)" }}>
-              <Link href="/burgess/contact" className={btnYellow}>Get a free quote <Arrow /></Link>
+              <Link href="/burgess/contact#quote" className={btnYellow}>Get a free quote <Arrow /></Link>
               <Link href="/burgess/services" className={btnGhostDark}>Our services</Link>
             </div>
             <div className="hero-fade mt-10 flex flex-wrap gap-x-7 gap-y-2 border-t border-white/20 pt-6 text-xs font-semibold uppercase tracking-wider opacity-0">
@@ -91,10 +91,11 @@ export default function BurgessHome() {
         </div>
       </section>
 
-      {/* ── Pinned horizontal-scroll services ── */}
-      <section data-hscroll className="relative overflow-hidden bg-[#16225e] text-white md:h-screen">
-        <div data-hscroll-track className="flex gap-5 px-5 py-12 max-md:snap-x max-md:snap-mandatory max-md:overflow-x-auto [scrollbar-width:none] [&::-webkit-scrollbar]:hidden md:h-full md:items-center md:gap-7 md:px-[7vw] md:py-0">
-          <div className="flex w-[80%] shrink-0 snap-start flex-col justify-center pr-2 max-md:pb-2 md:h-[66vh] md:w-[28vw] md:pr-6">
+      {/* ── Horizontal-scroll services (CSS-sticky pin + scrubbed transform) ── */}
+      <section data-hscroll className="relative bg-[#16225e] text-white">
+        <div data-hscroll-pin className="overflow-hidden md:sticky md:top-0 md:flex md:h-screen md:items-center">
+          <div data-hscroll-track className="flex gap-5 px-5 py-12 max-md:snap-x max-md:snap-mandatory max-md:overflow-x-auto [scrollbar-width:none] [&::-webkit-scrollbar]:hidden md:w-full md:gap-7 md:px-[7vw] md:py-0">
+            <div className="flex w-[80%] shrink-0 snap-start flex-col justify-center pr-2 max-md:pb-2 md:h-[66vh] md:w-[28vw] md:pr-6">
             <Label onDark>What we do</Label>
             <h2 className="mt-5 text-3xl font-bold uppercase leading-[0.95] tracking-tight md:text-[2.7rem]">A full range of electrical services</h2>
             <p className="mt-4 font-light text-white/60">From a single socket to a full commercial fit-out — every job certified and guaranteed.</p>
@@ -111,6 +112,7 @@ export default function BurgessHome() {
               </div>
             </article>
           ))}
+          </div>
         </div>
       </section>
 
@@ -192,7 +194,7 @@ export default function BurgessHome() {
             <p className="mt-2 font-light text-slate-600">Free, no-obligation quotes across East London. Get in touch today.</p>
           </div>
           <div className="flex flex-wrap gap-3">
-            <Link href="/burgess/contact" className={btnNavy}>Get a quote <Arrow /></Link>
+            <Link href="/burgess/contact#quote" className={btnNavy}>Get a quote <Arrow /></Link>
             <a href={PHONE_1_TEL} className={btnGhostLight}>{PHONE_1_DISPLAY}</a>
           </div>
         </div>
