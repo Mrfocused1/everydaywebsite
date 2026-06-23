@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import {
-  fd, Label, PageHero, RainbowDots,
+  IMG, fd, Label, PageHero, RainbowDots,
   PHONE_DISPLAY, PHONE_TEL, EMAIL, ADDRESS, COMPANY_NO, FACEBOOK, LINKEDIN,
 } from "../brand";
 import { EnquiryForm } from "../EnquiryForm";
@@ -19,8 +19,10 @@ export default function CCCContact() {
     <>
       <PageHero
         eyebrow="Contact us"
-        title="Let's talk about your service."
+        title="Let's talk."
         intro="Friendly, no-pressure advice. Call, email, or send a message and we'll get back to you to arrange a consultation."
+        img={IMG.support}
+        imgAlt="A friendly consultation meeting"
       />
 
       <section className="bg-white">

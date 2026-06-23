@@ -69,6 +69,21 @@ export function RainbowDots({ className = "" }: { className?: string }) {
     </span>
   );
 }
+export function AccentBar({ className = "" }: { className?: string }) {
+  return <span className={`block h-1.5 w-full bg-[linear-gradient(to_right,#e0559a,#ef9a3d,#7a55a6,#5fb85a,#2f8fce)] ${className}`} aria-hidden />;
+}
+
+// Mixed image edges (chamfered cut-corners). For clipped images use
+// filter:drop-shadow (NOT box-shadow) and no parallax wrapper.
+export const CUT_TR = "polygon(0 0, calc(100% - 2.75rem) 0, 100% 2.75rem, 100% 100%, 0 100%)";
+export const CUT_BL = "polygon(0 0, 100% 0, 100% 100%, 2.75rem 100%, 0 calc(100% - 2.75rem))";
+export const CUT_TL = "polygon(2.75rem 0, 100% 0, 100% 100%, 0 100%, 0 2.75rem)";
+
+// Marquee ticker.
+export const MARQUEE = [
+  "CQC Registration", "Mock Inspections", "Outstanding Ratings", "Compliance", "Care Homes",
+  "Domiciliary Care", "Manager Support", "Quality Assurance",
+];
 
 // ── Buttons (soft rounded pills) ──
 export const btnPrimary =
@@ -89,18 +104,23 @@ export function Label({ children }: { children: React.ReactNode }) {
   );
 }
 
-// ── Light page hero (warm, airy — soft blurred colour blobs, never dark) ──
-export function PageHero({ eyebrow, title, intro }: { eyebrow: string; title: string; intro: string }) {
+// ── Image-led page hero (full-bleed photo, warm scrim, rainbow bar, kinetic title) ──
+export function PageHero({ eyebrow, title, intro, img, imgAlt }: { eyebrow: string; title: string; intro: string; img: string; imgAlt: string }) {
   return (
-    <section className="relative overflow-hidden bg-[#faf7f2]">
-      <div className="pointer-events-none absolute -right-24 -top-24 h-72 w-72 rounded-full bg-[#2f8fce]/10 blur-3xl" aria-hidden />
-      <div className="pointer-events-none absolute -bottom-28 left-1/3 h-72 w-72 rounded-full bg-[#e0559a]/10 blur-3xl" aria-hidden />
-      <div className="mx-auto max-w-6xl px-5 pb-14 pt-32 md:px-8 md:pb-20 md:pt-40">
-        <div className="hero-fade max-w-3xl opacity-0" style={{ transform: "translateY(10px)" }}>
-          <Label>{eyebrow}</Label>
-          <h1 className={`mt-5 ${fd} text-[2.6rem] font-light leading-[1.04] tracking-tight text-[#2b2d33] md:text-[4rem]`}>{title}</h1>
-          <p className="mt-5 max-w-xl text-lg font-light text-[#6b6f76]">{intro}</p>
-        </div>
+    <section className="relative isolate flex min-h-[58vh] items-end overflow-hidden md:min-h-[66vh]">
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img src={img} alt={imgAlt} data-parallax className="absolute inset-0 -z-10 h-[112%] w-full object-cover" />
+      <div className="absolute inset-0 -z-10 bg-gradient-to-t from-[#241b2b]/90 via-[#241b2b]/40 to-[#241b2b]/10" />
+      <div className="absolute inset-0 -z-10 bg-gradient-to-r from-[#241b2b]/55 via-transparent to-transparent" />
+      <AccentBar className="absolute inset-x-0 top-0 z-10" />
+      <div className="mx-auto w-full max-w-6xl px-5 pb-12 pt-32 text-white md:px-8 md:pb-16">
+        <p className="hero-fade flex items-center gap-3 text-xs font-bold uppercase tracking-[0.2em] text-white/85 opacity-0" style={{ transform: "translateY(8px)" }}>
+          <RainbowLine /> {eyebrow}
+        </p>
+        <h1 className={`hero-h mt-5 ${fd} text-[2.6rem] font-light leading-[1.04] tracking-tight md:text-[4rem]`}>
+          <span className="block overflow-hidden"><span className="hero-line-inner block pb-[0.08em]" style={{ transform: "translateY(110%)" }}>{title}</span></span>
+        </h1>
+        <p className="hero-fade mt-5 max-w-xl text-lg font-light text-white/85 opacity-0" style={{ transform: "translateY(8px)" }}>{intro}</p>
       </div>
     </section>
   );

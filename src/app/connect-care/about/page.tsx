@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { IMG, SERVICES, CREDENTIALS, RAINBOW, fd, Label, Arrow, PageHero, btnPrimary, RainbowDots } from "../brand";
+import { IMG, SERVICES, CREDENTIALS, RAINBOW, CUT_TR, fd, Label, Arrow, PageHero, btnPrimary, RainbowDots } from "../brand";
 import { CCCFX } from "../CCCFX";
 
 /* eslint-disable @next/next/no-img-element */
@@ -18,6 +18,8 @@ export default function CCCAbout() {
         eyebrow="About Connect Care"
         title="Compliance, made human."
         intro="We take the fear out of CQC — combining deep regulatory knowledge with genuine, reassuring support that helps care providers thrive."
+        img={IMG.care}
+        imgAlt="A carer supporting an elderly person"
       />
 
       {/* Story */}
@@ -25,9 +27,8 @@ export default function CCCAbout() {
         <div className="mx-auto grid max-w-6xl items-center gap-12 px-5 py-16 md:grid-cols-2 md:px-8 md:py-24 lg:gap-16">
           <div className="relative" data-reveal>
             <div className="pointer-events-none absolute -right-5 -top-5 h-44 w-44 rounded-full bg-[#2f8fce]/15 blur-2xl" aria-hidden />
-            <div className="relative overflow-hidden rounded-[2rem] shadow-[0_30px_60px_-25px_rgba(43,45,51,0.3)] ring-1 ring-[#2b2d33]/5">
-              <img src={IMG.nya} alt="Nya K. Mabu, founder of Connect Care Consultancy" data-clip className="aspect-[5/6] w-full object-cover" />
-            </div>
+            <div className="pointer-events-none absolute -bottom-5 left-6 h-40 w-40 rounded-full bg-[#ef9a3d]/15 blur-2xl" aria-hidden />
+            <img src={IMG.nya} alt="Nya K. Mabu, founder of Connect Care Consultancy" className="relative aspect-[5/6] w-full object-cover" style={{ clipPath: CUT_TR, filter: "drop-shadow(0 28px 40px rgba(43,45,51,0.28))" }} />
           </div>
           <div data-reveal>
             <Label>Our story</Label>

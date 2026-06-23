@@ -13,13 +13,18 @@ export function CCCFX() {
 
     const ctx = gsap.context(() => {
       if (reduce) {
-        gsap.set("[data-reveal], .hero-fade, [data-clip]", { opacity: 1, y: 0, clearProps: "transform,clipPath" });
+        gsap.set("[data-reveal], .hero-fade, .hero-line-inner, [data-clip]", { opacity: 1, y: 0, clearProps: "transform,clipPath" });
         document.querySelectorAll<HTMLElement>("[data-count]").forEach((el) => { el.textContent = (el.dataset.count || "") + (el.dataset.suffix || ""); });
         return;
       }
 
-      // hero + intro fade-ups
-      gsap.to(".hero-fade", { opacity: 1, y: 0, duration: 0.9, stagger: 0.12, ease: "power3.out", delay: 0.15 });
+      // hero kinetic heading + fade-ups
+      gsap.to(".hero-line-inner", { y: 0, duration: 1, stagger: 0.09, ease: "power4.out", delay: 0.1 });
+      gsap.to(".hero-fade", { opacity: 1, y: 0, duration: 0.9, stagger: 0.12, ease: "power3.out", delay: 0.3 });
+
+      // infinite marquee
+      const track = document.querySelector<HTMLElement>("[data-marquee-track]");
+      if (track) gsap.to(track, { xPercent: -50, duration: 26, ease: "none", repeat: -1 });
 
       // scroll reveals
       gsap.utils.toArray<HTMLElement>("[data-reveal]").forEach((node) => {
