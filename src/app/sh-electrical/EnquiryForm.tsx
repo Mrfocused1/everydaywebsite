@@ -2,19 +2,20 @@
 
 import { useState } from "react";
 
-const EMAIL = "burgesselectricalcontractors@gmail.com";
+const EMAIL = "info@shelecmcrltd.co.uk";
 
 const field =
-  "w-full border border-slate-200 bg-white px-4 py-3 text-slate-800 placeholder-slate-400 outline-none transition-colors focus:border-[#16225e] focus:ring-2 focus:ring-[#ffd400]/40";
+  "w-full border border-slate-200 bg-white px-4 py-3 text-slate-800 placeholder-slate-400 outline-none transition-colors focus:border-[#16225e] focus:ring-2 focus:ring-[#1f8fd6]/40";
 
 const SERVICES = [
   "Rewires & Installations",
-  "Inspection & Testing (EICR / PAT)",
-  "Fire Alarms & Emergency Lighting",
-  "Security (CCTV / Access / Alarms)",
+  "Consumer Unit / Fuse Board Upgrade",
+  "Testing & Inspection",
+  "Fault Finding & Repairs",
+  "Kitchen & Bathroom Renovation",
+  "Lighting (Interior / Exterior)",
+  "Garden Lighting & Power",
   "EV Charging",
-  "Solar Panels",
-  "24hr Emergency Call-out",
   "Other",
 ];
 

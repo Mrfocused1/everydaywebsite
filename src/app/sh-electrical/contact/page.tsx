@@ -1,28 +1,28 @@
 import type { Metadata } from "next";
 import {
   IMG, Label, PageHero,
-  PHONE_1_DISPLAY, PHONE_1_TEL, PHONE_2_DISPLAY, PHONE_2_TEL, EMAIL, AREA,
+  PHONE_1_DISPLAY, PHONE_1_TEL, PHONE_2_DISPLAY, PHONE_2_TEL, EMAIL, ADDRESS, AREA,
 } from "../brand";
 import { EnquiryForm } from "../EnquiryForm";
-import { BurgessFX } from "../BurgessFX";
+import { SHFX } from "../SHFX";
 
 export const metadata: Metadata = {
   title: "Contact",
   description:
-    "Contact Burgess Electrical — call 07956 318 133 or 07717 196 313, or send an enquiry. Free quotes and 24-hour emergency call-out across East London.",
+    "Contact SH Electrical Mcr Ltd — call 07870 895 049 or 07815 046 533, or send an enquiry. Free, no-obligation quotes across Manchester & Greater Manchester.",
 };
 
-const MAP_SRC = "https://www.google.com/maps?q=East+London,+UK&z=11&output=embed";
+const MAP_SRC = "https://www.google.com/maps?q=124+Railway+Road,+Manchester,+M32+0QD&z=13&output=embed";
 
-export default function BurgessContact() {
+export default function SHContact() {
   return (
     <>
       <PageHero
         eyebrow="Contact"
         title="Get in touch"
-        intro="Free, no-obligation quotes and 24-hour emergency call-out across East London. Call us or send an enquiry and we'll get straight back to you."
+        intro="Free, no-obligation quotes across Manchester & Greater Manchester. Call us or send an enquiry and we'll get straight back to you."
         img={IMG.emergency}
-        imgAlt="Burgess Electrical emergency call-out"
+        imgAlt="SH Electrical testing and inspection"
       />
 
       <section className="bg-white">
@@ -37,38 +37,39 @@ export default function BurgessContact() {
 
             <div className="mt-9 border border-[#16225e]/15">
               <a href={PHONE_1_TEL} className="flex items-center gap-4 border-b border-[#16225e]/10 p-5 transition-colors hover:bg-[#f7f8fc]">
-                <span className="grid h-11 w-11 shrink-0 place-items-center bg-[#ffd400] text-lg text-[#16225e]" aria-hidden>☎</span>
+                <span className="grid h-11 w-11 shrink-0 place-items-center bg-[#1f8fd6] text-lg text-[#16225e]" aria-hidden>☎</span>
                 <span>
                   <span className="block text-[11px] font-semibold uppercase tracking-wider text-slate-400">Call us</span>
                   <span className="block text-lg font-bold text-[#16225e]">{PHONE_1_DISPLAY}</span>
                 </span>
               </a>
               <a href={PHONE_2_TEL} className="flex items-center gap-4 border-b border-[#16225e]/10 p-5 transition-colors hover:bg-[#f7f8fc]">
-                <span className="grid h-11 w-11 shrink-0 place-items-center bg-[#ffd400] text-lg text-[#16225e]" aria-hidden>☎</span>
+                <span className="grid h-11 w-11 shrink-0 place-items-center bg-[#1f8fd6] text-lg text-[#16225e]" aria-hidden>☎</span>
                 <span>
                   <span className="block text-[11px] font-semibold uppercase tracking-wider text-slate-400">Alternative</span>
                   <span className="block text-lg font-bold text-[#16225e]">{PHONE_2_DISPLAY}</span>
                 </span>
               </a>
               <a href={`mailto:${EMAIL}`} className="flex items-center gap-4 border-b border-[#16225e]/10 p-5 transition-colors hover:bg-[#f7f8fc]">
-                <span className="grid h-11 w-11 shrink-0 place-items-center bg-[#ffd400] text-lg text-[#16225e]" aria-hidden>✉</span>
+                <span className="grid h-11 w-11 shrink-0 place-items-center bg-[#1f8fd6] text-lg text-[#16225e]" aria-hidden>✉</span>
                 <span>
                   <span className="block text-[11px] font-semibold uppercase tracking-wider text-slate-400">Email</span>
                   <span className="block break-all text-base font-bold text-[#16225e]">{EMAIL}</span>
                 </span>
               </a>
               <div className="flex items-center gap-4 p-5">
-                <span className="grid h-11 w-11 shrink-0 place-items-center bg-[#ffd400] text-lg text-[#16225e]" aria-hidden>⌖</span>
+                <span className="grid h-11 w-11 shrink-0 place-items-center bg-[#1f8fd6] text-lg text-white" aria-hidden>⌖</span>
                 <span>
-                  <span className="block text-[11px] font-semibold uppercase tracking-wider text-slate-400">Area covered</span>
-                  <span className="block text-base font-bold text-[#16225e]">{AREA}</span>
+                  <span className="block text-[11px] font-semibold uppercase tracking-wider text-slate-400">Address</span>
+                  <span className="block text-base font-bold text-[#16225e]">{ADDRESS}</span>
+                  <span className="mt-0.5 block text-xs font-medium text-slate-500">Covering {AREA}</span>
                 </span>
               </div>
             </div>
 
             <div className="mt-6 overflow-hidden border border-slate-200" data-reveal>
               <iframe
-                title="Area covered — East London"
+                title="SH Electrical Mcr Ltd — Manchester"
                 src={MAP_SRC}
                 className="h-60 w-full"
                 loading="lazy"
@@ -90,7 +91,7 @@ export default function BurgessContact() {
         </div>
       </section>
 
-      <BurgessFX />
+      <SHFX />
     </>
   );
 }
