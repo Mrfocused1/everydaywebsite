@@ -25,8 +25,8 @@ export default function PAAbout() {
         eyebrow="About us"
         title="Print worth wearing."
         intro="Print Attack UK is a Brentwood-based DTF printing service — custom clothing, workwear and uniforms, done properly."
-        img={IMG.sweatshirt}
-        imgAlt="Custom branded sweatshirt by Print Attack UK"
+        img={IMG.heroAbout}
+        imgAlt="A printer at work in the studio"
       />
 
       {/* Story */}

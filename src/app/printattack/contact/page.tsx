@@ -21,8 +21,8 @@ export default function PAContact() {
         eyebrow="Contact"
         title="Let's get printing."
         intro="Tell us what you want printed for a fast, free quote — minimum order 6. Call, WhatsApp or DM us on Instagram."
-        img={IMG.teeWorkwear}
-        imgAlt="Custom branded workwear t-shirt"
+        img={IMG.heroContact}
+        imgAlt="A custom t-shirt on the heat press"
       />
 
       <section className="bg-white">

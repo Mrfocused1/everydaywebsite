@@ -31,8 +31,8 @@ export default function PAProducts() {
         eyebrow="What we print"
         title="DTF, your way."
         intro="Custom DTF printing in Brentwood — any design, any colour, minimum order just 6 and a fast turnaround."
-        img={IMG.teeGraphic}
-        imgAlt="Custom DTF printed t-shirts"
+        img={IMG.heroProducts}
+        imgAlt="Stacks of freshly printed custom t-shirts"
       />
 
       {/* Garments grid */}

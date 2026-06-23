@@ -29,8 +29,8 @@ export default function PAWork() {
         eyebrow="Our work"
         title="Printed in Brentwood."
         intro="A look at the custom garments and uniforms we've printed — from full-colour tees to business hi-vis."
-        img={IMG.teeEvent}
-        imgAlt="Print Attack UK work"
+        img={IMG.heroWork}
+        imgAlt="A rack of custom printed t-shirts"
       />
 
       {/* Featured — GNS Communications */}

@@ -36,7 +36,12 @@ export const NAV = [
 const img = (n: string) => `/marketing/pa/${n}.jpg`;
 export const IMG = {
   founders: img("pa-founders"),
-  hero: img("pa-founders"),
+  // Hero backgrounds — licence-free stock (Pexels), fitted to the DTF brand
+  hero: img("hero-home"),
+  heroProducts: img("hero-products"),
+  heroWork: img("hero-work"),
+  heroAbout: img("hero-about"),
+  heroContact: img("hero-contact"),
   teeCrest: img("pa-mockup1"),
   hivis: img("pa-mockup2"),
   teeGraphic: img("pa-mockup3"),
