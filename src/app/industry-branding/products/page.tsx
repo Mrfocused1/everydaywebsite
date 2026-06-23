@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { IMG, PRODUCTS, METHODS, COLORS, fd, Label, Arrow, PageHero, btnBlue } from "../brand";
+import { IMG, METHODS, COLORS, fd, Label, Arrow, PageHero, btnBlue } from "../brand";
 import { IBFX } from "../IBFX";
 
 /* eslint-disable @next/next/no-img-element */
@@ -8,45 +8,54 @@ import { IBFX } from "../IBFX";
 export const metadata: Metadata = {
   title: "What We Brand",
   description:
-    "Custom garment printing & branding from Industry Branding: t-shirts, hoodies, polos & workwear, hi-vis, caps, bags, embroidery and promotional merch. Screen print, DTG and embroidery in Milton Keynes.",
+    "Custom t-shirt printing from Industry Branding in Milton Keynes — graphic, full-colour, logo, gaming, streetwear and personalised tees. Screen print, DTG and embroidery. No minimum order, fast turnaround.",
 };
 
-const GARMENTS = PRODUCTS.map((p) => ({
-  ...p,
-  points: ["Print or embroidery", "Any colour", "No minimum order", "Bulk pricing"],
-}));
+const TEES = [
+  { t: "Personalised Tees", img: "/marketing/ib/ib-tee-whitegraphic.jpg", b: "Names, dates and custom text — ideal for birthdays, events and one-offs." },
+  { t: "Full-Colour Graphics", img: "/marketing/ib/ib-tee-mario.jpg", b: "Vivid, full-colour character and graphic prints that really pop." },
+  { t: "Rainbow & Multi-Colour", img: "/marketing/ib/ib-tee-rainbow.jpg", b: "Bright, multi-colour designs printed edge to edge." },
+  { t: "Gaming Graphics", img: "/marketing/ib/ib-tee-fortnite.jpg", b: "Bold, game-inspired artwork, front and back." },
+  { t: "Streetwear Prints", img: "/marketing/ib/ib-tee-streetwear.jpg", b: "Statement streetwear designs with a premium feel." },
+  { t: "Logo & Brand Tees", img: "/marketing/ib/ib-tee-whitelogo.jpg", b: "Clean logo and brand prints for teams and businesses." },
+  { t: "Mascot Prints", img: "/marketing/ib/ib-tee-dj.jpg", b: "Characters and mascots brought to life on cotton." },
+  { t: "Slogan & Text Tees", img: "/marketing/ib/ib-tee-cream.jpg", b: "Typographic and slogan prints in any wording." },
+  { t: "Whole-Crew Kits", img: "/marketing/ib/ib-tee-flatlay.jpg", b: "Mix colours and sizes for the whole team or event." },
+];
+
+const POINTS = ["Screen / DTG print", "Any colour", "No minimum order", "Bulk pricing"];
 
 export default function IBProducts() {
   return (
     <>
       <PageHero
         eyebrow="What we brand"
-        title="If you can wear it, we can brand it."
-        intro="Custom clothing and merchandise, printed or embroidered in Milton Keynes — no minimum order, fast turnaround."
+        title="Printed tees, your way."
+        intro="Custom t-shirt printing in Milton Keynes — any design, any colour, no minimum order and a fast turnaround."
         img={IMG.tees}
         imgAlt="Custom printed t-shirts"
       />
 
-      {/* Garments grid */}
+      {/* T-shirts grid */}
       <section className="bg-white">
         <div className="mx-auto max-w-6xl px-5 py-16 md:px-8 md:py-24">
           <div className="max-w-2xl" data-reveal>
-            <Label>Our garments</Label>
-            <h2 className={`mt-5 ${fd} text-4xl uppercase leading-[0.95] tracking-tight md:text-5xl`}>Custom kit, head to toe.</h2>
+            <Label>Our t-shirts</Label>
+            <h2 className={`mt-5 ${fd} text-4xl uppercase leading-[0.95] tracking-tight md:text-5xl`}>Custom tees, any design.</h2>
             <p className="mt-4 text-sm font-semibold text-slate-400 sm:hidden">Swipe →</p>
           </div>
           <div className="-mx-5 mt-10 flex snap-x snap-mandatory gap-5 overflow-x-auto px-5 pb-2 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden sm:mx-0 sm:mt-14 sm:grid sm:grid-cols-2 sm:gap-6 sm:overflow-visible sm:px-0 lg:grid-cols-3" data-stagger>
-            {GARMENTS.map((p, i) => (
+            {TEES.map((p, i) => (
               <article key={p.t} className="group flex w-[80%] shrink-0 snap-start flex-col overflow-hidden bg-white ring-1 ring-[#0e0e10]/12 transition-all duration-300 hover:-translate-y-1.5 hover:shadow-[0_22px_45px_-22px_rgba(0,0,0,0.45)] sm:w-auto">
                 <div className="relative overflow-hidden">
-                  <img src={p.img} alt={p.t} loading="lazy" className="aspect-[16/10] w-full object-cover transition-transform duration-500 group-hover:scale-105" />
+                  <img src={p.img} alt={`Custom printed t-shirt — ${p.t}`} loading="lazy" className="aspect-square w-full bg-[#f5f5f4] object-cover transition-transform duration-500 group-hover:scale-105" />
                   <span className="absolute left-0 top-0 h-1.5 w-full" style={{ background: COLORS[i % COLORS.length] }} aria-hidden />
                 </div>
                 <div className="flex flex-1 flex-col p-6">
                   <h3 className={`${fd} text-xl uppercase tracking-tight text-[#0e0e10]`}>{p.t}</h3>
                   <p className="mt-2 text-sm font-light text-slate-600">{p.b}</p>
                   <ul className="mt-4 grid grid-cols-2 gap-x-4 gap-y-1.5">
-                    {p.points.map((pt) => (
+                    {POINTS.map((pt) => (
                       <li key={pt} className="flex items-start gap-2 text-sm text-slate-600">
                         <span className="mt-1.5 h-1.5 w-1.5 shrink-0 bg-[#0e0e10]" aria-hidden /> {pt}
                       </li>
@@ -65,12 +74,12 @@ export default function IBProducts() {
           <div className="max-w-2xl" data-reveal>
             <Label>How we brand</Label>
             <h2 className={`mt-5 ${fd} text-4xl uppercase leading-[0.95] tracking-tight md:text-5xl`}>Print methods.</h2>
-            <p className="mt-5 text-lg font-light text-slate-600">We&apos;ll always recommend the best method for your garment, design and budget.</p>
+            <p className="mt-5 text-lg font-light text-slate-600">We&apos;ll always recommend the best method for your design and budget.</p>
           </div>
           <div className="mt-10 grid grid-cols-1 gap-px overflow-hidden border border-[#0e0e10]/15 bg-[#0e0e10]/15 sm:mt-14 sm:grid-cols-2 lg:grid-cols-3" data-stagger>
             {METHODS.map((m, i) => (
               <div key={m} className="flex items-center gap-4 bg-white p-7">
-                <span className={`${fd} text-3xl text-[#0e0e10]/25`}>{String(i + 1).padStart(2, "0")}</span>
+                <span className={`${fd} text-3xl`} style={{ color: COLORS[i % COLORS.length] }}>{String(i + 1).padStart(2, "0")}</span>
                 <span className={`${fd} text-lg uppercase tracking-tight text-[#0e0e10]`}>{m}</span>
               </div>
             ))}
