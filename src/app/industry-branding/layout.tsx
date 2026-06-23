@@ -34,8 +34,8 @@ export default function IBLayout({ children }: { children: React.ReactNode }) {
       <main>{children}</main>
       <IBFooter />
       <div className="h-[60px] sm:hidden" aria-hidden />
-      <div className="fixed inset-x-0 bottom-0 z-50 flex gap-2 border-t border-white/10 bg-[#0e0e10] p-3 shadow-[0_-4px_20px_rgba(0,0,0,0.3)] sm:inset-x-auto sm:bottom-5 sm:right-5 sm:border-0 sm:bg-transparent sm:p-0 sm:shadow-none">
-        <a href={PHONE_TEL} className="flex-1 rounded-md border border-white/30 px-5 py-3.5 text-center text-sm font-bold uppercase tracking-wide text-white transition-colors hover:bg-white hover:text-[#0e0e10] sm:flex-none sm:px-7 sm:shadow-lg">
+      <div className="fixed inset-x-0 bottom-0 z-50 flex gap-2 border-t border-white/10 bg-[#0e0e10] p-3 shadow-[0_-4px_20px_rgba(0,0,0,0.3)] sm:inset-x-auto sm:bottom-5 sm:right-5 sm:rounded-xl sm:border sm:border-white/10 sm:p-2 sm:shadow-[0_10px_40px_rgba(0,0,0,0.45)]">
+        <a href={PHONE_TEL} className="flex-1 rounded-md border border-white/40 px-5 py-3.5 text-center text-sm font-bold uppercase tracking-wide text-white transition-colors hover:bg-white hover:text-[#0e0e10] sm:flex-none sm:px-7">
           Call now
         </a>
         <Link href="/industry-branding/contact#quote" className="flex-1 rounded-md bg-white px-5 py-3.5 text-center text-sm font-bold uppercase tracking-wide text-[#0e0e10] shadow-lg transition-transform hover:-translate-y-0.5 sm:flex-none sm:px-7">
