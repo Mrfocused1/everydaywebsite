@@ -2,14 +2,14 @@
 
 import { useState } from "react";
 
-const EMAIL = "info@bajanapple.com";
+const EMAIL = "info@industrybranding.co.uk";
 
 const field =
-  "w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-slate-800 placeholder-slate-400 outline-none transition-shadow focus:border-[#306fc7] focus:ring-2 focus:ring-[#306fc7]/25";
+  "w-full rounded-md border border-slate-300 bg-white px-4 py-3 text-slate-800 placeholder-slate-400 outline-none transition-shadow focus:border-[#0e0e10] focus:ring-2 focus:ring-[#0e0e10]/15";
 
 const PRODUCTS = [
-  "Flyers & Leaflets", "Business Cards", "Posters", "Booklets & Brochures",
-  "Roller Banners", "Stickers & Labels", "Business Stationery", "Magazines & Comics", "Something else",
+  "T-Shirts", "Hoodies & Sweats", "Polos & Workwear", "Hi-Vis & PPE",
+  "Caps & Headwear", "Bags & Totes", "Embroidery", "Promotional Merch", "Something else",
 ];
 
 export function EnquiryForm() {
@@ -39,15 +39,15 @@ export function EnquiryForm() {
       </div>
       <input name="email" type="email" placeholder="Email address" className={field} autoComplete="email" />
       <select name="product" defaultValue="" className={`${field} text-slate-500`} required>
-        <option value="" disabled>What do you need printed?</option>
+        <option value="" disabled>What do you need branded?</option>
         {PRODUCTS.map((s) => (
           <option key={s} value={s} className="text-slate-800">{s}</option>
         ))}
       </select>
-      <textarea name="message" required rows={4} placeholder="Quantity, size, finish, deadline…" className={field} />
+      <textarea name="message" required rows={4} placeholder="Garment, quantity, sizes, print or embroidery, deadline…" className={field} />
       <button
         type="submit"
-        className="group flex w-full items-center justify-center gap-2 rounded-xl bg-[#ca2d25] px-6 py-4 text-base font-semibold text-white transition-colors hover:bg-[#a8231c]"
+        className="group flex w-full items-center justify-center gap-2 rounded-md bg-[#0e0e10] px-6 py-4 text-base font-bold uppercase tracking-wide text-white transition-colors hover:bg-[#2a2a2e]"
       >
         Send quote request
         <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>
