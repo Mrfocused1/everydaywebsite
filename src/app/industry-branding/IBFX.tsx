@@ -13,6 +13,7 @@ export function IBFX() {
 
     const ctx = gsap.context(() => {
       if (reduce) {
+        document.querySelectorAll<HTMLVideoElement>("[data-hero-video]").forEach((v) => v.pause());
         gsap.set("[data-reveal], .hero-line-inner, .hero-fade, [data-clip]", { opacity: 1, y: 0, clearProps: "transform,clipPath" });
         document.querySelectorAll<HTMLElement>("[data-count]").forEach((el) => {
           el.textContent = (el.dataset.count || "") + (el.dataset.suffix || "");

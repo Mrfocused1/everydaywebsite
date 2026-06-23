@@ -123,12 +123,19 @@ export function Label({ children }: { children: React.ReactNode }) {
   );
 }
 
-// ── Image-led page hero (full-bleed photo, warm scrim, rainbow bar, kinetic title) ──
-export function PageHero({ eyebrow, title, intro, img, imgAlt }: { eyebrow: string; title: string; intro: string; img: string; imgAlt: string }) {
+// ── Image-led page hero (full-bleed photo OR autoplay video, warm scrim, kinetic title) ──
+// Pass `video` (an mp4) for a muted-looping background clip; `img` is its poster + fallback.
+export function PageHero({ eyebrow, title, intro, img, imgAlt, video }: { eyebrow: string; title: string; intro: string; img: string; imgAlt: string; video?: string }) {
   return (
     <section className="relative isolate flex min-h-[58vh] items-end overflow-hidden md:min-h-[66vh]">
-      {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img src={img} alt={imgAlt} data-parallax className="absolute inset-0 -z-10 h-[112%] w-full object-cover" />
+      {video ? (
+        <video className="absolute inset-0 -z-10 h-[112%] w-full object-cover" autoPlay muted loop playsInline preload="metadata" poster={img} data-hero-video aria-label={imgAlt}>
+          <source src={video} type="video/mp4" />
+        </video>
+      ) : (
+        /* eslint-disable-next-line @next/next/no-img-element */
+        <img src={img} alt={imgAlt} data-parallax className="absolute inset-0 -z-10 h-[112%] w-full object-cover" />
+      )}
       <div className="absolute inset-0 -z-10 bg-gradient-to-t from-[#241b2b]/90 via-[#241b2b]/40 to-[#241b2b]/10" />
       <div className="absolute inset-0 -z-10 bg-gradient-to-r from-[#241b2b]/55 via-transparent to-transparent" />
       <AccentBar className="absolute inset-x-0 top-0 z-10" />

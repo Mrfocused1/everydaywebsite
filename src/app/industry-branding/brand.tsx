@@ -107,12 +107,20 @@ export function Label({ children, onDark = false }: { children: React.ReactNode;
   );
 }
 
-// ── Image-led page hero (full-bleed photo, dark scrim, no colour slab) ──
-export function PageHero({ eyebrow, title, intro, img, imgAlt }: { eyebrow: string; title: string; intro: string; img: string; imgAlt: string }) {
+// ── Image-led page hero (full-bleed photo OR autoplay video, dark scrim) ──
+// Pass `video` (an mp4) to use a muted-looping background clip; `img` becomes
+// its poster + fallback. Without `video` it's the same image hero as before.
+export function PageHero({ eyebrow, title, intro, img, imgAlt, video }: { eyebrow: string; title: string; intro: string; img: string; imgAlt: string; video?: string }) {
   return (
     <section className="relative isolate flex min-h-[20rem] items-end overflow-hidden md:min-h-[26rem]">
-      {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img src={img} alt={imgAlt} className="absolute inset-0 -z-10 h-full w-full object-cover" />
+      {video ? (
+        <video className="absolute inset-0 -z-10 h-full w-full object-cover" autoPlay muted loop playsInline preload="metadata" poster={img} data-hero-video aria-label={imgAlt}>
+          <source src={video} type="video/mp4" />
+        </video>
+      ) : (
+        /* eslint-disable-next-line @next/next/no-img-element */
+        <img src={img} alt={imgAlt} className="absolute inset-0 -z-10 h-full w-full object-cover" />
+      )}
       <div className="absolute inset-0 -z-10 bg-gradient-to-t from-[#14141a]/90 via-[#14141a]/35 to-[#14141a]/10" />
       <AccentBar className="absolute inset-x-0 top-0" />
       <div className="mx-auto w-full max-w-6xl px-5 pb-10 pt-28 text-white md:px-8 md:pb-14">
