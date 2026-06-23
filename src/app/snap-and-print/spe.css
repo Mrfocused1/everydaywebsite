@@ -1525,15 +1525,16 @@
   }
   .spe-root .hero::after { display: none; }
   .spe-root .hero-content {
-    padding: 124vw 0 34px;
+    padding: 116vw 0 26px;
     max-width: 100%;
   }
   /* Tighter headline + copy so the hero stays close to one screen tall */
-  .spe-root .hero h1 { font-size: 46px; margin-bottom: 8px; }
-  .spe-root .hero .script { font-size: 40px; margin-bottom: 16px; }
-  .spe-root .hero p { font-size: 16px; line-height: 1.4; margin-bottom: 18px; max-width: 330px; }
-  .spe-root .hero-buttons { gap: 12px; max-width: 300px; }
-  .spe-root .hero .btn { padding: 14px 20px; font-size: 14px; }
+  .spe-root .hero h1 { font-size: 42px; margin-bottom: 6px; }
+  .spe-root .hero .script { font-size: 36px; margin-bottom: 12px; }
+  .spe-root .hero p { font-size: 15px; line-height: 1.35; margin-bottom: 16px; max-width: 320px; }
+  /* Buttons side by side instead of stacked — saves a full row of height */
+  .spe-root .hero-buttons { flex-direction: row; gap: 10px; max-width: 360px; width: 100%; }
+  .spe-root .hero .btn { flex: 1; width: auto; padding: 13px 10px; font-size: 13px; }
 }
 
 /* Footer wordmark colour (beat the stale dark-footer rule) */
