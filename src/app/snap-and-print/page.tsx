@@ -72,6 +72,10 @@ export default function SnapAndPrint() {
 
   return (
     <div className="spe-root">
+      {/* No-JS: un-hide the elements the GSAP engine would otherwise reveal */}
+      <noscript>
+        <style>{`.spe-root .hero-content > *,.spe-root [data-reveal],.spe-root [data-stagger] > *{opacity:1!important;transform:none!important}`}</style>
+      </noscript>
       {/* HERO */}
       <header className="hero" id="home">
         <div className="spe-container">
@@ -229,6 +233,7 @@ export default function SnapAndPrint() {
             </div>
 
             <form className="contact-form" onSubmit={onSubmit}>
+              <div className="cf-head"><span className="cf-mark" aria-hidden /><span>Send your enquiry</span></div>
               <div className="cf-row">
                 <input name="name" required placeholder="Your name" autoComplete="name" />
                 <input name="email" type="email" required placeholder="Email address" autoComplete="email" />
@@ -247,7 +252,7 @@ export default function SnapAndPrint() {
               </div>
               <input name="date" type="date" aria-label="Event date" />
               <textarea name="message" required rows={4} placeholder="Tell us about your event — venue, rough numbers, timings and any branding you'd like on the prints…" />
-              <button type="submit" data-magnetic className="btn btn-primary cf-submit">Send Enquiry</button>
+              <button type="submit" data-magnetic className="btn btn-primary cf-submit">Send Enquiry <span className="cf-arrow"><Icon name="arrow" /></span></button>
               <p className="cf-note">{sent ? "Your email app should now be open — just press send." : "Opens your email app with the details ready to go."}</p>
             </form>
           </div>

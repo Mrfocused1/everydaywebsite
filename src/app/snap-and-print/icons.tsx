@@ -18,6 +18,7 @@ const ICONS: Record<string, ReactNode> = {
   mail: (<><rect x="2.5" y="5" width="19" height="14" rx="2" /><path d="M3 6.5 12 13l9-6.5" /></>),
   menu: (<path d="M3 6h18M3 12h18M3 18h18" />),
   close: (<path d="M6 6l12 12M18 6 6 18" />),
+  arrow: (<path d="M5 12h14M13 6l6 6-6 6" />),
 };
 
 export function Icon({ name }: { name: string }) {

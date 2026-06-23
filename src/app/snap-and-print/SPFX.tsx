@@ -24,17 +24,20 @@ export function SPFX() {
         return;
       }
 
+      // Reveal targets are pre-hidden in CSS (so an image is never shown for a
+      // frame before it animates). We animate TO the visible state, never `from`.
+
       // Hero entrance on load
-      gsap.from(".hero-content > *", { y: 26, opacity: 0, duration: 0.9, stagger: 0.1, ease: "power3.out", delay: 0.12 });
+      gsap.to(".hero-content > *", { opacity: 1, y: 0, duration: 0.9, stagger: 0.1, ease: "power3.out", delay: 0.12 });
 
       // Scroll reveals
       gsap.utils.toArray<HTMLElement>("[data-reveal]").forEach((node) => {
-        gsap.from(node, { opacity: 0, y: 32, duration: 0.9, ease: "power3.out", scrollTrigger: { trigger: node, start: "top 88%", once: true } });
+        gsap.to(node, { opacity: 1, y: 0, duration: 0.9, ease: "power3.out", scrollTrigger: { trigger: node, start: "top 88%", once: true } });
       });
 
       // Staggered groups
       gsap.utils.toArray<HTMLElement>("[data-stagger]").forEach((grp) => {
-        gsap.from(grp.children, { opacity: 0, y: 26, duration: 0.7, stagger: 0.09, ease: "power3.out", scrollTrigger: { trigger: grp, start: "top 85%", once: true } });
+        gsap.to(grp.children, { opacity: 1, y: 0, duration: 0.7, stagger: 0.09, ease: "power3.out", scrollTrigger: { trigger: grp, start: "top 85%", once: true } });
       });
 
       // Image clip-reveals
