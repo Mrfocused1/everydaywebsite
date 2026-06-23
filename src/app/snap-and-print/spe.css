@@ -1516,16 +1516,18 @@
     min-height: auto;
     background-color: var(--black);
     background-image:
-      linear-gradient(180deg, rgba(0, 0, 0, 0.42) 0%, rgba(0, 0, 0, 0) 14%, rgba(0, 0, 0, 0) 52%, rgba(0, 0, 0, 0.62) 64%, rgba(5, 5, 5, 0.95) 74%, #050505 82%),
+      linear-gradient(180deg, rgba(0, 0, 0, 0.45) 0%, rgba(0, 0, 0, 0) 16%, rgba(0, 0, 0, 0) 42%, rgba(0, 0, 0, 0.5) 63%, rgba(5, 5, 5, 0.92) 73%, #050505 82%),
       url("/marketing/sp/sp-hero-mobile.jpg");
     background-repeat: no-repeat, no-repeat;
-    background-position: center top, center top;
-    background-size: 100% 188vw, 100% 188vw;
+    /* image shifted up to crop the empty sky so her head sits just under the nav;
+       gradient stretches the full hero so the bottom still fades to black */
+    background-position: center top, center -22vw;
+    background-size: 100% 100%, 100% 188vw;
     color: var(--white);
   }
   .spe-root .hero::after { display: none; }
   .spe-root .hero-content {
-    padding: 116vw 0 26px;
+    padding: 108vw 0 26px;
     max-width: 100%;
   }
   /* Tighter headline + copy so the hero stays close to one screen tall */
