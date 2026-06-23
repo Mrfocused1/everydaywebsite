@@ -1521,13 +1521,13 @@
     background-repeat: no-repeat, no-repeat;
     /* image shifted up to crop the empty sky so her head sits just under the nav;
        gradient stretches the full hero so the bottom still fades to black */
-    background-position: center top, center -22vw;
+    background-position: center top, center -34vw;
     background-size: 100% 100%, 100% 188vw;
     color: var(--white);
   }
   .spe-root .hero::after { display: none; }
   .spe-root .hero-content {
-    padding: 108vw 0 26px;
+    padding: 96vw 0 26px;
     max-width: 100%;
   }
   /* Tighter headline + copy so the hero stays close to one screen tall */
