@@ -1254,8 +1254,11 @@
     padding: 0;
   }
   .spe-root .footer-grid {
-    grid-template-columns: 1fr;
-    gap: 30px;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px 24px;
+  }
+  .spe-root .footer-brand {
+    grid-column: 1 / -1;
   }
 }
 
@@ -1510,10 +1513,10 @@
      headline/buttons sit just below it over a gradient that fades the image into
      black — the nav overlays the top of the photo. Matches the reference. */
   .spe-root .hero {
-    min-height: 100svh;
+    min-height: auto;
     background-color: var(--black);
     background-image:
-      linear-gradient(180deg, rgba(0, 0, 0, 0.42) 0%, rgba(0, 0, 0, 0) 16%, rgba(0, 0, 0, 0) 52%, rgba(0, 0, 0, 0.72) 80%, #050505 100%),
+      linear-gradient(180deg, rgba(0, 0, 0, 0.42) 0%, rgba(0, 0, 0, 0) 14%, rgba(0, 0, 0, 0) 52%, rgba(0, 0, 0, 0.62) 64%, rgba(5, 5, 5, 0.95) 74%, #050505 82%),
       url("/marketing/sp/sp-hero-mobile.jpg");
     background-repeat: no-repeat, no-repeat;
     background-position: center top, center top;
@@ -1522,9 +1525,15 @@
   }
   .spe-root .hero::after { display: none; }
   .spe-root .hero-content {
-    padding: 138vw 0 42px;
+    padding: 124vw 0 34px;
     max-width: 100%;
   }
+  /* Tighter headline + copy so the hero stays close to one screen tall */
+  .spe-root .hero h1 { font-size: 46px; margin-bottom: 8px; }
+  .spe-root .hero .script { font-size: 40px; margin-bottom: 16px; }
+  .spe-root .hero p { font-size: 16px; line-height: 1.4; margin-bottom: 18px; max-width: 330px; }
+  .spe-root .hero-buttons { gap: 12px; max-width: 300px; }
+  .spe-root .hero .btn { padding: 14px 20px; font-size: 14px; }
 }
 
 /* Footer wordmark colour (beat the stale dark-footer rule) */
