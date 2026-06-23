@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { IMG, CLIENTS, fd, Label, Arrow, PageHero, btnRed, btnGhostLight, PHONE_TEL, PHONE_DISPLAY } from "../brand";
+import { IMG, fd, Label, Arrow, PageHero, btnRed, btnGhostLight, PHONE_TEL, PHONE_DISPLAY } from "../brand";
 import { IBFX } from "../IBFX";
 
 /* eslint-disable @next/next/no-img-element */
@@ -50,18 +50,6 @@ export default function IBWork() {
                 <img src={w.src} alt={w.alt} loading="lazy" className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" />
                 <div className="pointer-events-none absolute inset-0 bg-black/0 transition-colors duration-300 group-hover:bg-black/25" />
               </figure>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Clients */}
-      <section className="bg-[#0e0e10] text-white">
-        <div className="mx-auto max-w-6xl px-5 py-16 text-center md:px-8 md:py-20" data-reveal>
-          <p className="text-sm font-bold uppercase tracking-[0.25em] text-white/45">Brands we&apos;ve printed for</p>
-          <div className="mt-8 flex flex-wrap items-center justify-center gap-x-10 gap-y-4">
-            {CLIENTS.map((c) => (
-              <span key={c} className={`${fd} text-2xl uppercase tracking-tight md:text-4xl`}>{c}</span>
             ))}
           </div>
         </div>

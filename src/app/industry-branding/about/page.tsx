@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { IMG, METHODS, CLIENTS, fd, Label, Arrow, PageHero, btnBlue } from "../brand";
+import { IMG, METHODS, CLIENTS, COLORS, AccentBar, fd, Label, Arrow, PageHero, btnBlue } from "../brand";
 import { IBFX } from "../IBFX";
 
 /* eslint-disable @next/next/no-img-element */
@@ -58,21 +58,22 @@ export default function IBAbout() {
       </section>
 
       {/* Stats */}
-      <section className="bg-[#0e0e10] text-white">
-        <div className="mx-auto grid max-w-6xl grid-cols-2 gap-px bg-white/10 md:grid-cols-4" data-stagger>
+      <section className="bg-white">
+        <AccentBar />
+        <div className="mx-auto grid max-w-6xl grid-cols-2 gap-px border-x border-[#0e0e10]/10 bg-[#0e0e10]/10 md:grid-cols-4" data-stagger>
           {[
             { v: "1", l: "Order from one", count: true },
             { v: "24–48h", l: "Fast turnaround", count: false },
             { v: "100", s: "%", l: "Custom printed", count: true },
             { v: "6", s: "+", l: "Print methods", count: true },
-          ].map((st) => (
-            <div key={st.l} className="bg-[#0e0e10] p-7 text-center md:p-10">
+          ].map((st, i) => (
+            <div key={st.l} className="bg-white p-7 text-center md:p-10">
               {st.count ? (
-                <p className={`${fd} text-4xl tracking-tight md:text-6xl`} data-count={st.v} data-suffix={st.s || ""}>0{st.s || ""}</p>
+                <p className={`${fd} text-4xl tracking-tight md:text-6xl`} style={{ color: COLORS[i % COLORS.length] }} data-count={st.v} data-suffix={st.s || ""}>0{st.s || ""}</p>
               ) : (
-                <p className={`${fd} text-4xl tracking-tight md:text-6xl`}>{st.v}</p>
+                <p className={`${fd} text-4xl tracking-tight md:text-6xl`} style={{ color: COLORS[i % COLORS.length] }}>{st.v}</p>
               )}
-              <p className="mt-2 text-xs font-semibold uppercase tracking-wider text-white/55">{st.l}</p>
+              <p className="mt-2 text-xs font-semibold uppercase tracking-wider text-slate-500">{st.l}</p>
             </div>
           ))}
         </div>
@@ -87,9 +88,9 @@ export default function IBAbout() {
             <p className="mt-4 text-sm font-semibold text-slate-400 sm:hidden">Swipe →</p>
           </div>
           <div className="-mx-5 mt-10 flex snap-x snap-mandatory gap-5 overflow-x-auto px-5 pb-2 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden sm:mx-0 sm:mt-14 sm:grid sm:grid-cols-2 sm:gap-6 sm:overflow-visible sm:px-0 lg:grid-cols-4" data-stagger>
-            {VALUES.map((v) => (
+            {VALUES.map((v, i) => (
               <div key={v.t} className="w-[72%] shrink-0 snap-start overflow-hidden border border-[#0e0e10]/12 sm:w-auto">
-                <span className="block h-1.5 w-full bg-[#0e0e10]" aria-hidden />
+                <span className="block h-1.5 w-full" style={{ background: COLORS[i % COLORS.length] }} aria-hidden />
                 <div className="p-7">
                   <h3 className={`${fd} text-xl uppercase tracking-tight text-[#0e0e10]`}>{v.t}</h3>
                   <p className="mt-2 font-light text-slate-600">{v.b}</p>

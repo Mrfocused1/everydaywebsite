@@ -68,12 +68,12 @@ export const MARQUEE = [
   "T-Shirts", "Hoodies", "Polos", "Workwear", "Hi-Vis", "Caps", "Tote Bags", "Embroidery", "Screen Print", "DTG", "Vinyl", "Merch",
 ];
 
-// ── Barcode strip — monochrome brand motif (replaces the print CMYK bar) ──
-const BARS = [2, 1, 1, 3, 1, 2, 1, 1, 2, 1, 3, 1, 1, 2, 1, 1, 3, 2, 1, 1, 2, 1, 1, 3, 1, 2, 1, 1, 2, 1, 1, 3, 2, 1, 1, 2, 1, 3, 1, 1];
-export function AccentBar({ onDark = false, className = "" }: { onDark?: boolean; className?: string }) {
+// ── Vibrant ink/thread swatch palette (apparel colours) — the brand's colour pop ──
+export const COLORS = ["#ff3b30", "#2b6bff", "#ffc31f", "#14b86b", "#ff7a1a", "#b14dff", "#ff3d8b", "#10bcd4"];
+export function AccentBar({ className = "" }: { onDark?: boolean; className?: string }) {
   return (
-    <span className={`flex h-2 w-full items-stretch gap-[3px] overflow-hidden ${className}`} aria-hidden>
-      {BARS.map((w, i) => (<span key={i} className={onDark ? "bg-white/90" : "bg-[#0e0e10]"} style={{ flex: `${w} 0 auto` }} />))}
+    <span className={`flex h-2 w-full items-stretch overflow-hidden ${className}`} aria-hidden>
+      {Array.from({ length: 16 }).map((_, i) => (<span key={i} className="h-full flex-1" style={{ background: COLORS[i % COLORS.length] }} />))}
     </span>
   );
 }
@@ -83,13 +83,13 @@ export const CUT_TR = "polygon(0 0, calc(100% - 2.5rem) 0, 100% 2.5rem, 100% 100
 
 // ── Buttons (bold, uppercase, monochrome) ──
 export const btnRed =
-  "group inline-flex items-center justify-center gap-2 rounded-md bg-[#0e0e10] px-7 py-4 text-sm font-bold uppercase tracking-wide text-white transition-colors hover:bg-[#2a2a2e]";
+  "group inline-flex items-center justify-center gap-2 rounded-md bg-[#ff3b30] px-7 py-4 text-sm font-bold uppercase tracking-wide text-white transition-colors hover:bg-[#e02d23]";
 export const btnBlue =
   "group inline-flex items-center justify-center gap-2 rounded-md bg-white px-7 py-4 text-sm font-bold uppercase tracking-wide text-[#0e0e10] transition-colors hover:bg-white/85";
 export const btnGhostDark =
-  "group inline-flex items-center justify-center gap-2 rounded-md border border-white/40 px-7 py-4 text-sm font-bold uppercase tracking-wide text-white transition-colors hover:bg-white hover:text-[#0e0e10]";
+  "group inline-flex items-center justify-center gap-2 rounded-md border border-white/40 px-7 py-4 text-sm font-bold uppercase tracking-wide text-white transition-colors hover:border-white hover:bg-white hover:text-[#0e0e10]";
 export const btnGhostLight =
-  "group inline-flex items-center justify-center gap-2 rounded-md border border-[#0e0e10]/25 px-7 py-4 text-sm font-bold uppercase tracking-wide text-[#0e0e10] transition-colors hover:bg-[#0e0e10] hover:text-white";
+  "group inline-flex items-center justify-center gap-2 rounded-md border border-[#0e0e10]/25 px-7 py-4 text-sm font-bold uppercase tracking-wide text-[#0e0e10] transition-colors hover:border-[#ff3b30] hover:bg-[#ff3b30] hover:text-white";
 
 export const Arrow = () => (
   <span aria-hidden className="transition-transform duration-300 group-hover:translate-x-1">→</span>
@@ -101,8 +101,8 @@ export const fd = "font-[family-name:var(--font-display)]";
 // ── Label: square marker + uppercase (no pill badge) ──
 export function Label({ children, onDark = false }: { children: React.ReactNode; onDark?: boolean }) {
   return (
-    <p className={`flex items-center gap-2.5 text-xs font-bold uppercase tracking-[0.24em] ${onDark ? "text-white/70" : "text-[#0e0e10]"}`}>
-      <span className={`h-2 w-2 ${onDark ? "bg-white" : "bg-[#0e0e10]"}`} aria-hidden /> {children}
+    <p className={`flex items-center gap-2.5 text-xs font-bold uppercase tracking-[0.24em] ${onDark ? "text-white/75" : "text-[#0e0e10]"}`}>
+      <span className="h-2 w-2 bg-[#ff3b30]" aria-hidden /> {children}
     </p>
   );
 }
@@ -113,8 +113,8 @@ export function PageHero({ eyebrow, title, intro, img, imgAlt }: { eyebrow: stri
     <section className="relative isolate flex min-h-[20rem] items-end overflow-hidden md:min-h-[26rem]">
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img src={img} alt={imgAlt} className="absolute inset-0 -z-10 h-full w-full object-cover" />
-      <div className="absolute inset-0 -z-10 bg-gradient-to-t from-black/92 via-black/55 to-black/30" />
-      <AccentBar onDark className="absolute inset-x-0 top-0" />
+      <div className="absolute inset-0 -z-10 bg-gradient-to-t from-[#14141a]/90 via-[#14141a]/35 to-[#14141a]/10" />
+      <AccentBar className="absolute inset-x-0 top-0" />
       <div className="mx-auto w-full max-w-6xl px-5 pb-10 pt-28 text-white md:px-8 md:pb-14">
         <Label onDark>{eyebrow}</Label>
         <h1 className={`hero-h mt-5 ${fd} text-[2.9rem] uppercase leading-[0.92] tracking-tight md:text-[4.6rem]`}>

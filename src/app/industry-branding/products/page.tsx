@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { IMG, PRODUCTS, METHODS, fd, Label, Arrow, PageHero, btnBlue } from "../brand";
+import { IMG, PRODUCTS, METHODS, COLORS, fd, Label, Arrow, PageHero, btnBlue } from "../brand";
 import { IBFX } from "../IBFX";
 
 /* eslint-disable @next/next/no-img-element */
@@ -36,11 +36,11 @@ export default function IBProducts() {
             <p className="mt-4 text-sm font-semibold text-slate-400 sm:hidden">Swipe →</p>
           </div>
           <div className="-mx-5 mt-10 flex snap-x snap-mandatory gap-5 overflow-x-auto px-5 pb-2 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden sm:mx-0 sm:mt-14 sm:grid sm:grid-cols-2 sm:gap-6 sm:overflow-visible sm:px-0 lg:grid-cols-3" data-stagger>
-            {GARMENTS.map((p) => (
+            {GARMENTS.map((p, i) => (
               <article key={p.t} className="group flex w-[80%] shrink-0 snap-start flex-col overflow-hidden bg-white ring-1 ring-[#0e0e10]/12 transition-all duration-300 hover:-translate-y-1.5 hover:shadow-[0_22px_45px_-22px_rgba(0,0,0,0.45)] sm:w-auto">
                 <div className="relative overflow-hidden">
                   <img src={p.img} alt={p.t} loading="lazy" className="aspect-[16/10] w-full object-cover transition-transform duration-500 group-hover:scale-105" />
-                  <span className="absolute left-0 top-0 h-1.5 w-full bg-[#0e0e10]" aria-hidden />
+                  <span className="absolute left-0 top-0 h-1.5 w-full" style={{ background: COLORS[i % COLORS.length] }} aria-hidden />
                 </div>
                 <div className="flex flex-1 flex-col p-6">
                   <h3 className={`${fd} text-xl uppercase tracking-tight text-[#0e0e10]`}>{p.t}</h3>
@@ -81,7 +81,7 @@ export default function IBProducts() {
       {/* No-minimum band */}
       <section className="bg-white">
         <div className="mx-auto max-w-6xl px-5 py-16 md:px-8 md:py-24">
-          <div className="relative grid items-center gap-8 overflow-hidden bg-[#0e0e10] p-8 text-white md:grid-cols-[auto_1fr] md:p-12" data-reveal>
+          <div className="relative grid items-center gap-8 overflow-hidden bg-[#ff3b30] p-8 text-white md:grid-cols-[auto_1fr] md:p-12" data-reveal>
             <p className={`${fd} text-6xl uppercase leading-none md:text-8xl`}>No<span className="block text-xl md:text-2xl">minimum order</span></p>
             <div>
               <h2 className={`${fd} text-3xl uppercase tracking-tight md:text-4xl`}>One tee or ten thousand</h2>

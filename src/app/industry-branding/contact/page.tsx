@@ -79,7 +79,7 @@ export default function IBContact() {
               <iframe
                 title="Industry Branding — Milton Keynes"
                 src={MAP_SRC}
-                className="h-56 w-full grayscale"
+                className="h-56 w-full"
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
               />
