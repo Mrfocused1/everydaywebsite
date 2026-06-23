@@ -5,7 +5,7 @@ import { useState } from "react";
 const EMAIL = "lawrence@acumenelectrical.co.uk";
 
 const field =
-  "w-full rounded-lg border border-white/15 bg-white/[0.06] px-4 py-3 text-white placeholder-white/40 outline-none transition-colors focus:border-[#ddb71a] focus:bg-white/10";
+  "w-full border border-white/15 bg-white/[0.04] px-4 py-3.5 text-white placeholder-white/35 outline-none transition-colors focus:border-[#f2c511] focus:bg-white/[0.07]";
 
 const SERVICES = [
   "Domestic electrics",
@@ -33,19 +33,15 @@ export function EnquiryForm() {
 
     const subject = `Enquiry from ${name || "website"}${service ? ` — ${service}` : ""}`;
     const body =
-      `Name: ${name}\n` +
-      `Phone: ${phone}\n` +
-      `Email: ${email}\n` +
-      `Service: ${service}\n\n` +
-      `${message}\n`;
+      `Name: ${name}\nPhone: ${phone}\nEmail: ${email}\nService: ${service}\n\n${message}\n`;
 
     window.location.href = `mailto:${EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
     setSent(true);
   }
 
   return (
-    <form onSubmit={onSubmit} className="space-y-4">
-      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+    <form onSubmit={onSubmit} className="space-y-3.5">
+      <div className="grid grid-cols-1 gap-3.5 sm:grid-cols-2">
         <input name="name" required placeholder="Your name" className={field} autoComplete="name" />
         <input name="phone" required placeholder="Phone number" className={field} inputMode="tel" autoComplete="tel" />
       </div>
@@ -55,7 +51,7 @@ export function EnquiryForm() {
           What do you need?
         </option>
         {SERVICES.map((s) => (
-          <option key={s} value={s} className="text-[#0c2742]">
+          <option key={s} value={s} className="text-[#0b0b0d]">
             {s}
           </option>
         ))}
@@ -63,14 +59,14 @@ export function EnquiryForm() {
       <textarea name="message" required rows={4} placeholder="Tell us about the job…" className={field} />
       <button
         type="submit"
-        className="w-full rounded-lg bg-[#ddb71a] px-6 py-4 text-lg font-bold text-[#0c2742] transition-colors hover:bg-[#e9c531]"
+        data-cursor
+        className="magnetic group flex w-full items-center justify-center gap-3 bg-[#f2c511] px-6 py-4 text-base font-bold uppercase tracking-wider text-[#0b0b0d] transition-colors hover:bg-white"
       >
         Send enquiry
+        <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>
       </button>
       <p className="text-center text-xs text-white/40">
-        {sent
-          ? "Your email app should now be open — just press send."
-          : "Sending opens your email app with the details ready to go."}
+        {sent ? "Your email app should now be open — just press send." : "Sending opens your email app, details ready to go."}
       </p>
     </form>
   );
