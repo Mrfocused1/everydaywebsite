@@ -42,28 +42,29 @@ export const IMG = {
   industrial: sh("03"), // interior / commercial works
 };
 
-// Full gallery (real job photos), ordered for visual variety.
-export const GALLERY: { src: string; alt: string }[] = [
+// Full gallery (real job photos). `big` tiles span 2×2 for editorial rhythm;
+// landscape shots are used as the feature tiles so they crop cleanly.
+export const GALLERY: { src: string; alt: string; big?: boolean }[] = [
+  { src: sh("16"), alt: "Garden room feature lighting", big: true },
   { src: sh("19"), alt: "New consumer unit installation, Manchester" },
   { src: sh("05"), alt: "Modern kitchen lighting installation" },
-  { src: sh("08"), alt: "Interior feature & mood lighting" },
-  { src: sh("11"), alt: "Driveway lighting and power" },
-  { src: sh("18"), alt: "Fuse board upgrade" },
-  { src: sh("07"), alt: "Kitchen renovation electrics" },
-  { src: sh("16"), alt: "Garden room lighting" },
   { src: sh("06"), alt: "Exterior wall lighting" },
+  { src: sh("18"), alt: "Fuse board upgrade" },
+  { src: sh("08"), alt: "Interior feature & mood lighting", big: true },
+  { src: sh("11"), alt: "Driveway lighting and power" },
   { src: sh("01"), alt: "Consumer unit and sockets" },
-  { src: sh("03"), alt: "Interior renovation works" },
-  { src: sh("12"), alt: "Driveway lighting at dusk" },
+  { src: sh("07"), alt: "Kitchen renovation electrics" },
+  { src: sh("14"), alt: "Garden wall lighting" },
+  { src: sh("12"), alt: "Driveway lighting at dusk", big: true },
   { src: sh("17"), alt: "Fuse board / consumer unit" },
   { src: sh("09"), alt: "Outdoor power and lighting" },
-  { src: sh("14"), alt: "Garden wall lighting" },
   { src: sh("20"), alt: "Electrical testing and inspection" },
+  { src: sh("03"), alt: "Interior renovation works" },
+  { src: sh("22"), alt: "Garden lawn lighting project", big: true },
   { src: sh("04"), alt: "Kitchen appliance installation" },
   { src: sh("13"), alt: "Garden lighting and power" },
   { src: sh("02"), alt: "Exterior installation" },
   { src: sh("21"), alt: "Fuse board" },
-  { src: sh("22"), alt: "Garden lighting project" },
 ];
 
 // ── Accreditations ──

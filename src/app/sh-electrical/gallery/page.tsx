@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { GALLERY, IMG, CUT_BL, CUT_TR, GRID_BG, Label, Arrow, PageHero, btnYellow, btnGhostLight, PHONE_1_TEL, PHONE_1_DISPLAY } from "../brand";
+import { GALLERY, IMG, GRID_BG, Label, Arrow, PageHero, btnYellow, btnGhostLight, PHONE_1_TEL, PHONE_1_DISPLAY } from "../brand";
 import { SHFX } from "../SHFX";
 
 /* eslint-disable @next/next/no-img-element */
@@ -30,19 +30,22 @@ export default function SHGallery() {
             <p className="mt-5 text-lg font-light text-slate-600">Every photo here is a job we&apos;ve carried out — done safely, certified and left tidy.</p>
           </div>
 
-          <div className="mt-10 gap-4 [column-fill:_balance] columns-2 md:mt-14 md:columns-3 lg:columns-4">
-            {GALLERY.map((g, i) => (
+          <div
+            data-reveal
+            className="mt-10 grid grid-cols-2 gap-3 [grid-auto-flow:dense] [grid-auto-rows:46vw] sm:mt-14 sm:grid-cols-3 sm:gap-4 sm:[grid-auto-rows:215px] lg:grid-cols-4 lg:[grid-auto-rows:235px]"
+          >
+            {GALLERY.map((g) => (
               <figure
                 key={g.src}
-                className="group mb-4 break-inside-avoid overflow-hidden border border-[#16225e]/10"
-                style={i % 5 === 0 ? { clipPath: CUT_BL } : i % 7 === 3 ? { clipPath: CUT_TR } : undefined}
+                className={`group relative overflow-hidden border border-[#16225e]/10 ${g.big ? "sm:col-span-2 sm:row-span-2" : ""}`}
               >
                 <img
                   src={g.src}
                   alt={g.alt}
                   loading="lazy"
-                  className="w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                  className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-[1.04]"
                 />
+                <div className="pointer-events-none absolute inset-0 bg-[#0c1230]/0 transition-colors duration-300 group-hover:bg-[#0c1230]/15" />
               </figure>
             ))}
           </div>
