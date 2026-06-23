@@ -5,7 +5,7 @@ import { useState } from "react";
 const EMAIL = "lawrence@acumenelectrical.co.uk";
 
 const field =
-  "w-full border border-white/15 bg-white/[0.04] px-4 py-3.5 text-white placeholder-white/35 outline-none transition-colors focus:border-[#f2c511] focus:bg-white/[0.07]";
+  "w-full rounded-lg border border-slate-200 bg-white px-4 py-3 text-slate-800 placeholder-slate-400 outline-none transition-shadow focus:border-[#0c4e7d] focus:ring-2 focus:ring-[#0c4e7d]/15";
 
 const SERVICES = [
   "Domestic electrics",
@@ -32,8 +32,7 @@ export function EnquiryForm() {
     const message = String(f.get("message") || "");
 
     const subject = `Enquiry from ${name || "website"}${service ? ` — ${service}` : ""}`;
-    const body =
-      `Name: ${name}\nPhone: ${phone}\nEmail: ${email}\nService: ${service}\n\n${message}\n`;
+    const body = `Name: ${name}\nPhone: ${phone}\nEmail: ${email}\nService: ${service}\n\n${message}\n`;
 
     window.location.href = `mailto:${EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
     setSent(true);
@@ -46,12 +45,12 @@ export function EnquiryForm() {
         <input name="phone" required placeholder="Phone number" className={field} inputMode="tel" autoComplete="tel" />
       </div>
       <input name="email" type="email" placeholder="Email address" className={field} autoComplete="email" />
-      <select name="service" defaultValue="" className={field} required>
+      <select name="service" defaultValue="" className={`${field} text-slate-500`} required>
         <option value="" disabled>
           What do you need?
         </option>
         {SERVICES.map((s) => (
-          <option key={s} value={s} className="text-[#0b0b0d]">
+          <option key={s} value={s} className="text-slate-800">
             {s}
           </option>
         ))}
@@ -59,14 +58,13 @@ export function EnquiryForm() {
       <textarea name="message" required rows={4} placeholder="Tell us about the job…" className={field} />
       <button
         type="submit"
-        data-cursor
-        className="magnetic group flex w-full items-center justify-center gap-3 bg-[#f2c511] px-6 py-4 text-base font-bold uppercase tracking-wider text-[#0b0b0d] transition-colors hover:bg-white"
+        className="group flex w-full items-center justify-center gap-2 rounded-lg bg-[#0c4e7d] px-6 py-3.5 text-base font-semibold text-white transition-colors hover:bg-[#0a3f66]"
       >
         Send enquiry
         <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>
       </button>
-      <p className="text-center text-xs text-white/40">
-        {sent ? "Your email app should now be open — just press send." : "Sending opens your email app, details ready to go."}
+      <p className="text-center text-xs text-slate-400">
+        {sent ? "Your email app should now be open — just press send." : "Sending opens your email app with the details ready to go."}
       </p>
     </form>
   );
