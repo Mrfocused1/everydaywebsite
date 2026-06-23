@@ -259,7 +259,7 @@ export default function AcumenPage() {
           </div>
           <div className="-mx-5 mt-8 flex snap-x snap-mandatory gap-5 overflow-x-auto px-5 pb-2 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden sm:mx-0 sm:mt-12 sm:grid sm:grid-cols-2 sm:gap-6 sm:overflow-visible sm:px-0 lg:grid-cols-3" data-stagger>
             {SERVICES.map((s) => (
-              <article key={s.title} className="group w-[80%] shrink-0 snap-start overflow-hidden rounded-2xl border border-slate-100 bg-white shadow-sm transition-shadow hover:shadow-lg sm:w-auto sm:shrink">
+              <article key={s.title} className="group w-[80%] shrink-0 snap-start overflow-hidden rounded-2xl border border-[#0c4e7d]/30 bg-white shadow-sm transition-all hover:border-[#0c4e7d]/70 hover:shadow-lg sm:w-auto sm:shrink">
                 <div className="aspect-[16/10] overflow-hidden">
                   <img src={s.img} alt={s.title} loading="lazy" className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" />
                 </div>
