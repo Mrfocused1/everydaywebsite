@@ -90,11 +90,10 @@ export default function BurgessAbout() {
           <div className="max-w-2xl" data-reveal>
             <Label>What we stand for</Label>
             <h2 className="mt-5 text-3xl font-bold uppercase leading-[0.98] tracking-tight md:text-5xl">How we work.</h2>
-            <p className="mt-4 text-sm font-semibold text-slate-400 sm:hidden">Swipe →</p>
           </div>
-          <div className="-mx-5 mt-10 flex snap-x snap-mandatory gap-4 overflow-x-auto px-5 pb-2 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden sm:mx-0 sm:mt-14 sm:grid sm:grid-cols-2 sm:gap-6 sm:overflow-visible sm:px-0 lg:grid-cols-4" data-stagger>
+          <div className="mt-10 grid grid-cols-1 gap-6 sm:mt-14 sm:grid-cols-2 lg:grid-cols-4" data-stagger>
             {VALUES.map((v) => (
-              <div key={v.t} className="w-[78%] shrink-0 snap-start border-t-2 border-[#ffd400] bg-white pt-5 sm:w-auto">
+              <div key={v.t} className="border-t-2 border-[#ffd400] bg-white pt-5">
                 <h3 className="text-lg font-bold uppercase tracking-tight text-[#16225e]">{v.t}</h3>
                 <p className="mt-2 font-light text-slate-600">{v.b}</p>
               </div>

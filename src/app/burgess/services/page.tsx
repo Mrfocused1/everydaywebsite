@@ -56,11 +56,10 @@ export default function BurgessServices() {
           <div className="max-w-2xl" data-reveal>
             <Label>What we offer</Label>
             <h2 className="mt-5 text-3xl font-bold uppercase leading-[0.98] tracking-tight md:text-5xl">From a socket to a substation.</h2>
-            <p className="mt-4 text-sm font-semibold text-slate-400 sm:hidden">Swipe →</p>
           </div>
-          <div className="-mx-5 mt-10 flex snap-x snap-mandatory gap-5 overflow-x-auto px-5 pb-2 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden sm:mx-0 sm:mt-14 sm:grid sm:grid-cols-2 sm:gap-7 sm:overflow-visible sm:px-0 lg:grid-cols-3" data-stagger>
+          <div className="mt-10 grid grid-cols-1 gap-6 sm:mt-14 sm:grid-cols-2 sm:gap-7 lg:grid-cols-3" data-stagger>
             {SERVICES.map((s, i) => (
-              <article key={s.t} className="flex w-[80%] shrink-0 snap-start flex-col border border-[#16225e]/15 bg-white sm:w-auto">
+              <article key={s.t} className="flex flex-col border border-[#16225e]/15 bg-white">
                 <div className="relative overflow-hidden" style={s.cut ? { clipPath: s.cut } : undefined}>
                   <img src={s.img} alt={s.t} loading="lazy" className="aspect-[4/3] w-full object-cover" />
                   <span className="absolute left-0 top-0 bg-[#ffd400] px-3 py-1.5 text-sm font-bold text-[#16225e]">0{i + 1}</span>
@@ -108,11 +107,10 @@ export default function BurgessServices() {
           <div className="mt-14 max-w-2xl" data-reveal>
             <Label>How it works</Label>
             <h2 className="mt-5 text-3xl font-bold uppercase leading-[0.98] tracking-tight md:text-4xl">Four simple steps.</h2>
-            <p className="mt-4 text-sm font-semibold text-slate-400 sm:hidden">Swipe →</p>
           </div>
-          <div className="-mx-5 mt-10 flex snap-x snap-mandatory gap-4 overflow-x-auto px-5 pb-2 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden sm:mx-0 sm:grid sm:grid-cols-2 sm:gap-6 sm:overflow-visible sm:px-0 lg:grid-cols-4" data-stagger>
+          <div className="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4" data-stagger>
             {PROCESS.map((p) => (
-              <div key={p.n} className="w-[70%] shrink-0 snap-start border-t-2 border-[#ffd400] pt-5 sm:w-auto">
+              <div key={p.n} className="border-t-2 border-[#ffd400] pt-5">
                 <p className="text-4xl font-bold text-[#16225e]">{p.n}</p>
                 <h3 className="mt-3 text-lg font-bold uppercase tracking-tight text-[#16225e]">{p.t}</h3>
                 <p className="mt-2 text-sm font-light text-slate-600">{p.b}</p>
