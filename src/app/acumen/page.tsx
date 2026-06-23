@@ -163,9 +163,9 @@ export default function AcumenPage() {
       <section id="top" className="bg-gradient-to-b from-[#f6f8fb] to-white">
         <div className="mx-auto grid max-w-6xl items-center gap-12 px-5 py-16 md:px-8 md:py-24 lg:grid-cols-[1.05fr_0.95fr]">
           <div>
-            <span className="inline-flex items-center gap-2 rounded-full bg-[#0c4e7d]/8 px-4 py-1.5 text-xs font-semibold uppercase tracking-wide text-[#0c4e7d]">
-              Broadstairs &amp; East Kent electricians
-            </span>
+            <p className="flex items-center gap-3 text-sm font-bold uppercase tracking-[0.2em] text-[#0c4e7d]">
+              <span className="h-px w-8 bg-[#d9a90f]" /> Broadstairs &amp; East Kent electricians
+            </p>
             <h1 className="mt-6 text-4xl font-extrabold leading-[1.08] tracking-tight md:text-[3.4rem]">
               Trusted, fully-qualified electricians for your <span className="text-[#0c4e7d]">home or business.</span>
             </h1>
@@ -186,9 +186,15 @@ export default function AcumenPage() {
             </div>
           </div>
           <div className="relative" data-reveal>
-            <div className="relative overflow-hidden rounded-2xl shadow-xl">
-              <img src={IMG.hero} alt="Acumen electrician at work" data-parallax className="h-[26rem] w-full scale-110 object-cover md:h-[32rem]" />
-            </div>
+            <img
+              src={IMG.hero}
+              alt="Acumen electrician at work"
+              className="h-[26rem] w-full object-cover md:h-[32rem]"
+              style={{
+                clipPath: "polygon(0 0, 100% 0, 100% calc(100% - 3rem), calc(100% - 3rem) 100%, 0 100%)",
+                filter: "drop-shadow(0 18px 30px rgba(12,46,61,0.22))",
+              }}
+            />
             <div className="absolute -bottom-5 -left-5 hidden rounded-xl border border-slate-100 bg-white px-5 py-4 shadow-lg sm:block">
               <p className="text-2xl font-extrabold leading-none text-[#0c4e7d]">£2m</p>
               <p className="mt-1 text-xs font-medium text-slate-500">Public Liability — fully insured</p>
@@ -205,9 +211,9 @@ export default function AcumenPage() {
       <section className="border-y border-slate-100 bg-[#f6f8fb]">
         <div className="mx-auto max-w-6xl px-5 py-10 md:px-8" data-reveal>
           <p className="text-center text-xs font-semibold uppercase tracking-[0.18em] text-slate-400">Registered &amp; accredited</p>
-          <div className="mt-5 flex flex-wrap items-center justify-center gap-3">
+          <div className="mx-auto mt-6 grid max-w-4xl grid-cols-2 border-l border-t border-slate-200 sm:grid-cols-3 lg:grid-cols-6">
             {ACCREDITATIONS.map((a) => (
-              <span key={a} className="rounded-full border border-slate-200 bg-white px-5 py-2.5 text-sm font-semibold text-[#0c4e7d] shadow-sm">{a}</span>
+              <div key={a} className="flex items-center justify-center border-b border-r border-slate-200 bg-white px-3 py-5 text-center text-sm font-semibold text-[#0c4e7d]">{a}</div>
             ))}
           </div>
           <p className="mt-6 text-center text-sm text-slate-500">
@@ -249,10 +255,11 @@ export default function AcumenPage() {
             <p className="text-sm font-semibold uppercase tracking-[0.18em] text-[#d9a90f]">What we do</p>
             <h2 className="mt-3 text-3xl font-extrabold tracking-tight md:text-4xl">Domestic &amp; commercial electrical services.</h2>
             <p className="mt-4 text-lg text-slate-600">From a single socket to a full rewire — all to the highest standard.</p>
+            <p className="mt-3 text-sm font-semibold text-slate-400 sm:hidden">Swipe for more →</p>
           </div>
-          <div className="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3" data-stagger>
+          <div className="-mx-5 mt-8 flex snap-x snap-mandatory gap-5 overflow-x-auto px-5 pb-2 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden sm:mx-0 sm:mt-12 sm:grid sm:grid-cols-2 sm:gap-6 sm:overflow-visible sm:px-0 lg:grid-cols-3" data-stagger>
             {SERVICES.map((s) => (
-              <article key={s.title} className="group overflow-hidden rounded-2xl border border-slate-100 bg-white shadow-sm transition-shadow hover:shadow-lg">
+              <article key={s.title} className="group w-[80%] shrink-0 snap-start overflow-hidden rounded-2xl border border-slate-100 bg-white shadow-sm transition-shadow hover:shadow-lg sm:w-auto sm:shrink">
                 <div className="aspect-[16/10] overflow-hidden">
                   <img src={s.img} alt={s.title} loading="lazy" className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" />
                 </div>
@@ -333,12 +340,15 @@ export default function AcumenPage() {
             </div>
             <a href="#enquiry" className={ghostBtn}>Start your project</a>
           </div>
-          <div className="mt-10 grid grid-cols-2 gap-4 md:grid-cols-4" data-stagger>
-            {[IMG.lighting, IMG.rewire, IMG.gallery1, IMG.gallery2, IMG.testing, IMG.ev, IMG.domestic, IMG.commercial].map((src, i) => (
-              <div key={i} className="group overflow-hidden rounded-xl shadow-sm">
-                <img src={src} alt="Recent electrical work" loading="lazy" className="aspect-square w-full object-cover transition-transform duration-500 group-hover:scale-105" />
-              </div>
-            ))}
+          <div className="-mx-5 mt-10 flex snap-x gap-4 overflow-x-auto px-5 pb-2 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden sm:mx-0 sm:grid sm:grid-cols-3 sm:overflow-visible sm:px-0 md:grid-cols-4" data-stagger>
+            {[IMG.lighting, IMG.rewire, IMG.gallery1, IMG.gallery2, IMG.testing, IMG.ev, IMG.domestic, IMG.commercial].map((src, i) => {
+              const edges = ["rounded-xl", "rounded-none", "rounded-tr-[2.2rem] rounded-bl-[2.2rem]", "rounded-xl", "rounded-none", "rounded-tl-[2.2rem] rounded-br-[2.2rem]", "rounded-xl", "rounded-none"];
+              return (
+                <div key={i} className={`group w-[62%] shrink-0 snap-start overflow-hidden shadow-sm sm:w-auto ${edges[i % edges.length]}`}>
+                  <img src={src} alt="Recent electrical work" loading="lazy" className="aspect-square w-full object-cover transition-transform duration-500 group-hover:scale-105" />
+                </div>
+              );
+            })}
           </div>
         </div>
       </section>
@@ -348,9 +358,11 @@ export default function AcumenPage() {
         <div className="mx-auto max-w-6xl px-5 py-16 text-center md:px-8 md:py-20" data-reveal>
           <p className="text-sm font-semibold uppercase tracking-[0.18em] text-[#d9a90f]">Areas we cover</p>
           <h2 className="mt-3 text-3xl font-extrabold tracking-tight md:text-4xl">Across East Kent — the CT postcode area.</h2>
-          <div className="mx-auto mt-10 flex max-w-4xl flex-wrap justify-center gap-3">
+          <div className="mx-auto mt-10 flex max-w-3xl flex-wrap justify-center gap-x-7 gap-y-3 text-lg font-semibold text-slate-700">
             {AREAS.map((a) => (
-              <span key={a} className="rounded-full bg-white px-5 py-2.5 text-sm font-semibold text-slate-700 shadow-sm">{a}</span>
+              <span key={a} className="flex items-center gap-2">
+                <span className="h-1.5 w-1.5 bg-[#d9a90f]" aria-hidden /> {a}
+              </span>
             ))}
           </div>
           <p className="mt-6 text-sm text-slate-500">Not sure if we cover you? Give us a call — we&apos;ll let you know.</p>
