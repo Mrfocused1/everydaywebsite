@@ -33,7 +33,7 @@ export default function IBAbout() {
       <section className="bg-white">
         <div className="mx-auto grid max-w-6xl items-center gap-12 px-5 py-16 md:grid-cols-2 md:px-8 md:py-24 lg:gap-16">
           <div className="relative overflow-hidden">
-            <img src={IMG.work2} alt="Branded garments" data-clip className="aspect-[4/5] w-full object-cover" />
+            <img src="/marketing/ib/ib-tee-whitegraphic.jpg" alt="Custom printed white t-shirt with graphic" data-clip className="aspect-[4/5] w-full bg-[#f5f5f4] object-cover" />
           </div>
           <div data-reveal>
             <Label>Who we are</Label>
