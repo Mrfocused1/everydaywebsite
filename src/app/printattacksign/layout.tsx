@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Print Attack UK — High-Quality DTF Printing, Brentwood",
     description: "Custom DTF garment printing in Brentwood, UK. Minimum order 6, fast turnaround.",
-    url: "https://everydayweb.site/printattack",
+    url: "https://everydayweb.site/printattacksign",
     siteName: "Print Attack UK",
     type: "website",
     images: [{ url: IMG.hero, width: 1200, height: 630, alt: "Print Attack UK" }],
@@ -38,7 +38,7 @@ export default function PALayout({ children }: { children: React.ReactNode }) {
         <a href={PHONE_TEL} className="flex-1 rounded-md border border-white/40 px-5 py-3.5 text-center text-sm font-bold uppercase tracking-wide text-white transition-colors hover:bg-white hover:text-[#0e0e10] sm:flex-none sm:px-7">
           Call now
         </a>
-        <Link href="/printattack/contact#quote" className="flex-1 rounded-md bg-white px-5 py-3.5 text-center text-sm font-bold uppercase tracking-wide text-[#0e0e10] shadow-lg transition-transform hover:-translate-y-0.5 sm:flex-none sm:px-7">
+        <Link href="/printattacksign/contact#quote" className="flex-1 rounded-md bg-white px-5 py-3.5 text-center text-sm font-bold uppercase tracking-wide text-[#0e0e10] shadow-lg transition-transform hover:-translate-y-0.5 sm:flex-none sm:px-7">
           Get a quote
         </Link>
       </div>

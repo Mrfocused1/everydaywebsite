@@ -55,7 +55,7 @@ export default function PAAbout() {
                 kitting people out in properly-printed kit.
               </p>
             </div>
-            <Link href="/printattack/products" className={`${btnBlue} mt-8`}>What we print <Arrow /></Link>
+            <Link href="/printattacksign/products" className={`${btnBlue} mt-8`}>What we print <Arrow /></Link>
           </div>
         </div>
       </section>

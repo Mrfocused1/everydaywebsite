@@ -25,11 +25,11 @@ export const HOURS = [
 ];
 
 export const NAV = [
-  { label: "Home", href: "/printattack" },
-  { label: "What We Print", href: "/printattack/products" },
-  { label: "Our Work", href: "/printattack/work" },
-  { label: "About", href: "/printattack/about" },
-  { label: "Contact", href: "/printattack/contact" },
+  { label: "Home", href: "/printattacksign" },
+  { label: "What We Print", href: "/printattacksign/products" },
+  { label: "Our Work", href: "/printattacksign/work" },
+  { label: "About", href: "/printattacksign/about" },
+  { label: "Contact", href: "/printattacksign/contact" },
 ];
 
 // ── Imagery (real product + founder photos from @printattackuk) ──
