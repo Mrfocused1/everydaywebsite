@@ -115,7 +115,7 @@ export default function ContactPage() {
       <footer className="site-footer">
         <div className="spe-container footer-grid">
           <div className="footer-brand">
-            <p className="footer-wordmark">Snap <span>&amp;</span> Print <em>Events</em></p>
+            <img className="footer-logo" src="/marketing/sp/sp-logo-dark.png" alt="Snap and Print Events" />
             <p>Instant event photography — we snap the moment, print it on the spot, and your guests keep it.</p>
           </div>
           <div className="footer-col">
