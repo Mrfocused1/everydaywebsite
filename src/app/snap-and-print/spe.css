@@ -83,7 +83,7 @@
 }
 
 .spe-root .script {
-  font-family: "Brush Script MT", cursive;
+  font-family: var(--font-sp-script), "Brush Script MT", cursive;
   color: var(--gold);
   font-size: clamp(28px, 4vw, 54px);
   font-weight: 400;
@@ -91,7 +91,7 @@
 }
 
 .spe-root .eyebrow {
-  font-family: "Brush Script MT", cursive;
+  font-family: var(--font-sp-script), "Brush Script MT", cursive;
   color: var(--gold);
   font-size: 28px;
   margin-bottom: 10px;
@@ -160,7 +160,7 @@
 }
 
 .spe-root .logo .and {
-  font-family: "Brush Script MT", cursive;
+  font-family: var(--font-sp-script), "Brush Script MT", cursive;
   color: var(--gold);
   font-size: 32px;
   font-weight: 400;
@@ -271,7 +271,7 @@
   place-items: center;
   text-align: center;
   color: white;
-  font-family: "Brush Script MT", cursive;
+  font-family: var(--font-sp-script), "Brush Script MT", cursive;
   font-size: 28px;
   line-height: 0.95;
   transform: rotate(-8deg);

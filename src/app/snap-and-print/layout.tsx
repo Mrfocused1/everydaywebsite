@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
-import { Manrope } from "next/font/google";
+import { Manrope, Dancing_Script } from "next/font/google";
 
 const sans = Manrope({ subsets: ["latin"], weight: ["400", "500", "600", "700", "800"], variable: "--font-sp-sans", display: "swap" });
+const script = Dancing_Script({ subsets: ["latin"], weight: ["500", "600", "700"], variable: "--font-sp-script", display: "swap" });
 
 export const metadata: Metadata = {
   title: "Snap and Print Events — Instant Event Photography & On-the-Spot Printing",
@@ -18,5 +19,5 @@ export const metadata: Metadata = {
 };
 
 export default function SnapAndPrintLayout({ children }: { children: React.ReactNode }) {
-  return <div className={sans.variable}>{children}</div>;
+  return <div className={`${sans.variable} ${script.variable}`}>{children}</div>;
 }
