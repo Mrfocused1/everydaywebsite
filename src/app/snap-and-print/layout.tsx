@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
-import { Manrope, Kaushan_Script } from "next/font/google";
+import { Manrope, Caveat } from "next/font/google";
 
 const sans = Manrope({ subsets: ["latin"], weight: ["400", "500", "600", "700", "800"], variable: "--font-sp-sans", display: "swap" });
-const script = Kaushan_Script({ subsets: ["latin"], weight: ["400"], variable: "--font-sp-script", display: "swap" });
+const script = Caveat({ subsets: ["latin"], weight: ["500", "600", "700"], variable: "--font-sp-script", display: "swap" });
 
 export const metadata: Metadata = {
   title: "Snap and Print Events — Instant Event Photography & On-the-Spot Printing",

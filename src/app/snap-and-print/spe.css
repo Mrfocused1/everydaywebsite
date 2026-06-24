@@ -85,9 +85,12 @@
 .spe-root .script {
   font-family: var(--font-sp-script), "Brush Script MT", cursive;
   color: var(--gold);
-  font-size: clamp(28px, 4vw, 54px);
-  font-weight: 400;
+  font-size: clamp(26px, 3vw, 44px);
+  font-weight: 600;
   line-height: 0.95;
+  /* render the script accent in natural case (not the heading's all-caps) so it
+     reads as a soft flourish rather than a loud all-caps brush */
+  text-transform: none;
 }
 
 .spe-root .eyebrow {
