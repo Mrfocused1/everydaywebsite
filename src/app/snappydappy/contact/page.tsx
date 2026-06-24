@@ -13,7 +13,7 @@ const PHONE_DISPLAY = "+44 7000 000000";
 const PHONE_TEL = "tel:+447000000000";
 const EMAIL = "hello@snapandprintevents.com";
 
-const HOME = "/snap-and-print";
+const HOME = "/snappydappy";
 const NAV = [
   { href: `${HOME}#how`, label: "How It Works" },
   { href: `${HOME}#events`, label: "Events" },

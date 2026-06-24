@@ -11,7 +11,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Snap and Print Events — Instant Event Photography & Printing",
     description: "We snap. You smile. You print. High-quality event photos printed on the spot.",
-    url: "https://everydayweb.site/snap-and-print",
+    url: "https://everydayweb.site/snappydappy",
     siteName: "Snap and Print Events",
     type: "website",
     images: [{ url: "/marketing/sp/sp-hero.jpg", width: 1200, height: 630, alt: "Snap and Print Events" }],

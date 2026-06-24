@@ -86,7 +86,7 @@ export default function SnapAndPrint() {
             <div className="nav-links">
               <a href="#home">Home</a>
               {NAV.map((n) => <a key={n.href} href={n.href}>{n.label}</a>)}
-              <a href="/snap-and-print/contact" className="nav-cta">Book Us</a>
+              <a href="/snappydappy/contact" className="nav-cta">Book Us</a>
             </div>
             <button className="mobile-menu-btn" aria-label="Open menu" onClick={() => setMenuOpen(true)}><Icon name="menu" /></button>
           </nav>
@@ -290,7 +290,7 @@ export default function SnapAndPrint() {
         <button className="mobile-nav-close" aria-label="Close menu" onClick={close}><Icon name="close" /></button>
         <a href="#home" onClick={close}>Home</a>
         {NAV.map((n) => <a key={n.href} href={n.href} onClick={close}>{n.label}</a>)}
-        <a href="/snap-and-print/contact" onClick={close}>Book Us</a>
+        <a href="/snappydappy/contact" onClick={close}>Book Us</a>
       </div>
 
       <SPFX />
