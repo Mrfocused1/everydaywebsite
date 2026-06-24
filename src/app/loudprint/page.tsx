@@ -4,7 +4,7 @@ import { useState } from "react";
 import { Icon } from "./icons";
 import { Smoke } from "./Smoke";
 import { LPFX } from "./LPFX";
-import { ProductDefs, MylarBag, MironJar, StickerSheet, GlassDish } from "./products";
+import { ProductDefs, MylarBag } from "./products";
 import "./lp.css";
 
 // TODO: confirm the real contact details with the client.
@@ -12,6 +12,26 @@ const INSTAGRAM = "https://www.instagram.com/loudpackprinting";
 const HANDLE = "@loudpackprinting";
 const WEBSITE = "https://www.loudpackprint.com";
 const EMAIL = "hello@loudpackprint.com";
+
+// Placeholder imagery — licence-free Pexels stock, hot-linked the same way the
+// other sub-sites do it. Swap these IDs for real Loud Pack product photos when
+// the client supplies them; nothing else needs to change.
+const px = (id: number, w: number, h: number) =>
+  `https://images.pexels.com/photos/${id}/pexels-photo-${id}.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=${w}&h=${h}`;
+
+const IMG = {
+  hero: px(6621000, 900, 1120),
+  // What We Print
+  bags: px(12024976, 560, 560),
+  stickers: px(2783837, 560, 560),
+  jars: px(10860492, 560, 560),
+  merch: px(4440574, 560, 560),
+  // Showcase
+  showBag: px(18138946, 680, 680),
+  showJar: px(10897102, 680, 680),
+  showStickers: px(18531751, 680, 680),
+  showGlass: px(3997347, 680, 680),
+};
 
 const NAV = [
   { href: "#work", label: "What We Print" },
@@ -23,10 +43,10 @@ const NAV = [
 const TICKER = ["Mylar Bags", "Stickers", "UV Miron Jars", "Branded Merch", "Spot Gloss", "Embossed", "Holographic Foil", "Worldwide Shipping"];
 
 const SERVICES = [
-  { Art: MylarBag, icon: "bag", t: "Mylar Bags", b: "Stand-up pouches and sticker bags — from short runs to full custom builds, in a range of sizes and finishes.", tags: ["Matte", "Spot Gloss", "Direct Print"] },
-  { Art: StickerSheet, icon: "sticker", t: "Stickers", b: "Premium die-cut stickers and sticker bags. Quick turnarounds, multiple designs, finishes that pop.", tags: ["Embossed", "Gel", "3D"] },
-  { Art: MironJar, icon: "jar", t: "UV Miron Jars", b: "Designed and printed UV Miron jars — matte with spot-gloss embossing that separates your brand from the rest.", tags: ["UV Glass", "Embossed", "Spot Gloss"] },
-  { Art: GlassDish, icon: "cup", t: "Branded Merch", b: "Glass ashtrays, apparel and branded extras that make great gifts and leave a lasting impression.", tags: ["Glassware", "Apparel", "Custom"] },
+  { img: IMG.bags, icon: "bag", t: "Mylar Bags", b: "Stand-up pouches and sticker bags — from short runs to full custom builds, in a range of sizes and finishes.", tags: ["Matte", "Spot Gloss", "Direct Print"] },
+  { img: IMG.stickers, icon: "sticker", t: "Stickers", b: "Premium die-cut stickers and sticker bags. Quick turnarounds, multiple designs, finishes that pop.", tags: ["Embossed", "Gel", "3D"] },
+  { img: IMG.jars, icon: "jar", t: "UV Miron Jars", b: "Designed and printed UV Miron jars — matte with spot-gloss embossing that separates your brand from the rest.", tags: ["UV Glass", "Embossed", "Spot Gloss"] },
+  { img: IMG.merch, icon: "cup", t: "Branded Merch", b: "Glass ashtrays, apparel and branded extras that make great gifts and leave a lasting impression.", tags: ["Glassware", "Apparel", "Custom"] },
 ];
 
 const STEPS = [
@@ -51,10 +71,10 @@ const STATS = [
 ];
 
 const SHOWCASE = [
-  { Art: MylarBag, t: "Custom Mylar", b: "Matte + spot-gloss, embossed badge." },
-  { Art: MironJar, t: "UV Miron Jar", b: "Designed, printed & embossed in-house." },
-  { Art: StickerSheet, t: "Sticker Sheets", b: "Die-cut, holographic and gel finishes." },
-  { Art: GlassDish, t: "Glass Ashtray", b: "Branded merch that gets remembered." },
+  { img: IMG.showBag, t: "Custom Mylar", b: "Matte + spot-gloss, embossed badge." },
+  { img: IMG.showJar, t: "UV Miron Jar", b: "Designed, printed & embossed in-house." },
+  { img: IMG.showStickers, t: "Sticker Sheets", b: "Die-cut, holographic and gel finishes." },
+  { img: IMG.showGlass, t: "Glass Ashtray", b: "Branded merch that gets remembered." },
 ];
 
 export default function LoudPrint() {
@@ -106,7 +126,10 @@ export default function LoudPrint() {
 
             <div className="lp-hero-stage" data-parallax data-speed="46">
               <div className="lp-hero-glow" aria-hidden />
-              <MylarBag className="lp-hero-product" />
+              <figure className="lp-hero-photo">
+                <img src={IMG.hero} alt="Custom print and packaging being produced in-house" />
+              </figure>
+              <MylarBag className="lp-hero-product lp-hero-product--float" />
               <span className="lp-badge-spin">
                 <svg viewBox="0 0 120 120" aria-hidden>
                   <defs><path id="lp-circle" d="M60,60 m-42,0 a42,42 0 1,1 84,0 a42,42 0 1,1 -84,0" /></defs>
@@ -141,7 +164,7 @@ export default function LoudPrint() {
             <div className="lp-work-grid" data-stagger>
               {SERVICES.map((s) => (
                 <article key={s.t} className="lp-work-card">
-                  <div className="lp-work-art"><s.Art className="lp-art" /></div>
+                  <div className="lp-work-art"><img src={s.img} alt={s.t} loading="lazy" className="lp-work-photo" /></div>
                   <div className="lp-work-body">
                     <span className="lp-work-icon"><Icon name={s.icon} /></span>
                     <h3>{s.t}</h3>
@@ -208,7 +231,7 @@ export default function LoudPrint() {
             <div className="lp-showcase" data-stagger>
               {SHOWCASE.map((s, i) => (
                 <figure key={s.t} className={`lp-show-card lp-show-card--${i % 2 === 0 ? "a" : "b"}`}>
-                  <div className="lp-show-art" data-parallax data-speed="26"><s.Art className="lp-art" /></div>
+                  <div className="lp-show-art"><img src={s.img} alt={s.t} loading="lazy" className="lp-show-photo" /></div>
                   <figcaption>
                     <h3>{s.t}</h3>
                     <p>{s.b}</p>
