@@ -52,7 +52,7 @@ export default function StoneHome() {
 
       {/* ── Mobile-only before/after above services ── */}
       <section className="border-t-2 border-[#15130f] bg-[#ffffff] px-5 py-12 md:hidden">
-        <BeforeAfter before={PAIRS[0].before} after={PAIRS[0].after} className="aspect-[4/3] w-full rounded-2xl border-2 border-[#15130f]" label="Drag — granite bar repair" />
+        <BeforeAfter before={PAIRS[2].before} after={PAIRS[2].after} className="aspect-[4/3] w-full rounded-2xl border-2 border-[#15130f]" label="Drag — stone Buddha repair" />
       </section>
 
       {/* ── Services ── */}
