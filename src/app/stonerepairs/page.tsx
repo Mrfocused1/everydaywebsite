@@ -5,6 +5,7 @@ import {
   MATERIALS, SERVICES, PROCESS, STATS, PHONE_DISPLAY, PHONE_TEL, WHATSAPP, EMAIL_HREF,
 } from "./brand";
 import { BeforeAfter } from "./BeforeAfter";
+import { WorkGrid } from "./WorkGrid";
 import { SRFX } from "./SRFX";
 
 export default function StoneHome() {
@@ -49,8 +50,13 @@ export default function StoneHome() {
         </div>
       </section>
 
+      {/* ── Mobile-only before/after above services ── */}
+      <section className="border-t-2 border-[#15130f] bg-[#ffffff] px-5 py-12 md:hidden">
+        <BeforeAfter before={PAIRS[0].before} after={PAIRS[0].after} className="aspect-[4/3] w-full rounded-2xl border-2 border-[#15130f]" label="Drag — granite bar repair" />
+      </section>
+
       {/* ── Services ── */}
-      <section id="services" className="scroll-mt-24 border-t-2 border-[#15130f] bg-[#f6f5f2]">
+      <section id="services" className="scroll-mt-24 border-t-2 border-[#15130f] bg-[#f6f5f2] md:border-t-2">
         <div className="mx-auto max-w-6xl px-5 py-16 md:px-8 md:py-24">
           <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between" data-reveal>
             <h2 className={`${fd} text-[2.6rem] font-semibold leading-[0.92] tracking-[-0.02em] text-[#15130f] md:text-6xl`}>Repair. Restore.<br /><span className="text-[#3f5d5a]">Protect.</span></h2>
@@ -127,17 +133,8 @@ export default function StoneHome() {
             <h2 className={`${fd} text-[2.6rem] font-semibold leading-[0.92] tracking-[-0.02em] text-[#15130f] md:text-6xl`}>Recent work.</h2>
             <Link href="/stonerepairs/portfolio" className="group inline-flex items-center gap-2 text-sm font-semibold text-[#3f5d5a] hover:underline">See all <Arrow /></Link>
           </div>
-          {/* mobile: horizontal swipe carousel · desktop: grid */}
-          <div className="-mx-5 mt-12 flex snap-x snap-mandatory gap-4 overflow-x-auto px-5 pb-2 [-ms-overflow-style:none] [scrollbar-width:none] sm:mx-0 sm:grid sm:grid-cols-3 sm:gap-6 sm:overflow-visible sm:px-0 [&::-webkit-scrollbar]:hidden" data-stagger>
-            {PORTFOLIO.slice(0, 6).map((w) => (
-              <figure key={w.src} className="group w-[58%] shrink-0 snap-start sm:w-auto">
-                <div className="overflow-hidden rounded-2xl border-2 border-[#15130f] shadow-[5px_5px_0_#15130f]">
-                  <img src={w.src} alt={w.t} loading="lazy" className="aspect-[4/5] w-full object-cover transition-transform duration-700 group-hover:scale-105" />
-                </div>
-                <figcaption className="mt-3 text-sm font-semibold text-[#15130f]">{w.t}</figcaption>
-              </figure>
-            ))}
-          </div>
+          {/* mobile: horizontal swipe carousel · desktop: grid · tap to view full */}
+          <WorkGrid items={PORTFOLIO.slice(0, 6)} variant="carousel" />
         </div>
       </section>
 

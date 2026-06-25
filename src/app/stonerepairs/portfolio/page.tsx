@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { PageHero, PEXELS, PORTFOLIO, PAIRS, MATERIALS, fd, Label, Arrow, btnInk } from "../brand";
 import { BeforeAfter } from "../BeforeAfter";
+import { WorkGrid } from "../WorkGrid";
 import { SRFX } from "../SRFX";
 
 export const metadata: Metadata = {
@@ -46,19 +47,7 @@ export default function StonePortfolio() {
             <Label>More work</Label>
             <span className="text-sm text-[#15130f]/45">{MATERIALS.join(" · ")}</span>
           </div>
-          <div className="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3" data-stagger>
-            {PORTFOLIO.map((w) => (
-              <figure key={w.src} className="group overflow-hidden rounded-2xl border-2 border-[#15130f] bg-white shadow-[6px_6px_0_#15130f]">
-                <div className="overflow-hidden">
-                  <img src={w.src} alt={w.t} loading="lazy" className="aspect-[4/3] w-full object-cover transition-transform duration-700 group-hover:scale-105" />
-                </div>
-                <figcaption className="border-t-2 border-[#15130f] p-5">
-                  <h3 className={`${fd} text-lg font-semibold text-[#15130f]`}>{w.t}</h3>
-                  <p className="mt-1.5 text-sm font-light leading-relaxed text-[#15130f]/60">{w.b}</p>
-                </figcaption>
-              </figure>
-            ))}
-          </div>
+          <WorkGrid items={PORTFOLIO} variant="grid" />
         </div>
       </section>
 
