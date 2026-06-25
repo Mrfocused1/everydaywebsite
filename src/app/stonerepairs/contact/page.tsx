@@ -1,7 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 import type { Metadata } from "next";
 import {
-  PageHero, PEXELS, fd, Label,
+  PageHero, PEXELS, fd, Label, OWNER,
   PHONE_DISPLAY, PHONE_TEL, EMAIL, EMAIL_HREF, WHATSAPP, COVERAGE, MATERIALS,
 } from "../brand";
 import { EnquiryForm } from "../EnquiryForm";
@@ -29,7 +29,18 @@ export default function StoneContact() {
         img={PEXELS.contact}
       />
 
-      <section className="bg-[#ffffff]">
+      {/* ── About Charles (moved from home, no image) ── */}
+      <section className="border-t-2 border-[#15130f] bg-[#ffffff]">
+        <div className="mx-auto max-w-4xl px-5 py-16 md:px-8 md:py-24" data-reveal>
+          <Label>About</Label>
+          <p className={`mt-7 ${fd} text-[1.8rem] font-semibold leading-[1.18] tracking-[-0.01em] text-[#15130f] sm:text-4xl md:text-[2.6rem]`}>
+            I&apos;m {OWNER}. Every photo on this site is from <span className="italic text-[#3f5d5a]">my own repairs</span>. No stock,
+            no staging — just <span className="italic text-[#3f5d5a]">30 years</span> of putting natural stone right.
+          </p>
+        </div>
+      </section>
+
+      <section className="border-t-2 border-[#15130f] bg-[#ffffff]">
         <div className="mx-auto grid max-w-6xl gap-12 px-5 py-16 md:px-8 md:py-24 lg:grid-cols-[0.95fr_1.05fr] lg:gap-16">
           {/* details */}
           <div data-reveal>
