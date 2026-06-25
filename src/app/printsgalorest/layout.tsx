@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Prints Galore — High-Quality DTF Printing, Birmingham",
     description: "Custom DTF garment printing in Birmingham, UK. Minimum order 6, fast turnaround.",
-    url: "https://everydayweb.site/printsgalore",
+    url: "https://everydayweb.site/printsgalorest",
     siteName: "Prints Galore",
     type: "website",
     images: [{ url: IMG.hero, width: 1200, height: 630, alt: "Prints Galore" }],
@@ -38,7 +38,7 @@ export default function PALayout({ children }: { children: React.ReactNode }) {
         <a href={PHONE_TEL} className="flex-1 rounded-md border border-white/40 px-5 py-3.5 text-center text-sm font-bold uppercase tracking-wide text-white transition-colors hover:bg-white hover:text-[#0e0e10] sm:flex-none sm:px-7">
           Call now
         </a>
-        <Link href="/printsgalore/contact#quote" className="flex-1 rounded-md bg-white px-5 py-3.5 text-center text-sm font-bold uppercase tracking-wide text-[#0e0e10] shadow-lg transition-transform hover:-translate-y-0.5 sm:flex-none sm:px-7">
+        <Link href="/printsgalorest/contact#quote" className="flex-1 rounded-md bg-white px-5 py-3.5 text-center text-sm font-bold uppercase tracking-wide text-[#0e0e10] shadow-lg transition-transform hover:-translate-y-0.5 sm:flex-none sm:px-7">
           Get a quote
         </Link>
       </div>

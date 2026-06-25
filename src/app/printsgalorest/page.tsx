@@ -53,8 +53,8 @@ export default function PAHome() {
               Minimum order just 6, fast turnaround, covering North, South, East &amp; West.
             </p>
             <div className="hero-fade mt-9 flex flex-wrap gap-4 opacity-0" style={{ transform: "translateY(8px)" }}>
-              <Link href="/printsgalore/contact#quote" data-magnetic className={btnBlue}>Get a quote <Arrow /></Link>
-              <Link href="/printsgalore/work" className={btnGhostDark}>See our work</Link>
+              <Link href="/printsgalorest/contact#quote" data-magnetic className={btnBlue}>Get a quote <Arrow /></Link>
+              <Link href="/printsgalorest/work" className={btnGhostDark}>See our work</Link>
             </div>
             <div className="hero-fade mt-10 flex flex-wrap gap-x-7 gap-y-2 border-t border-white/20 pt-6 text-xs font-bold uppercase tracking-wider opacity-0">
               {TRUST.map((t, i) => (
@@ -88,7 +88,7 @@ export default function PAHome() {
               We&apos;re a Birmingham-based DTF printing and embroidery service. From a single custom run to full team
               and event kits, we print high-quality, full-colour designs — fast, with a minimum order of just six.
             </p>
-            <Link href="/printsgalore/about" className={`${btnGhostLight} mt-8`}>About us <Arrow /></Link>
+            <Link href="/printsgalorest/about" className={`${btnGhostLight} mt-8`}>About us <Arrow /></Link>
           </div>
           <div className="relative overflow-hidden">
             <img src={IMG.teeGraphic} alt="Full-colour DTF printed t-shirt by Prints Galore" data-clip className="aspect-square w-full bg-[#f5f5f4] object-cover" />
@@ -117,7 +117,7 @@ export default function PAHome() {
               <h2 className={`mt-5 ${fd} text-4xl uppercase leading-[0.95] tracking-tight md:text-5xl`}>Custom garments.</h2>
               <p className="mt-3 text-sm font-semibold text-slate-400 sm:hidden">Swipe →</p>
             </div>
-            <Link href="/printsgalore/products" className="text-sm font-bold uppercase tracking-wide text-[#0e0e10] underline-offset-4 hover:underline">See everything →</Link>
+            <Link href="/printsgalorest/products" className="text-sm font-bold uppercase tracking-wide text-[#0e0e10] underline-offset-4 hover:underline">See everything →</Link>
           </div>
           <div className="-mx-5 mt-10 flex snap-x snap-mandatory gap-5 overflow-x-auto px-5 pb-2 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden sm:mx-0 sm:mt-14 sm:grid sm:grid-cols-2 sm:gap-6 lg:grid-cols-3" data-stagger>
             {TEES.map((p, i) => (
@@ -207,7 +207,7 @@ export default function PAHome() {
               <p className="mt-2 font-light text-white/90">Tell us what you need printed — minimum order 6, fast turnaround.</p>
             </div>
             <div className="flex flex-wrap justify-center gap-3">
-              <Link href="/printsgalore/contact#quote" data-magnetic className="rounded-md bg-white px-7 py-4 text-sm font-bold uppercase tracking-wide text-[#0e0e10] transition-transform hover:-translate-y-0.5">Get a quote</Link>
+              <Link href="/printsgalorest/contact#quote" data-magnetic className="rounded-md bg-white px-7 py-4 text-sm font-bold uppercase tracking-wide text-[#0e0e10] transition-transform hover:-translate-y-0.5">Get a quote</Link>
               <a href={INSTAGRAM} target="_blank" rel="noopener noreferrer" className="rounded-md border border-white/60 px-7 py-4 text-sm font-bold uppercase tracking-wide text-white transition-colors hover:bg-white/10">DM on Instagram</a>
             </div>
           </div>

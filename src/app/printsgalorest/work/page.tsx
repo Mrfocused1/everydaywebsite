@@ -80,7 +80,7 @@ export default function PAWork() {
         <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-6 px-5 py-16 text-center md:flex-row md:px-8 md:text-left" data-reveal>
           <h2 className={`${fd} text-3xl uppercase tracking-tight text-[#0e0e10] md:text-4xl`}>Want yours next?</h2>
           <div className="flex flex-wrap justify-center gap-3">
-            <Link href="/printsgalore/contact#quote" className={btnRed}>Get a quote <Arrow /></Link>
+            <Link href="/printsgalorest/contact#quote" className={btnRed}>Get a quote <Arrow /></Link>
             <a href={PHONE_TEL} className={btnGhostLight}>{PHONE_DISPLAY}</a>
           </div>
         </div>

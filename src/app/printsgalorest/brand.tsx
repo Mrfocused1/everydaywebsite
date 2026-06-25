@@ -26,11 +26,11 @@ export const HOURS = [
 ];
 
 export const NAV = [
-  { label: "Home", href: "/printsgalore" },
-  { label: "What We Print", href: "/printsgalore/products" },
-  { label: "Our Work", href: "/printsgalore/work" },
-  { label: "About", href: "/printsgalore/about" },
-  { label: "Contact", href: "/printsgalore/contact" },
+  { label: "Home", href: "/printsgalorest" },
+  { label: "What We Print", href: "/printsgalorest/products" },
+  { label: "Our Work", href: "/printsgalorest/work" },
+  { label: "About", href: "/printsgalorest/about" },
+  { label: "Contact", href: "/printsgalorest/contact" },
 ];
 
 // ── Imagery (real product + founder photos from @printsgalore0121) ──
