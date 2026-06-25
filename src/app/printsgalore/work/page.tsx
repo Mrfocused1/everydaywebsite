@@ -23,6 +23,7 @@ const WORK: { src: string; alt: string }[] = [
   { src: IMG.caps, alt: "Embroidered JK trucker cap" },
   { src: IMG.jacket, alt: "Custom-branded yellow windbreaker jacket" },
   { src: IMG.beanie, alt: "Hungry's Cafe patch beanie" },
+  { src: IMG.beanie2, alt: "Stockland Green Cafe patch beanie" },
 ];
 
 export default function PAWork() {
