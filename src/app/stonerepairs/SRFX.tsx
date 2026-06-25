@@ -58,6 +58,10 @@ export function SRFX() {
         });
       });
 
+      // infinite marquee (track holds the items twice → loop at -50%)
+      const track = document.querySelector<HTMLElement>("[data-marquee-track]");
+      if (track) gsap.to(track, { xPercent: -50, duration: 26, ease: "none", repeat: -1 });
+
       // magnetic buttons (desktop only)
       if (finePointer) {
         gsap.utils.toArray<HTMLElement>("[data-magnetic]").forEach((el) => {

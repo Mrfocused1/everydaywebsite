@@ -1,11 +1,11 @@
-import { Fraunces, Inter } from "next/font/google";
+import { Bricolage_Grotesque, Inter } from "next/font/google";
 
-// ── Fonts: editorial serif display + clean sans body ──
-export const display = Fraunces({ subsets: ["latin"], weight: ["400", "500", "600", "700"], variable: "--font-sr-display", display: "swap" });
+// ── Fonts: bold characterful display grotesque + clean sans ──
+export const display = Bricolage_Grotesque({ subsets: ["latin"], weight: ["400", "600", "700", "800"], variable: "--font-sr-display", display: "swap" });
 export const body = Inter({ subsets: ["latin"], variable: "--font-sr-body", display: "swap" });
 
-// ── Palette (monochrome ink + bone — no accent colour; the stone is the colour) ──
-// ink #1a1815 · bone #f4f1ea · paper #fbfaf7 · stone #e9e3d8
+// ── Palette: cream + ink + slate blue-green accent ──
+// cream #f3efe6 · paper #faf7f0 · ink #15130f · slate #3f5d5a
 
 // ── Brand & contact (extracted from stone-repairs.com) ──
 export const BIZ = "Stone Repairs";
@@ -68,59 +68,79 @@ export const IMG = {
   repairB: img("repair-b"),
 };
 
+// before / after pairs (same piece, before → after) for the sliders
+export const PAIRS = [
+  { before: IMG.graniteBar1, after: IMG.graniteBar2, t: "Granite bar top", b: "Chipped edge rebuilt, surface polished back to gloss." },
+  { before: IMG.stairs1, after: IMG.repairs1, t: "Marble staircase", b: "Stained and damaged steps repaired and protected." },
+  { before: IMG.statue1, after: IMG.statue2, t: "Stone Buddha", b: "Weathered statue cleaned, repaired and re-finished." },
+  { before: IMG.repairA, after: IMG.repairB, t: "Stone hearth", b: "Broken hearth rebuilt and finished seamlessly." },
+];
+
 export const PORTFOLIO = [
   { src: IMG.fireplace1, t: "Marble fireplace", b: "Cracks and chips repaired and re-polished." },
   { src: IMG.fireplace2, t: "Rosso Levanto fireplace", b: "Red marble surround restored to a deep shine." },
-  { src: IMG.statue1, t: "Stone Buddha — before", b: "Weathered, chipped and discoloured." },
-  { src: IMG.statue2, t: "Stone Buddha — after", b: "Cleaned, repaired and re-finished." },
-  { src: IMG.graniteBar1, t: "Granite bar top — before", b: "Chipped edge and dull, marked surface." },
-  { src: IMG.graniteBar2, t: "Granite bar top — after", b: "Edge rebuilt and polished back to gloss." },
-  { src: IMG.mosaic1, t: "Mosaic floor — before", b: "Dirty, dull and worn underfoot." },
-  { src: IMG.mosaic2, t: "Mosaic floor — after", b: "Deep-cleaned, honed and sealed." },
-  { src: IMG.stairs1, t: "Marble staircase — before", b: "Damaged, stained and tired." },
-  { src: IMG.repairs1, t: "Marble staircase — after", b: "Repaired, polished and protected." },
-  { src: IMG.repairA, t: "Stone hearth — before", b: "Broken and badly worn." },
-  { src: IMG.repairB, t: "Stone hearth — after", b: "Rebuilt and finished seamlessly." },
+  { src: IMG.mosaic2, t: "Mosaic floor", b: "Deep-cleaned, honed and sealed." },
+  { src: IMG.graniteBar2, t: "Granite bar top", b: "Edge rebuilt and polished back to gloss." },
+  { src: IMG.statue2, t: "Stone Buddha", b: "Cleaned, repaired and re-finished." },
+  { src: IMG.repairs1, t: "Marble staircase", b: "Repaired, polished and protected." },
 ];
 
-// ── Buttons (monochrome) ──
-export const btnSolid =
-  "group inline-flex items-center justify-center gap-2 rounded-full bg-[#1a1815] px-7 py-3.5 text-sm font-semibold tracking-wide text-[#f4f1ea] transition-colors hover:bg-[#3a352d]";
+// ── Buttons (bold pills) ──
+export const btnInk =
+  "group inline-flex items-center justify-center gap-2 rounded-full bg-[#15130f] px-7 py-3.5 text-sm font-bold text-[#f3efe6] transition-colors hover:bg-[#3f5d5a]";
 export const btnOutline =
-  "group inline-flex items-center justify-center gap-2 rounded-full border border-[#1a1815]/30 px-7 py-3.5 text-sm font-semibold tracking-wide text-[#1a1815] transition-colors hover:bg-[#1a1815] hover:text-[#f4f1ea]";
+  "group inline-flex items-center justify-center gap-2 rounded-full border-2 border-[#15130f] px-7 py-3.5 text-sm font-bold text-[#15130f] transition-colors hover:bg-[#15130f] hover:text-[#f3efe6]";
+export const btnSlate =
+  "group inline-flex items-center justify-center gap-2 rounded-full bg-[#3f5d5a] px-7 py-3.5 text-sm font-bold text-[#f3efe6] transition-colors hover:bg-[#2c4340]";
 
 export const Arrow = () => (
   <span aria-hidden className="transition-transform duration-300 group-hover:translate-x-1">→</span>
 );
 
-// Display-font utility.
 export const fd = "font-[family-name:var(--font-sr-display)]";
 
-// Chamfered (cut top-right corner) — mixed image edges, custom look.
-export const CUT = "polygon(0 0, calc(100% - 2.4rem) 0, 100% 2.4rem, 100% 100%, 0 100%)";
+// ── Hand-drawn doodles (slate) ──
+export function Underline({ className = "" }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 300 18" preserveAspectRatio="none" className={className} fill="none" aria-hidden>
+      <path d="M3 12C52 6 110 5 160 7c46 2 92 5 137 3" stroke="#3f5d5a" strokeWidth="5" strokeLinecap="round" />
+    </svg>
+  );
+}
+export function Lasso({ className = "" }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 220 100" className={className} fill="none" aria-hidden>
+      <path d="M150 8c-44-7-110-2-132 18-18 17-7 44 28 56 42 14 122 13 156-9 26-17 19-46-14-60C170 4 120 3 96 6" stroke="#3f5d5a" strokeWidth="3.5" strokeLinecap="round" />
+    </svg>
+  );
+}
+export function Squiggle({ className = "" }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 60 40" className={className} fill="none" aria-hidden>
+      <path d="M6 30c6-10 10-12 14-6s8 8 14-2 10-14 16-8" stroke="#3f5d5a" strokeWidth="3.5" strokeLinecap="round" />
+    </svg>
+  );
+}
 
-// ── Eyebrow label (thin rule + small caps, ink) ──
+// ── Eyebrow label ──
 export function Label({ children, light = false }: { children: React.ReactNode; light?: boolean }) {
   return (
-    <p className={`flex items-center gap-3 text-[11px] font-semibold uppercase tracking-[0.26em] ${light ? "text-[#f4f1ea]/70" : "text-[#1a1815]/55"}`}>
-      <span className={`h-px w-8 ${light ? "bg-[#f4f1ea]/50" : "bg-[#1a1815]/40"}`} aria-hidden /> {children}
+    <p className={`flex items-center gap-2.5 text-xs font-bold uppercase tracking-[0.16em] ${light ? "text-[#f3efe6]/80" : "text-[#3f5d5a]"}`}>
+      <span className="h-2.5 w-2.5 rounded-full bg-[#3f5d5a]" aria-hidden /> {children}
     </p>
   );
 }
 
-// ── Inner-page hero (image + dark scrim, editorial) ──
-export function PageHero({ eyebrow, title, intro, img: image, imgAlt }: { eyebrow: string; title: string; intro: string; img: string; imgAlt: string }) {
+// ── Inner-page hero (bold type on cream) ──
+export function PageHero({ eyebrow, title, accent, intro }: { eyebrow: string; title: string; accent?: string; intro: string }) {
   return (
-    <section className="relative overflow-hidden bg-[#1a1815]">
-      {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img src={image} alt={imgAlt} data-parallax className="absolute inset-0 h-[115%] w-full object-cover opacity-40" />
-      <div className="absolute inset-0 bg-gradient-to-t from-[#1a1815] via-[#1a1815]/55 to-[#1a1815]/25" />
-      <div className="relative mx-auto w-full max-w-6xl px-5 pb-16 pt-32 text-[#f4f1ea] md:px-8 md:pb-24 md:pt-44">
-        <Label light>{eyebrow}</Label>
-        <h1 className={`hero-h mt-6 ${fd} text-[2.8rem] font-medium leading-[1.0] tracking-[-0.015em] md:text-7xl`}>
-          <span className="block overflow-hidden"><span className="hero-line-inner block" style={{ transform: "translateY(110%)" }}>{title}</span></span>
+    <section className="bg-[#f3efe6]">
+      <div className="mx-auto w-full max-w-6xl px-5 pb-10 pt-28 md:px-8 md:pb-14 md:pt-36">
+        <Label>{eyebrow}</Label>
+        <h1 className={`mt-6 ${fd} text-[2.9rem] font-extrabold leading-[0.95] tracking-[-0.02em] text-[#15130f] md:text-7xl`}>
+          {title} {accent && <span className="relative inline-block italic text-[#3f5d5a]">{accent}<Underline className="absolute -bottom-2 left-0 h-2.5 w-full" /></span>}
         </h1>
-        <p className="hero-fade mt-6 max-w-xl text-base font-light text-[#f4f1ea]/75 opacity-0 md:text-lg" style={{ transform: "translateY(8px)" }}>{intro}</p>
+        <p className="mt-6 max-w-xl text-lg font-light text-[#15130f]/70">{intro}</p>
       </div>
     </section>
   );

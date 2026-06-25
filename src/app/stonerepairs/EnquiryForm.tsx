@@ -4,7 +4,7 @@ import { useState } from "react";
 import { EMAIL } from "./brand";
 
 const field =
-  "w-full rounded-lg border border-[#1a1815]/15 bg-white px-4 py-3 text-[#1a1815] placeholder-[#1a1815]/40 outline-none transition-shadow focus:border-[#1a1815] focus:ring-2 focus:ring-[#1a1815]/20";
+  "w-full rounded-lg border border-[#15130f]/15 bg-white px-4 py-3 text-[#15130f] placeholder-[#15130f]/40 outline-none transition-shadow focus:border-[#15130f] focus:ring-2 focus:ring-[#15130f]/20";
 
 const ITEMS = ["Fireplace", "Floor", "Worktop", "Stairs", "Statue / Ornament", "Wall", "Other"];
 
@@ -40,16 +40,16 @@ export function EnquiryForm() {
         <input name="phone" placeholder="Phone (optional)" className={field} inputMode="tel" autoComplete="tel" />
         <input name="stone" placeholder="Type of stone (e.g. marble)" className={field} />
       </div>
-      <select name="item" defaultValue="" className={`${field} text-[#1a1815]/70`} required>
+      <select name="item" defaultValue="" className={`${field} text-[#15130f]/70`} required>
         <option value="" disabled>What needs repairing?</option>
-        {ITEMS.map((s) => (<option key={s} value={s} className="text-[#1a1815]">{s}</option>))}
+        {ITEMS.map((s) => (<option key={s} value={s} className="text-[#15130f]">{s}</option>))}
       </select>
       <textarea name="message" required rows={4} placeholder="Describe the damage — and remember to attach a couple of photos when your email opens…" className={field} />
-      <button type="submit" className="group flex w-full items-center justify-center gap-2 rounded-full bg-[#1a1815] px-6 py-4 text-sm font-semibold text-[#f4f1ea] transition-colors hover:bg-[#3a352d]">
+      <button type="submit" className="group flex w-full items-center justify-center gap-2 rounded-full bg-[#15130f] px-6 py-4 text-sm font-semibold text-[#f3efe6] transition-colors hover:bg-[#3f5d5a]">
         Send enquiry
         <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>
       </button>
-      <p className="text-center text-xs text-[#1a1815]/45">
+      <p className="text-center text-xs text-[#15130f]/45">
         {sent ? "Your email app should now be open — attach your photos and press send." : "Opens your email app with the details ready — attach photos of the damage for a fast, accurate quote."}
       </p>
     </form>
