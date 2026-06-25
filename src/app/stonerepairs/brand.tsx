@@ -1,8 +1,11 @@
 import { Fraunces, Inter } from "next/font/google";
 
-// ── Fonts: elegant serif display + clean sans body ──
+// ── Fonts: editorial serif display + clean sans body ──
 export const display = Fraunces({ subsets: ["latin"], weight: ["400", "500", "600", "700"], variable: "--font-sr-display", display: "swap" });
 export const body = Inter({ subsets: ["latin"], variable: "--font-sr-body", display: "swap" });
+
+// ── Palette (monochrome ink + bone — no accent colour; the stone is the colour) ──
+// ink #1a1815 · bone #f4f1ea · paper #fbfaf7 · stone #e9e3d8
 
 // ── Brand & contact (extracted from stone-repairs.com) ──
 export const BIZ = "Stone Repairs";
@@ -22,36 +25,29 @@ export const NAV = [
   { label: "Contact", href: "/stonerepairs/contact" },
 ];
 
-// ── Materials ──
 export const MATERIALS = ["Marble", "Granite", "Limestone", "Slate", "Sandstone"];
-
-// ── Surfaces & items ──
 export const SURFACES = ["Floors", "Fireplaces", "Worktops", "Stairs", "Walls", "Statues", "Bars", "Mosaics"];
 
-// ── Services ──
 export const SERVICES = [
   { t: "Breakage & Chip Repair", b: "Breakages, chips and scratches repaired and made good — on site or in the workshop." },
-  { t: "Etch & Scratch Polishing", b: "Acid and alcohol etch marks polished out, surfaces re-honed and brought back to a flawless finish." },
+  { t: "Etch & Scratch Polishing", b: "Acid and alcohol etch marks polished out, surfaces re-honed to a flawless finish." },
   { t: "Stain Removal", b: "Yellow and brown staining, oil, rust and wax safely lifted from marble and granite." },
   { t: "Limescale Removal", b: "Limescale removed from marble and granite without damaging the surface of the stone." },
   { t: "Sealing & Treatment", b: "Honing, sealing and finishing to protect natural stone and keep it looking its best." },
   { t: "Full Restoration", b: "Complete restoration of floors, fireplaces, worktops, stairs, statues and more." },
 ];
 
-// ── How it works ──
 export const PROCESS = [
   { n: "01", t: "Send photos", b: "Send a few photos of the damage by email or WhatsApp for a quick response." },
-  { n: "02", t: "Advice & quote", b: "I'll assess the stone and come back to you fast with honest advice and a price." },
+  { n: "02", t: "Advice & quote", b: "I'll assess the stone and come back fast with honest advice and a price." },
   { n: "03", t: "Repaired with care", b: "Most work is done on site; delicate items are restored in the workshop." },
-  { n: "04", t: "Restored & sealed", b: "Your stone is repaired, polished and sealed — back to its natural best." },
+  { n: "04", t: "Restored & sealed", b: "Repaired, polished and sealed — back to its natural best." },
 ];
 
-// ── Stats ──
 export const STATS = [
   { v: "30", suffix: "+", l: "Years' experience" },
   { v: "5", suffix: "", l: "Stone types restored" },
   { v: "100", suffix: "%", l: "My own work" },
-  { v: "1", suffix: "", l: "Day quick response", note: true },
 ];
 
 // ── Imagery ──
@@ -72,7 +68,6 @@ export const IMG = {
   repairB: img("repair-b"),
 };
 
-// ── Portfolio (real repairs from stone-repairs.com) ──
 export const PORTFOLIO = [
   { src: IMG.fireplace1, t: "Marble fireplace", b: "Cracks and chips repaired and re-polished." },
   { src: IMG.fireplace2, t: "Rosso Levanto fireplace", b: "Red marble surround restored to a deep shine." },
@@ -88,13 +83,11 @@ export const PORTFOLIO = [
   { src: IMG.repairB, t: "Stone hearth — after", b: "Rebuilt and finished seamlessly." },
 ];
 
-// ── Buttons ──
+// ── Buttons (monochrome) ──
 export const btnSolid =
-  "group inline-flex items-center justify-center gap-2 rounded-full bg-[#1f1b16] px-7 py-3.5 text-sm font-semibold tracking-wide text-[#f7f3ec] transition-colors hover:bg-[#9a7a48]";
+  "group inline-flex items-center justify-center gap-2 rounded-full bg-[#1a1815] px-7 py-3.5 text-sm font-semibold tracking-wide text-[#f4f1ea] transition-colors hover:bg-[#3a352d]";
 export const btnOutline =
-  "group inline-flex items-center justify-center gap-2 rounded-full border border-[#1f1b16]/25 px-7 py-3.5 text-sm font-semibold tracking-wide text-[#1f1b16] transition-colors hover:border-[#9a7a48] hover:text-[#9a7a48]";
-export const btnGold =
-  "group inline-flex items-center justify-center gap-2 rounded-full bg-[#9a7a48] px-7 py-3.5 text-sm font-semibold tracking-wide text-white transition-colors hover:bg-[#7c6038]";
+  "group inline-flex items-center justify-center gap-2 rounded-full border border-[#1a1815]/30 px-7 py-3.5 text-sm font-semibold tracking-wide text-[#1a1815] transition-colors hover:bg-[#1a1815] hover:text-[#f4f1ea]";
 
 export const Arrow = () => (
   <span aria-hidden className="transition-transform duration-300 group-hover:translate-x-1">→</span>
@@ -103,28 +96,31 @@ export const Arrow = () => (
 // Display-font utility.
 export const fd = "font-[family-name:var(--font-sr-display)]";
 
-// ── Eyebrow label (thin rule + small caps) ──
+// Chamfered (cut top-right corner) — mixed image edges, custom look.
+export const CUT = "polygon(0 0, calc(100% - 2.4rem) 0, 100% 2.4rem, 100% 100%, 0 100%)";
+
+// ── Eyebrow label (thin rule + small caps, ink) ──
 export function Label({ children, light = false }: { children: React.ReactNode; light?: boolean }) {
   return (
-    <p className={`flex items-center gap-3 text-xs font-semibold uppercase tracking-[0.22em] ${light ? "text-[#9a7a48]" : "text-[#9a7a48]"}`}>
-      <span className="h-px w-7 bg-[#9a7a48]" aria-hidden /> {children}
+    <p className={`flex items-center gap-3 text-[11px] font-semibold uppercase tracking-[0.26em] ${light ? "text-[#f4f1ea]/70" : "text-[#1a1815]/55"}`}>
+      <span className={`h-px w-8 ${light ? "bg-[#f4f1ea]/50" : "bg-[#1a1815]/40"}`} aria-hidden /> {children}
     </p>
   );
 }
 
-// ── Page hero (inner pages): light, image-led ──
+// ── Inner-page hero (image + dark scrim, editorial) ──
 export function PageHero({ eyebrow, title, intro, img: image, imgAlt }: { eyebrow: string; title: string; intro: string; img: string; imgAlt: string }) {
   return (
-    <section className="relative overflow-hidden bg-[#1f1b16]">
+    <section className="relative overflow-hidden bg-[#1a1815]">
       {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img src={image} alt={imgAlt} data-parallax className="absolute inset-0 h-[115%] w-full object-cover opacity-45" />
-      <div className="absolute inset-0 bg-gradient-to-t from-[#1f1b16] via-[#1f1b16]/55 to-[#1f1b16]/30" />
-      <div className="relative mx-auto w-full max-w-6xl px-5 pb-14 pt-32 text-[#f7f3ec] md:px-8 md:pb-20 md:pt-40">
+      <img src={image} alt={imgAlt} data-parallax className="absolute inset-0 h-[115%] w-full object-cover opacity-40" />
+      <div className="absolute inset-0 bg-gradient-to-t from-[#1a1815] via-[#1a1815]/55 to-[#1a1815]/25" />
+      <div className="relative mx-auto w-full max-w-6xl px-5 pb-16 pt-32 text-[#f4f1ea] md:px-8 md:pb-24 md:pt-44">
         <Label light>{eyebrow}</Label>
-        <h1 className={`hero-h mt-5 ${fd} text-[2.7rem] font-medium leading-[1.02] tracking-[-0.01em] md:text-6xl`}>
+        <h1 className={`hero-h mt-6 ${fd} text-[2.8rem] font-medium leading-[1.0] tracking-[-0.015em] md:text-7xl`}>
           <span className="block overflow-hidden"><span className="hero-line-inner block" style={{ transform: "translateY(110%)" }}>{title}</span></span>
         </h1>
-        <p className="hero-fade mt-5 max-w-xl text-base font-light text-[#f7f3ec]/80 opacity-0 md:text-lg" style={{ transform: "translateY(8px)" }}>{intro}</p>
+        <p className="hero-fade mt-6 max-w-xl text-base font-light text-[#f4f1ea]/75 opacity-0 md:text-lg" style={{ transform: "translateY(8px)" }}>{intro}</p>
       </div>
     </section>
   );

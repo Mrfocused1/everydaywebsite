@@ -29,42 +29,42 @@ export default function StoneContact() {
         imgAlt="Restored granite bar top"
       />
 
-      <section className="bg-[#f7f3ec]">
+      <section className="bg-[#f4f1ea]">
         <div className="mx-auto grid max-w-6xl gap-12 px-5 py-16 md:px-8 md:py-24 lg:grid-cols-[0.95fr_1.05fr] lg:gap-16">
           {/* details */}
           <div data-reveal>
             <Label>Get in touch</Label>
-            <h2 className={`mt-5 ${fd} text-3xl font-medium leading-tight tracking-tight text-[#1f1b16] md:text-4xl`}>Let&apos;s sort your stone.</h2>
-            <p className="mt-5 text-lg font-light leading-relaxed text-[#1f1b16]/65">
+            <h2 className={`mt-5 ${fd} text-3xl font-medium leading-tight tracking-tight text-[#1a1815] md:text-4xl`}>Let&apos;s sort your stone.</h2>
+            <p className="mt-5 text-lg font-light leading-relaxed text-[#1a1815]/65">
               Tell me what&apos;s happened and send a photo or two — it&apos;s the fastest way to an accurate price. {COVERAGE}.
             </p>
 
-            <div className="mt-8 overflow-hidden rounded-2xl border border-[#1f1b16]/12 bg-white">
+            <div className="mt-8 overflow-hidden rounded-2xl border border-[#1a1815]/12 bg-white">
               {METHODS.map((m, i) => (
                 <a key={m.k} href={m.href} target={m.k === "Email" || m.k === "Call" ? undefined : "_blank"} rel="noopener noreferrer"
-                  className={`flex items-center gap-4 p-5 transition-colors hover:bg-[#faf7f1] ${i < METHODS.length - 1 ? "border-b border-[#1f1b16]/10" : ""}`}>
-                  <span className="grid h-11 w-11 shrink-0 place-items-center rounded-full bg-[#1f1b16] text-[#f7f3ec]" aria-hidden>
+                  className={`flex items-center gap-4 p-5 transition-colors hover:bg-[#faf7f1] ${i < METHODS.length - 1 ? "border-b border-[#1a1815]/10" : ""}`}>
+                  <span className="grid h-11 w-11 shrink-0 place-items-center rounded-full bg-[#1a1815] text-[#f4f1ea]" aria-hidden>
                     <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d={m.icon} /></svg>
                   </span>
                   <span>
-                    <span className="block text-[11px] font-semibold uppercase tracking-wider text-[#1f1b16]/45">{m.k}</span>
-                    <span className={`block ${fd} text-lg font-semibold text-[#1f1b16]`}>{m.v}</span>
+                    <span className="block text-[11px] font-semibold uppercase tracking-wider text-[#1a1815]/45">{m.k}</span>
+                    <span className={`block ${fd} text-lg font-semibold text-[#1a1815]`}>{m.v}</span>
                   </span>
                 </a>
               ))}
             </div>
 
-            <div className="mt-6 rounded-2xl border border-[#1f1b16]/12 bg-white p-5">
-              <p className="text-[11px] font-semibold uppercase tracking-wider text-[#1f1b16]/45">What I restore</p>
-              <p className="mt-2 text-sm font-light text-[#1f1b16]/70">{MATERIALS.join(" · ")} — floors, fireplaces, worktops, stairs, statues and more.</p>
+            <div className="mt-6 rounded-2xl border border-[#1a1815]/12 bg-white p-5">
+              <p className="text-[11px] font-semibold uppercase tracking-wider text-[#1a1815]/45">What I restore</p>
+              <p className="mt-2 text-sm font-light text-[#1a1815]/70">{MATERIALS.join(" · ")} — floors, fireplaces, worktops, stairs, statues and more.</p>
             </div>
           </div>
 
           {/* form */}
           <div data-reveal>
-            <div id="enquire" className="scroll-mt-28 rounded-2xl border border-[#1f1b16]/12 bg-white p-6 shadow-[0_20px_60px_-30px_rgba(31,27,22,0.4)] md:p-8">
-              <h3 className={`${fd} text-2xl font-semibold text-[#1f1b16]`}>Request a quote</h3>
-              <p className="mt-2 text-sm text-[#1f1b16]/55">Fill this in and your email opens ready to send — just add your photos.</p>
+            <div id="enquire" className="scroll-mt-28 rounded-2xl border border-[#1a1815]/12 bg-white p-6 shadow-[0_20px_60px_-30px_rgba(31,27,22,0.4)] md:p-8">
+              <h3 className={`${fd} text-2xl font-semibold text-[#1a1815]`}>Request a quote</h3>
+              <p className="mt-2 text-sm text-[#1a1815]/55">Fill this in and your email opens ready to send — just add your photos.</p>
               <div className="mt-6"><EnquiryForm /></div>
             </div>
           </div>
