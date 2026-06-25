@@ -1,7 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 import type { Metadata } from "next";
 import Link from "next/link";
-import { PageHero, PORTFOLIO, PAIRS, MATERIALS, fd, Label, Arrow, btnInk } from "../brand";
+import { PageHero, PEXELS, PORTFOLIO, PAIRS, MATERIALS, fd, Label, Arrow, btnInk } from "../brand";
 import { BeforeAfter } from "../BeforeAfter";
 import { SRFX } from "../SRFX";
 
@@ -18,10 +18,11 @@ export default function StonePortfolio() {
         title="Every photo is"
         accent="my own work."
         intro="Real repairs and restorations — marble, granite, limestone, slate and sandstone brought back to life. Drag the sliders to see the difference."
+        img={PEXELS.portfolio}
       />
 
       {/* Before & after sliders */}
-      <section className="border-t-2 border-[#15130f] bg-[#15130f] text-[#f3efe6]">
+      <section className="border-t-2 border-[#15130f] bg-[#15130f] text-[#ffffff]">
         <div className="mx-auto max-w-6xl px-5 py-16 md:px-8 md:py-24">
           <h2 className={`${fd} text-[2.4rem] font-extrabold leading-[0.92] tracking-[-0.02em] md:text-5xl`} data-reveal>Drag to compare.</h2>
           <div className="mt-12 grid gap-6 md:grid-cols-2" data-stagger>
@@ -30,7 +31,7 @@ export default function StonePortfolio() {
                 <BeforeAfter before={p.before} after={p.after} className="aspect-[4/3] w-full rounded-2xl" />
                 <figcaption className="mt-4">
                   <h3 className={`${fd} text-xl font-bold`}>{p.t}</h3>
-                  <p className="mt-1 text-sm font-light text-[#f3efe6]/60">{p.b}</p>
+                  <p className="mt-1 text-sm font-light text-[#ffffff]/60">{p.b}</p>
                 </figcaption>
               </figure>
             ))}
@@ -39,7 +40,7 @@ export default function StonePortfolio() {
       </section>
 
       {/* Gallery */}
-      <section className="bg-[#f3efe6]">
+      <section className="bg-[#ffffff]">
         <div className="mx-auto max-w-6xl px-5 py-16 md:px-8 md:py-24">
           <div className="flex flex-wrap items-center gap-x-4 gap-y-2" data-reveal>
             <Label>More work</Label>
@@ -62,10 +63,10 @@ export default function StonePortfolio() {
       </section>
 
       {/* CTA */}
-      <section className="border-t-2 border-[#15130f] bg-[#3f5d5a] text-[#f3efe6]">
+      <section className="border-t-2 border-[#15130f] bg-[#3f5d5a] text-[#ffffff]">
         <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-6 px-5 py-16 text-center md:flex-row md:px-8 md:text-left" data-reveal>
           <h2 className={`max-w-xl ${fd} text-[2rem] font-extrabold leading-[0.95] tracking-tight md:text-4xl`}>Got a piece that needs the same care?</h2>
-          <Link href="/stonerepairs/contact#enquire" data-magnetic className="inline-flex items-center justify-center gap-2 rounded-full bg-[#f3efe6] px-7 py-3.5 text-sm font-bold text-[#15130f] transition-colors hover:bg-white">Get a quote <Arrow /></Link>
+          <Link href="/stonerepairs/contact#enquire" data-magnetic className="inline-flex items-center justify-center gap-2 rounded-full bg-[#ffffff] px-7 py-3.5 text-sm font-bold text-[#15130f] transition-colors hover:bg-white">Get a quote <Arrow /></Link>
         </div>
       </section>
 

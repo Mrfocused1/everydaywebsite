@@ -45,7 +45,7 @@ export function EnquiryForm() {
         {ITEMS.map((s) => (<option key={s} value={s} className="text-[#15130f]">{s}</option>))}
       </select>
       <textarea name="message" required rows={4} placeholder="Describe the damage — and remember to attach a couple of photos when your email opens…" className={field} />
-      <button type="submit" className="group flex w-full items-center justify-center gap-2 rounded-full bg-[#15130f] px-6 py-4 text-sm font-semibold text-[#f3efe6] transition-colors hover:bg-[#3f5d5a]">
+      <button type="submit" className="group flex w-full items-center justify-center gap-2 rounded-full bg-[#15130f] px-6 py-4 text-sm font-semibold text-[#ffffff] transition-colors hover:bg-[#3f5d5a]">
         Send enquiry
         <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>
       </button>

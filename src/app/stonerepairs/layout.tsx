@@ -29,7 +29,7 @@ export const metadata: Metadata = {
 
 export default function SRLayout({ children }: { children: React.ReactNode }) {
   return (
-    <div className={`${display.variable} ${body.variable} bg-[#f3efe6] text-[#15130f]`} style={{ fontFamily: "var(--font-sr-body), sans-serif" }}>
+    <div className={`${display.variable} ${body.variable} bg-[#ffffff] text-[#15130f]`} style={{ fontFamily: "var(--font-sr-body), sans-serif" }}>
       <SRHeader />
       <main>{children}</main>
       <SRFooter />
@@ -37,10 +37,10 @@ export default function SRLayout({ children }: { children: React.ReactNode }) {
       <div className="h-[64px] sm:hidden" aria-hidden />
       {/* Pinned Call now / Enquire */}
       <div className="fixed inset-x-0 bottom-0 z-50 flex gap-2 border-t border-white/10 bg-[#15130f] p-3 shadow-[0_-4px_20px_rgba(0,0,0,0.25)] sm:inset-x-auto sm:bottom-5 sm:right-5 sm:rounded-full sm:border sm:border-white/10 sm:p-2 sm:shadow-[0_12px_40px_rgba(21,19,15,0.35)]">
-        <a href={PHONE_TEL} className="flex-1 rounded-full border border-white/30 px-5 py-3 text-center text-sm font-semibold text-[#f3efe6] transition-colors hover:bg-white hover:text-[#15130f] sm:flex-none sm:px-6">
+        <a href={PHONE_TEL} className="flex-1 rounded-full border border-white/30 px-5 py-3 text-center text-sm font-semibold text-[#ffffff] transition-colors hover:bg-white hover:text-[#15130f] sm:flex-none sm:px-6">
           Call now
         </a>
-        <Link href="/stonerepairs/contact#enquire" className="flex-1 rounded-full bg-[#f3efe6] px-5 py-3 text-center text-sm font-semibold text-[#15130f] transition-colors hover:bg-white sm:flex-none sm:px-6">
+        <Link href="/stonerepairs/contact#enquire" className="flex-1 rounded-full bg-[#ffffff] px-5 py-3 text-center text-sm font-semibold text-[#15130f] transition-colors hover:bg-white sm:flex-none sm:px-6">
           Enquire
         </Link>
       </div>

@@ -1,7 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 import type { Metadata } from "next";
 import {
-  PageHero, fd, Label,
+  PageHero, PEXELS, fd, Label,
   PHONE_DISPLAY, PHONE_TEL, EMAIL, EMAIL_HREF, WHATSAPP, COVERAGE, MATERIALS,
 } from "../brand";
 import { EnquiryForm } from "../EnquiryForm";
@@ -26,9 +26,10 @@ export default function StoneContact() {
         title="Send a photo,"
         accent="get a quote."
         intro="For the quickest response, send a couple of photos of the damage by email or WhatsApp and I'll come straight back to you."
+        img={PEXELS.contact}
       />
 
-      <section className="bg-[#f3efe6]">
+      <section className="bg-[#ffffff]">
         <div className="mx-auto grid max-w-6xl gap-12 px-5 py-16 md:px-8 md:py-24 lg:grid-cols-[0.95fr_1.05fr] lg:gap-16">
           {/* details */}
           <div data-reveal>
@@ -41,8 +42,8 @@ export default function StoneContact() {
             <div className="mt-8 overflow-hidden rounded-2xl border border-[#15130f]/12 bg-white">
               {METHODS.map((m, i) => (
                 <a key={m.k} href={m.href} target={m.k === "Email" || m.k === "Call" ? undefined : "_blank"} rel="noopener noreferrer"
-                  className={`flex items-center gap-4 p-5 transition-colors hover:bg-[#faf7f0] ${i < METHODS.length - 1 ? "border-b border-[#15130f]/10" : ""}`}>
-                  <span className="grid h-11 w-11 shrink-0 place-items-center rounded-full bg-[#15130f] text-[#f3efe6]" aria-hidden>
+                  className={`flex items-center gap-4 p-5 transition-colors hover:bg-[#f6f5f2] ${i < METHODS.length - 1 ? "border-b border-[#15130f]/10" : ""}`}>
+                  <span className="grid h-11 w-11 shrink-0 place-items-center rounded-full bg-[#15130f] text-[#ffffff]" aria-hidden>
                     <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d={m.icon} /></svg>
                   </span>
                   <span>

@@ -5,7 +5,7 @@ export const display = Bricolage_Grotesque({ subsets: ["latin"], weight: ["400",
 export const body = Inter({ subsets: ["latin"], variable: "--font-sr-body", display: "swap" });
 
 // ── Palette: cream + ink + slate blue-green accent ──
-// cream #f3efe6 · paper #faf7f0 · ink #15130f · slate #3f5d5a
+// cream #ffffff · paper #f6f5f2 · ink #15130f · slate #3f5d5a
 
 // ── Brand & contact (extracted from stone-repairs.com) ──
 export const BIZ = "Stone Repairs";
@@ -68,6 +68,14 @@ export const IMG = {
   repairB: img("repair-b"),
 };
 
+// Pexels stock marble imagery (licence-free) for clean hero sections.
+export const PEXELS = {
+  hero: "/marketing/stone/pexels-hero.jpg",
+  craft: "/marketing/stone/pexels-craft.jpg",
+  portfolio: "/marketing/stone/pexels-port.jpg",
+  contact: "/marketing/stone/pexels-contact.jpg",
+};
+
 // before / after pairs (same piece, before → after) for the sliders
 export const PAIRS = [
   { before: IMG.graniteBar1, after: IMG.graniteBar2, t: "Granite bar top", b: "Chipped edge rebuilt, surface polished back to gloss." },
@@ -87,11 +95,11 @@ export const PORTFOLIO = [
 
 // ── Buttons (bold pills) ──
 export const btnInk =
-  "group inline-flex items-center justify-center gap-2 rounded-full bg-[#15130f] px-7 py-3.5 text-sm font-bold text-[#f3efe6] transition-colors hover:bg-[#3f5d5a]";
+  "group inline-flex items-center justify-center gap-2 rounded-full bg-[#15130f] px-7 py-3.5 text-sm font-bold text-[#ffffff] transition-colors hover:bg-[#3f5d5a]";
 export const btnOutline =
-  "group inline-flex items-center justify-center gap-2 rounded-full border-2 border-[#15130f] px-7 py-3.5 text-sm font-bold text-[#15130f] transition-colors hover:bg-[#15130f] hover:text-[#f3efe6]";
+  "group inline-flex items-center justify-center gap-2 rounded-full border-2 border-[#15130f] px-7 py-3.5 text-sm font-bold text-[#15130f] transition-colors hover:bg-[#15130f] hover:text-[#ffffff]";
 export const btnSlate =
-  "group inline-flex items-center justify-center gap-2 rounded-full bg-[#3f5d5a] px-7 py-3.5 text-sm font-bold text-[#f3efe6] transition-colors hover:bg-[#2c4340]";
+  "group inline-flex items-center justify-center gap-2 rounded-full bg-[#3f5d5a] px-7 py-3.5 text-sm font-bold text-[#ffffff] transition-colors hover:bg-[#2c4340]";
 
 export const Arrow = () => (
   <span aria-hidden className="transition-transform duration-300 group-hover:translate-x-1">→</span>
@@ -122,25 +130,29 @@ export function Squiggle({ className = "" }: { className?: string }) {
   );
 }
 
-// ── Eyebrow label ──
+// ── Section kicker (bold display label + short rule, no AI dot/eyebrow) ──
 export function Label({ children, light = false }: { children: React.ReactNode; light?: boolean }) {
   return (
-    <p className={`flex items-center gap-2.5 text-xs font-bold uppercase tracking-[0.16em] ${light ? "text-[#f3efe6]/80" : "text-[#3f5d5a]"}`}>
-      <span className="h-2.5 w-2.5 rounded-full bg-[#3f5d5a]" aria-hidden /> {children}
-    </p>
+    <span className={`inline-flex items-center gap-3 ${fd} text-sm font-extrabold leading-none ${light ? "text-[#ffffff]" : "text-[#3f5d5a]"}`}>
+      <span className={`h-[3px] w-9 rounded-full ${light ? "bg-[#ffffff]" : "bg-[#3f5d5a]"}`} aria-hidden />
+      {children}
+    </span>
   );
 }
 
-// ── Inner-page hero (bold type on cream) ──
-export function PageHero({ eyebrow, title, accent, intro }: { eyebrow: string; title: string; accent?: string; intro: string }) {
+// ── Inner-page hero: clean Pexels marble image with overlaid bold type ──
+export function PageHero({ eyebrow, title, accent, intro, img: image }: { eyebrow: string; title: string; accent?: string; intro: string; img: string }) {
   return (
-    <section className="bg-[#f3efe6]">
-      <div className="mx-auto w-full max-w-6xl px-5 pb-10 pt-28 md:px-8 md:pb-14 md:pt-36">
+    <section className="relative overflow-hidden">
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img src={image} alt="" data-parallax className="absolute inset-0 h-[114%] w-full object-cover" />
+      <div className="absolute inset-0 bg-gradient-to-br from-[#ffffff]/94 via-[#ffffff]/74 to-[#ffffff]/30" />
+      <div className="relative mx-auto w-full max-w-6xl px-5 pb-14 pt-32 md:px-8 md:pb-20 md:pt-44">
         <Label>{eyebrow}</Label>
-        <h1 className={`mt-6 ${fd} text-[2.9rem] font-extrabold leading-[0.95] tracking-[-0.02em] text-[#15130f] md:text-7xl`}>
-          {title} {accent && <span className="relative inline-block italic text-[#3f5d5a]">{accent}<Underline className="absolute -bottom-2 left-0 h-2.5 w-full" /></span>}
+        <h1 className={`mt-7 ${fd} text-[2.9rem] font-extrabold leading-[0.95] tracking-[-0.02em] text-[#15130f] md:text-7xl`}>
+          {title} {accent && <span className="italic text-[#3f5d5a]">{accent}</span>}
         </h1>
-        <p className="mt-6 max-w-xl text-lg font-light text-[#15130f]/70">{intro}</p>
+        <p className="mt-6 max-w-xl text-lg font-light text-[#15130f]/75">{intro}</p>
       </div>
     </section>
   );

@@ -3,7 +3,7 @@ import { NAV, MATERIALS, PHONE_DISPLAY, PHONE_TEL, EMAIL, EMAIL_HREF, WHATSAPP, 
 
 export function SRFooter() {
   return (
-    <footer className="border-t border-[#15130f]/10 bg-[#e7e0d3] text-[#15130f]">
+    <footer className="border-t border-[#15130f]/10 bg-[#f1f0ec] text-[#15130f]">
       <div className="mx-auto max-w-6xl px-5 py-14 md:px-8">
         <div className="grid gap-10 md:grid-cols-[1.5fr_1fr_1.3fr]">
           <div>

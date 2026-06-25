@@ -1,7 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 import Link from "next/link";
 import {
-  IMG, PAIRS, PORTFOLIO, fd, Label, Arrow, Underline, Lasso, Squiggle, btnInk, btnOutline,
+  PEXELS, PAIRS, PORTFOLIO, fd, Label, Arrow, btnInk, btnOutline,
   MATERIALS, SERVICES, PROCESS, STATS, PHONE_DISPLAY, PHONE_TEL, WHATSAPP, EMAIL_HREF, OWNER,
 } from "./brand";
 import { BeforeAfter } from "./BeforeAfter";
@@ -10,16 +10,17 @@ import { SRFX } from "./SRFX";
 export default function StoneHome() {
   return (
     <>
-      {/* ── Hero ── */}
-      <section className="relative overflow-hidden bg-[#f3efe6]">
-        <Squiggle className="absolute right-[8%] top-24 hidden h-10 w-16 rotate-6 md:block" />
-        <div className="mx-auto max-w-6xl px-5 pb-10 pt-12 md:px-8 md:pb-14 md:pt-16">
+      {/* ── Hero: clean Pexels marble + overlaid type ── */}
+      <section className="relative overflow-hidden">
+        <img src={PEXELS.hero} alt="" data-parallax className="absolute inset-0 h-[114%] w-full object-cover" />
+        <div className="absolute inset-0 bg-gradient-to-br from-[#ffffff]/92 via-[#ffffff]/70 to-[#ffffff]/25" />
+        <div className="relative mx-auto max-w-6xl px-5 pb-16 pt-14 md:px-8 md:pb-28 md:pt-24">
           <Label>Natural stone repair &amp; restoration · 30+ years</Label>
           <h1 className={`mt-7 ${fd} text-[3.2rem] font-extrabold leading-[0.9] tracking-[-0.03em] text-[#15130f] sm:text-7xl md:text-[7rem]`}>
             <span className="block overflow-hidden"><span className="hero-line-inner block" style={{ transform: "translateY(110%)" }}>We don&apos;t hide</span></span>
             <span className="block overflow-hidden"><span className="hero-line-inner block" style={{ transform: "translateY(110%)" }}>the damage.</span></span>
             <span className="block overflow-hidden"><span className="hero-line-inner block" style={{ transform: "translateY(110%)" }}>We make it{" "}
-              <span className="relative inline-block italic text-[#3f5d5a]">vanish.<Underline className="absolute -bottom-1 left-0 h-3 w-full md:-bottom-2" /></span>
+              <span className="italic text-[#3f5d5a]">vanish.</span>
             </span></span>
           </h1>
           <div className="mt-9 flex flex-col gap-7 md:flex-row md:items-end md:justify-between">
@@ -33,41 +34,39 @@ export default function StoneHome() {
             </div>
           </div>
         </div>
-        {/* signature before/after slider */}
-        <div className="mx-auto max-w-6xl px-5 pb-14 md:px-8 md:pb-20" data-reveal>
-          <BeforeAfter before={PAIRS[2].before} after={PAIRS[2].after} className="aspect-[16/10] w-full rounded-[1.5rem] md:aspect-[2/1]" label="Drag — stone Buddha, cleaned & repaired" />
-        </div>
       </section>
 
       {/* ── Materials marquee ── */}
-      <section className="overflow-hidden border-y-2 border-[#15130f] bg-[#3f5d5a] py-5 text-[#f3efe6]">
+      <section className="overflow-hidden border-y-2 border-[#15130f] bg-[#3f5d5a] py-5 text-[#ffffff]">
         <div className="flex w-max whitespace-nowrap will-change-transform" data-marquee-track>
           {[0, 1].map((k) => (
             <div key={k} className="flex items-center" aria-hidden={k === 1}>
               {MATERIALS.concat("Repaired", "Restored", "Polished", "Sealed").map((m) => (
-                <span key={m} className={`${fd} mx-7 text-3xl font-bold md:text-5xl`}>{m} <span className="text-[#f3efe6]/45">✦</span></span>
+                <span key={m} className={`${fd} mx-7 text-3xl font-bold md:text-5xl`}>{m} <span className="text-[#ffffff]/45">✦</span></span>
               ))}
             </div>
           ))}
         </div>
       </section>
 
-      {/* ── Statement ── */}
-      <section className="bg-[#f3efe6]">
-        <div className="mx-auto max-w-5xl px-5 py-20 md:px-8 md:py-28" data-reveal>
-          <Label>About</Label>
-          <p className={`mt-8 ${fd} text-[1.9rem] font-bold leading-[1.15] tracking-[-0.01em] text-[#15130f] sm:text-4xl md:text-[3.1rem]`}>
-            I&apos;m {OWNER}. Every photo on this site is from{" "}
-            <span className="relative inline-block">my own repairs<Underline className="absolute -bottom-1 left-0 h-2.5 w-full" /></span>. No stock,
-            no staging — just{" "}
-            <span className="relative inline-block px-1.5">30 years<Lasso className="absolute -inset-x-2 -inset-y-2 h-[150%] w-[112%]" /></span>{" "}
-            of putting natural stone right.
-          </p>
+      {/* ── Statement + craft image ── */}
+      <section className="bg-[#ffffff]">
+        <div className="mx-auto grid max-w-6xl items-center gap-10 px-5 py-16 md:grid-cols-[1.4fr_0.6fr] md:gap-14 md:px-8 md:py-24">
+          <div data-reveal>
+            <Label>About</Label>
+            <p className={`mt-7 ${fd} text-[1.8rem] font-bold leading-[1.18] tracking-[-0.01em] text-[#15130f] sm:text-4xl md:text-[2.7rem]`}>
+              I&apos;m {OWNER}. Every photo on this site is from <span className="italic text-[#3f5d5a]">my own repairs</span>. No stock,
+              no staging — just <span className="italic text-[#3f5d5a]">30 years</span> of putting natural stone right.
+            </p>
+          </div>
+          <div data-reveal className="overflow-hidden rounded-2xl border-2 border-[#15130f] shadow-[8px_8px_0_#15130f]">
+            <img src={PEXELS.craft} alt="Carved marble detail" data-clip className="aspect-[3/4] w-full object-cover" />
+          </div>
         </div>
       </section>
 
       {/* ── Services ── */}
-      <section id="services" className="scroll-mt-24 border-t-2 border-[#15130f] bg-[#faf7f0]">
+      <section id="services" className="scroll-mt-24 border-t-2 border-[#15130f] bg-[#f6f5f2]">
         <div className="mx-auto max-w-6xl px-5 py-16 md:px-8 md:py-24">
           <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between" data-reveal>
             <h2 className={`${fd} text-[2.6rem] font-extrabold leading-[0.92] tracking-[-0.02em] text-[#15130f] md:text-6xl`}>Repair. Restore.<br /><span className="text-[#3f5d5a]">Protect.</span></h2>
@@ -75,10 +74,10 @@ export default function StoneHome() {
           </div>
           <div className="mt-12 border-t-2 border-[#15130f]/15" data-stagger>
             {SERVICES.map((s, i) => (
-              <div key={s.t} className="group grid grid-cols-1 gap-1.5 border-b-2 border-[#15130f]/15 py-7 transition-colors hover:bg-[#3f5d5a] hover:text-[#f3efe6] md:grid-cols-[5rem_1fr_1.3fr] md:items-baseline md:gap-8 md:px-4">
-                <span className={`${fd} text-2xl font-bold text-[#3f5d5a] group-hover:text-[#f3efe6]/70`}>{String(i + 1).padStart(2, "0")}</span>
-                <h3 className={`${fd} text-2xl font-bold text-[#15130f] group-hover:text-[#f3efe6] md:text-3xl`}>{s.t}</h3>
-                <p className="text-sm font-light leading-relaxed text-[#15130f]/60 group-hover:text-[#f3efe6]/80">{s.b}</p>
+              <div key={s.t} className="group grid grid-cols-1 gap-1.5 border-b-2 border-[#15130f]/15 py-7 transition-colors hover:bg-[#3f5d5a] hover:text-[#ffffff] md:grid-cols-[5rem_1fr_1.3fr] md:items-baseline md:gap-8 md:px-4">
+                <span className={`${fd} text-2xl font-bold text-[#3f5d5a] group-hover:text-[#ffffff]/70`}>{String(i + 1).padStart(2, "0")}</span>
+                <h3 className={`${fd} text-2xl font-bold text-[#15130f] group-hover:text-[#ffffff] md:text-3xl`}>{s.t}</h3>
+                <p className="text-sm font-light leading-relaxed text-[#15130f]/60 group-hover:text-[#ffffff]/80">{s.b}</p>
               </div>
             ))}
           </div>
@@ -86,11 +85,11 @@ export default function StoneHome() {
       </section>
 
       {/* ── Before & after ── */}
-      <section className="bg-[#15130f] text-[#f3efe6]">
+      <section className="bg-[#15130f] text-[#ffffff]">
         <div className="mx-auto max-w-6xl px-5 py-16 md:px-8 md:py-24">
           <div className="flex flex-wrap items-end justify-between gap-4" data-reveal>
             <h2 className={`${fd} text-[2.6rem] font-extrabold leading-[0.92] tracking-[-0.02em] md:text-6xl`}>Drag to see<br /><span className="text-[#7fa39e]">the difference.</span></h2>
-            <Link href="/stonerepairs/portfolio" className="group inline-flex items-center gap-2 text-sm font-bold text-[#f3efe6] hover:text-[#7fa39e]">View full portfolio <Arrow /></Link>
+            <Link href="/stonerepairs/portfolio" className="group inline-flex items-center gap-2 text-sm font-bold text-[#ffffff] hover:text-[#7fa39e]">View full portfolio <Arrow /></Link>
           </div>
           <div className="mt-12 grid gap-6 md:grid-cols-2" data-stagger>
             {[PAIRS[0], PAIRS[1]].map((p) => (
@@ -98,7 +97,7 @@ export default function StoneHome() {
                 <BeforeAfter before={p.before} after={p.after} className="aspect-[4/3] w-full rounded-2xl" />
                 <figcaption className="mt-4">
                   <h3 className={`${fd} text-xl font-bold`}>{p.t}</h3>
-                  <p className="mt-1 text-sm font-light text-[#f3efe6]/60">{p.b}</p>
+                  <p className="mt-1 text-sm font-light text-[#ffffff]/60">{p.b}</p>
                 </figcaption>
               </figure>
             ))}
@@ -107,7 +106,7 @@ export default function StoneHome() {
       </section>
 
       {/* ── Stats ── */}
-      <section className="border-y-2 border-[#15130f] bg-[#f3efe6]">
+      <section className="border-y-2 border-[#15130f] bg-[#ffffff]">
         <div className="mx-auto grid max-w-6xl grid-cols-1 divide-y-2 divide-[#15130f]/15 px-5 md:grid-cols-3 md:divide-x-2 md:divide-y-0 md:px-8" data-stagger>
           {STATS.map((s) => (
             <div key={s.l} className="px-2 py-12 text-center md:py-16">
@@ -119,7 +118,7 @@ export default function StoneHome() {
       </section>
 
       {/* ── Process ── */}
-      <section className="bg-[#faf7f0]">
+      <section className="bg-[#f6f5f2]">
         <div className="mx-auto max-w-6xl px-5 py-16 md:px-8 md:py-24">
           <div className="max-w-2xl" data-reveal>
             <Label>How it works</Label>
@@ -138,7 +137,7 @@ export default function StoneHome() {
       </section>
 
       {/* ── Portfolio teaser — tilted cards ── */}
-      <section className="overflow-hidden bg-[#f3efe6]">
+      <section className="overflow-hidden bg-[#ffffff]">
         <div className="mx-auto max-w-6xl px-5 py-16 md:px-8 md:py-24">
           <div className="flex flex-wrap items-end justify-between gap-4" data-reveal>
             <h2 className={`${fd} text-[2.6rem] font-extrabold leading-[0.92] tracking-[-0.02em] text-[#15130f] md:text-6xl`}>Recent work.</h2>
@@ -158,16 +157,15 @@ export default function StoneHome() {
       </section>
 
       {/* ── CTA ── */}
-      <section className="relative overflow-hidden bg-[#3f5d5a] text-[#f3efe6]">
-        <Squiggle className="absolute left-[6%] top-10 hidden h-10 w-16 opacity-60 md:block" />
+      <section className="relative overflow-hidden bg-[#3f5d5a] text-[#ffffff]">
         <div className="mx-auto max-w-6xl px-5 py-20 text-center md:px-8 md:py-28" data-reveal>
           <Label light>Get in touch</Label>
           <h2 className={`mx-auto mt-6 max-w-3xl ${fd} text-[2.8rem] font-extrabold leading-[0.92] tracking-[-0.02em] md:text-7xl`}>Send a photo. Get a quote.</h2>
-          <p className="mx-auto mt-6 max-w-xl text-lg font-light text-[#f3efe6]/75">Email or WhatsApp a couple of photos of the damage and I&apos;ll get back to you as soon as I can.</p>
+          <p className="mx-auto mt-6 max-w-xl text-lg font-light text-[#ffffff]/75">Email or WhatsApp a couple of photos of the damage and I&apos;ll get back to you as soon as I can.</p>
           <div className="mt-9 flex flex-wrap justify-center gap-3">
-            <a href={PHONE_TEL} className="rounded-full bg-[#f3efe6] px-7 py-3.5 text-sm font-bold text-[#15130f] transition-colors hover:bg-white">Call {PHONE_DISPLAY}</a>
-            <a href={WHATSAPP} target="_blank" rel="noopener noreferrer" className="rounded-full border-2 border-[#f3efe6] px-7 py-3.5 text-sm font-bold text-[#f3efe6] transition-colors hover:bg-[#f3efe6] hover:text-[#15130f]">WhatsApp</a>
-            <a href={EMAIL_HREF} className="rounded-full border-2 border-[#f3efe6] px-7 py-3.5 text-sm font-bold text-[#f3efe6] transition-colors hover:bg-[#f3efe6] hover:text-[#15130f]">Email</a>
+            <a href={PHONE_TEL} className="rounded-full bg-[#ffffff] px-7 py-3.5 text-sm font-bold text-[#15130f] transition-colors hover:bg-white">Call {PHONE_DISPLAY}</a>
+            <a href={WHATSAPP} target="_blank" rel="noopener noreferrer" className="rounded-full border-2 border-[#ffffff] px-7 py-3.5 text-sm font-bold text-[#ffffff] transition-colors hover:bg-[#ffffff] hover:text-[#15130f]">WhatsApp</a>
+            <a href={EMAIL_HREF} className="rounded-full border-2 border-[#ffffff] px-7 py-3.5 text-sm font-bold text-[#ffffff] transition-colors hover:bg-[#ffffff] hover:text-[#15130f]">Email</a>
           </div>
         </div>
       </section>
