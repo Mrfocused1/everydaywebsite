@@ -85,7 +85,6 @@ export const PAIRS = [
 ];
 
 export const PORTFOLIO = [
-  { src: IMG.fireplace1, t: "Marble fireplace", b: "Cracks and chips repaired and re-polished." },
   { src: IMG.fireplace2, t: "Rosso Levanto fireplace", b: "Red marble surround restored to a deep shine." },
   { src: IMG.mosaic2, t: "Mosaic floor", b: "Deep-cleaned, honed and sealed." },
   { src: IMG.graniteBar2, t: "Granite bar top", b: "Edge rebuilt and polished back to gloss." },
