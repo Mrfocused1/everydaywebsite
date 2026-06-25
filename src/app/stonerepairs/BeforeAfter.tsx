@@ -27,12 +27,12 @@ export function BeforeAfter({ before, after, label, className = "" }: { before: 
     >
       {/* after (full) */}
       <img src={after} alt="After repair" draggable={false} className="block h-full w-full object-cover" />
-      <span className="pointer-events-none absolute right-4 top-4 rounded-full bg-[#3f5d5a] px-3 py-1 text-[11px] font-bold uppercase tracking-wider text-[#ffffff]">After</span>
+      <span className="pointer-events-none absolute right-4 top-4 rounded-full bg-[#3f5d5a] px-3 py-1 text-[11px] font-semibold uppercase tracking-wider text-[#ffffff]">After</span>
 
       {/* before (clipped) */}
       <div className="absolute inset-0" style={{ clipPath: `inset(0 ${100 - pct}% 0 0)` }}>
         <img src={before} alt="Before repair" draggable={false} className="block h-full w-full object-cover" />
-        <span className="pointer-events-none absolute left-4 top-4 rounded-full bg-[#15130f]/85 px-3 py-1 text-[11px] font-bold uppercase tracking-wider text-[#ffffff]">Before</span>
+        <span className="pointer-events-none absolute left-4 top-4 rounded-full bg-[#15130f]/85 px-3 py-1 text-[11px] font-semibold uppercase tracking-wider text-[#ffffff]">Before</span>
       </div>
 
       {/* handle */}
@@ -43,7 +43,7 @@ export function BeforeAfter({ before, after, label, className = "" }: { before: 
         </div>
       </div>
 
-      {label && <span className="pointer-events-none absolute bottom-4 left-4 rounded-full bg-[#ffffff]/90 px-3 py-1 text-[11px] font-bold text-[#15130f]">{label}</span>}
+      {label && <span className="pointer-events-none absolute bottom-4 left-4 rounded-full bg-[#ffffff]/90 px-3 py-1 text-[11px] font-semibold text-[#15130f]">{label}</span>}
       <span className="pointer-events-none absolute bottom-4 right-4 rounded-full bg-[#15130f]/70 px-3 py-1 text-[11px] font-semibold text-[#ffffff] opacity-100 transition-opacity duration-500 group-hover:opacity-0">← drag →</span>
     </div>
   );

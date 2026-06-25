@@ -1,7 +1,7 @@
-import { Bricolage_Grotesque, Inter } from "next/font/google";
+import { Schibsted_Grotesk, Inter } from "next/font/google";
 
-// ── Fonts: bold characterful display grotesque + clean sans ──
-export const display = Bricolage_Grotesque({ subsets: ["latin"], weight: ["400", "600", "700", "800"], variable: "--font-sr-display", display: "swap" });
+// ── Fonts: refined editorial grotesque + clean sans ──
+export const display = Schibsted_Grotesk({ subsets: ["latin"], weight: ["400", "500", "600", "700"], variable: "--font-sr-display", display: "swap" });
 export const body = Inter({ subsets: ["latin"], variable: "--font-sr-body", display: "swap" });
 
 // ── Palette: cream + ink + slate blue-green accent ──
@@ -95,11 +95,11 @@ export const PORTFOLIO = [
 
 // ── Buttons (bold pills) ──
 export const btnInk =
-  "group inline-flex items-center justify-center gap-2 rounded-full bg-[#15130f] px-7 py-3.5 text-sm font-bold text-[#ffffff] transition-colors hover:bg-[#3f5d5a]";
+  "group inline-flex items-center justify-center gap-2 rounded-full bg-[#15130f] px-7 py-3.5 text-sm font-semibold text-[#ffffff] transition-colors hover:bg-[#3f5d5a]";
 export const btnOutline =
-  "group inline-flex items-center justify-center gap-2 rounded-full border-2 border-[#15130f] px-7 py-3.5 text-sm font-bold text-[#15130f] transition-colors hover:bg-[#15130f] hover:text-[#ffffff]";
+  "group inline-flex items-center justify-center gap-2 rounded-full border-2 border-[#15130f] px-7 py-3.5 text-sm font-semibold text-[#15130f] transition-colors hover:bg-[#15130f] hover:text-[#ffffff]";
 export const btnSlate =
-  "group inline-flex items-center justify-center gap-2 rounded-full bg-[#3f5d5a] px-7 py-3.5 text-sm font-bold text-[#ffffff] transition-colors hover:bg-[#2c4340]";
+  "group inline-flex items-center justify-center gap-2 rounded-full bg-[#3f5d5a] px-7 py-3.5 text-sm font-semibold text-[#ffffff] transition-colors hover:bg-[#2c4340]";
 
 export const Arrow = () => (
   <span aria-hidden className="transition-transform duration-300 group-hover:translate-x-1">→</span>
@@ -133,7 +133,7 @@ export function Squiggle({ className = "" }: { className?: string }) {
 // ── Section kicker (bold display label + short rule, no AI dot/eyebrow) ──
 export function Label({ children, light = false }: { children: React.ReactNode; light?: boolean }) {
   return (
-    <span className={`inline-flex items-center gap-3 ${fd} text-sm font-extrabold leading-none ${light ? "text-[#ffffff]" : "text-[#3f5d5a]"}`}>
+    <span className={`inline-flex items-center gap-3 ${fd} text-sm font-semibold leading-none ${light ? "text-[#ffffff]" : "text-[#3f5d5a]"}`}>
       <span className={`h-[3px] w-9 rounded-full ${light ? "bg-[#ffffff]" : "bg-[#3f5d5a]"}`} aria-hidden />
       {children}
     </span>
@@ -149,7 +149,7 @@ export function PageHero({ eyebrow, title, accent, intro, img: image }: { eyebro
       <div className="absolute inset-0 bg-gradient-to-br from-[#ffffff]/94 via-[#ffffff]/74 to-[#ffffff]/30" />
       <div className="relative mx-auto w-full max-w-6xl px-5 pb-14 pt-32 md:px-8 md:pb-20 md:pt-44">
         <Label>{eyebrow}</Label>
-        <h1 className={`mt-7 ${fd} text-[2.9rem] font-extrabold leading-[0.95] tracking-[-0.02em] text-[#15130f] md:text-7xl`}>
+        <h1 className={`mt-7 ${fd} text-[2.9rem] font-semibold leading-[0.95] tracking-[-0.02em] text-[#15130f] md:text-7xl`}>
           {title} {accent && <span className="italic text-[#3f5d5a]">{accent}</span>}
         </h1>
         <p className="mt-6 max-w-xl text-lg font-light text-[#15130f]/75">{intro}</p>

@@ -36,11 +36,11 @@ export default function SRLayout({ children }: { children: React.ReactNode }) {
       {/* spacer so the fixed mobile bar never covers the footer */}
       <div className="h-[64px] sm:hidden" aria-hidden />
       {/* Pinned Call now / Enquire */}
-      <div className="fixed inset-x-0 bottom-0 z-50 flex gap-2 border-t border-white/10 bg-[#15130f] p-3 shadow-[0_-4px_20px_rgba(0,0,0,0.25)] sm:inset-x-auto sm:bottom-5 sm:right-5 sm:rounded-full sm:border sm:border-white/10 sm:p-2 sm:shadow-[0_12px_40px_rgba(21,19,15,0.35)]">
-        <a href={PHONE_TEL} className="flex-1 rounded-full border border-white/30 px-5 py-3 text-center text-sm font-semibold text-[#ffffff] transition-colors hover:bg-white hover:text-[#15130f] sm:flex-none sm:px-6">
+      <div className="fixed inset-x-0 bottom-0 z-50 flex gap-2 border-t-2 border-[#15130f]/15 bg-[#ffffff] p-3 shadow-[0_-4px_20px_rgba(21,19,15,0.12)] sm:inset-x-auto sm:bottom-5 sm:right-5 sm:rounded-full sm:border-2 sm:border-[#15130f]/15 sm:p-2 sm:shadow-[0_12px_40px_rgba(21,19,15,0.18)]">
+        <a href={PHONE_TEL} className="flex-1 rounded-full border-2 border-[#15130f]/30 px-5 py-3 text-center text-sm font-semibold text-[#15130f] transition-colors hover:bg-[#15130f] hover:text-[#ffffff] sm:flex-none sm:px-6">
           Call now
         </a>
-        <Link href="/stonerepairs/contact#enquire" className="flex-1 rounded-full bg-[#ffffff] px-5 py-3 text-center text-sm font-semibold text-[#15130f] transition-colors hover:bg-white sm:flex-none sm:px-6">
+        <Link href="/stonerepairs/contact#enquire" className="flex-1 rounded-full bg-[#3f5d5a] px-5 py-3 text-center text-sm font-semibold text-[#ffffff] transition-colors hover:bg-[#2c4340] sm:flex-none sm:px-6">
           Enquire
         </Link>
       </div>

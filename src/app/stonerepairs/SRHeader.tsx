@@ -8,8 +8,8 @@ import { NAV, PHONE_DISPLAY, PHONE_TEL, BIZ, fd } from "./brand";
 function Wordmark() {
   return (
     <span className="leading-none">
-      <span className={`block ${fd} text-xl font-extrabold tracking-[-0.01em] text-[#15130f]`}>{BIZ}</span>
-      <span className="mt-1 block text-[10px] font-bold uppercase tracking-[0.26em] text-[#3f5d5a]">Restoration</span>
+      <span className={`block ${fd} text-xl font-semibold tracking-[-0.01em] text-[#15130f]`}>{BIZ}</span>
+      <span className="mt-1 block text-[10px] font-semibold uppercase tracking-[0.26em] text-[#3f5d5a]">Restoration</span>
     </span>
   );
 }
@@ -27,7 +27,7 @@ export function SRHeader() {
       <div className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-5 py-3.5 md:px-8">
         <Link href="/stonerepairs" aria-label={BIZ} onClick={() => setOpen(false)}><Wordmark /></Link>
 
-        <nav className="hidden items-center gap-8 text-[13px] font-bold uppercase tracking-[0.12em] lg:flex">
+        <nav className="hidden items-center gap-8 text-[13px] font-semibold uppercase tracking-[0.12em] lg:flex">
           {NAV.map((n) => (
             <Link key={n.href} href={n.href} className={`transition-colors ${isActive(n.href) ? "text-[#3f5d5a]" : "text-[#15130f]/55 hover:text-[#3f5d5a]"}`}>
               {n.label}
@@ -52,11 +52,11 @@ export function SRHeader() {
         <div className="border-t border-[#15130f]/10 bg-[#ffffff] lg:hidden">
           <nav className="mx-auto flex max-w-6xl flex-col px-5 py-2">
             {NAV.map((n) => (
-              <Link key={n.href} href={n.href} onClick={() => setOpen(false)} className={`border-b border-[#15130f]/10 py-4 ${fd} text-2xl font-extrabold tracking-tight text-[#15130f]`}>
+              <Link key={n.href} href={n.href} onClick={() => setOpen(false)} className={`border-b border-[#15130f]/10 py-4 ${fd} text-2xl font-semibold tracking-tight text-[#15130f]`}>
                 {n.label}
               </Link>
             ))}
-            <Link href="/stonerepairs/contact" onClick={() => setOpen(false)} className="mt-4 mb-2 rounded-full bg-[#15130f] px-5 py-3 text-center text-sm font-bold text-[#ffffff]">
+            <Link href="/stonerepairs/contact" onClick={() => setOpen(false)} className="mt-4 mb-2 rounded-full bg-[#15130f] px-5 py-3 text-center text-sm font-semibold text-[#ffffff]">
               Get a quote
             </Link>
           </nav>
