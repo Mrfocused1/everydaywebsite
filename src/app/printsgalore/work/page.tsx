@@ -38,7 +38,7 @@ export default function PAWork() {
       <section className="bg-[#0e0e10] text-white">
         <div className="mx-auto grid max-w-6xl items-center gap-10 px-5 py-16 md:grid-cols-2 md:px-8 md:py-20 lg:gap-16">
           <div className="relative overflow-hidden" data-reveal>
-            <img src={IMG.jacket} alt="Custom-branded windbreaker by Prints Galore" className="aspect-[4/3] w-full object-cover" />
+            <img src={IMG.jacket} alt="Custom-branded windbreaker by Prints Galore" className="aspect-square w-full bg-[#f5f5f4] object-cover" />
             <AccentLine />
           </div>
           <div data-reveal>

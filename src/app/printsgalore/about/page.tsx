@@ -33,7 +33,7 @@ export default function PAAbout() {
       <section className="bg-white">
         <div className="mx-auto grid max-w-6xl items-center gap-12 px-5 py-16 md:grid-cols-2 md:px-8 md:py-24 lg:gap-16">
           <div className="relative overflow-hidden">
-            <img src={IMG.teeGraphic} alt="Full-colour DTF printed t-shirt by Prints Galore" data-clip className="aspect-[4/5] w-full bg-[#f5f5f4] object-cover" />
+            <img src={IMG.teeGraphic} alt="Full-colour DTF printed t-shirt by Prints Galore" data-clip className="aspect-square w-full bg-[#f5f5f4] object-cover" />
             <AccentBar className="absolute inset-x-0 bottom-0" />
           </div>
           <div data-reveal>
