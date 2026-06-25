@@ -51,6 +51,8 @@ export const IMG = {
   teeCream: img("pa-cream"),
   sweatshirt: img("pa-jumper"),
   tracksuit: img("pa-tracksuit"),
+  caps: img("pa-cap"),
+  jacket: img("pa-jacket"),
 };
 
 // ── What we print (DTF on garments) ──
@@ -61,6 +63,8 @@ export const PRODUCTS = [
   { t: "Tracksuits", img: IMG.tracksuit, b: "Full custom tracksuits and joggers, branded top to bottom." },
   { t: "Gang Sheets", img: IMG.teeWorkwear, b: "Ready-to-press DTF gang sheets — pack your designs and save on bulk transfers." },
   { t: "Promo & Events", img: IMG.teeEvent, b: "Reunions, fundraisers, teams and campaigns — kitted out and ready for the day." },
+  { t: "Caps & Headwear", img: IMG.caps, b: "Embroidered trucker caps, snapbacks and beanies — your logo, clean and crisp." },
+  { t: "Jackets & Windbreakers", img: IMG.jacket, b: "Custom-branded windbreakers and jackets — names, numbers and logos for clubs and crews." },
 ];
 
 export const METHODS = ["DTF Transfers", "Gang Sheets", "Full-Colour Print", "Logo & Workwear", "Vinyl / Heat Press", "Bulk Uniforms"];

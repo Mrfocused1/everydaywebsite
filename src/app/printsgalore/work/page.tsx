@@ -20,6 +20,8 @@ const WORK: { src: string; alt: string }[] = [
   { src: IMG.teeCream, alt: "Custom slogan t-shirt on cream" },
   { src: IMG.sweatshirt, alt: "Branded crest sweatshirt" },
   { src: IMG.tracksuit, alt: "Custom branded tracksuit" },
+  { src: IMG.caps, alt: "Embroidered JK trucker cap" },
+  { src: IMG.jacket, alt: "Custom-branded yellow windbreaker jacket" },
 ];
 
 export default function PAWork() {

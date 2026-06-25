@@ -20,6 +20,8 @@ const TEES = [
   { t: "Slogan & Text Tees", img: IMG.teeCream, b: "Typographic and slogan prints in any wording and any colour." },
   { t: "Custom Sweatshirts", img: IMG.sweatshirt, b: "Branded crews and hoodies with striking crest detail and bold trims." },
   { t: "Custom Tracksuits", img: IMG.tracksuit, b: "Full tracksuits and joggers branded top to bottom for clubs and crews." },
+  { t: "Caps & Headwear", img: IMG.caps, b: "Embroidered trucker caps, snapbacks and beanies — your logo, clean and crisp." },
+  { t: "Jackets & Windbreakers", img: IMG.jacket, b: "Custom-branded windbreakers and jackets — names, numbers and logos for clubs and crews." },
 ];
 
 const POINTS = ["High-quality DTF", "Any colour", "Minimum order 6", "Bulk pricing"];
