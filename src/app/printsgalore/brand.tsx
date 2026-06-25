@@ -53,6 +53,7 @@ export const IMG = {
   tracksuit: img("pa-tracksuit"),
   caps: img("pa-cap"),
   jacket: img("pa-jacket"),
+  beanie: img("pa-beanie"),
 };
 
 // ── What we print (DTF on garments) ──
