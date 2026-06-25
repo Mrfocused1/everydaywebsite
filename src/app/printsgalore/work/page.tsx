@@ -8,19 +8,15 @@ import { PAFX } from "../PAFX";
 export const metadata: Metadata = {
   title: "Our Work",
   description:
-    "Our work — custom DTF printing by Prints Galore in Birmingham. Full-colour tees, event prints, hi-vis uniforms for GNS Communications, branded workwear, sweatshirts and tracksuits.",
+    "Our work — custom DTF printing and embroidery by Prints Galore in Birmingham. Full-colour tees, event & reunion prints, logo & crest tees, embroidered caps and beanies, and custom-branded jackets.",
 };
 
 const WORK: { src: string; alt: string }[] = [
   { src: IMG.teeGraphic, alt: "Full-colour DTF printed t-shirt" },
-  { src: IMG.hivis, alt: "GNS Communications hi-vis uniform printed by Prints Galore" },
-  { src: IMG.teeEvent, alt: "Family reunion event t-shirts" },
-  { src: IMG.teeCrest, alt: "Left-chest logo crest t-shirt" },
-  { src: IMG.teeWorkwear, alt: "Branded business workwear t-shirt" },
-  { src: IMG.teeCream, alt: "Custom slogan t-shirt on cream" },
-  { src: IMG.sweatshirt, alt: "Branded crest sweatshirt" },
-  { src: IMG.tracksuit, alt: "Custom branded tracksuit" },
+  { src: IMG.teeEvent, alt: "Custom event & reunion t-shirt" },
+  { src: IMG.teeCrest, alt: "Logo & crest graphic t-shirt" },
   { src: IMG.caps, alt: "Embroidered JK trucker cap" },
+  { src: IMG.cap3, alt: "Red JK embroidered trucker cap" },
   { src: IMG.jacket, alt: "Custom-branded yellow windbreaker jacket" },
   { src: IMG.beanie, alt: "Hungry's Cafe patch beanie" },
   { src: IMG.beanie2, alt: "Stockland Green Cafe patch beanie" },
@@ -33,29 +29,29 @@ export default function PAWork() {
       <PageHero
         eyebrow="Our work"
         title="Printed in Birmingham."
-        intro="A look at the custom garments and uniforms we've printed — from full-colour tees to business hi-vis."
+        intro="A look at the custom prints and embroidery we've produced — from full-colour tees and event prints to caps, beanies and branded jackets."
         img={IMG.heroWork}
         imgAlt="A rack of custom printed t-shirts"
       />
 
-      {/* Featured — GNS Communications */}
+      {/* Featured */}
       <section className="bg-[#0e0e10] text-white">
         <div className="mx-auto grid max-w-6xl items-center gap-10 px-5 py-16 md:grid-cols-2 md:px-8 md:py-20 lg:gap-16">
           <div className="relative overflow-hidden" data-reveal>
-            <img src={IMG.hivis} alt="GNS Communications hi-vis uniform printed by Prints Galore" className="aspect-[4/3] w-full object-cover" />
+            <img src={IMG.jacket} alt="Custom-branded windbreaker by Prints Galore" className="aspect-[4/3] w-full object-cover" />
             <AccentLine />
           </div>
           <div data-reveal>
-            <Label onDark>Featured job</Label>
-            <h2 className={`mt-5 ${fd} text-3xl uppercase leading-[0.95] tracking-tight md:text-[2.8rem]`}>GNS Communications uniform.</h2>
+            <Label onDark>Featured work</Label>
+            <h2 className={`mt-5 ${fd} text-3xl uppercase leading-[0.95] tracking-tight md:text-[2.8rem]`}>Custom-branded, head to toe.</h2>
             <p className="mt-5 text-lg font-light text-white/70">
-              A full uniform run for GNS Communications — 60 hi-vis jackets and 40 t-shirts, branded and ready for the
-              team. Exactly the kind of bulk workwear order DTF is built for.
+              From personalised name tees and event prints to embroidered caps, beanies and branded windbreakers —
+              we kit out individuals, teams and small businesses across Birmingham and beyond.
             </p>
             <div className="mt-7 flex flex-wrap gap-x-6 gap-y-2 text-sm font-bold uppercase tracking-wider text-white/60">
-              <span className="flex items-center gap-2"><span className="h-1.5 w-1.5 bg-[#FFC400]" aria-hidden /> 60 Hi-Vis</span>
-              <span className="flex items-center gap-2"><span className="h-1.5 w-1.5 bg-[#EC008C]" aria-hidden /> 40 T-Shirts</span>
-              <span className="flex items-center gap-2"><span className="h-1.5 w-1.5 bg-[#00AEEF]" aria-hidden /> Full uniform</span>
+              <span className="flex items-center gap-2"><span className="h-1.5 w-1.5 bg-[#FFC400]" aria-hidden /> Tees &amp; Prints</span>
+              <span className="flex items-center gap-2"><span className="h-1.5 w-1.5 bg-[#EC008C]" aria-hidden /> Caps &amp; Beanies</span>
+              <span className="flex items-center gap-2"><span className="h-1.5 w-1.5 bg-[#00AEEF]" aria-hidden /> Jackets</span>
             </div>
           </div>
         </div>

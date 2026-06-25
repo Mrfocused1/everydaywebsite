@@ -8,7 +8,7 @@ import { PAFX } from "../PAFX";
 export const metadata: Metadata = {
   title: "About",
   description:
-    "About Prints Galore — a Birmingham-based DTF printing service offering custom t-shirts, hoodies, workwear and uniforms with a minimum order of 6 and a fast turnaround.",
+    "About Prints Galore — a Birmingham-based DTF printing and embroidery service offering custom t-shirts, caps, beanies and jackets with a minimum order of 6 and a fast turnaround.",
 };
 
 const VALUES = [
@@ -24,7 +24,7 @@ export default function PAAbout() {
       <PageHero
         eyebrow="About us"
         title="Print worth wearing."
-        intro="Prints Galore is a Birmingham-based DTF printing service — custom clothing, workwear and uniforms, done properly."
+        intro="Prints Galore is a Birmingham-based DTF printing and embroidery service — custom tees, caps, beanies and jackets, done properly."
         img={IMG.heroAbout}
         imgAlt="A printer at work in the studio"
       />
@@ -33,7 +33,7 @@ export default function PAAbout() {
       <section className="bg-white">
         <div className="mx-auto grid max-w-6xl items-center gap-12 px-5 py-16 md:grid-cols-2 md:px-8 md:py-24 lg:gap-16">
           <div className="relative overflow-hidden">
-            <img src={IMG.founders} alt="The Prints Galore team at a local community event" data-clip className="aspect-[4/5] w-full bg-[#f5f5f4] object-cover" />
+            <img src={IMG.teeGraphic} alt="Full-colour DTF printed t-shirt by Prints Galore" data-clip className="aspect-[4/5] w-full bg-[#f5f5f4] object-cover" />
             <AccentBar className="absolute inset-x-0 bottom-0" />
           </div>
           <div data-reveal>
@@ -41,14 +41,14 @@ export default function PAAbout() {
             <h2 className={`mt-5 ${fd} text-4xl uppercase leading-[0.95] tracking-tight md:text-[3.4rem]`}>High quality, fast, low minimum.</h2>
             <div className="mt-6 space-y-4 text-lg font-light text-slate-600">
               <p>
-                Prints Galore is a DTF printing service based in Birmingham. We print high-quality, full-colour
-                transfers onto t-shirts, hoodies, workwear and uniforms — for businesses, teams, events and individuals
-                across North, South, East and West.
+                Prints Galore is a DTF printing and embroidery service based in Birmingham. We put high-quality,
+                full-colour prints and embroidery onto t-shirts, caps, beanies and jackets — for businesses, teams,
+                events and individuals across North, South, East and West.
               </p>
               <p>
                 Our thing is simple: high quality, fast turnaround and a low minimum order of just six. Whether it&apos;s a
-                handful of custom tees or a full uniform run — like the 60 hi-vis and 40 t-shirts we produced for GNS
-                Communications — you get the same care and finish.
+                handful of custom tees, a batch of embroidered caps or a set of branded jackets, you get the same care
+                and finish.
               </p>
               <p>
                 We&apos;re proud to be part of the local community too — you&apos;ll spot us out at events across the area,

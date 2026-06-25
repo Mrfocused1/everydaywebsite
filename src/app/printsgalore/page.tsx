@@ -10,10 +10,10 @@ import { PAFX } from "./PAFX";
 const TEES = [
   { t: "Full-Colour Tees", img: IMG.teeGraphic },
   { t: "Event & Reunion", img: IMG.teeEvent },
-  { t: "Hi-Vis Workwear", img: IMG.hivis },
   { t: "Logo & Crest", img: IMG.teeCrest },
-  { t: "Custom Sweats", img: IMG.sweatshirt },
-  { t: "Slogan Tees", img: IMG.teeCream },
+  { t: "Caps & Headwear", img: IMG.caps },
+  { t: "Jackets", img: IMG.jacket },
+  { t: "Beanies", img: IMG.beanie },
 ];
 
 const STEPS = [
@@ -26,8 +26,8 @@ const REASONS = [
   "Minimum order just 6",
   "Fast turnaround, every time",
   "High-quality, full-colour DTF",
-  "Tees, hoodies, workwear & uniforms",
-  "Gang sheets & bulk pricing",
+  "Tees, caps, beanies & jackets",
+  "Embroidery & bulk pricing",
   "Birmingham — covering N, S, E & W",
 ];
 
@@ -49,7 +49,7 @@ export default function PAHome() {
               <span className="block overflow-hidden"><span className="hero-line-inner block text-[#EC008C]" style={{ transform: "translateY(110%)" }}>Wear it.</span></span>
             </h1>
             <p className="hero-fade mt-7 max-w-xl text-lg font-light text-white/85 opacity-0" style={{ transform: "translateY(8px)" }}>
-              High-quality DTF printing in Birmingham — custom t-shirts, hoodies, workwear and uniforms.
+              High-quality DTF printing and embroidery in Birmingham — custom t-shirts, caps, beanies and jackets.
               Minimum order just 6, fast turnaround, covering North, South, East &amp; West.
             </p>
             <div className="hero-fade mt-9 flex flex-wrap gap-4 opacity-0" style={{ transform: "translateY(8px)" }}>
@@ -85,8 +85,8 @@ export default function PAHome() {
               Your design, on<br />anything you wear.
             </h2>
             <p className="mt-5 text-lg font-light text-slate-600">
-              We&apos;re a Birmingham-based DTF printing service. From a single custom run to full business uniforms
-              and event kits, we print high-quality, full-colour transfers — fast, with a minimum order of just six.
+              We&apos;re a Birmingham-based DTF printing and embroidery service. From a single custom run to full team
+              and event kits, we print high-quality, full-colour designs — fast, with a minimum order of just six.
             </p>
             <Link href="/printsgalore/about" className={`${btnGhostLight} mt-8`}>About us <Arrow /></Link>
           </div>
@@ -181,7 +181,7 @@ export default function PAHome() {
       <section className="bg-[#f5f5f4]">
         <div className="mx-auto grid max-w-6xl items-center gap-12 px-5 py-16 md:grid-cols-2 md:px-8 md:py-24 lg:gap-16">
           <div className="relative overflow-hidden">
-            <img src={IMG.hivis} alt="Branded hi-vis workwear printed by Prints Galore" data-clip className="aspect-square w-full bg-[#f5f5f4] object-cover" />
+            <img src={IMG.jacket} alt="Custom-branded windbreaker printed by Prints Galore" data-clip className="aspect-square w-full bg-[#f5f5f4] object-cover" />
             <AccentBar className="absolute inset-x-0 bottom-0" />
           </div>
           <div data-reveal>

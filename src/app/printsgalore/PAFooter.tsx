@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { NAV, TRUST, SOCIALS, PHONE_DISPLAY, PHONE_TEL, ADDRESS, LOCATIONS, HOURS, HANDLE, Wordmark } from "./brand";
+import { NAV, TRUST, SOCIALS, PHONE_DISPLAY, PHONE_TEL, ADDRESS, LOCATIONS, HOURS, HANDLE } from "./brand";
 
 export function PAFooter() {
   return (
@@ -7,9 +7,10 @@ export function PAFooter() {
       <div className="mx-auto max-w-6xl px-5 md:px-8">
         <div className="grid gap-10 md:grid-cols-[1.4fr_1fr_1.3fr]">
           <div>
-            <Wordmark className="text-4xl" />
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src="/marketing/pa/pg-logo.png" alt="Prints Galore" className="h-20 w-auto" />
             <p className="mt-5 max-w-sm text-sm font-light text-white/45">
-              High-quality DTF printing with a fast turnaround — custom t-shirts, hoodies, workwear and uniforms.
+              High-quality DTF printing with a fast turnaround — custom t-shirts, caps, beanies and jackets.
               Minimum order 6, based in {LOCATIONS}.
             </p>
             <div className="mt-6 flex flex-wrap gap-x-5 gap-y-2 text-[11px] font-semibold uppercase tracking-wider text-white/40">

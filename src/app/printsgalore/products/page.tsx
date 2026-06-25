@@ -8,18 +8,13 @@ import { PAFX } from "../PAFX";
 export const metadata: Metadata = {
   title: "What We Print",
   description:
-    "Custom DTF garment printing from Prints Galore in Birmingham — full-colour tees, event & reunion prints, hi-vis workwear, uniforms, sweatshirts, tracksuits and gang sheets. Minimum order 6, fast turnaround.",
+    "Custom DTF printing and embroidery from Prints Galore in Birmingham — full-colour tees, event & reunion prints, logo & crest tees, embroidered caps and beanies, and custom jackets. Minimum order 6, fast turnaround.",
 };
 
 const TEES = [
   { t: "Full-Colour Graphics", img: IMG.teeGraphic, b: "Vivid, full-colour DTF prints — artwork, characters and photo-real designs that really pop." },
   { t: "Event & Reunion Tees", img: IMG.teeEvent, b: "Reunions, birthdays and fundraisers — names, dates and custom wording for the big day." },
-  { t: "Hi-Vis & Workwear", img: IMG.hivis, b: "Hi-vis, jackets and uniform branded front and back for trade and business teams." },
-  { t: "Logo & Crest Tees", img: IMG.teeCrest, b: "Clean left-chest logos and crests for teams, clubs and businesses." },
-  { t: "Business Workwear", img: IMG.teeWorkwear, b: "Branded staff tees and workwear with your company logo, printed to last." },
-  { t: "Slogan & Text Tees", img: IMG.teeCream, b: "Typographic and slogan prints in any wording and any colour." },
-  { t: "Custom Sweatshirts", img: IMG.sweatshirt, b: "Branded crews and hoodies with striking crest detail and bold trims." },
-  { t: "Custom Tracksuits", img: IMG.tracksuit, b: "Full tracksuits and joggers branded top to bottom for clubs and crews." },
+  { t: "Logo & Crest Tees", img: IMG.teeCrest, b: "Clean logos, crests and graphics for teams, clubs and businesses." },
   { t: "Caps & Headwear", img: IMG.caps, b: "Embroidered trucker caps, snapbacks and beanies — your logo, clean and crisp." },
   { t: "Jackets & Windbreakers", img: IMG.jacket, b: "Custom-branded windbreakers and jackets — names, numbers and logos for clubs and crews." },
 ];

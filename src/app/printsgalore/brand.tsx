@@ -56,27 +56,25 @@ export const IMG = {
   beanie: img("pa-beanie"),
   beanie2: img("pa-beanie2"),
   cap2: img("pa-cap2"),
+  cap3: img("pa-cap3"),
 };
 
 // ── What we print (DTF on garments) ──
 export const PRODUCTS = [
-  { t: "T-Shirts", img: IMG.teeGraphic, b: "Custom DTF-printed tees in any colour — full-colour graphics, logos, text and one-offs." },
-  { t: "Hoodies & Sweats", img: IMG.sweatshirt, b: "Branded hoodies, sweatshirts and crews — soft, durable and built for everyday wear." },
-  { t: "Hi-Vis & Workwear", img: IMG.hivis, b: "Hi-vis, jackets and uniform branded for trade, site and business teams." },
-  { t: "Tracksuits", img: IMG.tracksuit, b: "Full custom tracksuits and joggers, branded top to bottom." },
-  { t: "Gang Sheets", img: IMG.teeWorkwear, b: "Ready-to-press DTF gang sheets — pack your designs and save on bulk transfers." },
-  { t: "Promo & Events", img: IMG.teeEvent, b: "Reunions, fundraisers, teams and campaigns — kitted out and ready for the day." },
+  { t: "Custom T-Shirts", img: IMG.teeGraphic, b: "Custom DTF-printed tees in any colour — full-colour graphics, logos, text and one-offs." },
+  { t: "Event & Reunion Tees", img: IMG.teeEvent, b: "Reunions, fundraisers, teams and campaigns — names, dates and custom wording for the big day." },
+  { t: "Logo & Crest Tees", img: IMG.teeCrest, b: "Clean logos, crests and graphics for teams, clubs and businesses." },
   { t: "Caps & Headwear", img: IMG.caps, b: "Embroidered trucker caps, snapbacks and beanies — your logo, clean and crisp." },
   { t: "Jackets & Windbreakers", img: IMG.jacket, b: "Custom-branded windbreakers and jackets — names, numbers and logos for clubs and crews." },
 ];
 
-export const METHODS = ["DTF Transfers", "Gang Sheets", "Full-Colour Print", "Logo & Workwear", "Vinyl / Heat Press", "Bulk Uniforms"];
-export const CLIENTS = ["GNS Communications", "WE FIX", "Dakhaui", "Local teams & events"];
+export const METHODS = ["DTF Transfers", "Embroidery", "Full-Colour Print", "Logos & Crests", "Vinyl / Heat Press", "Bulk Orders"];
+export const CLIENTS = ["Local cafés & shops", "Clubs & teams", "Events & fundraisers", "Independent brands"];
 export const TRUST = ["Minimum order 6", "Fast turnaround", "High-quality DTF", "Birmingham, UK"];
 
 // Marquee ticker.
 export const MARQUEE = [
-  "DTF Printing", "Gang Sheets", "T-Shirts", "Hoodies", "Workwear", "Hi-Vis", "Uniforms", "Tracksuits", "Full-Colour", "Promo Merch", "Bulk Orders", "Custom",
+  "DTF Printing", "Custom T-Shirts", "Caps & Beanies", "Embroidery", "Windbreakers", "Event Tees", "Full-Colour", "Logos & Crests", "Promo Merch", "Bulk Orders", "Custom Prints", "Headwear",
 ];
 
 // ── CMYK powder-splash palette (straight from the logo) — the brand's colour pop ──

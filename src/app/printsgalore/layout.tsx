@@ -10,7 +10,7 @@ export const metadata: Metadata = {
     template: "%s · Prints Galore",
   },
   description:
-    "Prints Galore — high-quality DTF printing in Birmingham, covering North, South, East & West. Custom t-shirts, hoodies, workwear, hi-vis, uniforms and gang sheets. Minimum order 6, fast turnaround.",
+    "Prints Galore — high-quality DTF printing and embroidery in Birmingham, covering North, South, East & West. Custom t-shirts, caps, beanies and jackets. Minimum order 6, fast turnaround.",
   openGraph: {
     title: "Prints Galore — High-Quality DTF Printing, Birmingham",
     description: "Custom DTF garment printing in Birmingham, UK. Minimum order 6, fast turnaround.",

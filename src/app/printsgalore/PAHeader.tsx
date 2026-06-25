@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { NAV, PHONE_DISPLAY, PHONE_TEL, Wordmark } from "./brand";
+import { NAV, PHONE_DISPLAY, PHONE_TEL } from "./brand";
 
 export function PAHeader() {
   const pathname = usePathname() || "/printsgalore";
@@ -14,7 +14,8 @@ export function PAHeader() {
     <header className="sticky top-0 z-40 border-b border-white/10 bg-[#0e0e10]/95 backdrop-blur">
       <div className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-5 py-3 md:px-8">
         <Link href="/printsgalore" aria-label="Prints Galore" onClick={() => setOpen(false)}>
-          <Wordmark className="text-2xl md:text-[1.7rem]" />
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src="/marketing/pa/pg-logo.png" alt="Prints Galore" className="h-12 w-auto md:h-14" />
         </Link>
 
         <nav className="hidden items-center gap-9 text-sm font-semibold uppercase tracking-wide lg:flex">

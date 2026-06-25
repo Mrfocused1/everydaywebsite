@@ -8,8 +8,8 @@ const field =
   "w-full rounded-md border border-slate-300 bg-white px-4 py-3 text-slate-800 placeholder-slate-400 outline-none transition-shadow focus:border-[#0e0e10] focus:ring-2 focus:ring-[#0e0e10]/15";
 
 const PRODUCTS = [
-  "T-Shirts", "Hoodies & Sweats", "Hi-Vis & Workwear", "Uniforms",
-  "Tracksuits", "Gang Sheets", "Promo / Events", "Something else",
+  "Custom T-Shirts", "Event & Reunion Tees", "Logo & Crest Tees",
+  "Caps & Headwear", "Beanies", "Jackets & Windbreakers", "Something else",
 ];
 
 export function EnquiryForm() {
