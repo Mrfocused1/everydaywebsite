@@ -8,7 +8,7 @@ import { PAFX } from "../PAFX";
 export const metadata: Metadata = {
   title: "What We Print",
   description:
-    "Custom DTF garment printing from Print Attack UK in Brentwood — full-colour tees, event & reunion prints, hi-vis workwear, uniforms, sweatshirts, tracksuits and gang sheets. Minimum order 6, fast turnaround.",
+    "Custom DTF garment printing from Prints Galore in Birmingham — full-colour tees, event & reunion prints, hi-vis workwear, uniforms, sweatshirts, tracksuits and gang sheets. Minimum order 6, fast turnaround.",
 };
 
 const TEES = [
@@ -30,7 +30,7 @@ export default function PAProducts() {
       <PageHero
         eyebrow="What we print"
         title="DTF, your way."
-        intro="Custom DTF printing in Brentwood — any design, any colour, minimum order just 6 and a fast turnaround."
+        intro="Custom DTF printing in Birmingham — any design, any colour, minimum order just 6 and a fast turnaround."
         img={IMG.heroProducts}
         imgAlt="Stacks of freshly printed custom t-shirts"
       />
@@ -95,8 +95,8 @@ export default function PAProducts() {
               <h2 className={`${fd} text-3xl uppercase tracking-tight md:text-4xl`}>Six or six hundred</h2>
               <p className="mt-3 max-w-xl font-light text-white/80">Order from just six pieces or kit out a whole team — same high-quality DTF, same fast turnaround.</p>
               <div className="mt-7 flex flex-wrap gap-3">
-                <Link href="/printattacksign/contact#quote" className={btnBlue}>Get a quote <Arrow /></Link>
-                <Link href="/printattacksign/work" className="inline-flex items-center justify-center gap-2 rounded-md border border-white/40 px-7 py-4 text-sm font-bold uppercase tracking-wide text-white transition-colors hover:bg-white/10">Our work</Link>
+                <Link href="/printsgalore/contact#quote" className={btnBlue}>Get a quote <Arrow /></Link>
+                <Link href="/printsgalore/work" className="inline-flex items-center justify-center gap-2 rounded-md border border-white/40 px-7 py-4 text-sm font-bold uppercase tracking-wide text-white transition-colors hover:bg-white/10">Our work</Link>
               </div>
             </div>
           </div>

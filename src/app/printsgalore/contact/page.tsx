@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import {
   IMG, fd, Label, PageHero, HOURS,
-  PHONE_DISPLAY, PHONE_TEL, WHATSAPP, INSTAGRAM, HANDLE, LINKTREE, ADDRESS,
+  PHONE_DISPLAY, PHONE_TEL, WHATSAPP, INSTAGRAM, HANDLE, EMAIL, EMAIL_HREF, ADDRESS,
 } from "../brand";
 import { EnquiryForm } from "../EnquiryForm";
 import { PAFX } from "../PAFX";
@@ -9,10 +9,10 @@ import { PAFX } from "../PAFX";
 export const metadata: Metadata = {
   title: "Contact",
   description:
-    "Contact Print Attack UK — call 07494 780623, message us on WhatsApp or DM @printattackuk on Instagram for a fast, free quote on custom DTF printing in Brentwood. Minimum order 6.",
+    "Contact Prints Galore — call 07700 900123, message us on WhatsApp or DM @printsgalore0121 on Instagram for a fast, free quote on custom DTF printing in Birmingham. Minimum order 6.",
 };
 
-const MAP_SRC = "https://www.google.com/maps?q=Brentwood,+Essex,+UK&z=12&output=embed";
+const MAP_SRC = "https://www.google.com/maps?q=Birmingham,+UK&z=12&output=embed";
 
 export default function PAContact() {
   return (
@@ -57,11 +57,11 @@ export default function PAContact() {
                   <span className={`block ${fd} text-base uppercase tracking-tight text-[#0e0e10]`}>{HANDLE}</span>
                 </span>
               </a>
-              <a href={LINKTREE} target="_blank" rel="noopener noreferrer" className="flex items-center gap-4 border-b border-[#0e0e10]/10 p-5 transition-colors hover:bg-[#f5f5f4]">
-                <span className="grid h-11 w-11 shrink-0 place-items-center bg-[#0e0e10] text-lg text-white" aria-hidden>🔗</span>
+              <a href={EMAIL_HREF} className="flex items-center gap-4 border-b border-[#0e0e10]/10 p-5 transition-colors hover:bg-[#f5f5f4]">
+                <span className="grid h-11 w-11 shrink-0 place-items-center bg-[#0e0e10] text-lg text-white" aria-hidden>✉</span>
                 <span>
-                  <span className="block text-[11px] font-semibold uppercase tracking-wider text-slate-400">All our links</span>
-                  <span className="block text-sm font-medium text-[#0e0e10]">linktr.ee/printattackuk</span>
+                  <span className="block text-[11px] font-semibold uppercase tracking-wider text-slate-400">Email us</span>
+                  <span className="block text-sm font-medium text-[#0e0e10]">{EMAIL}</span>
                 </span>
               </a>
               <div className="flex items-center gap-4 p-5">
@@ -84,7 +84,7 @@ export default function PAContact() {
 
             <div className="mt-6 overflow-hidden border border-slate-200" data-reveal>
               <iframe
-                title="Print Attack UK — Brentwood, Essex"
+                title="Prints Galore — Birmingham"
                 src={MAP_SRC}
                 className="h-56 w-full"
                 loading="lazy"

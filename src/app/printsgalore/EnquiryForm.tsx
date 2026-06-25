@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 
-const WHATSAPP_NUMBER = "447494780623";
+const WHATSAPP_NUMBER = "447700900123";
 
 const field =
   "w-full rounded-md border border-slate-300 bg-white px-4 py-3 text-slate-800 placeholder-slate-400 outline-none transition-shadow focus:border-[#0e0e10] focus:ring-2 focus:ring-[#0e0e10]/15";
@@ -24,7 +24,7 @@ export function EnquiryForm() {
     const message = String(f.get("message") || "");
 
     const text =
-      `Hi Print Attack UK, I'd like a quote.\n\n` +
+      `Hi Prints Galore, I'd like a quote.\n\n` +
       `Name: ${name}\n` +
       `Phone: ${phone}\n` +
       `Item: ${product}\n` +

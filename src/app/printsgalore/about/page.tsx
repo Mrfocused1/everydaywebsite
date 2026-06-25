@@ -8,14 +8,14 @@ import { PAFX } from "../PAFX";
 export const metadata: Metadata = {
   title: "About",
   description:
-    "About Print Attack UK — a Brentwood-based DTF printing service offering custom t-shirts, hoodies, workwear and uniforms with a minimum order of 6 and a fast turnaround.",
+    "About Prints Galore — a Birmingham-based DTF printing service offering custom t-shirts, hoodies, workwear and uniforms with a minimum order of 6 and a fast turnaround.",
 };
 
 const VALUES = [
   { t: "Min order 6", b: "Order from just six pieces — every job gets the same care." },
   { t: "Fast", b: "Quick turnaround so you hit your event, drop or deadline." },
   { t: "Quality DTF", b: "Durable, full-colour DTF that lasts wash after wash." },
-  { t: "Local + UK-wide", b: "Brentwood-based, covering N, S, E & W and shipping nationwide." },
+  { t: "Local + UK-wide", b: "Birmingham-based, covering N, S, E & W and shipping nationwide." },
 ];
 
 export default function PAAbout() {
@@ -24,7 +24,7 @@ export default function PAAbout() {
       <PageHero
         eyebrow="About us"
         title="Print worth wearing."
-        intro="Print Attack UK is a Brentwood-based DTF printing service — custom clothing, workwear and uniforms, done properly."
+        intro="Prints Galore is a Birmingham-based DTF printing service — custom clothing, workwear and uniforms, done properly."
         img={IMG.heroAbout}
         imgAlt="A printer at work in the studio"
       />
@@ -33,7 +33,7 @@ export default function PAAbout() {
       <section className="bg-white">
         <div className="mx-auto grid max-w-6xl items-center gap-12 px-5 py-16 md:grid-cols-2 md:px-8 md:py-24 lg:gap-16">
           <div className="relative overflow-hidden">
-            <img src={IMG.founders} alt="The Print Attack UK team at a local community event" data-clip className="aspect-[4/5] w-full bg-[#f5f5f4] object-cover" />
+            <img src={IMG.founders} alt="The Prints Galore team at a local community event" data-clip className="aspect-[4/5] w-full bg-[#f5f5f4] object-cover" />
             <AccentBar className="absolute inset-x-0 bottom-0" />
           </div>
           <div data-reveal>
@@ -41,7 +41,7 @@ export default function PAAbout() {
             <h2 className={`mt-5 ${fd} text-4xl uppercase leading-[0.95] tracking-tight md:text-[3.4rem]`}>High quality, fast, low minimum.</h2>
             <div className="mt-6 space-y-4 text-lg font-light text-slate-600">
               <p>
-                Print Attack UK is a DTF printing service based in Brentwood, Essex. We print high-quality, full-colour
+                Prints Galore is a DTF printing service based in Birmingham. We print high-quality, full-colour
                 transfers onto t-shirts, hoodies, workwear and uniforms — for businesses, teams, events and individuals
                 across North, South, East and West.
               </p>
@@ -55,7 +55,7 @@ export default function PAAbout() {
                 kitting people out in properly-printed kit.
               </p>
             </div>
-            <Link href="/printattacksign/products" className={`${btnBlue} mt-8`}>What we print <Arrow /></Link>
+            <Link href="/printsgalore/products" className={`${btnBlue} mt-8`}>What we print <Arrow /></Link>
           </div>
         </div>
       </section>

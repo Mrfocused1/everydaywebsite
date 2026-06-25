@@ -3,19 +3,18 @@
 import { useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { NAV, PHONE_DISPLAY, PHONE_TEL } from "./brand";
+import { NAV, PHONE_DISPLAY, PHONE_TEL, Wordmark } from "./brand";
 
 export function PAHeader() {
-  const pathname = usePathname() || "/printattacksign";
+  const pathname = usePathname() || "/printsgalore";
   const [open, setOpen] = useState(false);
-  const isActive = (href: string) => (href === "/printattacksign" ? pathname === href : pathname.startsWith(href));
+  const isActive = (href: string) => (href === "/printsgalore" ? pathname === href : pathname.startsWith(href));
 
   return (
     <header className="sticky top-0 z-40 border-b border-white/10 bg-[#0e0e10]/95 backdrop-blur">
       <div className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-5 py-3 md:px-8">
-        <Link href="/printattacksign" aria-label="Print Attack UK" onClick={() => setOpen(false)}>
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src="/marketing/printattack-logo.png" alt="Print Attack UK — DTF printing" className="h-12 w-auto md:h-14" />
+        <Link href="/printsgalore" aria-label="Prints Galore" onClick={() => setOpen(false)}>
+          <Wordmark className="text-2xl md:text-[1.7rem]" />
         </Link>
 
         <nav className="hidden items-center gap-9 text-sm font-semibold uppercase tracking-wide lg:flex">
@@ -33,7 +32,7 @@ export function PAHeader() {
 
         <div className="flex items-center gap-3">
           <a href={PHONE_TEL} className="hidden text-sm font-bold text-white sm:inline">{PHONE_DISPLAY}</a>
-          <Link href="/printattacksign/contact#quote" className="hidden rounded-md bg-white px-5 py-2.5 text-sm font-bold uppercase tracking-wide text-[#0e0e10] transition-colors hover:bg-white/85 sm:inline-flex">
+          <Link href="/printsgalore/contact#quote" className="hidden rounded-md bg-white px-5 py-2.5 text-sm font-bold uppercase tracking-wide text-[#0e0e10] transition-colors hover:bg-white/85 sm:inline-flex">
             Get a quote
           </Link>
           <button
@@ -63,7 +62,7 @@ export function PAHeader() {
                 {n.label}
               </Link>
             ))}
-            <Link href="/printattacksign/contact#quote" onClick={() => setOpen(false)} className="mt-3 mb-2 rounded-md bg-white px-5 py-3 text-center text-sm font-bold uppercase tracking-wide text-[#0e0e10]">
+            <Link href="/printsgalore/contact#quote" onClick={() => setOpen(false)} className="mt-3 mb-2 rounded-md bg-white px-5 py-3 text-center text-sm font-bold uppercase tracking-wide text-[#0e0e10]">
               Get a quote
             </Link>
           </nav>

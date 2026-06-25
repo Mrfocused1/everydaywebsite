@@ -19,7 +19,7 @@ const TEES = [
 const STEPS = [
   { n: "01", t: "Send your design", b: "Send your artwork and what you want printed — the garment, sizes and quantity (minimum order 6)." },
   { n: "02", t: "We print your DTF", b: "We print and heat-press your transfers in high-quality, full colour — sampled and checked before they go out." },
-  { n: "03", t: "Delivered fast", b: "Collect in Brentwood, or we'll ship across the UK — North, South, East and West." },
+  { n: "03", t: "Delivered fast", b: "Collect in Birmingham, or we'll ship across the UK — North, South, East and West." },
 ];
 
 const REASONS = [
@@ -28,7 +28,7 @@ const REASONS = [
   "High-quality, full-colour DTF",
   "Tees, hoodies, workwear & uniforms",
   "Gang sheets & bulk pricing",
-  "Brentwood — covering N, S, E & W",
+  "Birmingham — covering N, S, E & W",
 ];
 
 export default function PAHome() {
@@ -36,25 +36,25 @@ export default function PAHome() {
     <>
       {/* ── Hero ── */}
       <section className="relative isolate flex min-h-[90vh] items-end overflow-hidden bg-[#14141a]">
-        <img src={IMG.hero} alt="Print Attack UK — custom printed garments" data-parallax className="absolute inset-0 -z-10 h-[112%] w-full object-cover" />
+        <img src={IMG.hero} alt="Prints Galore — custom printed garments" data-parallax className="absolute inset-0 -z-10 h-[112%] w-full object-cover" />
         <div className="absolute inset-0 -z-10 bg-gradient-to-t from-[#14141a]/92 via-[#14141a]/45 to-[#14141a]/25" />
         <div className="absolute inset-0 -z-10 bg-gradient-to-r from-[#14141a]/65 via-transparent to-transparent" />
         <AccentBar className="absolute inset-x-0 top-0 z-10" />
         <div className="mx-auto w-full max-w-6xl px-5 pb-16 pt-32 text-white md:px-8 md:pb-24">
           <div className="max-w-3xl">
-            <Label onDark>DTF Printing · Brentwood, UK</Label>
+            <Label onDark>DTF Printing · Birmingham, UK</Label>
             <h1 className={`hero-h mt-6 ${fd} text-[3.4rem] uppercase leading-[0.86] tracking-tight md:text-[6rem]`}>
               <span className="block overflow-hidden"><span className="hero-line-inner block" style={{ transform: "translateY(110%)" }}>Print it.</span></span>
               <span className="block overflow-hidden"><span className="hero-line-inner block" style={{ transform: "translateY(110%)" }}>Press it.</span></span>
               <span className="block overflow-hidden"><span className="hero-line-inner block text-[#EC008C]" style={{ transform: "translateY(110%)" }}>Wear it.</span></span>
             </h1>
             <p className="hero-fade mt-7 max-w-xl text-lg font-light text-white/85 opacity-0" style={{ transform: "translateY(8px)" }}>
-              High-quality DTF printing in Brentwood — custom t-shirts, hoodies, workwear and uniforms.
+              High-quality DTF printing in Birmingham — custom t-shirts, hoodies, workwear and uniforms.
               Minimum order just 6, fast turnaround, covering North, South, East &amp; West.
             </p>
             <div className="hero-fade mt-9 flex flex-wrap gap-4 opacity-0" style={{ transform: "translateY(8px)" }}>
-              <Link href="/printattacksign/contact#quote" data-magnetic className={btnBlue}>Get a quote <Arrow /></Link>
-              <Link href="/printattacksign/work" className={btnGhostDark}>See our work</Link>
+              <Link href="/printsgalore/contact#quote" data-magnetic className={btnBlue}>Get a quote <Arrow /></Link>
+              <Link href="/printsgalore/work" className={btnGhostDark}>See our work</Link>
             </div>
             <div className="hero-fade mt-10 flex flex-wrap gap-x-7 gap-y-2 border-t border-white/20 pt-6 text-xs font-bold uppercase tracking-wider opacity-0">
               {TRUST.map((t, i) => (
@@ -80,18 +80,18 @@ export default function PAHome() {
       <section className="bg-white">
         <div className="mx-auto grid max-w-6xl items-center gap-12 px-5 py-16 md:grid-cols-2 md:px-8 md:py-24 lg:gap-16">
           <div data-reveal>
-            <Label>Print Attack UK</Label>
+            <Label>Prints Galore</Label>
             <h2 className={`mt-5 ${fd} text-4xl uppercase leading-[0.95] tracking-tight md:text-[3.4rem]`}>
               Your design, on<br />anything you wear.
             </h2>
             <p className="mt-5 text-lg font-light text-slate-600">
-              We&apos;re a Brentwood-based DTF printing service. From a single custom run to full business uniforms
+              We&apos;re a Birmingham-based DTF printing service. From a single custom run to full business uniforms
               and event kits, we print high-quality, full-colour transfers — fast, with a minimum order of just six.
             </p>
-            <Link href="/printattacksign/about" className={`${btnGhostLight} mt-8`}>About us <Arrow /></Link>
+            <Link href="/printsgalore/about" className={`${btnGhostLight} mt-8`}>About us <Arrow /></Link>
           </div>
           <div className="relative overflow-hidden">
-            <img src={IMG.teeGraphic} alt="Full-colour DTF printed t-shirt by Print Attack UK" data-clip className="aspect-square w-full bg-[#f5f5f4] object-cover" />
+            <img src={IMG.teeGraphic} alt="Full-colour DTF printed t-shirt by Prints Galore" data-clip className="aspect-square w-full bg-[#f5f5f4] object-cover" />
             <AccentBar className="absolute inset-x-0 bottom-0" />
           </div>
         </div>
@@ -117,7 +117,7 @@ export default function PAHome() {
               <h2 className={`mt-5 ${fd} text-4xl uppercase leading-[0.95] tracking-tight md:text-5xl`}>Custom garments.</h2>
               <p className="mt-3 text-sm font-semibold text-slate-400 sm:hidden">Swipe →</p>
             </div>
-            <Link href="/printattacksign/products" className="text-sm font-bold uppercase tracking-wide text-[#0e0e10] underline-offset-4 hover:underline">See everything →</Link>
+            <Link href="/printsgalore/products" className="text-sm font-bold uppercase tracking-wide text-[#0e0e10] underline-offset-4 hover:underline">See everything →</Link>
           </div>
           <div className="-mx-5 mt-10 flex snap-x snap-mandatory gap-5 overflow-x-auto px-5 pb-2 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden sm:mx-0 sm:mt-14 sm:grid sm:grid-cols-2 sm:gap-6 lg:grid-cols-3" data-stagger>
             {TEES.map((p, i) => (
@@ -181,11 +181,11 @@ export default function PAHome() {
       <section className="bg-[#f5f5f4]">
         <div className="mx-auto grid max-w-6xl items-center gap-12 px-5 py-16 md:grid-cols-2 md:px-8 md:py-24 lg:gap-16">
           <div className="relative overflow-hidden">
-            <img src={IMG.hivis} alt="Branded hi-vis workwear printed by Print Attack UK" data-clip className="aspect-square w-full bg-[#f5f5f4] object-cover" />
+            <img src={IMG.hivis} alt="Branded hi-vis workwear printed by Prints Galore" data-clip className="aspect-square w-full bg-[#f5f5f4] object-cover" />
             <AccentBar className="absolute inset-x-0 bottom-0" />
           </div>
           <div data-reveal>
-            <Label>Why Print Attack</Label>
+            <Label>Why Prints Galore</Label>
             <h2 className={`mt-5 ${fd} text-4xl uppercase leading-[0.95] tracking-tight md:text-[3.4rem]`}>Done right, done fast.</h2>
             <ul className="mt-7 grid gap-x-6 gap-y-3 sm:grid-cols-2">
               {REASONS.map((r, i) => (
@@ -207,7 +207,7 @@ export default function PAHome() {
               <p className="mt-2 font-light text-white/90">Tell us what you need printed — minimum order 6, fast turnaround.</p>
             </div>
             <div className="flex flex-wrap justify-center gap-3">
-              <Link href="/printattacksign/contact#quote" data-magnetic className="rounded-md bg-white px-7 py-4 text-sm font-bold uppercase tracking-wide text-[#0e0e10] transition-transform hover:-translate-y-0.5">Get a quote</Link>
+              <Link href="/printsgalore/contact#quote" data-magnetic className="rounded-md bg-white px-7 py-4 text-sm font-bold uppercase tracking-wide text-[#0e0e10] transition-transform hover:-translate-y-0.5">Get a quote</Link>
               <a href={INSTAGRAM} target="_blank" rel="noopener noreferrer" className="rounded-md border border-white/60 px-7 py-4 text-sm font-bold uppercase tracking-wide text-white transition-colors hover:bg-white/10">DM on Instagram</a>
             </div>
           </div>

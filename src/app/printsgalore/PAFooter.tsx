@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { NAV, TRUST, SOCIALS, PHONE_DISPLAY, PHONE_TEL, ADDRESS, LOCATIONS, HOURS, HANDLE } from "./brand";
+import { NAV, TRUST, SOCIALS, PHONE_DISPLAY, PHONE_TEL, ADDRESS, LOCATIONS, HOURS, HANDLE, Wordmark } from "./brand";
 
 export function PAFooter() {
   return (
@@ -7,8 +7,7 @@ export function PAFooter() {
       <div className="mx-auto max-w-6xl px-5 md:px-8">
         <div className="grid gap-10 md:grid-cols-[1.4fr_1fr_1.3fr]">
           <div>
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="/marketing/printattack-logo.png" alt="Print Attack UK" className="h-20 w-auto" />
+            <Wordmark className="text-4xl" />
             <p className="mt-5 max-w-sm text-sm font-light text-white/45">
               High-quality DTF printing with a fast turnaround — custom t-shirts, hoodies, workwear and uniforms.
               Minimum order 6, based in {LOCATIONS}.
@@ -48,7 +47,7 @@ export function PAFooter() {
           </div>
         </div>
         <div className="mt-12 flex flex-col gap-2 border-t border-white/10 pt-6 text-xs text-white/40 sm:flex-row sm:items-center sm:justify-between">
-          <p>© 2026 Print Attack UK. All rights reserved.</p>
+          <p>© 2026 Prints Galore. All rights reserved.</p>
           <p>Designed by <a href="https://bridgewayaibootcamp.com" target="_blank" rel="noopener noreferrer" className="text-white/55 hover:text-white">bridgewayaibootcamp.com</a></p>
         </div>
       </div>

@@ -6,23 +6,23 @@ import { PAFooter } from "./PAFooter";
 
 export const metadata: Metadata = {
   title: {
-    default: "Print Attack UK — High-Quality DTF Printing, Brentwood",
-    template: "%s · Print Attack UK",
+    default: "Prints Galore — High-Quality DTF Printing, Birmingham",
+    template: "%s · Prints Galore",
   },
   description:
-    "Print Attack UK — high-quality DTF printing in Brentwood, covering North, South, East & West. Custom t-shirts, hoodies, workwear, hi-vis, uniforms and gang sheets. Minimum order 6, fast turnaround.",
+    "Prints Galore — high-quality DTF printing in Birmingham, covering North, South, East & West. Custom t-shirts, hoodies, workwear, hi-vis, uniforms and gang sheets. Minimum order 6, fast turnaround.",
   openGraph: {
-    title: "Print Attack UK — High-Quality DTF Printing, Brentwood",
-    description: "Custom DTF garment printing in Brentwood, UK. Minimum order 6, fast turnaround.",
-    url: "https://everydayweb.site/printattacksign",
-    siteName: "Print Attack UK",
+    title: "Prints Galore — High-Quality DTF Printing, Birmingham",
+    description: "Custom DTF garment printing in Birmingham, UK. Minimum order 6, fast turnaround.",
+    url: "https://everydayweb.site/printsgalore",
+    siteName: "Prints Galore",
     type: "website",
-    images: [{ url: IMG.hero, width: 1200, height: 630, alt: "Print Attack UK" }],
+    images: [{ url: IMG.hero, width: 1200, height: 630, alt: "Prints Galore" }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Print Attack UK — High-Quality DTF Printing, Brentwood",
-    description: "Custom DTF garment printing in Brentwood, UK. Minimum order 6, fast turnaround.",
+    title: "Prints Galore — High-Quality DTF Printing, Birmingham",
+    description: "Custom DTF garment printing in Birmingham, UK. Minimum order 6, fast turnaround.",
     images: [IMG.hero],
   },
 };
@@ -38,7 +38,7 @@ export default function PALayout({ children }: { children: React.ReactNode }) {
         <a href={PHONE_TEL} className="flex-1 rounded-md border border-white/40 px-5 py-3.5 text-center text-sm font-bold uppercase tracking-wide text-white transition-colors hover:bg-white hover:text-[#0e0e10] sm:flex-none sm:px-7">
           Call now
         </a>
-        <Link href="/printattacksign/contact#quote" className="flex-1 rounded-md bg-white px-5 py-3.5 text-center text-sm font-bold uppercase tracking-wide text-[#0e0e10] shadow-lg transition-transform hover:-translate-y-0.5 sm:flex-none sm:px-7">
+        <Link href="/printsgalore/contact#quote" className="flex-1 rounded-md bg-white px-5 py-3.5 text-center text-sm font-bold uppercase tracking-wide text-[#0e0e10] shadow-lg transition-transform hover:-translate-y-0.5 sm:flex-none sm:px-7">
           Get a quote
         </Link>
       </div>

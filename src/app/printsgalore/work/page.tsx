@@ -8,12 +8,12 @@ import { PAFX } from "../PAFX";
 export const metadata: Metadata = {
   title: "Our Work",
   description:
-    "Our work — custom DTF printing by Print Attack UK in Brentwood. Full-colour tees, event prints, hi-vis uniforms for GNS Communications, branded workwear, sweatshirts and tracksuits.",
+    "Our work — custom DTF printing by Prints Galore in Birmingham. Full-colour tees, event prints, hi-vis uniforms for GNS Communications, branded workwear, sweatshirts and tracksuits.",
 };
 
 const WORK: { src: string; alt: string }[] = [
   { src: IMG.teeGraphic, alt: "Full-colour DTF printed t-shirt" },
-  { src: IMG.hivis, alt: "GNS Communications hi-vis uniform printed by Print Attack UK" },
+  { src: IMG.hivis, alt: "GNS Communications hi-vis uniform printed by Prints Galore" },
   { src: IMG.teeEvent, alt: "Family reunion event t-shirts" },
   { src: IMG.teeCrest, alt: "Left-chest logo crest t-shirt" },
   { src: IMG.teeWorkwear, alt: "Branded business workwear t-shirt" },
@@ -27,7 +27,7 @@ export default function PAWork() {
     <>
       <PageHero
         eyebrow="Our work"
-        title="Printed in Brentwood."
+        title="Printed in Birmingham."
         intro="A look at the custom garments and uniforms we've printed — from full-colour tees to business hi-vis."
         img={IMG.heroWork}
         imgAlt="A rack of custom printed t-shirts"
@@ -37,7 +37,7 @@ export default function PAWork() {
       <section className="bg-[#0e0e10] text-white">
         <div className="mx-auto grid max-w-6xl items-center gap-10 px-5 py-16 md:grid-cols-2 md:px-8 md:py-20 lg:gap-16">
           <div className="relative overflow-hidden" data-reveal>
-            <img src={IMG.hivis} alt="GNS Communications hi-vis uniform printed by Print Attack UK" className="aspect-[4/3] w-full object-cover" />
+            <img src={IMG.hivis} alt="GNS Communications hi-vis uniform printed by Prints Galore" className="aspect-[4/3] w-full object-cover" />
             <AccentLine />
           </div>
           <div data-reveal>
@@ -79,7 +79,7 @@ export default function PAWork() {
         <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-6 px-5 py-16 text-center md:flex-row md:px-8 md:text-left" data-reveal>
           <h2 className={`${fd} text-3xl uppercase tracking-tight text-[#0e0e10] md:text-4xl`}>Want yours next?</h2>
           <div className="flex flex-wrap justify-center gap-3">
-            <Link href="/printattacksign/contact#quote" className={btnRed}>Get a quote <Arrow /></Link>
+            <Link href="/printsgalore/contact#quote" className={btnRed}>Get a quote <Arrow /></Link>
             <a href={PHONE_TEL} className={btnGhostLight}>{PHONE_DISPLAY}</a>
           </div>
         </div>

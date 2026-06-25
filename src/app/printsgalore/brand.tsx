@@ -3,20 +3,21 @@ import { Anton, Inter } from "next/font/google";
 export const display = Anton({ subsets: ["latin"], weight: "400", variable: "--font-display", display: "swap" });
 export const body = Inter({ subsets: ["latin"], variable: "--font-body", display: "swap" });
 
-// ── Brand contact ──
-export const PHONE_DISPLAY = "07494 780623";
-export const PHONE_TEL = "tel:07494780623";
-export const WHATSAPP = "https://wa.me/447494780623";
-export const INSTAGRAM = "https://www.instagram.com/printattackuk";
-export const LINKTREE = "https://linktr.ee/printattackuk";
-export const HANDLE = "@printattackuk";
-export const LOCATIONS = "Brentwood, Essex — & nationwide";
+// ── Brand contact (mock details for the demo) ──
+export const PHONE_DISPLAY = "07700 900123";
+export const PHONE_TEL = "tel:07700900123";
+export const WHATSAPP = "https://wa.me/447700900123";
+export const EMAIL = "hello@printsgalore.co.uk";
+export const EMAIL_HREF = "mailto:hello@printsgalore.co.uk";
+export const INSTAGRAM = "https://www.instagram.com/printsgalore0121/";
+export const HANDLE = "@printsgalore0121";
+export const LOCATIONS = "Birmingham — & nationwide";
 export const COVERAGE = "North · South · East · West";
-export const ADDRESS = "Based in Brentwood, UK — covering North, South, East & West";
+export const ADDRESS = "Unit 7, Vyse Street, Jewellery Quarter, Birmingham B18 6NF";
 export const SOCIALS = [
   { label: "Instagram", href: INSTAGRAM },
   { label: "WhatsApp", href: WHATSAPP },
-  { label: "Linktree", href: LINKTREE },
+  { label: "Email", href: EMAIL_HREF },
 ];
 export const HOURS = [
   { d: "Mon – Fri", h: "9:00am – 8:00pm" },
@@ -25,14 +26,14 @@ export const HOURS = [
 ];
 
 export const NAV = [
-  { label: "Home", href: "/printattacksign" },
-  { label: "What We Print", href: "/printattacksign/products" },
-  { label: "Our Work", href: "/printattacksign/work" },
-  { label: "About", href: "/printattacksign/about" },
-  { label: "Contact", href: "/printattacksign/contact" },
+  { label: "Home", href: "/printsgalore" },
+  { label: "What We Print", href: "/printsgalore/products" },
+  { label: "Our Work", href: "/printsgalore/work" },
+  { label: "About", href: "/printsgalore/about" },
+  { label: "Contact", href: "/printsgalore/contact" },
 ];
 
-// ── Imagery (real product + founder photos from @printattackuk) ──
+// ── Imagery (real product + founder photos from @printsgalore0121) ──
 const img = (n: string) => `/marketing/pa/${n}.jpg`;
 export const IMG = {
   founders: img("pa-founders"),
@@ -64,7 +65,7 @@ export const PRODUCTS = [
 
 export const METHODS = ["DTF Transfers", "Gang Sheets", "Full-Colour Print", "Logo & Workwear", "Vinyl / Heat Press", "Bulk Uniforms"];
 export const CLIENTS = ["GNS Communications", "WE FIX", "Dakhaui", "Local teams & events"];
-export const TRUST = ["Minimum order 6", "Fast turnaround", "High-quality DTF", "Brentwood, UK"];
+export const TRUST = ["Minimum order 6", "Fast turnaround", "High-quality DTF", "Birmingham, UK"];
 
 // Marquee ticker.
 export const MARQUEE = [
@@ -102,6 +103,15 @@ export const Arrow = () => (
 
 // Display-font (Anton) utility class.
 export const fd = "font-[family-name:var(--font-display)]";
+
+// ── Wordmark logo (Anton, two-tone CMYK pop) ──
+export function Wordmark({ className = "" }: { className?: string }) {
+  return (
+    <span className={`inline-block ${fd} uppercase leading-none tracking-tight text-white ${className}`} aria-hidden>
+      Prints<span className="text-[#EC008C]">&nbsp;Galore</span>
+    </span>
+  );
+}
 
 // ── Label: square marker + uppercase (no pill badge) ──
 export function Label({ children, onDark = false }: { children: React.ReactNode; onDark?: boolean }) {
