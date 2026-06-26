@@ -141,13 +141,13 @@ export default function BobsHome() {
           >
             {HIGHLIGHTS.map((item) => (
               <div key={item.name} className="flex w-[78%] shrink-0 snap-start flex-col sm:w-[60%] md:w-auto">
-                {/* No container box, border or gloss — image sits on the page */}
-                <div className="relative aspect-square overflow-hidden">
+                {/* No container box, border or gloss — the sheet floats on the page */}
+                <div className="relative aspect-square">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
                     src={item.img}
                     alt={item.name}
-                    className="absolute inset-0 h-full w-full object-cover"
+                    className="absolute inset-0 h-full w-full object-contain drop-shadow-[0_18px_26px_rgba(0,0,0,0.45)]"
                   />
                 </div>
                 <div className="pt-4">
