@@ -29,6 +29,8 @@ const STATS: [string, string][] = [
   ["Hot", "Packed fresh"],
 ];
 
+const IG_IMAGES = [`${BASE}/ig-1.png`, `${BASE}/ig-2.png`, `${BASE}/ig-3.png`];
+
 export default function BobsHome() {
   return (
     <>
@@ -195,34 +197,50 @@ export default function BobsHome() {
         </div>
       </section>
 
-      {/* INSTAGRAM BAND */}
-      <section className="border-t border-white/10 bg-[#0c0b0a] py-20 md:py-28">
+      {/* INSTAGRAM STRIP */}
+      <section className="border-t border-white/10 bg-[#0c0b0a] py-16 md:py-20">
         <div className="mx-auto max-w-[1200px] px-5">
-          <Reveal className="flex flex-col items-start gap-6 md:flex-row md:items-end md:justify-between">
+          <Reveal className="mb-8 flex flex-wrap items-end justify-between gap-4">
             <div>
-              <div className="mb-4">
+              <div className="mb-3">
                 <Eyebrow>On the grill, daily</Eyebrow>
               </div>
-              <h2 className={`${DISPLAY} text-5xl text-[#f3efe6] md:text-7xl`}>
+              <h2 className={`${DISPLAY} text-3xl text-[#f3efe6] md:text-4xl`}>
                 Follow{" "}
                 <a href={SITE.instagram} target="_blank" rel="noopener noreferrer" className="text-[#c99a3b] hover:text-[#e2bb6b]">
                   {SITE.instagramHandle}
                 </a>
               </h2>
-              <p className="mt-4 max-w-md leading-relaxed text-[#a39c8e]">
-                See the latest trays, matchday drops and behind-the-grill moments — then slide into the DMs to order.
-              </p>
             </div>
             <a
               href={SITE.instagram}
               target="_blank"
               rel="noopener noreferrer"
-              className={`${COND} shrink-0 bg-[#c99a3b] px-7 py-3.5 text-base tracking-widest text-[#0c0b0a] transition-colors hover:bg-[#e2bb6b] md:text-lg`}
-              style={{ clipPath: CUT_TL }}
+              className={`${COND} shrink-0 border border-[#f3efe6]/30 px-6 py-3 tracking-widest text-[#f3efe6] transition-colors hover:border-[#c99a3b] hover:text-[#c99a3b]`}
             >
               View Instagram →
             </a>
           </Reveal>
+          <div data-bn-stagger className="grid grid-cols-3 gap-3 md:gap-5">
+            {IG_IMAGES.map((src, i) => (
+              <a
+                key={src}
+                href={SITE.instagram}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group relative aspect-square overflow-hidden"
+                style={{ clipPath: i % 2 ? CUT_BR : CUT_TL }}
+              >
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src={src}
+                  alt="Bobs Ntaba on Instagram"
+                  className="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
+                />
+                <span className="absolute inset-0 bg-[#0c0b0a]/0 transition-colors group-hover:bg-[#0c0b0a]/30" />
+              </a>
+            ))}
+          </div>
         </div>
       </section>
     </>
