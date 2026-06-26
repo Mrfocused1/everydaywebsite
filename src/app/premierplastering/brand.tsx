@@ -1,4 +1,4 @@
-import { Space_Grotesk } from "next/font/google";
+import { Space_Grotesk, Anton } from "next/font/google";
 
 export const spaceGrotesk = Space_Grotesk({
   subsets: ["latin"],
@@ -6,6 +6,10 @@ export const spaceGrotesk = Space_Grotesk({
   variable: "--font-space",
   display: "swap",
 });
+
+// Heavy condensed face for the wordmark — matches their Impact logo.
+export const anton = Anton({ subsets: ["latin"], weight: "400", variable: "--font-anton", display: "swap" });
+export const logoFont = "font-[family-name:var(--font-anton)]";
 
 // ── Brand contact ──
 // Phone numbers taken from premierplasteringsouthlakes.co.uk (real).
@@ -28,28 +32,26 @@ export const NAV = [
   { label: "Contact", href: "/premierplastering/contact" },
 ];
 
-// ── Imagery (real photos + licence-free Pexels stock, optimised) ──
-const pp = (n: string) => `/marketing/pp/pp-${n}.jpg`;
-
-export const IMG = {
-  hero: pp("hero"),            // plasterer skimming a wall
-  skim: pp("skim"),            // trowel skimming wet plaster
-  render: pp("render"),        // external rendering
-  damp: pp("damp"),            // bare wall / damp treatment
-  lime: pp("lime"),            // period building (lime work)
-  drylining: pp("drylining"),  // plasterboard / dry lining
-  venetian: pp("venetian"),    // polished / Venetian plaster
-  microcement: pp("microcement"), // micro cement surface
-  detail: pp("detail"),        // trowel / texture close-up
-  ceiling: pp("ceiling"),      // finished room / ceiling
-  interior: pp("interior"),    // finished interior
-  tools: pp("tools"),          // plastering tools
-  worker: pp("worker"),        // plasterer at work
-  exterior: pp("exterior"),    // rendered house exterior
-};
-
-// ── Portfolio — Premier Plastering's OWN job photos (scraped from their site) ──
+// ── Imagery — Premier Plastering's OWN job photos (scraped from their site) ──
 const real = (n: string) => `/marketing/pp/real-${n}.jpg`;
+
+// Named slots used across the site, all mapped to their real photos.
+export const IMG = {
+  hero: real("render1"),       // their flagship external render job (sharp landscape)
+  skim: real("extension"),     // freshly plastered interior
+  render: real("render2"),     // external rendering in progress
+  damp: real("tanking"),       // tanking / damp proofing
+  lime: real("glaxo3"),        // plastered commercial room
+  drylining: real("loft"),     // loft conversion / plasterboard
+  venetian: real("project1"),  // polished plaster feature wall
+  microcement: real("micro2"), // micro cement bathroom
+  detail: real("project2"),    // polished plaster finish
+  ceiling: real("ceiling"),    // recessed plastered ceiling
+  interior: real("glaxo1"),    // finished room
+  tools: real("job4"),         // job photo
+  worker: real("job3"),        // exterior render job
+  exterior: real("bowness"),   // Bowness project, finished
+};
 export const GALLERY: { src: string; alt: string; big?: boolean }[] = [
   { src: real("render1"), alt: "External Parex render project", big: true },
   { src: real("project1"), alt: "Polished plaster feature wall" },
@@ -81,7 +83,7 @@ export const CUT_BL = "polygon(0 0, 100% 0, 100% 100%, 2.75rem 100%, 0 calc(100%
 // ── Subtle grid background (inline style) ──
 export const GRID_BG: React.CSSProperties = {
   backgroundImage:
-    "linear-gradient(rgba(20,51,46,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(20,51,46,0.05) 1px, transparent 1px)",
+    "linear-gradient(rgba(22,41,60,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(22,41,60,0.05) 1px, transparent 1px)",
   backgroundSize: "46px 46px",
 };
 
@@ -89,11 +91,11 @@ export const GRID_BG: React.CSSProperties = {
 export const btnYellow =
   "group inline-flex items-center justify-center gap-2.5 bg-[#ff5e3c] px-7 py-4 text-sm font-semibold uppercase tracking-wide text-white transition-colors hover:bg-[#e8472a]";
 export const btnNavy =
-  "group inline-flex items-center justify-center gap-2.5 bg-[#14332e] px-7 py-4 text-sm font-semibold uppercase tracking-wide text-white transition-colors hover:bg-[#081a16]";
+  "group inline-flex items-center justify-center gap-2.5 bg-[#16293c] px-7 py-4 text-sm font-semibold uppercase tracking-wide text-white transition-colors hover:bg-[#0a1521]";
 export const btnGhostDark =
-  "group inline-flex items-center justify-center gap-2.5 border border-white/25 px-7 py-4 text-sm font-semibold uppercase tracking-wide text-white transition-colors hover:border-[#ff5e3c] hover:text-[#21cdbd]";
+  "group inline-flex items-center justify-center gap-2.5 border border-white/25 px-7 py-4 text-sm font-semibold uppercase tracking-wide text-white transition-colors hover:border-[#ff5e3c] hover:text-[#9ec9ee]";
 export const btnGhostLight =
-  "group inline-flex items-center justify-center gap-2.5 border border-[#14332e]/25 px-7 py-4 text-sm font-semibold uppercase tracking-wide text-[#14332e] transition-colors hover:bg-[#14332e] hover:text-white";
+  "group inline-flex items-center justify-center gap-2.5 border border-[#16293c]/25 px-7 py-4 text-sm font-semibold uppercase tracking-wide text-[#16293c] transition-colors hover:bg-[#16293c] hover:text-white";
 
 export const Arrow = () => (
   <span aria-hidden className="transition-transform duration-300 group-hover:translate-x-1">→</span>
@@ -102,7 +104,7 @@ export const Arrow = () => (
 // ── Label: clay square marker + uppercase (no pill badge) ──
 export function Label({ children, onDark = false }: { children: React.ReactNode; onDark?: boolean }) {
   return (
-    <p className={`flex items-center gap-3 text-xs font-semibold uppercase tracking-[0.28em] ${onDark ? "text-white/70" : "text-[#14332e]"}`}>
+    <p className={`flex items-center gap-3 text-xs font-semibold uppercase tracking-[0.28em] ${onDark ? "text-white/70" : "text-[#16293c]"}`}>
       <span className="h-2.5 w-2.5 bg-[#ff5e3c]" aria-hidden /> {children}
     </p>
   );
@@ -114,7 +116,7 @@ export function PageHero({ eyebrow, title, intro, img, imgAlt }: { eyebrow: stri
     <section className="relative isolate flex min-h-[20rem] items-end overflow-hidden md:min-h-[27rem]">
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img src={img} alt={imgAlt} className="absolute inset-0 -z-10 h-full w-full object-cover" />
-      <div className="absolute inset-0 -z-10 bg-gradient-to-t from-[#0c241f]/92 via-[#0c241f]/55 to-[#0c241f]/25" />
+      <div className="absolute inset-0 -z-10 bg-gradient-to-t from-[#0e1c2b]/92 via-[#0e1c2b]/55 to-[#0e1c2b]/25" />
       <div className="absolute inset-0 -z-10 opacity-60" style={GRID_BG} />
       <div className="mx-auto w-full max-w-6xl px-5 pb-10 pt-28 text-white md:px-8 md:pb-14">
         <p className="hero-fade flex items-center gap-2.5 text-xs font-semibold uppercase tracking-[0.28em] text-white/70 opacity-0" style={{ transform: "translateY(8px)" }}>

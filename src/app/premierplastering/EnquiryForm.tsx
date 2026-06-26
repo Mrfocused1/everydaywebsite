@@ -5,7 +5,7 @@ import { useState } from "react";
 const EMAIL = "info@premierplasteringsouthlakes.co.uk";
 
 const field =
-  "w-full border border-slate-200 bg-white px-4 py-3 text-slate-800 placeholder-slate-400 outline-none transition-colors focus:border-[#14332e] focus:ring-2 focus:ring-[#ff5e3c]/40";
+  "w-full border border-slate-200 bg-white px-4 py-3 text-slate-800 placeholder-slate-400 outline-none transition-colors focus:border-[#16293c] focus:ring-2 focus:ring-[#ff5e3c]/40";
 
 const SERVICES = [
   "Plastering & Skimming",
@@ -53,7 +53,7 @@ export function EnquiryForm() {
       <textarea name="message" required rows={4} placeholder="Tell us about the job…" className={field} />
       <button
         type="submit"
-        className="group flex w-full items-center justify-center gap-2 bg-[#14332e] px-6 py-4 text-sm font-semibold uppercase tracking-wide text-white transition-colors hover:bg-[#081a16]"
+        className="group flex w-full items-center justify-center gap-2 bg-[#16293c] px-6 py-4 text-sm font-semibold uppercase tracking-wide text-white transition-colors hover:bg-[#0a1521]"
       >
         Send enquiry
         <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>

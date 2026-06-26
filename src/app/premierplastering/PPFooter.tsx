@@ -1,24 +1,24 @@
 import Link from "next/link";
-import { NAV, ACCREDS, PHONE_1_DISPLAY, PHONE_1_TEL, PHONE_2_DISPLAY, PHONE_2_TEL, EMAIL, FACEBOOK, AREA } from "./brand";
+import { NAV, ACCREDS, PHONE_1_DISPLAY, PHONE_1_TEL, PHONE_2_DISPLAY, PHONE_2_TEL, EMAIL, FACEBOOK, AREA, logoFont } from "./brand";
 
 export function PPFooter() {
   return (
-    <footer className="bg-[#0c241f] py-14 text-white/65">
+    <footer className="bg-[#0e1c2b] py-14 text-white/65">
       <div className="mx-auto max-w-6xl px-5 md:px-8">
         <div className="grid gap-10 md:grid-cols-[1.5fr_1fr_1.3fr]">
           <div>
             <div className="flex flex-col leading-none">
-              <span className="text-2xl font-extrabold uppercase tracking-tight">
+              <span className={`${logoFont} text-3xl uppercase tracking-tight`}>
                 <span className="text-white">Premier</span>
-                <span className="text-[#21cdbd]">Plastering</span>
+                <span className="text-[#9ec9ee]">Plastering</span>
               </span>
-              <span className="mt-1 text-[11px] font-semibold uppercase tracking-[0.34em] text-[#21cdbd]">South Lakes</span>
+              <span className="mt-1 text-[11px] font-semibold uppercase tracking-[0.34em] text-[#9ec9ee]">South Lakes</span>
             </div>
             <p className="mt-5 max-w-sm text-sm font-light text-white/50">
               For all your plastering solutions across {AREA}. Plastering, rendering, damp proofing, Venetian polished
               plaster and micro cement — domestic and commercial, finished to a high standard.
             </p>
-            <a href={FACEBOOK} target="_blank" rel="noopener noreferrer" className="mt-5 inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-white/55 transition-colors hover:text-[#21cdbd]">
+            <a href={FACEBOOK} target="_blank" rel="noopener noreferrer" className="mt-5 inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-white/55 transition-colors hover:text-[#9ec9ee]">
               <span className="h-1.5 w-1.5 bg-[#ff5e3c]" aria-hidden /> Find us on Facebook
             </a>
             <div className="mt-6 flex flex-wrap gap-x-5 gap-y-2 text-[11px] font-semibold uppercase tracking-wider text-white/40">

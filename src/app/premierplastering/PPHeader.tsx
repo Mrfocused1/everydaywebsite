@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { NAV, PHONE_1_DISPLAY, PHONE_1_TEL } from "./brand";
+import { NAV, PHONE_1_DISPLAY, PHONE_1_TEL, logoFont } from "./brand";
 
 export function PPHeader() {
   const pathname = usePathname() || "/premierplastering";
@@ -11,14 +11,14 @@ export function PPHeader() {
   const isActive = (href: string) => (href === "/premierplastering" ? pathname === href : pathname.startsWith(href));
 
   return (
-    <header className="sticky top-0 z-40 border-b border-white/10 bg-[#0c241f]/95 backdrop-blur">
+    <header className="sticky top-0 z-40 border-b border-white/10 bg-[#0e1c2b]/95 backdrop-blur">
       <div className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-5 py-3 md:px-8">
         <Link href="/premierplastering" aria-label="Premier Plastering South Lakes" onClick={() => setOpen(false)} className="flex flex-col leading-none">
-          <span className="text-lg font-extrabold uppercase tracking-tight md:text-xl">
+          <span className={`${logoFont} text-xl uppercase tracking-tight md:text-2xl`}>
             <span className="text-white">Premier</span>
-            <span className="text-[#21cdbd]">Plastering</span>
+            <span className="text-[#9ec9ee]">Plastering</span>
           </span>
-          <span className="mt-0.5 text-[10px] font-semibold uppercase tracking-[0.34em] text-[#21cdbd]">South Lakes</span>
+          <span className="mt-0.5 text-[10px] font-semibold uppercase tracking-[0.34em] text-[#9ec9ee]">South Lakes</span>
         </Link>
 
         <nav className="hidden items-center gap-9 text-sm font-semibold uppercase tracking-wide lg:flex">
@@ -54,14 +54,14 @@ export function PPHeader() {
       </div>
 
       {open && (
-        <div className="border-t border-white/10 bg-[#0c241f] lg:hidden">
+        <div className="border-t border-white/10 bg-[#0e1c2b] lg:hidden">
           <nav className="mx-auto flex max-w-6xl flex-col px-5 py-2">
             {NAV.map((n) => (
               <Link
                 key={n.href}
                 href={n.href}
                 onClick={() => setOpen(false)}
-                className={`border-b border-white/10 py-3.5 text-lg font-semibold uppercase tracking-wide ${isActive(n.href) ? "text-[#21cdbd]" : "text-white/80"}`}
+                className={`border-b border-white/10 py-3.5 text-lg font-semibold uppercase tracking-wide ${isActive(n.href) ? "text-[#9ec9ee]" : "text-white/80"}`}
               >
                 {n.label}
               </Link>

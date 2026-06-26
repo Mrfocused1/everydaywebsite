@@ -35,40 +35,40 @@ export default function PPContact() {
               Prefer to talk it through? Give us a call on any of the numbers below and we&apos;ll be happy to help.
             </p>
 
-            <div className="mt-9 border border-[#14332e]/15">
-              <a href={PHONE_1_TEL} className="flex items-center gap-4 border-b border-[#14332e]/10 p-5 transition-colors hover:bg-[#f1f7f6]">
+            <div className="mt-9 border border-[#16293c]/15">
+              <a href={PHONE_1_TEL} className="flex items-center gap-4 border-b border-[#16293c]/10 p-5 transition-colors hover:bg-[#f1f5f9]">
                 <span className="grid h-11 w-11 shrink-0 place-items-center bg-[#ff5e3c] text-lg text-white" aria-hidden>☎</span>
                 <span>
                   <span className="block text-[11px] font-semibold uppercase tracking-wider text-slate-400">Mobile</span>
-                  <span className="block text-lg font-bold text-[#14332e]">{PHONE_1_DISPLAY}</span>
+                  <span className="block text-lg font-bold text-[#16293c]">{PHONE_1_DISPLAY}</span>
                 </span>
               </a>
-              <a href={PHONE_2_TEL} className="flex items-center gap-4 border-b border-[#14332e]/10 p-5 transition-colors hover:bg-[#f1f7f6]">
+              <a href={PHONE_2_TEL} className="flex items-center gap-4 border-b border-[#16293c]/10 p-5 transition-colors hover:bg-[#f1f5f9]">
                 <span className="grid h-11 w-11 shrink-0 place-items-center bg-[#ff5e3c] text-lg text-white" aria-hidden>☎</span>
                 <span>
                   <span className="block text-[11px] font-semibold uppercase tracking-wider text-slate-400">Mobile</span>
-                  <span className="block text-lg font-bold text-[#14332e]">{PHONE_2_DISPLAY}</span>
+                  <span className="block text-lg font-bold text-[#16293c]">{PHONE_2_DISPLAY}</span>
                 </span>
               </a>
-              <a href={PHONE_3_TEL} className="flex items-center gap-4 border-b border-[#14332e]/10 p-5 transition-colors hover:bg-[#f1f7f6]">
+              <a href={PHONE_3_TEL} className="flex items-center gap-4 border-b border-[#16293c]/10 p-5 transition-colors hover:bg-[#f1f5f9]">
                 <span className="grid h-11 w-11 shrink-0 place-items-center bg-[#ff5e3c] text-lg text-white" aria-hidden>☎</span>
                 <span>
                   <span className="block text-[11px] font-semibold uppercase tracking-wider text-slate-400">Office</span>
-                  <span className="block text-lg font-bold text-[#14332e]">{PHONE_3_DISPLAY}</span>
+                  <span className="block text-lg font-bold text-[#16293c]">{PHONE_3_DISPLAY}</span>
                 </span>
               </a>
-              <a href={`mailto:${EMAIL}`} className="flex items-center gap-4 border-b border-[#14332e]/10 p-5 transition-colors hover:bg-[#f1f7f6]">
+              <a href={`mailto:${EMAIL}`} className="flex items-center gap-4 border-b border-[#16293c]/10 p-5 transition-colors hover:bg-[#f1f5f9]">
                 <span className="grid h-11 w-11 shrink-0 place-items-center bg-[#ff5e3c] text-lg text-white" aria-hidden>✉</span>
                 <span>
                   <span className="block text-[11px] font-semibold uppercase tracking-wider text-slate-400">Email</span>
-                  <span className="block break-all text-base font-bold text-[#14332e]">{EMAIL}</span>
+                  <span className="block break-all text-base font-bold text-[#16293c]">{EMAIL}</span>
                 </span>
               </a>
               <div className="flex items-center gap-4 p-5">
                 <span className="grid h-11 w-11 shrink-0 place-items-center bg-[#ff5e3c] text-lg text-white" aria-hidden>⌖</span>
                 <span>
                   <span className="block text-[11px] font-semibold uppercase tracking-wider text-slate-400">Based in</span>
-                  <span className="block text-base font-bold text-[#14332e]">Ulverston, South Cumbria</span>
+                  <span className="block text-base font-bold text-[#16293c]">Ulverston, South Cumbria</span>
                   <span className="mt-0.5 block text-xs font-medium text-slate-500">Covering {AREA}</span>
                 </span>
               </div>
@@ -87,8 +87,8 @@ export default function PPContact() {
 
           {/* Form */}
           <div data-reveal>
-            <div id="quote" className="scroll-mt-28 border border-[#14332e]/15 bg-[#f1f7f6] p-6 md:p-8">
-              <h3 className="text-2xl font-bold uppercase tracking-tight text-[#14332e]">Request a quote</h3>
+            <div id="quote" className="scroll-mt-28 border border-[#16293c]/15 bg-[#f1f5f9] p-6 md:p-8">
+              <h3 className="text-2xl font-bold uppercase tracking-tight text-[#16293c]">Request a quote</h3>
               <p className="mt-2 text-sm text-slate-500">Tell us about the job and we&apos;ll get straight back to you.</p>
               <div className="mt-6">
                 <EnquiryForm />

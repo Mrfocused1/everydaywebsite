@@ -37,7 +37,7 @@ export default function PPPortfolio() {
             {GALLERY.map((g) => (
               <figure
                 key={g.src}
-                className={`group relative overflow-hidden border border-[#14332e]/10 ${g.big ? "sm:col-span-2 sm:row-span-2" : ""}`}
+                className={`group relative overflow-hidden border border-[#16293c]/10 ${g.big ? "sm:col-span-2 sm:row-span-2" : ""}`}
               >
                 <img
                   src={g.src}
@@ -45,7 +45,7 @@ export default function PPPortfolio() {
                   loading="lazy"
                   className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-[1.04]"
                 />
-                <div className="pointer-events-none absolute inset-0 bg-[#0c241f]/0 transition-colors duration-300 group-hover:bg-[#0c241f]/15" />
+                <div className="pointer-events-none absolute inset-0 bg-[#0e1c2b]/0 transition-colors duration-300 group-hover:bg-[#0e1c2b]/15" />
               </figure>
             ))}
           </div>
@@ -53,10 +53,10 @@ export default function PPPortfolio() {
       </section>
 
       {/* CTA */}
-      <section className="border-t border-slate-100 bg-[#f1f7f6]" style={GRID_BG}>
+      <section className="border-t border-slate-100 bg-[#f1f5f9]" style={GRID_BG}>
         <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-6 px-5 py-16 text-center md:flex-row md:px-8 md:text-left" data-reveal>
           <div>
-            <h2 className="text-3xl font-bold uppercase tracking-tight text-[#14332e] md:text-4xl">Like what you see?</h2>
+            <h2 className="text-3xl font-bold uppercase tracking-tight text-[#16293c] md:text-4xl">Like what you see?</h2>
             <p className="mt-2 font-light text-slate-600">Tell us about your project — free, no-obligation quotes across the South Lakes.</p>
           </div>
           <div className="flex flex-wrap gap-3">
