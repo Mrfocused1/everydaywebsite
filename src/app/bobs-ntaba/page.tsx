@@ -40,10 +40,10 @@ export default function BobsHome() {
         <img
           src={`${BASE}/hero-wide.png`}
           alt="Bobs Ntaba — the founder with fresh trays of grilled goat meat"
-          className="absolute inset-0 h-full w-full object-cover object-[center_30%]"
+          className="absolute inset-0 h-full w-full object-cover object-[68%_28%] md:object-[center_30%]"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#0c0b0a] via-[#0c0b0a]/40 to-[#0c0b0a]/30" />
-        <div className="absolute inset-0 bg-gradient-to-r from-[#0c0b0a]/85 via-[#0c0b0a]/20 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#0c0b0a] via-[#0c0b0a]/55 to-[#0c0b0a]/20 md:via-[#0c0b0a]/40 md:to-[#0c0b0a]/30" />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#0c0b0a]/70 via-[#0c0b0a]/15 to-transparent md:from-[#0c0b0a]/85 md:via-[#0c0b0a]/20" />
 
         <div className="relative mx-auto w-full max-w-[1200px] px-5 pb-16 pt-28 md:pb-24">
           <p className={`${SCRIPT} bn-fade mb-1 text-3xl text-[#c99a3b] md:text-5xl`}>Bobs</p>
