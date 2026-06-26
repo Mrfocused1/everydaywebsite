@@ -17,7 +17,7 @@ export function CallNow() {
     <>
       <a
         href={`tel:${SITE.phone}`}
-        className={`${COND} fixed inset-x-0 bottom-0 z-50 flex items-center justify-center gap-2.5 bg-[#c99a3b] py-4 text-lg tracking-widest text-[#0c0b0a] shadow-[0_-8px_24px_rgba(0,0,0,0.5)] md:hidden`}
+        className={`${COND} fixed inset-x-0 bottom-0 z-50 flex items-center justify-center gap-2 bg-[#c99a3b] py-2.5 text-sm tracking-widest text-[#0c0b0a] shadow-[0_-8px_24px_rgba(0,0,0,0.5)] md:hidden`}
       >
         <PhoneIcon />
         Call Now to Order
