@@ -61,7 +61,7 @@ export default function PPAbout() {
       </section>
 
       {/* Stats */}
-      <section className="bg-[#26231f] text-white">
+      <section className="bg-[#14332e] text-white">
         <div className="mx-auto grid max-w-6xl grid-cols-2 gap-px bg-white/10 md:grid-cols-4" data-stagger>
           {[
             { v: "8", s: "", l: "Plastering services" },
@@ -69,8 +69,8 @@ export default function PPAbout() {
             { v: "2", s: "", l: "Approved render systems" },
             { v: "100", s: "%", l: "Recommendation-led" },
           ].map((st) => (
-            <div key={st.l} className="bg-[#26231f] p-7 text-center md:p-10">
-              <p className="text-4xl font-bold tracking-tight text-[#d9a888] md:text-5xl" data-count={st.v} data-suffix={st.s}>0{st.s}</p>
+            <div key={st.l} className="bg-[#14332e] p-7 text-center md:p-10">
+              <p className="text-4xl font-bold tracking-tight text-[#21cdbd] md:text-5xl" data-count={st.v} data-suffix={st.s}>0{st.s}</p>
               <p className="mt-2 text-xs font-semibold uppercase tracking-wider text-white/55">{st.l}</p>
             </div>
           ))}
@@ -86,8 +86,8 @@ export default function PPAbout() {
           </div>
           <div className="mt-10 grid grid-cols-1 gap-6 sm:mt-14 sm:grid-cols-2 lg:grid-cols-4" data-stagger>
             {VALUES.map((v) => (
-              <div key={v.t} className="border-t-2 border-[#b06a43] bg-white pt-5">
-                <h3 className="text-lg font-bold uppercase tracking-tight text-[#26231f]">{v.t}</h3>
+              <div key={v.t} className="border-t-2 border-[#ff5e3c] bg-white pt-5">
+                <h3 className="text-lg font-bold uppercase tracking-tight text-[#14332e]">{v.t}</h3>
                 <p className="mt-2 font-light text-slate-600">{v.b}</p>
               </div>
             ))}
@@ -96,17 +96,17 @@ export default function PPAbout() {
       </section>
 
       {/* Trust badges + areas */}
-      <section className="bg-[#f5f1ec]">
+      <section className="bg-[#f1f7f6]">
         <div className="mx-auto max-w-6xl px-5 py-16 md:px-8 md:py-24">
           <div className="grid gap-12 md:grid-cols-2 md:gap-16">
             <div data-reveal>
               <Label>Approved for</Label>
               <h2 className="mt-5 text-3xl font-bold uppercase leading-[0.98] tracking-tight md:text-4xl">Trusted systems.</h2>
-              <div className="mt-8 grid grid-cols-2 border border-[#26231f]/15 bg-white">
+              <div className="mt-8 grid grid-cols-2 border border-[#14332e]/15 bg-white">
                 {ACCREDS.map((a) => (
-                  <div key={a} className="flex flex-col gap-3 border-b border-r border-[#26231f]/10 p-6 odd:border-r [&:nth-child(n+3)]:border-b-0">
-                    <span className="h-2.5 w-2.5 bg-[#b06a43]" aria-hidden />
-                    <p className="text-sm font-bold uppercase tracking-wide text-[#26231f]">{a}</p>
+                  <div key={a} className="flex flex-col gap-3 border-b border-r border-[#14332e]/10 p-6 odd:border-r [&:nth-child(n+3)]:border-b-0">
+                    <span className="h-2.5 w-2.5 bg-[#ff5e3c]" aria-hidden />
+                    <p className="text-sm font-bold uppercase tracking-wide text-[#14332e]">{a}</p>
                   </div>
                 ))}
               </div>
@@ -116,11 +116,11 @@ export default function PPAbout() {
               <h2 className="mt-5 text-3xl font-bold uppercase leading-[0.98] tracking-tight md:text-4xl">Areas we cover.</h2>
               <div className="mt-8 grid grid-cols-2 gap-x-8">
                 {[AREAS.slice(0, 4), AREAS.slice(4)].map((col, ci) => (
-                  <div key={ci} className="flex flex-col divide-y divide-[#26231f]/10 border-y border-[#26231f]/15">
+                  <div key={ci} className="flex flex-col divide-y divide-[#14332e]/10 border-y border-[#14332e]/15">
                     {col.map((c) => (
                       <div key={c} className="flex items-center gap-3 py-4">
-                        <span className="h-2 w-2 shrink-0 bg-[#b06a43]" aria-hidden />
-                        <p className="text-base font-bold uppercase tracking-wide text-[#26231f]">{c}</p>
+                        <span className="h-2 w-2 shrink-0 bg-[#ff5e3c]" aria-hidden />
+                        <p className="text-base font-bold uppercase tracking-wide text-[#14332e]">{c}</p>
                       </div>
                     ))}
                   </div>
@@ -142,7 +142,7 @@ export default function PPAbout() {
           </div>
           <div className="mt-10 grid grid-cols-2 gap-4 sm:mt-14 sm:grid-cols-4" data-stagger>
             {[GALLERY[1], GALLERY[4], GALLERY[2], GALLERY[16]].map((g) => (
-              <figure key={g.src} className="relative aspect-[3/4] overflow-hidden border border-[#26231f]/10">
+              <figure key={g.src} className="relative aspect-[3/4] overflow-hidden border border-[#14332e]/10">
                 <img src={g.src} alt={g.alt} loading="lazy" className="h-full w-full object-cover" />
               </figure>
             ))}

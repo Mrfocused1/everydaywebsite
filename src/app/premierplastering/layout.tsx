@@ -29,16 +29,16 @@ export const metadata: Metadata = {
 
 export default function PPLayout({ children }: { children: React.ReactNode }) {
   return (
-    <div className={`${spaceGrotesk.variable} bg-white text-[#221f1b]`} style={{ fontFamily: "var(--font-space), sans-serif" }}>
+    <div className={`${spaceGrotesk.variable} bg-white text-[#1f2422]`} style={{ fontFamily: "var(--font-space), sans-serif" }}>
       <PPHeader />
       <main>{children}</main>
       <PPFooter />
       <div className="h-[60px] sm:hidden" aria-hidden />
       <div className="fixed inset-x-0 bottom-0 z-50 flex gap-2 border-t border-slate-200 bg-white p-3 shadow-[0_-4px_20px_rgba(0,0,0,0.08)] sm:inset-x-auto sm:bottom-5 sm:right-5 sm:border-0 sm:bg-transparent sm:p-0 sm:shadow-none">
-        <a href={PHONE_1_TEL} className="flex-1 bg-[#26231f] px-5 py-3.5 text-center text-sm font-bold uppercase tracking-wide text-white shadow-lg transition-transform hover:-translate-y-0.5 sm:flex-none sm:px-7">
+        <a href={PHONE_1_TEL} className="flex-1 bg-[#14332e] px-5 py-3.5 text-center text-sm font-bold uppercase tracking-wide text-white shadow-lg transition-transform hover:-translate-y-0.5 sm:flex-none sm:px-7">
           Call now
         </a>
-        <Link href="/premierplastering/contact#quote" className="flex-1 bg-[#b06a43] px-5 py-3.5 text-center text-sm font-bold uppercase tracking-wide text-white shadow-lg transition-transform hover:-translate-y-0.5 sm:flex-none sm:px-7">
+        <Link href="/premierplastering/contact#quote" className="flex-1 bg-[#ff5e3c] px-5 py-3.5 text-center text-sm font-bold uppercase tracking-wide text-white shadow-lg transition-transform hover:-translate-y-0.5 sm:flex-none sm:px-7">
           Get a quote
         </Link>
       </div>

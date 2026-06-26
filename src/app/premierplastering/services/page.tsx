@@ -43,7 +43,7 @@ export default function PPServices() {
       />
 
       {/* Areas strip */}
-      <section className="border-b border-slate-100 bg-[#26231f] py-6 text-white">
+      <section className="border-b border-slate-100 bg-[#14332e] py-6 text-white">
         <div className="mx-auto flex max-w-6xl flex-col items-center gap-3 px-5 md:flex-row md:gap-8 md:px-8">
           <span className="shrink-0 text-xs font-semibold uppercase tracking-[0.25em] text-white/50">Covering</span>
           <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-sm font-bold uppercase tracking-wide">
@@ -63,13 +63,13 @@ export default function PPServices() {
           </div>
           <div className="mt-10 grid grid-cols-1 gap-6 sm:mt-14 sm:grid-cols-2 sm:gap-7 lg:grid-cols-3" data-stagger>
             {SERVICES.map((s, i) => (
-              <article key={s.t} className="flex flex-col border border-[#26231f]/15 bg-white">
+              <article key={s.t} className="flex flex-col border border-[#14332e]/15 bg-white">
                 <div className="relative overflow-hidden" style={s.cut ? { clipPath: s.cut } : undefined}>
                   <img src={s.img} alt={s.t} loading="lazy" className="aspect-[4/3] w-full object-cover" />
-                  <span className="absolute left-0 top-0 bg-[#b06a43] px-3 py-1.5 text-sm font-bold text-white">0{i + 1}</span>
+                  <span className="absolute left-0 top-0 bg-[#ff5e3c] px-3 py-1.5 text-sm font-bold text-white">0{i + 1}</span>
                 </div>
                 <div className="flex flex-1 flex-col p-6">
-                  <h3 className="text-lg font-bold uppercase tracking-tight text-[#26231f]">{s.t}</h3>
+                  <h3 className="text-lg font-bold uppercase tracking-tight text-[#14332e]">{s.t}</h3>
                   <p className="mt-2 text-sm font-light text-slate-600">{s.b}</p>
                 </div>
               </article>
@@ -79,7 +79,7 @@ export default function PPServices() {
       </section>
 
       {/* Highlight panels */}
-      <section className="bg-[#f5f1ec]">
+      <section className="bg-[#f1f7f6]">
         <div className="mx-auto grid max-w-6xl gap-6 px-5 py-16 md:grid-cols-2 md:px-8 md:py-24" data-stagger>
           {[
             { t: "Polished Plaster & Micro Cement", img: IMG.venetian, cut: CUT_BL, b: "Venetian marble polished plaster and Italian micro cement — luxury, seamless finishes for feature walls, bathrooms and floors." },
@@ -87,7 +87,7 @@ export default function PPServices() {
           ].map((p) => (
             <article key={p.t} className="group relative overflow-hidden" style={{ clipPath: p.cut }}>
               <img src={p.img} alt={p.t} loading="lazy" className="aspect-[16/10] w-full object-cover transition-transform duration-700 group-hover:scale-105" />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#1a1815]/92 via-[#1a1815]/35 to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#0c241f]/92 via-[#0c241f]/35 to-transparent" />
               <div className="absolute bottom-0 left-0 p-7 text-white md:p-8">
                 <h3 className="text-2xl font-bold uppercase tracking-tight">{p.t}</h3>
                 <p className="mt-2 max-w-md font-light text-white/80">{p.b}</p>
@@ -100,8 +100,8 @@ export default function PPServices() {
       {/* Trust + process */}
       <section className="bg-white" style={GRID_BG}>
         <div className="mx-auto max-w-6xl px-5 py-16 md:px-8 md:py-24">
-          <div className="grid items-center gap-8 border border-[#26231f]/15 bg-[#26231f] p-8 text-white md:grid-cols-[auto_1fr] md:p-12" data-reveal>
-            <p className="text-6xl font-bold leading-none text-[#d9a888] md:text-8xl">100<span className="text-2xl md:text-3xl">%</span></p>
+          <div className="grid items-center gap-8 border border-[#14332e]/15 bg-[#14332e] p-8 text-white md:grid-cols-[auto_1fr] md:p-12" data-reveal>
+            <p className="text-6xl font-bold leading-none text-[#21cdbd] md:text-8xl">100<span className="text-2xl md:text-3xl">%</span></p>
             <div>
               <h2 className="text-2xl font-bold uppercase tracking-tight md:text-3xl">Built on quality and recommendation</h2>
               <p className="mt-3 max-w-xl font-light text-white/70">We work to Sovereign Chemicals and Parex render-system standards, and most of our work comes from customers recommending us to others — so every job is done properly and left clean and tidy.</p>
@@ -114,9 +114,9 @@ export default function PPServices() {
           </div>
           <div className="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4" data-stagger>
             {PROCESS.map((p) => (
-              <div key={p.n} className="border-t-2 border-[#b06a43] pt-5">
-                <p className="text-4xl font-bold text-[#26231f]">{p.n}</p>
-                <h3 className="mt-3 text-lg font-bold uppercase tracking-tight text-[#26231f]">{p.t}</h3>
+              <div key={p.n} className="border-t-2 border-[#ff5e3c] pt-5">
+                <p className="text-4xl font-bold text-[#14332e]">{p.n}</p>
+                <h3 className="mt-3 text-lg font-bold uppercase tracking-tight text-[#14332e]">{p.t}</h3>
                 <p className="mt-2 text-sm font-light text-slate-600">{p.b}</p>
               </div>
             ))}
