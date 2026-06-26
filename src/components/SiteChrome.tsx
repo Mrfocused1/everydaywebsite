@@ -5,7 +5,7 @@ import { TopBar } from "./TopBar";
 import { Footer } from "./Footer";
 
 // Standalone routes that render their own header/footer (client microsites).
-const BARE_PREFIXES = ["/bowdens", "/acumen", "/optimum", "/sh-electrical", "/industry-branding", "/connect-care", "/printsgalorest", "/snappydappy", "/stonerepairs"];
+const BARE_PREFIXES = ["/bowdens", "/acumen", "/optimum", "/sh-electrical", "/industry-branding", "/connect-care", "/printsgalorest", "/snappydappy", "/stonerepairs", "/bobs-ntaba"];
 
 export function SiteChrome({ children }: { children: React.ReactNode }) {
   const pathname = usePathname() || "/";
