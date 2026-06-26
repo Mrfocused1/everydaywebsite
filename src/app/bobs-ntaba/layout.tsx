@@ -4,6 +4,7 @@ import { AnnouncementBanner } from "./AnnouncementBanner";
 import { BobsHeader } from "./BobsHeader";
 import { BobsFooter } from "./BobsFooter";
 import { CallNow } from "./CallNow";
+import { BobsFX } from "./BobsFX";
 
 const OG_IMAGE = "https://everydayweb.site/bobs-ntaba/hero-wide.png";
 
@@ -38,6 +39,7 @@ export default function BobsLayout({ children }: { children: React.ReactNode }) 
       <main>{children}</main>
       <BobsFooter />
       <CallNow />
+      <BobsFX />
     </div>
   );
 }

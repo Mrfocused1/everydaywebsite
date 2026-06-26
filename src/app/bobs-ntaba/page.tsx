@@ -29,31 +29,40 @@ const STATS: [string, string][] = [
   ["Hot", "Packed fresh"],
 ];
 
-const IG_IMAGES = [`${BASE}/plate-2.png`, `${BASE}/plate-3.png`, `${BASE}/plate-4.png`, `${BASE}/cut-1.png`];
-
 export default function BobsHome() {
   return (
     <>
       {/* HERO */}
       <section className="relative flex min-h-[88vh] items-end overflow-hidden">
         {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src={`${BASE}/hero-wide.png`} alt="A black plate piled with grilled Ntaba goat meat, onions and a roast plantain stick" className="absolute inset-0 h-full w-full object-cover object-center" />
+        <img
+          data-bn-parallax
+          src={`${BASE}/hero-wide.png`}
+          alt="Bobs Ntaba — the founder with fresh trays of grilled goat meat"
+          className="absolute -top-[6%] left-0 h-[112%] w-full object-cover object-center"
+        />
         <div className="absolute inset-0 bg-gradient-to-t from-[#0c0b0a] via-[#0c0b0a]/40 to-[#0c0b0a]/30" />
-        <div className="absolute inset-0 bg-gradient-to-r from-[#0c0b0a]/80 via-transparent to-transparent" />
-        <div className="absolute inset-0" style={{ background: "radial-gradient(120% 120% at 70% 30%, transparent 30%, rgba(0,0,0,.85) 100%)" }} />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#0c0b0a]/85 via-[#0c0b0a]/20 to-transparent" />
 
         <div className="relative mx-auto w-full max-w-[1200px] px-5 pb-16 pt-28 md:pb-24">
-          <p className={`${SCRIPT} mb-1 text-3xl text-[#c99a3b] md:text-5xl`}>Bobs</p>
+          <p className={`${SCRIPT} bn-fade mb-1 text-3xl text-[#c99a3b] md:text-5xl`} style={{ opacity: 0 }}>
+            Bobs
+          </p>
           <h1 className={`${DISPLAY} max-w-4xl text-[15vw] text-[#f3efe6] sm:text-7xl md:text-8xl lg:text-9xl`}>
-            Bold flavour.
-            <br />
-            Rooted <span className="text-[#c99a3b]">culture.</span>
+            <span className="block overflow-hidden pb-[0.05em]">
+              <span className="bn-hero-line block" style={{ transform: "translateY(110%)" }}>Bold flavour.</span>
+            </span>
+            <span className="block overflow-hidden pb-[0.05em]">
+              <span className="bn-hero-line block" style={{ transform: "translateY(110%)" }}>
+                Rooted <span className="text-[#c99a3b]">culture.</span>
+              </span>
+            </span>
           </h1>
-          <p className="mt-6 max-w-xl text-base leading-relaxed text-[#f3efe6]/80 md:text-lg">
+          <p className="bn-fade mt-6 max-w-xl text-base leading-relaxed text-[#f3efe6]/80 md:text-lg" style={{ opacity: 0 }}>
             Slow-grilled goat meat — <span className="text-[#f3efe6]">Ntaba</span> — made fresh to order. Tossed with onions
             and scotch bonnet, served with a roast plantain stick. {SITE.area}.
           </p>
-          <div className="mt-8 flex flex-wrap gap-3">
+          <div className="bn-fade mt-8 flex flex-wrap gap-3" style={{ opacity: 0 }}>
             <a
               href={`tel:${SITE.phone}`}
               className={`${COND} bg-[#c99a3b] px-7 py-3.5 text-base tracking-widest text-[#0c0b0a] transition-colors hover:bg-[#e2bb6b] md:text-lg`}
@@ -75,12 +84,16 @@ export default function BobsHome() {
       <section className="bg-[#0c0b0a] py-20 md:py-28">
         <div className="mx-auto grid max-w-[1200px] gap-12 px-5 md:grid-cols-2 md:items-center">
           <Reveal>
-            <div className="relative aspect-[5/4] overflow-hidden" style={{ clipPath: CUT_BR }}>
+            <div className="relative aspect-[4/5] overflow-hidden" style={{ clipPath: CUT_BR }}>
               {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src={`${BASE}/founder.png`} alt="Bobs Ntaba — founder in the kitchen" className="absolute inset-0 h-full w-full object-cover" />
+              <img
+                src={`${BASE}/founder.png`}
+                alt="A festival-goer enjoying a Bobs Ntaba skewer"
+                className="absolute inset-0 h-full w-full object-cover object-[center_30%]"
+              />
             </div>
           </Reveal>
-          <Reveal delay={120}>
+          <Reveal>
             <div className="mb-5">
               <Eyebrow>What is Ntaba?</Eyebrow>
             </div>
@@ -113,45 +126,60 @@ export default function BobsHome() {
       <section className="bg-[#16140f] py-20 md:py-28">
         <div className="mx-auto max-w-[1200px] px-5">
           <div className="mb-10 flex flex-wrap items-end justify-between gap-4">
-            <div>
+            <Reveal>
               <div className="mb-4">
                 <Eyebrow>From the grill</Eyebrow>
               </div>
               <h2 className={`${DISPLAY} text-4xl text-[#f3efe6] md:text-5xl`}>Order favourites</h2>
-            </div>
+            </Reveal>
             <Link href={`${BASE}/prices`} className={`${COND} tracking-widest text-[#c99a3b] transition-colors hover:text-[#e2bb6b]`}>
               Full price list →
             </Link>
           </div>
 
           {/* Horizontal scroll on mobile, grid on desktop */}
-          <div className="-mx-5 flex snap-x snap-mandatory gap-5 overflow-x-auto px-5 [-ms-overflow-style:none] [scrollbar-width:none] md:mx-0 md:grid md:grid-cols-3 md:overflow-visible md:px-0 [&::-webkit-scrollbar]:hidden">
-            {HIGHLIGHTS.map((item, i) => (
-              <Reveal key={item.name} delay={i * 100} className="w-[78%] shrink-0 snap-start sm:w-[60%] md:w-auto">
-                <article className="group flex h-full flex-col overflow-hidden border border-white/10 bg-[#0c0b0a]" style={{ clipPath: CUT_BR }}>
-                  <div className="relative aspect-square overflow-hidden bg-[#1e1b16]">
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img src={item.img} alt={item.name} className="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" />
+          <div
+            data-bn-stagger
+            className="-mx-5 flex snap-x snap-mandatory gap-5 overflow-x-auto px-5 [-ms-overflow-style:none] [scrollbar-width:none] md:mx-0 md:grid md:grid-cols-3 md:overflow-visible md:px-0 [&::-webkit-scrollbar]:hidden"
+          >
+            {HIGHLIGHTS.map((item) => (
+              <div key={item.name} className="flex w-[78%] shrink-0 snap-start flex-col sm:w-[60%] md:w-auto">
+                {/* Floating cutout — no box, border or gloss */}
+                <div className="relative aspect-square">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src={item.img}
+                    alt={item.name}
+                    className="absolute inset-0 h-full w-full object-contain p-2 drop-shadow-[0_24px_30px_rgba(0,0,0,0.5)]"
+                  />
+                </div>
+                <div className="pt-4">
+                  <div className="flex items-baseline justify-between gap-3">
+                    <h3 className={`${COND} text-2xl text-[#f3efe6]`}>{item.name}</h3>
+                    <span className={`${DISPLAY} text-2xl text-[#c99a3b]`}>{item.price}</span>
                   </div>
-                  <div className="flex flex-1 flex-col p-6">
-                    <div className="flex items-baseline justify-between gap-3">
-                      <h3 className={`${COND} text-2xl text-[#f3efe6]`}>{item.name}</h3>
-                      <span className={`${DISPLAY} text-2xl text-[#c99a3b]`}>{item.price}</span>
-                    </div>
-                    <p className="mt-2 text-sm leading-relaxed text-[#a39c8e]">{item.blurb}</p>
-                  </div>
-                </article>
-              </Reveal>
+                  <p className="mt-2 text-sm leading-relaxed text-[#a39c8e]">{item.blurb}</p>
+                </div>
+              </div>
             ))}
           </div>
         </div>
       </section>
 
       {/* MATCHDAY SPECIAL */}
-      <section className="relative overflow-hidden py-20 md:py-28">
+      <section className="relative overflow-hidden bg-[#16140f] py-20 md:py-28">
+        <div
+          className="absolute inset-0"
+          style={{ background: "radial-gradient(60% 80% at 80% 50%, rgba(201,154,59,0.14), transparent 70%)" }}
+        />
         {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src={`${BASE}/plate-dark.png`} alt="" className="absolute inset-0 h-full w-full object-cover opacity-30" />
-        <div className="absolute inset-0 bg-[#0c0b0a]/80" />
+        <img
+          data-bn-parallax
+          src={`${BASE}/cut-2.png`}
+          alt=""
+          aria-hidden
+          className="pointer-events-none absolute right-[-5%] top-1/2 hidden w-[42%] max-w-lg -translate-y-1/2 object-contain opacity-95 drop-shadow-[0_24px_40px_rgba(0,0,0,0.6)] md:block"
+        />
         <div className="relative mx-auto max-w-[1200px] px-5">
           <Reveal className="max-w-2xl">
             <div className="mb-5">
@@ -179,46 +207,34 @@ export default function BobsHome() {
         </div>
       </section>
 
-      {/* INSTAGRAM STRIP */}
-      <section className="border-t border-white/10 bg-[#0c0b0a] py-16 md:py-20">
+      {/* INSTAGRAM BAND */}
+      <section className="border-t border-white/10 bg-[#0c0b0a] py-20 md:py-28">
         <div className="mx-auto max-w-[1200px] px-5">
-          <div className="mb-8 flex flex-wrap items-center justify-between gap-4">
+          <Reveal className="flex flex-col items-start gap-6 md:flex-row md:items-end md:justify-between">
             <div>
-              <div className="mb-3">
+              <div className="mb-4">
                 <Eyebrow>On the grill, daily</Eyebrow>
               </div>
-              <h2 className={`${DISPLAY} text-3xl text-[#f3efe6] md:text-4xl`}>
+              <h2 className={`${DISPLAY} text-5xl text-[#f3efe6] md:text-7xl`}>
                 Follow{" "}
                 <a href={SITE.instagram} target="_blank" rel="noopener noreferrer" className="text-[#c99a3b] hover:text-[#e2bb6b]">
                   {SITE.instagramHandle}
                 </a>
               </h2>
+              <p className="mt-4 max-w-md leading-relaxed text-[#a39c8e]">
+                See the latest trays, matchday drops and behind-the-grill moments — then slide into the DMs to order.
+              </p>
             </div>
             <a
               href={SITE.instagram}
               target="_blank"
               rel="noopener noreferrer"
-              className={`${COND} border border-[#f3efe6]/30 px-6 py-3 tracking-widest text-[#f3efe6] transition-colors hover:border-[#c99a3b] hover:text-[#c99a3b]`}
+              className={`${COND} shrink-0 bg-[#c99a3b] px-7 py-3.5 text-base tracking-widest text-[#0c0b0a] transition-colors hover:bg-[#e2bb6b] md:text-lg`}
+              style={{ clipPath: CUT_TL }}
             >
               View Instagram →
             </a>
-          </div>
-          <div className="grid grid-cols-2 gap-3 md:grid-cols-4">
-            {IG_IMAGES.map((src, i) => (
-              <a
-                key={src}
-                href={SITE.instagram}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group relative aspect-square overflow-hidden"
-                style={{ clipPath: i % 2 ? CUT_BR : CUT_TL }}
-              >
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src={src} alt="Bobs Ntaba on Instagram" className="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-110" />
-                <span className="absolute inset-0 bg-[#0c0b0a]/0 transition-colors group-hover:bg-[#0c0b0a]/30" />
-              </a>
-            ))}
-          </div>
+          </Reveal>
         </div>
       </section>
     </>
