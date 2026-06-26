@@ -36,33 +36,30 @@ export default function BobsHome() {
       <section className="relative flex min-h-[88vh] items-end overflow-hidden">
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
-          data-bn-parallax
           src={`${BASE}/hero-wide.png`}
           alt="Bobs Ntaba — the founder with fresh trays of grilled goat meat"
-          className="absolute -top-[6%] left-0 h-[112%] w-full object-cover object-center"
+          className="absolute inset-0 h-full w-full object-cover object-[center_30%]"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-[#0c0b0a] via-[#0c0b0a]/40 to-[#0c0b0a]/30" />
         <div className="absolute inset-0 bg-gradient-to-r from-[#0c0b0a]/85 via-[#0c0b0a]/20 to-transparent" />
 
         <div className="relative mx-auto w-full max-w-[1200px] px-5 pb-16 pt-28 md:pb-24">
-          <p className={`${SCRIPT} bn-fade mb-1 text-3xl text-[#c99a3b] md:text-5xl`} style={{ opacity: 0 }}>
-            Bobs
-          </p>
+          <p className={`${SCRIPT} bn-fade mb-1 text-3xl text-[#c99a3b] md:text-5xl`}>Bobs</p>
           <h1 className={`${DISPLAY} max-w-4xl text-[15vw] text-[#f3efe6] sm:text-7xl md:text-8xl lg:text-9xl`}>
             <span className="block overflow-hidden pb-[0.05em]">
-              <span className="bn-hero-line block" style={{ transform: "translateY(110%)" }}>Bold flavour.</span>
+              <span className="bn-hero-line block">Bold flavour.</span>
             </span>
             <span className="block overflow-hidden pb-[0.05em]">
-              <span className="bn-hero-line block" style={{ transform: "translateY(110%)" }}>
+              <span className="bn-hero-line block">
                 Rooted <span className="text-[#c99a3b]">culture.</span>
               </span>
             </span>
           </h1>
-          <p className="bn-fade mt-6 max-w-xl text-base leading-relaxed text-[#f3efe6]/80 md:text-lg" style={{ opacity: 0 }}>
+          <p className="bn-fade mt-6 max-w-xl text-base leading-relaxed text-[#f3efe6]/80 md:text-lg">
             Slow-grilled goat meat — <span className="text-[#f3efe6]">Ntaba</span> — made fresh to order. Tossed with onions
             and scotch bonnet, served with a roast plantain stick. {SITE.area}.
           </p>
-          <div className="bn-fade mt-8 flex flex-wrap gap-3" style={{ opacity: 0 }}>
+          <div className="bn-fade mt-8 flex flex-wrap gap-3">
             <a
               href={`tel:${SITE.phone}`}
               className={`${COND} bg-[#c99a3b] px-7 py-3.5 text-base tracking-widest text-[#0c0b0a] transition-colors hover:bg-[#e2bb6b] md:text-lg`}
@@ -144,13 +141,13 @@ export default function BobsHome() {
           >
             {HIGHLIGHTS.map((item) => (
               <div key={item.name} className="flex w-[78%] shrink-0 snap-start flex-col sm:w-[60%] md:w-auto">
-                {/* Floating cutout — no box, border or gloss */}
-                <div className="relative aspect-square">
+                {/* No container box, border or gloss — image sits on the page */}
+                <div className="relative aspect-square overflow-hidden">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
                     src={item.img}
                     alt={item.name}
-                    className="absolute inset-0 h-full w-full object-contain p-2 drop-shadow-[0_24px_30px_rgba(0,0,0,0.5)]"
+                    className="absolute inset-0 h-full w-full object-cover"
                   />
                 </div>
                 <div className="pt-4">
@@ -167,19 +164,10 @@ export default function BobsHome() {
       </section>
 
       {/* MATCHDAY SPECIAL */}
-      <section className="relative overflow-hidden bg-[#16140f] py-20 md:py-28">
-        <div
-          className="absolute inset-0"
-          style={{ background: "radial-gradient(60% 80% at 80% 50%, rgba(201,154,59,0.14), transparent 70%)" }}
-        />
+      <section className="relative overflow-hidden py-20 md:py-28">
         {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img
-          data-bn-parallax
-          src={`${BASE}/cut-2.png`}
-          alt=""
-          aria-hidden
-          className="pointer-events-none absolute right-[-5%] top-1/2 hidden w-[42%] max-w-lg -translate-y-1/2 object-contain opacity-95 drop-shadow-[0_24px_40px_rgba(0,0,0,0.6)] md:block"
-        />
+        <img src={`${BASE}/plate-dark.png`} alt="" className="absolute inset-0 h-full w-full object-cover opacity-30" />
+        <div className="absolute inset-0 bg-[#0c0b0a]/80" />
         <div className="relative mx-auto max-w-[1200px] px-5">
           <Reveal className="max-w-2xl">
             <div className="mb-5">

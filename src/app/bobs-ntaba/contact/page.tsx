@@ -20,16 +20,10 @@ const CONTACTS: { label: string; value: string; href: string; icon: IconName; ex
 export default function ContactPage() {
   return (
     <>
-      <section className="relative overflow-hidden bg-[#0c0b0a] pb-14 pt-28 md:pb-16 md:pt-36">
-        <div className="absolute inset-0" style={{ background: "radial-gradient(55% 80% at 85% 42%, rgba(201,154,59,0.13), transparent 70%)" }} />
+      <section className="relative overflow-hidden pb-14 pt-28 md:pb-16 md:pt-36">
         {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img
-          data-bn-parallax
-          src={`${BASE}/paper.png`}
-          alt=""
-          aria-hidden
-          className="pointer-events-none absolute right-[-3%] top-1/2 hidden w-[34%] max-w-sm -translate-y-1/2 object-contain opacity-90 drop-shadow-[0_24px_40px_rgba(0,0,0,0.55)] lg:block"
-        />
+        <img src={`${BASE}/plate-4.png`} alt="" className="absolute inset-0 h-full w-full object-cover opacity-25" />
+        <div className="absolute inset-0 bg-gradient-to-b from-[#0c0b0a]/70 via-[#0c0b0a]/85 to-[#0c0b0a]" />
         <div className="relative mx-auto max-w-[1200px] px-5">
           <div className="mb-5">
             <Eyebrow>Get in touch</Eyebrow>

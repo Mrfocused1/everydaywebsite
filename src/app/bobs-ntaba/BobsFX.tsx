@@ -4,24 +4,20 @@ import { useEffect } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-// GSAP animation layer for the Bobs Ntaba microsite. Driven by data-attributes
-// so the markup stays clean. Reduced-motion safe; cleans up via ctx.revert().
+// GSAP animation layer for the Bobs Ntaba microsite. Driven by data-attributes.
+// Uses gsap.from so content is VISIBLE by default — if GSAP never runs (error,
+// no-JS) nothing is hidden. Reduced-motion: skip animation entirely.
 // No ScrollTrigger pin:true (it crashes App Router soft-nav).
 export function BobsFX() {
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
     const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (reduce) return;
 
     const ctx = gsap.context(() => {
-      if (reduce) {
-        gsap.set("[data-bn-reveal], .bn-hero-line, .bn-fade", { opacity: 1, y: 0, yPercent: 0, clearProps: "transform" });
-        return;
-      }
-
-      // Hero kinetic heading: lines start at inline translateY(110%) (GSAP parses
-      // this into a px `y`), inside an overflow-hidden mask; slide up to y:0.
-      gsap.to(".bn-hero-line", { y: 0, duration: 1, stagger: 0.09, ease: "power4.out", delay: 0.15 });
-      gsap.to(".bn-fade", { opacity: 1, y: 0, duration: 0.8, stagger: 0.1, ease: "power3.out", delay: 0.4 });
+      // Hero kinetic heading: lines slide up from inside an overflow-hidden mask.
+      gsap.from(".bn-hero-line", { yPercent: 110, duration: 1, stagger: 0.09, ease: "power4.out", delay: 0.15 });
+      gsap.from(".bn-fade", { opacity: 0, y: 16, duration: 0.8, stagger: 0.1, ease: "power3.out", delay: 0.4 });
 
       // Scroll reveals.
       gsap.utils.toArray<HTMLElement>("[data-bn-reveal]").forEach((node) => {
@@ -43,15 +39,6 @@ export function BobsFX() {
           stagger: 0.1,
           ease: "power3.out",
           scrollTrigger: { trigger: group, start: "top 85%", once: true },
-        });
-      });
-
-      // Subtle parallax on flagged images (scaled up so no edge gap appears).
-      gsap.utils.toArray<HTMLElement>("[data-bn-parallax]").forEach((img) => {
-        gsap.to(img, {
-          yPercent: 6,
-          ease: "none",
-          scrollTrigger: { trigger: img.parentElement, start: "top bottom", end: "bottom top", scrub: true },
         });
       });
     });
