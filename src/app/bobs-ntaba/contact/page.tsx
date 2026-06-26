@@ -79,7 +79,7 @@ export default function ContactPage() {
           </Reveal>
 
           {/* Order form */}
-          <Reveal delay={120}>
+          <Reveal>
             <h2 className={`${DISPLAY} mb-5 text-3xl text-[#f3efe6] md:text-4xl`}>Send an order</h2>
             <OrderForm />
           </Reveal>
