@@ -8,18 +8,26 @@ export const SITE = {
 };
 
 export const HERO = {
-  // The headline is rendered word-by-word; "premium" is set in serif italic and
-  // "websites" gets a hand-drawn scribble loop. "creatives" gets a pink circle.
-  words: ["we", "design", "premium", "websites", "for", "businesses", "and", "creatives"],
-  emphasis: "premium",
-  ctaLabel: "start your site",
-  ctaHref: "#start",
+  // One entry per line (lines also stack on mobile). Any occurrence of
+  // `accent` is picked out in teal.
+  headline: { lines: ["Premium", "websites for", "businesses &", "creatives"], accent: "&" },
   subhead:
-    "A studio crafting fast, beautiful, bespoke websites — launched in days, not months. No templates. No fuss. Just a site that's unmistakably yours.",
-  // Single lifestyle hero image (warm studio scene).
-  images: ["/marketing/hero-people.jpg"],
-  imageAlt: "A team collaborating on a new website",
-};
+    "Fast, beautiful, bespoke sites — launched in days, not months. No templates. No fuss. Just a site that's unmistakably yours.",
+  ctaLabel: "Start your site",
+  ctaHref: "#start",
+  secondaryLabel: "See the work",
+  secondaryHref: "/work",
+  // Proof row under the CTAs; `icon` keys map to inline SVGs in Hero.tsx.
+  proof: [
+    { icon: "bolt", label: "Fast turnaround" },
+    { icon: "layers", label: "100% bespoke" },
+    { icon: "monitor", label: "Mobile ready" },
+  ],
+  // Hero photos (art-directed): landscape on desktop — subject sits right, copy
+  // sits left — and a portrait crop on phones/tablets, shown below the copy.
+  image: { desktop: "/marketing/hero-desktop.jpg", mobile: "/marketing/hero-mobile.jpg" },
+  imageAlt: "A designer talking through a new website on her laptop",
+} as const;
 
 // Marquee band words.
 export const MARQUEE_ITEMS = [
@@ -108,35 +116,35 @@ export type ShowcasePhoto = {
 
 export const SHOWCASE: ShowcasePhoto[] = [
   {
-    src: "/marketing/work/clearway-poster.jpg",
+    src: "/marketing/work/nalas-poster.jpg",
     className: "left-[5%] top-0 w-[22rem] aspect-[16/10]",
     rotate: -4,
     z: 2,
     sticker: { name: "thumbs-up", size: 84, rotate: 10, className: "-right-5 -top-6" },
   },
   {
-    src: "/marketing/work/perfect-pair-poster.jpg",
+    src: "/marketing/work/byjh-poster.jpg",
     className: "left-[52%] top-[15rem] w-[21rem] aspect-[16/10]",
     rotate: 3,
     z: 3,
     sticker: { name: "cool-smiley", size: 84, rotate: -8, className: "-right-5 -top-6" },
   },
   {
-    src: "/marketing/work/chuks-poster.jpg",
+    src: "/marketing/work/ccc-poster.jpg",
     className: "left-[8%] top-[34rem] w-[22rem] aspect-[16/10]",
     rotate: 3,
     z: 4,
     sticker: { name: "sparkles", size: 92, rotate: -10, className: "-right-5 -top-6" },
   },
   {
-    src: "/marketing/work/forever-family-poster.jpg",
+    src: "/marketing/work/clearway-poster.jpg",
     className: "left-[50%] top-[52rem] w-[22rem] aspect-[16/10]",
     rotate: -3,
     z: 3,
     sticker: { name: "lets-go", size: 92, rotate: 8, className: "-right-6 -top-6" },
   },
   {
-    src: "/marketing/work/commonwell-poster.jpg",
+    src: "/marketing/work/chuks-poster.jpg",
     className: "left-[10%] top-[70rem] w-[21rem] aspect-[16/10]",
     rotate: 2,
     z: 4,

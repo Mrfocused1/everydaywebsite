@@ -46,7 +46,7 @@ export function Footer() {
 
         <div className="mt-10 flex flex-col gap-6 border-t border-ua-bg/20 pt-8 sm:flex-row sm:items-end sm:justify-between">
           <a href="/" aria-label={`${SITE.name} — home`} className="ua-wiggle-link">
-            <Wordmark color="var(--ua-bg)" className="h-12 w-auto md:h-14" />
+            <Wordmark className="h-20 w-auto md:h-24" />
           </a>
           <p className="text-sm text-ua-bg/70">© 2026 {SITE.name}. All rights reserved.</p>
         </div>

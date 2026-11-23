@@ -1,247 +1,148 @@
-"use client";
-
-import { Fragment, useEffect, useRef } from "react";
-import { gsap } from "gsap";
+import { getImageProps } from "next/image";
+import type { CSSProperties, ReactNode } from "react";
 import { HERO } from "@/lib/content";
-import { prefersReducedMotion } from "@/lib/reducedMotion";
 
-// Hand-drawn loop (original) — circles / underlines words for emphasis.
-const CIRCLE_PATH =
-  "M44 96C12 84 6 44 70 26C134 8 196 30 188 64C181 94 96 112 40 92C18 84 18 62 40 50";
+const epilogue: CSSProperties = { fontFamily: "var(--font-epilogue)" };
+const dmSans: CSSProperties = { fontFamily: "var(--font-dm-sans)" };
+
+/** Stagger helper for the CSS-only `.hero-in` entrance. */
+const delay = (ms: number) => ({ "--d": `${ms}ms` }) as CSSProperties;
+
+/**
+ * Art-directed photo: the landscape shot on desktop (lg+), where it fills the
+ * hero behind the copy, and the portrait one on phones/tablets, where it sits
+ * as a band below the copy. A <picture> means each device only downloads its own.
+ */
+function HeroPhoto() {
+  const common = { alt: HERO.imageAlt, sizes: "100vw", priority: true };
+  const {
+    props: { srcSet: desktop },
+  } = getImageProps({ ...common, src: HERO.image.desktop, width: 1672, height: 941, quality: 85 });
+  const {
+    props: { srcSet: mobile, ...rest },
+  } = getImageProps({ ...common, src: HERO.image.mobile, width: 941, height: 1672, quality: 85 });
+  return (
+    <picture>
+      <source media="(min-width: 1024px)" srcSet={desktop} />
+      <source srcSet={mobile} />
+      {/* eslint-disable-next-line jsx-a11y/alt-text -- alt comes from rest */}
+      <img
+        {...rest}
+        className="absolute inset-0 h-full w-full object-cover object-[50%_100%] lg:object-[78%_50%]"
+      />
+    </picture>
+  );
+}
+
+const ICON_PATHS: Record<(typeof HERO.proof)[number]["icon"], ReactNode> = {
+  bolt: <path d="M13 2 4 14h7l-1 8 9-12h-7l1-8Z" />,
+  layers: (
+    <>
+      <path d="m12 3 9 4.5-9 4.5-9-4.5L12 3Z" />
+      <path d="m3 12 9 4.5 9-4.5" />
+      <path d="m3 16.5 9 4.5 9-4.5" />
+    </>
+  ),
+  monitor: (
+    <>
+      <rect x="2.5" y="3.5" width="19" height="13" rx="1.5" />
+      <path d="M8 21h8M12 16.5V21" />
+    </>
+  ),
+};
+
+/** Splits a headline line so the accent glyph (the "&") can be coloured. */
+function withAccent(line: string): ReactNode {
+  const parts = line.split(HERO.headline.accent);
+  return parts.flatMap((part, i) =>
+    i === 0
+      ? [part]
+      : [
+          <span key={i} className="text-ua-teal">
+            {HERO.headline.accent}
+          </span>,
+          part,
+        ],
+  );
+}
 
 export function Hero() {
-  const wordsRef = useRef<HTMLHeadingElement>(null);
-  const circleRef = useRef<SVGPathElement>(null);
-  const scribbleRef = useRef<SVGPathElement>(null);
-  const slidesRef = useRef<Array<HTMLImageElement | HTMLVideoElement | null>>([]);
-
-  // Background slideshow: hold each slide, then fade out to dark and the next in.
-  useEffect(() => {
-    const slides = slidesRef.current.filter(
-      (s): s is HTMLImageElement => s !== null,
-    );
-    if (slides.length < 2) return;
-    if (prefersReducedMotion()) {
-      gsap.set(slides, { opacity: 0 });
-      gsap.set(slides[0], { opacity: 1 });
-      return;
-    }
-
-    const HOLD = 5;
-    const FADE = 1.3;
-    const BLACK = 0.25;
-
-    const ctx = gsap.context(() => {
-      gsap.set(slides, { opacity: 0 });
-      gsap.set(slides[0], { opacity: 1 });
-      const tl = gsap.timeline({ repeat: -1 });
-      slides.forEach((slide, i) => {
-        const next = slides[(i + 1) % slides.length];
-        tl.to(slide, { opacity: 1, duration: HOLD });
-        tl.to(slide, { opacity: 0, duration: FADE, ease: "power2.inOut" });
-        tl.to({}, { duration: BLACK });
-        tl.to(next, { opacity: 1, duration: FADE, ease: "power2.inOut" });
-      });
-    });
-    return () => ctx.revert();
-  }, []);
-
-  useEffect(() => {
-    const el = wordsRef.current;
-    if (!el) return;
-    const words = el.querySelectorAll("[data-word]");
-    const circle = circleRef.current;
-    const scribble = scribbleRef.current;
-
-    if (prefersReducedMotion()) {
-      gsap.set(words, { opacity: 1, y: 0 });
-      if (circle) circle.style.strokeDashoffset = "0";
-      if (scribble) scribble.style.strokeDashoffset = "0";
-      return;
-    }
-
-    [scribble, circle].forEach((p) => {
-      if (p && typeof p.getTotalLength === "function") {
-        const len = p.getTotalLength();
-        if (len) gsap.set(p, { strokeDasharray: len, strokeDashoffset: len });
-      }
-    });
-
-    const drawIn = (path: SVGPathElement | null, delay: number) => {
-      if (!path || typeof path.getTotalLength !== "function") return;
-      const len = path.getTotalLength();
-      if (!len) return;
-      gsap.to(path, { strokeDashoffset: 0, duration: 0.8, ease: "power2.inOut", delay });
-    };
-
-    // Entrance runs on mount (a short beat after paint for polish).
-    let ctx: gsap.Context | undefined;
-    const startTimer = window.setTimeout(() => {
-      ctx = gsap.context(() => {
-        gsap.fromTo(
-          words,
-          { opacity: 0, y: 30 },
-          { opacity: 1, y: 0, duration: 0.7, stagger: 0.05, ease: "power3.out" },
-        );
-        drawIn(scribble, 0.25);
-        drawIn(circle, 0.6);
-      }, el);
-    }, 150);
-
-    return () => {
-      clearTimeout(startTimer);
-      ctx?.revert();
-    };
-  }, []);
-
   return (
-    <section
-      id="top"
-      data-nav-theme="dark"
-      className="relative min-h-svh w-full overflow-hidden bg-ua-ink"
-    >
-      {/* Cross-fading background slideshow of real websites. */}
-      {HERO.images.map((src, i) => (
-        // eslint-disable-next-line @next/next/no-img-element
-        <img
-          key={src}
-          ref={(el) => {
-            slidesRef.current[i] = el;
-          }}
-          src={src}
-          alt={i === 0 ? HERO.imageAlt : ""}
-          aria-hidden={i === 0 ? undefined : true}
-          className="absolute inset-0 h-full w-full object-cover object-[74%_45%] md:object-center"
-          style={{ opacity: i === 0 ? 1 : 0 }}
-          fetchPriority={i === 0 ? "high" : undefined}
-        />
-      ))}
-      {/* Keep the headline readable over the bright photo: a light flat wash plus
-          a bottom-weighted gradient (the headline sits at the bottom). */}
-      <div className="absolute inset-0 bg-ua-ink/35" />
-      <div className="absolute inset-0 bg-gradient-to-t from-ua-ink via-ua-ink/45 to-ua-ink/25" />
-
-      <div className="relative z-10 flex min-h-svh flex-col items-center justify-end px-6 pb-14 text-center md:px-10 md:pb-20">
-        <h1
-          ref={wordsRef}
-          className="mx-auto max-w-5xl text-3xl font-bold lowercase leading-[1.05] text-ua-bg sm:text-4xl md:text-6xl"
-          style={{ fontFamily: "var(--font-epilogue)" }}
-        >
-          {HERO.words.map((w, i) => {
-            const space = i < HERO.words.length - 1 ? " " : "";
-
-            // Emphasised word: serif italic (Lora).
-            if (w === HERO.emphasis) {
-              return (
-                <span
-                  key={`${w}-${i}`}
-                  data-word
-                  className="ua-reveal inline-block whitespace-pre italic"
-                  style={{ opacity: 0, fontFamily: "var(--font-lora)" }}
-                >
-                  {w}
-                  {space}
-                </span>
-              );
-            }
-
-            // "websites" gets a white hand-drawn scribble loop that draws in.
-            if (w === "websites") {
-              return (
-                <Fragment key={`${w}-${i}`}>
-                  <span
-                    data-word
-                    className="ua-reveal relative inline-block whitespace-pre"
-                    style={{ opacity: 0 }}
-                  >
-                    <span className="relative inline-block">
-                      {w}
-                      <svg
-                        viewBox="0 0 230 120"
-                        fill="none"
-                        aria-hidden="true"
-                        preserveAspectRatio="none"
-                        className="pointer-events-none absolute -left-[13%] -top-[52%] h-[204%] w-[142%] text-ua-bg"
-                      >
-                        <path
-                          ref={scribbleRef}
-                          d={CIRCLE_PATH}
-                          stroke="currentColor"
-                          strokeWidth={5}
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                        />
-                      </svg>
-                    </span>
-                    {space}
-                  </span>
-                  {/* Break the heading onto two lines after "websites". */}
-                  <br aria-hidden="true" />
-                </Fragment>
-              );
-            }
-
-            // "creatives" gets the hand-drawn pink circle.
-            if (w === "creatives") {
-              return (
-                <span
-                  key={`${w}-${i}`}
-                  data-word
-                  className="ua-reveal relative inline-block whitespace-pre"
-                  style={{ opacity: 0 }}
-                >
-                  <span className="relative inline-block">
-                    {w}
-                    <svg
-                      viewBox="0 0 230 120"
-                      fill="none"
-                      aria-hidden="true"
-                      preserveAspectRatio="none"
-                      className="pointer-events-none absolute -left-[18%] -top-[22%] h-[150%] w-[140%] text-ua-pink"
-                    >
-                      <path
-                        ref={circleRef}
-                        d={CIRCLE_PATH}
-                        stroke="currentColor"
-                        strokeWidth={6}
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      />
-                    </svg>
-                  </span>
-                  {space}
-                </span>
-              );
-            }
-
-            return (
-              <span
-                key={`${w}-${i}`}
-                data-word
-                className="ua-reveal inline-block whitespace-pre"
-                style={{ opacity: 0 }}
-              >
-                {w}
-                {space}
-              </span>
-            );
-          })}
-        </h1>
-
-        <p className="mx-auto mt-5 max-w-xl text-base text-ua-bg/90 md:text-lg">
-          {HERO.subhead}
-        </p>
-
-        <div className="mt-8">
-          <a
-            href={HERO.ctaHref}
-            className="group inline-flex items-center gap-2 rounded-full border-2 border-ua-ink bg-white px-7 py-3 text-lg font-bold text-ua-ink shadow-[4px_4px_0_var(--ua-ink)] transition-all duration-200 hover:-translate-y-0.5 hover:bg-ua-ink hover:text-white hover:shadow-[6px_6px_0_var(--ua-ink)] active:translate-y-0 active:shadow-[2px_2px_0_var(--ua-ink)]"
-            style={{ fontFamily: "var(--font-epilogue)" }}
+    <section id="top" className="relative isolate w-full overflow-hidden bg-white lg:flex lg:min-h-svh lg:items-center">
+      {/* ── Copy ── (top on mobile, left column on desktop) */}
+      <div className="mx-auto w-full max-w-[1320px] px-5 pb-8 pt-[92px] sm:px-8 sm:pb-10 sm:pt-32 lg:px-12 lg:pb-20 lg:pt-32">
+        <div className="max-w-[36rem] lg:max-w-[40rem]">
+          <h1
+            className="hero-in text-[clamp(2.4rem,5vw+1.5rem,3.75rem)] font-extrabold leading-[0.98] tracking-[-0.035em] text-ua-navy lg:text-[clamp(3.5rem,5vw,5.25rem)]"
+            style={{ ...epilogue, ...delay(60) }}
           >
-            {HERO.ctaLabel}
-            <span className="transition-transform duration-200 group-hover:translate-x-1">→</span>
-          </a>
+            {HERO.headline.lines.map((line) => (
+              <span key={line} className="block">
+                {withAccent(line)}
+              </span>
+            ))}
+          </h1>
+
+          <p
+            className="hero-in mt-4 max-w-[30rem] text-base leading-[1.5] text-[#3b4556] sm:mt-5 sm:text-lg lg:mt-7 lg:text-[1.3rem]"
+            style={{ ...dmSans, ...delay(150) }}
+          >
+            {HERO.subhead}
+          </p>
+
+          <div
+            className="hero-in mt-6 flex flex-col gap-2.5 sm:mt-7 sm:flex-row sm:flex-wrap sm:items-center sm:gap-4 lg:mt-9"
+            style={delay(240)}
+          >
+            <a
+              href={HERO.ctaHref}
+              className="group inline-flex items-center justify-center gap-2 rounded-full bg-ua-navy px-8 py-3 text-base sm:py-3.5 sm:text-[17px] font-bold text-white shadow-[0_10px_24px_-12px_rgba(11,29,58,0.7)] transition-all duration-200 hover:-translate-y-0.5 hover:bg-[#13305c] hover:shadow-[0_14px_28px_-12px_rgba(11,29,58,0.75)] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-ua-teal active:translate-y-0"
+              style={epilogue}
+            >
+              {HERO.ctaLabel}
+              <span aria-hidden="true" className="transition-transform duration-200 group-hover:translate-x-1">
+                →
+              </span>
+            </a>
+            <a
+              href={HERO.secondaryHref}
+              className="inline-flex items-center justify-center rounded-full border-[1.5px] border-[#c9d0da] bg-white/80 px-8 py-3 text-base sm:py-3.5 sm:text-[17px] font-bold text-ua-navy backdrop-blur-sm transition-all duration-200 hover:-translate-y-0.5 hover:border-ua-navy hover:bg-white focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-ua-teal active:translate-y-0"
+              style={epilogue}
+            >
+              {HERO.secondaryLabel}
+            </a>
+          </div>
+
+          <ul
+            className="hero-in mt-10 hidden max-w-[34rem] flex-wrap items-center gap-x-10 gap-y-3 border-t border-[#dde2e9] pt-6 text-[15px] font-semibold text-ua-navy sm:flex lg:mt-12"
+            style={{ ...dmSans, ...delay(330) }}
+          >
+            {HERO.proof.map(({ icon, label }) => (
+              <li key={label} className="inline-flex items-center gap-2.5">
+                <svg
+                  viewBox="0 0 24 24"
+                  aria-hidden="true"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="1.8"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  className="h-5 w-5 shrink-0"
+                >
+                  {ICON_PATHS[icon]}
+                </svg>
+                {label}
+              </li>
+            ))}
+          </ul>
         </div>
+      </div>
+
+      {/* ── Photo ── a band below the copy on mobile; full-bleed behind it on desktop. */}
+      <div className="relative h-[clamp(300px,56svh,600px)] w-full lg:absolute lg:inset-0 lg:-z-10 lg:h-auto">
+        <HeroPhoto />
+        {/* Desktop: white wash from the copy side, clear by mid-width. */}
+        <div className="hero-wash absolute inset-0 hidden lg:block" />
       </div>
     </section>
   );

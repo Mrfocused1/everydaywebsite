@@ -21,10 +21,20 @@ export type CaseStudy = {
   href: string;
   /** Optional override for the logo's height classes (default h-10 md:h-12). */
   logoClass?: string;
+  /** Short category label shown as a pill. */
+  tag?: string;
 };
 
-export function CaseStudyCard({ study }: { study: CaseStudy }) {
-  const ref = useRef<HTMLDivElement>(null);
+type Props = {
+  study: CaseStudy;
+  wide?: boolean;
+  flip?: boolean;
+  delay?: number;
+};
+
+export function CaseStudyCard({ study, wide = false, flip = false, delay = 0 }: Props) {
+  const ref = useRef<HTMLElement>(null);
+  const videoRef = useRef<HTMLVideoElement>(null);
 
   useEffect(() => {
     const el = ref.current;
@@ -37,7 +47,13 @@ export function CaseStudyCard({ study }: { study: CaseStudy }) {
     }
     const ctx = gsap.context(() => {
       gsap
-        .timeline({ scrollTrigger: { trigger: el, start: "top 82%", once: true } })
+        .timeline({
+          delay,
+          scrollTrigger: { trigger: el, start: "top 88%", once: true },
+          onComplete: () => {
+            el.style.willChange = "auto";
+          },
+        })
         .fromTo(
           el,
           { opacity: 0, y: 44, scale: 0.97 },
@@ -51,29 +67,137 @@ export function CaseStudyCard({ study }: { study: CaseStudy }) {
         );
     }, el);
     return () => ctx.revert();
+  }, [delay]);
+
+  useEffect(() => {
+    const el = ref.current;
+    const v = videoRef.current;
+    if (!el || !v) return;
+    if (prefersReducedMotion()) {
+      v.controls = true;
+      return;
+    }
+    // Start buffering the full clip once the card is near the viewport, so
+    // hover playback doesn't stutter while the video is still downloading.
+    const warm = new IntersectionObserver(
+      ([entry]) => {
+        if (!entry.isIntersecting) return;
+        v.preload = "auto";
+        if (v.readyState < 2) v.load();
+        warm.disconnect();
+      },
+      { rootMargin: "400px 0px" },
+    );
+    warm.observe(v);
+
+    let wantPlay = false;
+    let fallback: ReturnType<typeof setTimeout> | undefined;
+    const start = () => {
+      clearTimeout(fallback);
+      v.removeEventListener("canplaythrough", start);
+      if (wantPlay) v.play().catch(() => {});
+    };
+    const play = () => {
+      wantPlay = true;
+      // Only start once enough is buffered to play through without stalling
+      // (with a short fallback in case the browser never fires the event).
+      if (v.readyState >= 4) return start();
+      v.addEventListener("canplaythrough", start, { once: true });
+      clearTimeout(fallback);
+      fallback = setTimeout(start, 1500);
+    };
+    const stop = () => {
+      wantPlay = false;
+      clearTimeout(fallback);
+      v.removeEventListener("canplaythrough", start);
+      v.pause();
+      v.currentTime = 0;
+    };
+    if (window.matchMedia("(hover: hover) and (pointer: fine)").matches) {
+      el.addEventListener("mouseenter", play);
+      el.addEventListener("focusin", play);
+      el.addEventListener("mouseleave", stop);
+      el.addEventListener("focusout", stop);
+      return () => {
+        clearTimeout(fallback);
+        warm.disconnect();
+        v.removeEventListener("canplaythrough", start);
+        el.removeEventListener("mouseenter", play);
+        el.removeEventListener("focusin", play);
+        el.removeEventListener("mouseleave", stop);
+        el.removeEventListener("focusout", stop);
+      };
+    }
+    const io = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) play();
+        else {
+          wantPlay = false;
+          v.pause();
+        }
+      },
+      { threshold: 0.6 },
+    );
+    io.observe(v);
+    return () => {
+      clearTimeout(fallback);
+      warm.disconnect();
+      io.disconnect();
+      v.removeEventListener("canplaythrough", start);
+    };
   }, []);
 
   return (
-    <div
+    <article
       ref={ref}
       style={{ opacity: 0, willChange: "transform" }}
-      className="flex h-full flex-col overflow-hidden rounded-3xl border-2 border-ua-ink bg-white shadow-[8px_8px_0_var(--ua-ink)]"
+      className={
+        "overflow-hidden rounded-3xl border-2 border-ua-ink bg-white shadow-[8px_8px_0_var(--ua-ink)] " +
+        (wide ? "flex flex-col lg:grid lg:grid-cols-12" : "flex h-full flex-col")
+      }
     >
-      {/* Playable demo — fills the space above the copy; flexes (and crops via
-          object-cover) on short viewports so the copy below never gets cut. */}
-      <div data-cs className="relative min-h-0 flex-1 border-b-2 border-ua-ink bg-ua-ink">
-        <video
-          src={study.video}
-          poster={study.poster}
-          controls
-          playsInline
-          preload="metadata"
-          className="absolute inset-0 h-full w-full object-cover"
-        />
+      <div
+        data-cs
+        className={
+          "flex items-center border-b-2 border-ua-ink bg-ua-ink" +
+          (wide
+            ? " lg:col-span-7 lg:border-b-0" + (flip ? " lg:order-2 lg:border-l-2" : " lg:border-r-2")
+            : "")
+        }
+      >
+        <div className="relative aspect-video w-full">
+          <video
+            ref={videoRef}
+            src={study.video}
+            poster={study.poster}
+            muted
+            loop
+            playsInline
+            preload="metadata"
+            aria-label={`${study.name} website preview`}
+            className="absolute inset-0 h-full w-full object-cover"
+          />
+        </div>
       </div>
 
-      {/* Copy — always visible, below the video. */}
-      <div className="flex flex-none flex-col items-start gap-3 p-5 md:p-7">
+      <div
+        className={
+          "flex flex-1 flex-col items-start gap-3 p-5 md:p-7" +
+          (wide ? " lg:col-span-5 lg:justify-center lg:p-10" : "")
+        }
+      >
+        <div data-cs className="flex w-full items-center justify-between">
+          {study.tag && (
+            <span
+              className={
+                "rounded-full border-2 border-ua-ink px-3 py-1 text-xs font-bold lowercase " +
+                (wide ? "bg-ua-pink" : "bg-ua-green")
+              }
+            >
+              {study.tag}
+            </span>
+          )}
+        </div>
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           data-cs
@@ -83,12 +207,17 @@ export function CaseStudyCard({ study }: { study: CaseStudy }) {
         />
         <h3
           data-cs
-          className="text-xl font-black text-ua-ink md:text-2xl"
+          className={
+            "font-black text-ua-ink " + (wide ? "text-2xl md:text-4xl" : "text-xl md:text-2xl")
+          }
           style={{ fontFamily: "var(--font-epilogue)" }}
         >
           {study.name}
         </h3>
-        <p data-cs className="max-w-2xl text-base leading-relaxed text-ua-ink/75">
+        <p
+          data-cs
+          className={"text-base leading-relaxed text-ua-ink/75" + (wide ? " md:text-lg" : "")}
+        >
           {study.blurb}
         </p>
         <a
@@ -96,7 +225,10 @@ export function CaseStudyCard({ study }: { study: CaseStudy }) {
           href={study.href}
           target="_blank"
           rel="noopener noreferrer"
-          className="group mt-1 inline-flex items-center gap-2 rounded-full border-2 border-ua-ink bg-ua-ink px-6 py-2.5 text-sm font-bold text-ua-bg shadow-[4px_4px_0_var(--ua-ink)] transition-all duration-200 hover:-translate-y-0.5 hover:bg-ua-orange hover:shadow-[6px_6px_0_var(--ua-ink)] active:translate-y-0 active:shadow-[2px_2px_0_var(--ua-ink)]"
+          className={
+            "group mt-1 inline-flex items-center gap-2 rounded-full border-2 border-ua-ink bg-ua-ink px-6 py-2.5 text-sm font-bold text-ua-bg shadow-[4px_4px_0_var(--ua-ink)] transition-all duration-200 hover:-translate-y-0.5 hover:bg-ua-orange hover:shadow-[6px_6px_0_var(--ua-ink)] active:translate-y-0 active:shadow-[2px_2px_0_var(--ua-ink)]" +
+            (wide ? "" : " mt-auto")
+          }
           style={{ fontFamily: "var(--font-epilogue)" }}
         >
           view website
@@ -105,6 +237,6 @@ export function CaseStudyCard({ study }: { study: CaseStudy }) {
           </span>
         </a>
       </div>
-    </div>
+    </article>
   );
 }

@@ -9,6 +9,9 @@
   --ua-pink: #f0befa;
   --ua-green: #e6fab9;
   --ua-orange: #f5693c;
+  /* Logo colours (v2 mark): glossy teal window + deep navy pill. */
+  --ua-teal: #2cc1cd;
+  --ua-navy: #0b1d3a;
 
   /* Tailwind compat aliases */
   --background: var(--ua-bg);
@@ -23,6 +26,8 @@
   --color-ua-pink: var(--ua-pink);
   --color-ua-green: var(--ua-green);
   --color-ua-orange: var(--ua-orange);
+  --color-ua-teal: var(--ua-teal);
+  --color-ua-navy: var(--ua-navy);
   --color-background: var(--background);
   --color-foreground: var(--foreground);
 }
@@ -154,11 +159,6 @@ body {
   .ua-wiggle-link:hover { animation: none; }
 }
 
-/* ── Work page tab-panel fade (opacity only — safe for sticky cards) ── */
-@keyframes ua-tab-fade { from { opacity: 0; } to { opacity: 1; } }
-.ua-tab-panel { animation: ua-tab-fade 0.35s ease both; }
-@media (prefers-reduced-motion: reduce) { .ua-tab-panel { animation: none; } }
-
 /* ── Horizontal-words pinned section (post-hero) ── */
 .hw-section { height: 300svh; overflow: clip; }
 .hw-content { position: sticky; top: 0; display: flex; align-items: center; height: 100svh; overflow: hidden; }
@@ -219,3 +219,22 @@ body {
     margin: 1.4cm;
   }
 }
+
+/* ── Homepage hero ──
+   CSS-only entrance (no JS needed, so the headline paints immediately as LCP
+   text): staggered rise via --d. */
+/* Desktop white wash: near-white behind the copy, fully clear photo by ~55%,
+   plus a faint top veil so the transparent header sits on calm colour. */
+.hero-wash {
+  background:
+    linear-gradient(to bottom, rgb(255 255 255 / 0.55) 0, rgb(255 255 255 / 0) 9rem),
+    linear-gradient(to right, #fff 0%, rgb(255 255 255 / 0.97) 24%, rgb(255 255 255 / 0.86) 34%, rgb(255 255 255 / 0.5) 44%, rgb(255 255 255 / 0.14) 52%, rgb(255 255 255 / 0) 58%);
+}
+.hero-in {
+  animation: ua-pop-in 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
+  animation-delay: var(--d, 0ms);
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero-in { animation: none; }
+}
+

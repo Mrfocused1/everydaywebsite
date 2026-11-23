@@ -1,12 +1,12 @@
 import type { Metadata } from "next";
 import { PageHero } from "@/components/PageHero";
-import { WorkCategories } from "@/components/WorkCategories";
+import { WorkGrid } from "@/components/WorkGrid";
 import { FinalCta } from "@/components/sections/FinalCta";
 
 export const metadata: Metadata = {
   title: "The work — Everyday Web.Site",
   description:
-    "Premium websites we've designed and built for charities (Springboard), sports (Chuks Fitness) and local businesses (Clearway Driving School, CCC Awards, BYJH, Nala's Baby).",
+    "Premium, bespoke websites we've designed and built — Nala's Baby, BYJH, CCC Awards, Clearway Driving School, Chuks Fitness and Springboard.",
 };
 
 export default function WorkPage() {
@@ -19,7 +19,7 @@ export default function WorkPage() {
         sticker="sparkles"
       />
 
-      <WorkCategories />
+      <WorkGrid />
 
       <FinalCta />
     </>

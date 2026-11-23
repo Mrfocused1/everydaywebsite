@@ -15,12 +15,24 @@ const EMPHASIS_WORDS = ["designed", "to", "convert."];
 const UNDERLINE_PATH =
   "M2 26C41.0237 23.1556 79.9927 19.9419 118.634 15.5521C169.106 9.98633 227.314 2.42393 275.206 2C280.46 2.57436 264.768 4.99488 262.462 5.55556C257.837 6.43078 252.529 7.47009 247.317 8.59146C239.594 10.3556 212.496 15.8393 226.932 19.8051C239.594 22.6359 263.663 21.9521 280.978 21.3504C314.817 19.9829 349.311 16.7419 383.204 14.7863C465.931 9.5077 549.191 10.547 632 14.1436";
 
-// Three phones in the fan, each autoplaying a 9:16 scroll-through of a real site.
+// Three phones in the fan, each playing a scroll-through of a real site on hover.
 const PHONES = [
-  { src: "/marketing/work-portrait/perfect-pair-portrait.mp4", poster: "/marketing/work-portrait/perfect-pair-poster.jpg", label: "The Perfect Pair" },
-  { src: "/marketing/work-portrait/clearway-portrait.mp4", poster: "/marketing/work-portrait/clearway-poster.jpg", label: "Clearway Driving School" },
-  { src: "/marketing/work-portrait/chuks-portrait.mp4", poster: "/marketing/work-portrait/chuks-poster.jpg", label: "Chuks Fitness" },
+  { src: "/marketing/work-portrait/nalas-portrait.mp4", poster: "/marketing/work-portrait/nalas-poster.jpg", label: "Nala's Baby" },
+  { src: "/marketing/work-portrait/byjh-portrait.mp4", poster: "/marketing/work-portrait/byjh-poster.jpg", label: "BYJH" },
+  { src: "/marketing/work-portrait/ccc-portrait.mp4", poster: "/marketing/work-portrait/ccc-poster.jpg", label: "CCC Awards" },
 ] as const;
+
+// iPhone 18 Pro proportions, in cqw (= % of the 71.9 mm body width).
+// Body 71.9 × 150.0 mm; display 1206 × 2622 px @ 460 ppi = 66.6 × 144.8 mm.
+const IPHONE = {
+  screenAspect: "1206 / 2622",
+  bezel: "3.69cqw", // (71.9 − 66.6) / 2 = 2.65 mm
+  screenRadius: "14.3cqw", // 62 pt display corner radius ≈ 10.3 mm
+  bodyRadius: "18cqw", // concentric: screen radius + bezel ≈ 12.9 mm
+  islandWidth: "20.9cqw", // ≈ 15 mm
+  islandHeight: "8.5cqw", // 37 pt ≈ 6.1 mm
+  islandTop: "3.2cqw", // 14 pt ≈ 2.3 mm below the screen's top edge
+} as const;
 
 export function Portfolio() {
   const sectionRef = useRef<HTMLElement>(null);
@@ -182,39 +194,64 @@ export function Portfolio() {
                 return (
                   <div
                     key={i}
-                    className={`ua-fan-card relative shrink-0 rounded-[2rem] border-2 border-ua-ink bg-ua-ink p-1.5 shadow-[6px_6px_0_var(--ua-ink)] sm:rounded-[2.4rem] ${widthClass}`}
+                    className={`ua-fan-card relative shrink-0 ${widthClass}`}
                     style={
                       {
+                        // Size container: everything inside is drawn in cqw
+                        // (% of the phone's width) so it scales with widthClass.
+                        containerType: "inline-size",
                         "--rot": `${[-7, 0, 7][i]}deg`,
                         "--ty": isMiddle ? "-1.5rem" : "0px",
                         zIndex: isMiddle ? 20 : i + 1,
                       } as React.CSSProperties
                     }
                   >
-                    {/* notch */}
+                    {/* body — bezel + screen height add up to 71.9 : 150 */}
                     <div
-                      aria-hidden
-                      className="absolute left-1/2 top-[0.55rem] z-10 h-1.5 w-12 -translate-x-1/2 rounded-full bg-ua-bg/30"
-                    />
-                    <div className="overflow-hidden rounded-[1.5rem] bg-ua-bg sm:rounded-[1.9rem]">
-                      <video
-                        src={phone.src}
-                        poster={phone.poster}
-                        aria-label={`${phone.label} — website preview`}
-                        muted
-                        loop
-                        playsInline
-                        preload="metadata"
-                        onMouseEnter={(e) => {
-                          void e.currentTarget.play();
+                      className="border-2 border-ua-ink bg-ua-ink shadow-[6px_6px_0_var(--ua-ink)]"
+                      style={{
+                        borderRadius: IPHONE.bodyRadius,
+                        padding: `calc(${IPHONE.bezel} - 2px)`,
+                      }}
+                    >
+                      <div
+                        className="relative overflow-hidden bg-ua-bg"
+                        style={{
+                          aspectRatio: IPHONE.screenAspect,
+                          borderRadius: IPHONE.screenRadius,
                         }}
-                        onMouseLeave={(e) => {
-                          const v = e.currentTarget;
-                          v.pause();
-                          v.currentTime = 0;
-                        }}
-                        className="block aspect-[9/16] w-full cursor-pointer object-cover"
-                      />
+                      >
+                        <video
+                          src={phone.src}
+                          poster={phone.poster}
+                          aria-label={`${phone.label} — website preview`}
+                          muted
+                          loop
+                          playsInline
+                          preload="metadata"
+                          onMouseEnter={(e) => {
+                            void e.currentTarget.play();
+                          }}
+                          onMouseLeave={(e) => {
+                            const v = e.currentTarget;
+                            v.pause();
+                            // Reset to the start and show the poster again
+                            // (frame 0 is often a flat-colour intro).
+                            v.load();
+                          }}
+                          className="block h-full w-full cursor-pointer object-cover object-top"
+                        />
+                        {/* Dynamic Island */}
+                        <div
+                          aria-hidden
+                          className="pointer-events-none absolute left-1/2 -translate-x-1/2 rounded-full bg-black"
+                          style={{
+                            top: IPHONE.islandTop,
+                            width: IPHONE.islandWidth,
+                            height: IPHONE.islandHeight,
+                          }}
+                        />
+                      </div>
                     </div>
                   </div>
                 );
