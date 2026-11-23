@@ -6,7 +6,7 @@ import { FinalCta } from "@/components/sections/FinalCta";
 export const metadata: Metadata = {
   title: "The work — Everyday Web.Site",
   description:
-    "Premium websites we've designed and built for charities (Forever Family, Youth n Rise, Commonwell, Stepping Stones, Springboard), sports (Chuks Fitness) and local businesses (Clearway Driving School, The Perfect Pair).",
+    "Premium websites we've designed and built for charities (Springboard), sports (Chuks Fitness) and local businesses (Clearway Driving School, CCC Awards, BYJH, Nala's Baby).",
 };
 
 export default function WorkPage() {

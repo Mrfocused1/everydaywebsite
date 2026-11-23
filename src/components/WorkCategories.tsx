@@ -10,44 +10,6 @@ type TabId = "charities" | "creatives" | "sports" | "other";
 const DECKS: Record<TabId, CaseStudy[]> = {
   charities: [
     {
-      name: "Forever Family",
-      logo: "/marketing/work/forever-family-logo.svg",
-      blurb:
-        "A bold, cinematic site for a community-safety charity building safer, stronger and more united communities. Full-bleed video hero, scroll-driven chapter storytelling and clear ways to join the movement.",
-      video: "/marketing/work/forever-family-demo.mp4",
-      poster: "/marketing/work/forever-family-poster.jpg",
-      href: "https://www.foreverfamilyuk.co.uk",
-      logoClass: "h-14 md:h-16",
-    },
-    {
-      name: "Youth n Rise",
-      logo: "/marketing/work/youthnrise-logo.png",
-      blurb:
-        "A warm, motion-rich site for a youth & community charity giving every young person a fair start through mentoring, learning and community. Full-bleed video hero, scroll-driven storytelling and a friction-light path to donate or become a mentor.",
-      video: "/marketing/work/youthnrise-demo.mp4",
-      poster: "/marketing/work/youthnrise-poster.jpg",
-      href: "https://www.youthnrise.site",
-    },
-    {
-      name: "Commonwell",
-      logo: "/marketing/work/commonwell-logo.svg",
-      blurb:
-        "A site for a community wellbeing charity that grows green spaces, supports young people and elders, and brings neighbours together. Full-bleed video hero, scroll-driven programme breakdowns and easy ways to volunteer, donate or host an event.",
-      video: "/marketing/work/commonwell-demo.mp4",
-      poster: "/marketing/work/commonwell-poster.jpg",
-      href: "https://www.commonwell.site",
-    },
-    {
-      name: "Stepping Stones",
-      logo: "/marketing/work/stepping-logo.svg",
-      blurb:
-        "A bold, high-energy site for a London youth charity turning disused buildings into youth centres — and running the mentoring, training and clubs inside them. Stat-driven hero, scroll-driven storytelling and a clear path to back the mission.",
-      video: "/marketing/work/stepping-demo.mp4",
-      poster: "/marketing/work/stepping-poster.jpg",
-      href: "https://www.steppingstonescharity.site",
-      logoClass: "h-7 md:h-8",
-    },
-    {
       name: "Springboard",
       logo: "/marketing/work/springboard-logo.svg",
       blurb:
@@ -71,16 +33,6 @@ const DECKS: Record<TabId, CaseStudy[]> = {
   ],
   other: [
     {
-      name: "The Perfect Pair",
-      logo: "/marketing/work/perfect-pair-logo.svg",
-      blurb:
-        "A bold, cinematic site for a matchmaking show pairing real people for real chemistry. Full-bleed video hero, scroll-driven storytelling with pinned host reels and a friction-light, multi-step application to apply to be matched.",
-      video: "/marketing/work/perfect-pair-demo.mp4",
-      poster: "/marketing/work/perfect-pair-poster.jpg",
-      href: "https://theperfectpairshow.com",
-      logoClass: "h-14 md:h-16",
-    },
-    {
       name: "Clearway Driving School",
       logo: "/marketing/work/clearway-logo.svg",
       blurb:
@@ -89,6 +41,35 @@ const DECKS: Record<TabId, CaseStudy[]> = {
       poster: "/marketing/work/clearway-poster.jpg",
       href: "https://www.clearwaydrivingschool.site",
       logoClass: "h-12 md:h-14",
+    },
+    {
+      name: "CCC Awards",
+      logo: "/marketing/work/ccc-logo.png",
+      blurb:
+        "A cinematic site for the CCC Awards — recognising impact across community, corporate and culture. Full-bleed event hero, scroll-driven storytelling of the three pillars, winners showcase and a clear path to buy tickets.",
+      video: "/marketing/work/ccc-demo.mp4",
+      poster: "/marketing/work/ccc-poster.jpg",
+      href: "https://cccdemo.online",
+      logoClass: "h-12 md:h-14",
+    },
+    {
+      name: "BYJH",
+      logo: "/marketing/work/byjh-logo.png",
+      blurb:
+        "A sleek, luxury site for a bespoke lifestyle management company and its Mercedes Sprinter and V-Class fleet. Video-led hero, a scroll-driven road journey through the fleet and easy ways to plan a trip or commission a custom build.",
+      video: "/marketing/work/byjh-demo.mp4",
+      poster: "/marketing/work/byjh-poster.jpg",
+      href: "https://www.byjh.co.uk",
+      logoClass: "h-12 md:h-14",
+    },
+    {
+      name: "Nala's Baby",
+      logo: "/marketing/work/nalas-logo.png",
+      blurb:
+        "A soft, warm e-commerce site for an award-winning, naturally derived baby and toddler skincare brand. Full-bleed video hero, scroll-driven product storytelling and a friction-light path to shop the range.",
+      video: "/marketing/work/nalas-demo.mp4",
+      poster: "/marketing/work/nalas-poster.jpg",
+      href: "https://www.nalasbaby.site",
     },
   ],
 };
