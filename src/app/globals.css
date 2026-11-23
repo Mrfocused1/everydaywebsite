@@ -238,3 +238,11 @@ body {
   .hero-in { animation: none; }
 }
 
+
+/* Mobile menu: no slide/reveal animations for reduced-motion users. */
+@media (prefers-reduced-motion: reduce) {
+  #site-menu,
+  #site-menu * {
+    transition: none !important;
+  }
+}

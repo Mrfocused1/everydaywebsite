@@ -74,6 +74,12 @@ export function TopBar() {
 
   const solid = scrolled || open || pathname !== "/";
   const close = () => setOpen(false);
+  // Staggered entrance for menu contents (instant fade on close).
+  const reveal = (delay: number) => ({
+    transition: open
+      ? `opacity 0.5s ease ${delay}s, transform 0.6s cubic-bezier(0.2,0.8,0.2,1) ${delay}s`
+      : "opacity 0.15s ease, transform 0.15s ease",
+  });
 
   return (
     <>
@@ -178,23 +184,39 @@ export function TopBar() {
         className={`fixed inset-0 z-[60] overflow-hidden bg-white lg:hidden ${open ? "translate-y-0" : "-translate-y-[105%]"}`}
         style={{
           transition: open
-            ? "transform 0.55s cubic-bezier(0.2,0.8,0.2,1), visibility 0s"
-            : "transform 0.55s cubic-bezier(0.2,0.8,0.2,1), visibility 0s linear 0.55s",
+            ? "transform 0.6s cubic-bezier(0.2,0.8,0.2,1), visibility 0s"
+            : "transform 0.5s cubic-bezier(0.6,0,0.8,0.2), visibility 0s linear 0.5s",
           visibility: open ? "visible" : "hidden",
         }}
       >
+        {/* Photo: the diagonal "grows" out of the bottom-right corner on open.
+            The image box sits right of the diagonal so her face stays in view. */}
         <div
           aria-hidden="true"
           className="absolute inset-0 saturate-[0.87]"
-          style={{ clipPath: "polygon(100% 18%, 100% 100%, 19% 100%)" }}
+          style={{
+            clipPath: open
+              ? "polygon(100% 18%, 100% 100%, 19% 100%)"
+              : "polygon(100% 100%, 100% 100%, 100% 100%)",
+            transition: open
+              ? "clip-path 0.9s cubic-bezier(0.65,0,0.35,1) 0.18s"
+              : "clip-path 0.3s ease",
+          }}
         >
-          <Image
-            src={HERO.image.mobile}
-            alt=""
-            fill
-            sizes="100vw"
-            className="object-cover object-bottom"
-          />
+          <div className="absolute bottom-0 left-[19%] right-[-12%] top-[10%]">
+            <Image
+              src={HERO.image.mobile}
+              alt=""
+              fill
+              sizes="70vw"
+              className={`object-cover object-[50%_42%] ${open ? "scale-100" : "scale-[1.15]"}`}
+              style={{
+                transition: open
+                  ? "transform 1.4s cubic-bezier(0.2,0.8,0.2,1) 0.18s"
+                  : "transform 0.3s ease",
+              }}
+            />
+          </div>
         </div>
         <div
           aria-hidden="true"
@@ -204,7 +226,10 @@ export function TopBar() {
           }}
         />
 
-        <div className="relative z-10 flex h-16 items-center justify-between px-5 sm:h-20 sm:px-8">
+        <div
+          className={`relative z-10 flex h-16 items-center justify-between px-5 sm:h-20 sm:px-8 ${open ? "opacity-100" : "opacity-0"}`}
+          style={reveal(0.2)}
+        >
           <Link
             href="/"
             onClick={close}
@@ -252,7 +277,11 @@ export function TopBar() {
           style={epilogue}
         >
           {NAV_LINKS.map((l, i) => (
-            <li key={l.href} style={{ width: `${64 - i * 5}%` }}>
+            <li
+              key={l.href}
+              className={open ? "translate-x-0 opacity-100" : "-translate-x-6 opacity-0"}
+              style={{ width: `${64 - i * 5}%`, ...reveal(0.28 + i * 0.08) }}
+            >
               <Link
                 href={l.href}
                 onClick={close}
@@ -279,8 +308,8 @@ export function TopBar() {
         </ul>
 
         <div
-          className="absolute bottom-[clamp(2rem,14svh,9rem)] left-6 z-10 grid w-[min(52%,17rem)] gap-2.5 sm:left-10"
-          style={epilogue}
+          className={`absolute bottom-[clamp(2rem,14svh,9rem)] left-6 z-10 grid w-[min(52%,17rem)] gap-2.5 sm:left-10 ${open ? "translate-y-0 opacity-100" : "translate-y-4 opacity-0"}`}
+          style={{ ...epilogue, ...reveal(0.55) }}
         >
           <Link
             href={CTA_HREF}
