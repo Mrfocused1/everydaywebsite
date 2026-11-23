@@ -28,7 +28,7 @@ function HeroPhoto() {
       {/* eslint-disable-next-line jsx-a11y/alt-text -- alt comes from rest */}
       <img
         {...rest}
-        className="absolute inset-0 h-full w-full object-cover object-[50%_100%] lg:object-[78%_50%]"
+        className="absolute inset-0 h-full w-full object-cover object-[50%_75%] lg:object-[78%_50%]"
       />
     </picture>
   );
@@ -68,12 +68,16 @@ function withAccent(line: string): ReactNode {
 
 export function Hero() {
   return (
-    <section id="top" className="relative isolate w-full overflow-hidden bg-white lg:flex lg:min-h-svh lg:items-center">
-      {/* ── Copy ── (top on mobile, left column on desktop) */}
-      <div className="mx-auto w-full max-w-[1320px] px-5 pb-8 pt-[92px] sm:px-8 sm:pb-10 sm:pt-32 lg:px-12 lg:pb-20 lg:pt-32">
+    <section
+      id="top"
+      className="relative isolate flex w-full flex-col overflow-hidden bg-white max-lg:h-svh max-lg:min-h-[540px] lg:min-h-svh lg:flex-row lg:items-center"
+    >
+      {/* ── Copy ── (top on mobile, left column on desktop). Below lg the hero is
+          exactly one screen tall: the copy takes what it needs, the photo fills the rest. */}
+      <div className="mx-auto w-full max-w-[1320px] shrink-0 px-5 pb-5 pt-[max(80px,11svh)] sm:px-8 sm:pb-6 lg:px-12 lg:pb-20 lg:pt-32">
         <div className="max-w-[36rem] lg:max-w-[40rem]">
           <h1
-            className="hero-in text-[clamp(2.4rem,5vw+1.5rem,3.75rem)] font-extrabold leading-[0.98] tracking-[-0.035em] text-ua-navy lg:text-[clamp(3.5rem,5vw,5.25rem)]"
+            className="hero-in text-[min(9.5vw,5.4svh,3.4rem)] font-extrabold leading-[0.98] tracking-[-0.035em] text-ua-navy lg:text-[clamp(3.5rem,5vw,5.25rem)]"
             style={{ ...epilogue, ...delay(60) }}
           >
             {HERO.headline.lines.map((line) => (
@@ -84,14 +88,14 @@ export function Hero() {
           </h1>
 
           <p
-            className="hero-in mt-4 max-w-[30rem] text-base leading-[1.5] text-[#3b4556] sm:mt-5 sm:text-lg lg:mt-7 lg:text-[1.3rem]"
+            className="hero-in mt-3 max-w-[30rem] text-[15px] leading-[1.5] text-[#3b4556] sm:mt-4 sm:text-base lg:mt-7 lg:text-[1.3rem]"
             style={{ ...dmSans, ...delay(150) }}
           >
             {HERO.subhead}
           </p>
 
           <div
-            className="hero-in mt-6 flex flex-col gap-2.5 sm:mt-7 sm:flex-row sm:flex-wrap sm:items-center sm:gap-4 lg:mt-9"
+            className="hero-in mt-5 flex flex-col gap-2.5 sm:flex-row sm:flex-wrap sm:items-center sm:gap-4 lg:mt-9"
             style={delay(240)}
           >
             <a
@@ -114,7 +118,7 @@ export function Hero() {
           </div>
 
           <ul
-            className="hero-in mt-10 hidden max-w-[34rem] flex-wrap items-center gap-x-10 gap-y-3 border-t border-[#dde2e9] pt-6 text-[15px] font-semibold text-ua-navy sm:flex lg:mt-12"
+            className="hero-in mt-12 hidden max-w-[34rem] flex-wrap items-center gap-x-10 gap-y-3 border-t border-[#dde2e9] pt-6 text-[15px] font-semibold text-ua-navy lg:flex"
             style={{ ...dmSans, ...delay(330) }}
           >
             {HERO.proof.map(({ icon, label }) => (
@@ -138,8 +142,8 @@ export function Hero() {
         </div>
       </div>
 
-      {/* ── Photo ── a band below the copy on mobile; full-bleed behind it on desktop. */}
-      <div className="relative h-[clamp(300px,56svh,600px)] w-full lg:absolute lg:inset-0 lg:-z-10 lg:h-auto">
+      {/* ── Photo ── fills the rest of the screen below the copy on mobile; full-bleed behind it on desktop. */}
+      <div className="relative min-h-0 w-full flex-1 lg:absolute lg:inset-0 lg:-z-10 lg:h-auto">
         <HeroPhoto />
         {/* Desktop: white wash from the copy side, clear by mid-width. */}
         <div className="hero-wash absolute inset-0 hidden lg:block" />
