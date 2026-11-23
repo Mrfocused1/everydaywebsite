@@ -75,7 +75,7 @@ export function Hero() {
       {/* ── Copy ── (top on mobile, left column on desktop). Below lg the hero is
           exactly one screen tall: the copy takes what it needs, the photo fills the rest. */}
       <div className="mx-auto w-full max-w-[1320px] shrink-0 px-5 pb-5 pt-[max(80px,11svh)] sm:px-8 sm:pb-6 lg:px-12 lg:pb-20 lg:pt-32">
-        <div className="max-w-[36rem] lg:max-w-[40rem]">
+        <div className="max-w-[36rem] max-lg:mx-auto max-lg:text-center lg:max-w-[40rem]">
           <h1
             className="hero-in text-[min(9.5vw,5.4svh,3.4rem)] font-extrabold leading-[0.98] tracking-[-0.035em] text-ua-navy lg:text-[clamp(3.5rem,5vw,5.25rem)]"
             style={{ ...epilogue, ...delay(60) }}
@@ -88,14 +88,14 @@ export function Hero() {
           </h1>
 
           <p
-            className="hero-in mt-3 max-w-[30rem] text-[15px] leading-[1.5] text-[#3b4556] sm:mt-4 sm:text-base lg:mt-7 lg:text-[1.3rem]"
+            className="hero-in mt-3 max-w-[30rem] max-lg:mx-auto text-[15px] leading-[1.5] text-[#3b4556] sm:mt-4 sm:text-base lg:mt-7 lg:text-[1.3rem]"
             style={{ ...dmSans, ...delay(150) }}
           >
             {HERO.subhead}
           </p>
 
           <div
-            className="hero-in mt-5 flex flex-col gap-2.5 sm:flex-row sm:flex-wrap sm:items-center sm:gap-4 lg:mt-9"
+            className="hero-in mt-5 flex flex-col gap-2.5 sm:flex-row sm:flex-wrap sm:items-center sm:justify-center sm:gap-4 lg:mt-9 lg:justify-start"
             style={delay(240)}
           >
             <a

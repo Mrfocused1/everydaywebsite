@@ -74,11 +74,13 @@ export function TopBar() {
 
   const solid = scrolled || open || pathname !== "/";
   const close = () => setOpen(false);
-  // Staggered entrance for menu contents (instant fade on close).
-  const reveal = (delay: number) => ({
+  // Menu choreography. Open: panel slides down, contents stagger in.
+  // Close (reverse): buttons drop out, links slide away bottom-up, the photo
+  // shrinks back into its corner, then the panel slides up.
+  const reveal = (delay: number, closeDelay = 0) => ({
     transition: open
-      ? `opacity 0.5s ease ${delay}s, transform 0.6s cubic-bezier(0.2,0.8,0.2,1) ${delay}s`
-      : "opacity 0.15s ease, transform 0.15s ease",
+      ? `opacity 0.5s ease ${delay}s, translate 0.6s cubic-bezier(0.2,0.8,0.2,1) ${delay}s`
+      : `opacity 0.25s ease ${closeDelay}s, translate 0.3s cubic-bezier(0.4,0,1,1) ${closeDelay}s`,
   });
 
   return (
@@ -184,8 +186,8 @@ export function TopBar() {
         className={`fixed inset-0 z-[60] overflow-hidden bg-white lg:hidden ${open ? "translate-y-0" : "-translate-y-[105%]"}`}
         style={{
           transition: open
-            ? "transform 0.6s cubic-bezier(0.2,0.8,0.2,1), visibility 0s"
-            : "transform 0.5s cubic-bezier(0.6,0,0.8,0.2), visibility 0s linear 0.5s",
+            ? "translate 0.6s cubic-bezier(0.2,0.8,0.2,1), visibility 0s"
+            : "translate 0.5s cubic-bezier(0.5,0,0.75,0) 0.3s, visibility 0s linear 0.8s",
           visibility: open ? "visible" : "hidden",
         }}
       >
@@ -200,7 +202,7 @@ export function TopBar() {
               : "polygon(100% 100%, 100% 100%, 100% 100%)",
             transition: open
               ? "clip-path 0.9s cubic-bezier(0.65,0,0.35,1) 0.18s"
-              : "clip-path 0.3s ease",
+              : "clip-path 0.45s cubic-bezier(0.65,0,0.35,1) 0.05s",
           }}
         >
           <div className="absolute bottom-0 left-[19%] right-[-12%] top-[10%]">
@@ -212,8 +214,8 @@ export function TopBar() {
               className={`object-cover object-[50%_42%] ${open ? "scale-100" : "scale-[1.15]"}`}
               style={{
                 transition: open
-                  ? "transform 1.4s cubic-bezier(0.2,0.8,0.2,1) 0.18s"
-                  : "transform 0.3s ease",
+                  ? "scale 1.4s cubic-bezier(0.2,0.8,0.2,1) 0.18s"
+                  : "scale 0.45s ease-in 0.05s",
               }}
             />
           </div>
@@ -228,7 +230,7 @@ export function TopBar() {
 
         <div
           className={`relative z-10 flex h-16 items-center justify-between px-5 sm:h-20 sm:px-8 ${open ? "opacity-100" : "opacity-0"}`}
-          style={reveal(0.2)}
+          style={reveal(0.2, 0.22)}
         >
           <Link
             href="/"
@@ -280,7 +282,7 @@ export function TopBar() {
             <li
               key={l.href}
               className={open ? "translate-x-0 opacity-100" : "-translate-x-6 opacity-0"}
-              style={{ width: `${64 - i * 5}%`, ...reveal(0.28 + i * 0.08) }}
+              style={{ width: `${64 - i * 5}%`, ...reveal(0.28 + i * 0.08, 0.04 + (NAV_LINKS.length - 1 - i) * 0.05) }}
             >
               <Link
                 href={l.href}
@@ -309,7 +311,7 @@ export function TopBar() {
 
         <div
           className={`absolute bottom-[clamp(2rem,14svh,9rem)] left-6 z-10 grid w-[min(52%,17rem)] gap-2.5 sm:left-10 ${open ? "translate-y-0 opacity-100" : "translate-y-4 opacity-0"}`}
-          style={{ ...epilogue, ...reveal(0.55) }}
+          style={{ ...epilogue, ...reveal(0.55, 0) }}
         >
           <Link
             href={CTA_HREF}
